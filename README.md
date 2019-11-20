@@ -1,4 +1,4 @@
-# sakuli_doc_theme
+# Sakuli Web Page for Documentation
 
 # prerequisites
 *  hugo
