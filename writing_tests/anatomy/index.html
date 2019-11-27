@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.56.3" />
+    <meta name="description" content="">
+
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>Sakuli</title>
+
+    
+    <link href="/css/nucleus.css" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css" rel="stylesheet">
+    <link href="/css/hybrid.css" rel="stylesheet">
+    <link href="/css/featherlight.min.css" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css" rel="stylesheet">
+    <link href="/css/auto-complete.css" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css" rel="stylesheet">
+    <link href="/css/theme.css" rel="stylesheet">
+    <link href="/css/hugo-theme.css" rel="stylesheet">
+    
+
+    <script src="/js/jquery-3.3.1.min.js"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+        :not(pre) > code + span.copy-to-clipboard {
+            display: none;
+        }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/writing_tests/anatomy/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="">
+  <img src="/images/sakuli_01.svg" width="1024" height="auto" />
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js"></script>
+<script type="text/javascript" src="/js/auto-complete.js"></script>
+<script type="text/javascript">
+    
+        var baseurl = "";
+    
+</script>
+<script type="text/javascript" src="/js/search.js"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/start/" title="Getting Started" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/start/">
+          <i class='fas fa-chevron-right'></i>  Getting Started
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/start/prerequisites/" title="Prerequisites" class="dd-item ">
+        <a href="/start/prerequisites/">
+        Prerequisites
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/start/initialization/" title="Initialization" class="dd-item ">
+        <a href="/start/initialization/">
+        Initialization
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/start/installation/" title="Installation" class="dd-item ">
+        <a href="/start/installation/">
+        Installation
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/start/firsttest/" title="First Setup" class="dd-item ">
+        <a href="/start/firsttest/">
+        First Setup
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/start/temp/" title="Temp" class="dd-item ">
+        <a href="/start/temp/">
+        Temp
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/writing_tests/" title="Writing Tests" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/writing_tests/">
+          <i class='fas fa-chevron-right'></i>  Writing Tests
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/writing_tests/anatomy/" title="Anatomy" class="dd-item active">
+        <a href="/writing_tests/anatomy/">
+        Anatomy
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/writing_tests/interact/" title="Interact" class="dd-item ">
+        <a href="/writing_tests/interact/">
+        Interact
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/writing_tests/screenshot/" title="Screenshot" class="dd-item ">
+        <a href="/writing_tests/screenshot/">
+        Screenshot
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/writing_tests/webtests/" title="Webtests" class="dd-item ">
+        <a href="/writing_tests/webtests/">
+        Webtests
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/enterprise_features/" title="Enterprise Features" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/enterprise_features/">
+          <i class='fas fa-chevron-right'></i>  Enterprise Features
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/enterprise_features/icinga/" title="Icinga2 Forwarder" class="dd-item ">
+        <a href="/enterprise_features/icinga/">
+        Icinga2 Forwarder
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/enterprise_features/check/" title="Check MK Fowarder" class="dd-item ">
+        <a href="/enterprise_features/check/">
+        Check MK Fowarder
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/enterprise_features/omd/" title="OMD Forwarder" class="dd-item ">
+        <a href="/enterprise_features/omd/">
+        OMD Forwarder
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/enterprise_features/e2e/" title="E2E Test Container" class="dd-item ">
+        <a href="/enterprise_features/e2e/">
+        E2E Test Container
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/enterprise_features/test/" title="Test" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/enterprise_features/test/">
+          <i class='fas fa-chevron-right'></i>  Test
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/enterprise_features/test/test/" title="Test" class="dd-item ">
+        <a href="/enterprise_features/test/test/">
+        Test
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'></a> > <a href='/writing_tests/'>Writing Tests</a> > Anatomy
+          
+         
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li><a href="#anatomy-of-a-project">Anatomy of a Project</a>
+<ul>
+<li><a href="#setup-and-configuration">Setup and configuration</a>
+<ul>
+<li><a href="#testsuite-suite">testsuite.suite</a></li>
+<li><a href="#properties-files">Properties Files</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            
+          
+
+        
+
+
+
+
+
+<h1 id="anatomy-of-a-project">Anatomy of a Project</h1>
+
+<p>This guide assumes that you have finished the &ldquo;Getting started&rdquo; tutorial or that you are experienced with Sakuli v1.</p>
+
+<blockquote>
+<p>Most of the complexity and conventions are due to the backwards compatibility to v1, which requires a specific folder and file structure for various reasons (the biggest is Sahi). Sakuli offers now various ways to reduce this complexity dramatically. These features will eventually become part of upcoming releases.</p>
+</blockquote>
+
+<h2 id="setup-and-configuration">Setup and configuration</h2>
+
+<p>The minimum setup for a Sakuli project looks like this:</p>
+
+<ul>
+<li><i class="fas fa-folder"></i> <strong>your-sakuli-project</strong> <em>Home folder of the project</em>
+
+<ul>
+<li><i class="far fa-file"></i> <strong>package.json</strong> <em>All dependencies and setups for Node.js</em></li>
+<li><i class="far fa-file"></i> <strong>sakuli.properties</strong> <em>(optional: Configuration for all testsuites)</em></li>
+<li><i class="fas fa-folder"></i> <strong>testsuite-a</strong> <em>Home folder of a testsuite</em>
+
+<ul>
+<li><i class="far fa-file"></i> <strong>testsuite.suite</strong> <em>Defines which testcases belong to the testsuite</em></li>
+<li><i class="far fa-file"></i> <strong>testsuite.properties</strong> <em>Configuration for the testsuite (overrides configuration from &lsquo;../sakuli.properties&rsquo;)</em></li>
+<li><i class="fas fa-folder"></i> <strong>testcase</strong> <em>Home of the testcase</em>
+
+<ul>
+<li><i class="far fa-file"></i> <strong>testcase.js</strong> <em>The actual testcase</em></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>This file layout also represents the logical structure of Sakuli, which consists of a <em>testsuite</em> with one or more <em>testcase(s)</em>. Sakuli&rsquo;s <code>run</code> command takes the path to a testsuite folder and runs all testcases defined in <code>testsuite.suite</code> of the given folder.</p>
+
+<h3 id="testsuite-suite">testsuite.suite</h3>
+
+<p>This file is a relic from Sahi where you define testcases and their respective start-urls. It has a simple format:</p>
+
+<pre><code>&lt;CASE-PATH&gt;/&lt;CASE-FILE&gt; &lt;START-URL&gt;
+</code></pre>
+
+<p><code>&lt;CASE-PATH&gt;</code> is a path within the testsuite file, which has to contain the file <code>&lt;CASE_FILE&gt;</code>. The <code>&lt;START-URL&gt;</code> is no longer used by Sakuli (but required to fulfil the file format). The format also supports comments (<code>//</code> at the beginning of a line). Testcases can be activated or deactivated by using comments.</p>
+
+<blockquote>
+<p>The configured start-url is omitted to force test authors to write explicit navigation to the url for testcases using <code>_navigateTo</code>.</p>
+</blockquote>
+
+<h3 id="properties-files">Properties Files</h3>
+
+<p>Each testsuite requires a <code>testsuite.properties</code> file with at least one entry:</p>
+
+<pre><code>testsuite.id=SomeName
+</code></pre>
+
+<p>It &ldquo;inherits&rdquo; its values from <code>../sakuli.properties</code> (which also means that the same property from <code>sakuli.properties</code> becomes overridden).</p>
+
+<blockquote>
+<p>Property files are a common way to store configuration in Java, the former runtime for Sakuli. It is a simple key-value format (<code>&lt;KEY&gt;=&lt;VALUE&gt;</code>) where every line defines a key-value pair. To organize the keys, it is a common - but not required - practice to separate names by dots (similar to Java namespaces).</p>
+</blockquote>
+
+<p>There are several predefined properties that can be configured to influence the behavior of Sakuli (* indicates a required property):</p>
+
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type: Default</th>
+<th>Comment / Example</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>testsuite.id</code></td>
+<td>String*: /</td>
+<td>Name of the suite shown in the output and used by the forwarder</td>
+</tr>
+
+<tr>
+<td><code>testsuite.browser</code></td>
+<td>String: &lsquo;firefox&rsquo;</td>
+<td>Browser which is started by the WebDriver (it can be overridden by the <code>--browser</code> command line argument)</td>
+</tr>
+</tbody>
+</table>
+
+<p>You can also define own properties and use them in your testcases. Just put your custom property key with the corresponding value in one of the <code>.property</code> files and into your testcase. You can retrieve the values with help of the <a href="/apidoc/sakuli-legacy/interfaces/thenableenvironment.html#getproperty">Environment Class</a>:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// omitting boilerplate 
+</span><span style="color:#75715e">// assuming you have added 
+</span><span style="color:#75715e">// user.name=Tester 
+</span><span style="color:#75715e">// in one of the property files
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">env</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Environment</span>();
+<span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_setValue</span>(<span style="color:#a6e22e">_textbox</span>(<span style="color:#e6db74">&#39;username&#39;</span>), <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">getProperty</span>(<span style="color:#e6db74">&#39;user.name&#39;</span>)); 
+</code></pre></div>
+
+
+<footer class=" footline" >
+	
+</footer>
+
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/writing_tests/" title="Writing Tests"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/writing_tests/interact/" title="Interact" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js"></script>
+    <script src="/js/perfect-scrollbar.min.js"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="/js/jquery.sticky.js"></script>
+    <script src="/js/featherlight.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js"></script>
+    <script src="/js/learn.js"></script>
+    <script src="/js/hugo-learn.js"></script>
+
+    <link href="/mermaid/mermaid.css" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+
