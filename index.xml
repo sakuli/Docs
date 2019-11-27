@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title></title>
-    <link>/</link>
+    <link>/Docs/</link>
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 18 Sep 2019 11:55:01 +0200</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/Docs/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Icinga2 Forwarder</title>
-      <link>/enterprise_features/icinga/</link>
+      <link>/Docs/enterprise_features/icinga/</link>
       <pubDate>Thu, 12 Sep 2019 14:15:55 +0200</pubDate>
       
-      <guid>/enterprise_features/icinga/</guid>
+      <guid>/Docs/enterprise_features/icinga/</guid>
       <description>Icinga2 Forwarder Add the forwarder to your project with:
 npm i @sakuli/forwarder-icinga2 To register the forwarder into your project you have to edit the package.json file and add the preset to the Sakuli configuration key:
 { &amp;#34;sakuli&amp;#34;: { &amp;#34;presetProvider&amp;#34;: [ &amp;#34;@sakuli/legacy&amp;#34;, &amp;#34;@sakuli/forwarder-icinga2&amp;#34; ] } } Installation of any enterprise feature requires a proper setup of your license information. You can find further information in theenterprise section.
@@ -24,20 +24,20 @@ Enable the Icinga2 API All steps required to enable the Icinga2 API are describe
     
     <item>
       <title>Prerequisites</title>
-      <link>/start/prerequisites/</link>
+      <link>/Docs/start/prerequisites/</link>
       <pubDate>Tue, 10 Sep 2019 15:25:53 +0200</pubDate>
       
-      <guid>/start/prerequisites/</guid>
+      <guid>/Docs/start/prerequisites/</guid>
       <description>What you need Sakuli is built and tested against the current LTS version of Node.js. In order to be able to run Sakuli on your system, we will assume that you have a Node v10.15.3 (lts/dubnium) installed on it.
 To install Node on your system, you can either go to the Node website or you can use tools like Node Version Manager, a utility to manage various Node versions on a per-user basis.</description>
     </item>
     
     <item>
       <title>Check MK Fowarder</title>
-      <link>/enterprise_features/check/</link>
+      <link>/Docs/enterprise_features/check/</link>
       <pubDate>Thu, 12 Sep 2019 14:16:04 +0200</pubDate>
       
-      <guid>/enterprise_features/check/</guid>
+      <guid>/Docs/enterprise_features/check/</guid>
       <description>Check_MK Forwarder Add the forwarder to your project with:
 npm i @sakuli/forwarder-checkmk To register the forwarder into your project you have to edit the package.json file and add the preset to the Sakuli configuration key:
 { &amp;#34;sakuli&amp;#34;: { &amp;#34;presetProvider&amp;#34;: [ &amp;#34;@sakuli/legacy&amp;#34;, &amp;#34;@sakuli/forwarder-checkmk&amp;#34; ] } } Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the enterprise section.
@@ -46,20 +46,20 @@ Sakuli Client Configuration It is assumed that the client is already monitored b
     
     <item>
       <title>Anatomy</title>
-      <link>/writing_tests/anatomy/</link>
+      <link>/Docs/writing_tests/anatomy/</link>
       <pubDate>Thu, 12 Sep 2019 13:18:58 +0200</pubDate>
       
-      <guid>/writing_tests/anatomy/</guid>
+      <guid>/Docs/writing_tests/anatomy/</guid>
       <description>Anatomy of a Project This guide assumes that you have finished the &amp;ldquo;Getting started&amp;rdquo; tutorial or that you are experienced with Sakuli v1.
  Most of the complexity and conventions are due to the backwards compatibility to v1, which requires a specific folder and file structure for various reasons (the biggest is Sahi). Sakuli offers now various ways to reduce this complexity dramatically. These features will eventually become part of upcoming releases.</description>
     </item>
     
     <item>
       <title>Initialization</title>
-      <link>/start/initialization/</link>
+      <link>/Docs/start/initialization/</link>
       <pubDate>Tue, 10 Sep 2019 15:26:17 +0200</pubDate>
       
-      <guid>/start/initialization/</guid>
+      <guid>/Docs/start/initialization/</guid>
       <description>Initialize a project This guide will get you started with writing Sakuli tests from scratch. To follow this tutorial, you should create a new NPM project in an empty folder.
 For this guide, we will assume that our working directory is /tmp/sakuli_starter on a *nix system, or %Temp%\sakuli_starter on a Windows machine.
 To create a new, empty project, first run:
@@ -68,10 +68,10 @@ npm init This interactive prompt will ask you for some metadata regarding your p
     
     <item>
       <title>OMD Forwarder</title>
-      <link>/enterprise_features/omd/</link>
+      <link>/Docs/enterprise_features/omd/</link>
       <pubDate>Thu, 12 Sep 2019 14:16:13 +0200</pubDate>
       
-      <guid>/enterprise_features/omd/</guid>
+      <guid>/Docs/enterprise_features/omd/</guid>
       <description>OMD / Gearman Forwarder Install the forwarder to your project with:
 npm i @sakuli/forwarder-gearman To register the forwarder into your project you have to edit the package.json file and add the preset to the Sakuli configuration key:
 { &amp;#34;sakuli&amp;#34;: { &amp;#34;presetProvider&amp;#34;: [ &amp;#34;@sakuli/legacy&amp;#34;, &amp;#34;@sakuli/forwarder-gearman&amp;#34; ] } } Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the enterprise section.</description>
@@ -79,49 +79,49 @@ npm i @sakuli/forwarder-gearman To register the forwarder into your project you 
     
     <item>
       <title>Interact</title>
-      <link>/writing_tests/interact/</link>
+      <link>/Docs/writing_tests/interact/</link>
       <pubDate>Thu, 12 Sep 2019 13:18:18 +0200</pubDate>
       
-      <guid>/writing_tests/interact/</guid>
+      <guid>/Docs/writing_tests/interact/</guid>
       <description>Interacting with the environment In addition to screenshot-based test actions, Sakuli is capable of utilizing your keyboard, clipboard and environment variables. All these features are incorporated in the Environment class.
 Keyboard actions The following snippet shows a possible use-case for native keyboard actions. When initiating a download in Firefox, a native file download dialog opens. To start the download, we need to accept the file dialog, something that is not possible within the capabilities of Selenium.</description>
     </item>
     
     <item>
       <title>Installation</title>
-      <link>/start/installation/</link>
+      <link>/Docs/start/installation/</link>
       <pubDate>Tue, 10 Sep 2019 15:29:27 +0200</pubDate>
       
-      <guid>/start/installation/</guid>
+      <guid>/Docs/start/installation/</guid>
       <description>Install Sakuli The following steps are required to set up Sakuli to work with multiple browsers. Once the initial setup is done, we will dive right into our first test.
 WebDriver Installation Sakuli utilizes the WebDriver protocol to remote control browsers during test execution. In addition to the browser itself, you need to install the corresponding WebDriver as well. Several wrapper packages can be found on npmjs.com, which allow the installation of the required binaries via npm.</description>
     </item>
     
     <item>
       <title>E2E Test Container</title>
-      <link>/enterprise_features/e2e/</link>
+      <link>/Docs/enterprise_features/e2e/</link>
       <pubDate>Thu, 12 Sep 2019 14:16:23 +0200</pubDate>
       
-      <guid>/enterprise_features/e2e/</guid>
+      <guid>/Docs/enterprise_features/e2e/</guid>
       <description>E2E Test Container Lorem Ipsum.</description>
     </item>
     
     <item>
       <title>Screenshot</title>
-      <link>/writing_tests/screenshot/</link>
+      <link>/Docs/writing_tests/screenshot/</link>
       <pubDate>Thu, 12 Sep 2019 13:18:02 +0200</pubDate>
       
-      <guid>/writing_tests/screenshot/</guid>
+      <guid>/Docs/writing_tests/screenshot/</guid>
       <description>Screenshot based Testing A lot of E2E scenarios exceed the capabilities of browsers and webdrivers. This might include common use-cases like a drag and drop from the host system to a webpage or exporting a report into a spreadsheet or PDF-format. In these cases, your web-based tests can be extended to also validate behavior and invoke interactions outside the browser, all within a single test.
 Of course, you can also use Sakulis native testing power on its own, e.</description>
     </item>
     
     <item>
       <title>First Setup</title>
-      <link>/start/firsttest/</link>
+      <link>/Docs/start/firsttest/</link>
       <pubDate>Tue, 10 Sep 2019 15:30:30 +0200</pubDate>
       
-      <guid>/start/firsttest/</guid>
+      <guid>/Docs/start/firsttest/</guid>
       <description>Setup Setup your first Test Since we wanted to keep Sakuli mostly compatible to v1, the file layout looks basically the same for testsuites.
 Each testsuite is located in its own particular folder. Generally, a testsuite represents the system you want to test. Therefore, you need to create that folder in your project root (where the package.json file is located):
 mkdir my-sut To describe the testsuite and its testcases, two additional files are needed: testsuite.</description>
@@ -129,28 +129,28 @@ mkdir my-sut To describe the testsuite and its testcases, two additional files a
     
     <item>
       <title>Temp</title>
-      <link>/start/temp/</link>
+      <link>/Docs/start/temp/</link>
       <pubDate>Wed, 18 Sep 2019 11:55:01 +0200</pubDate>
       
-      <guid>/start/temp/</guid>
+      <guid>/Docs/start/temp/</guid>
       <description>for code snippets use this template wrapper for the typescript color scheme (async () =&amp;gt; {})().then(done); // 5 example heading 1 (tallest) Example Text</description>
     </item>
     
     <item>
       <title>Test</title>
-      <link>/enterprise_features/test/test/</link>
+      <link>/Docs/enterprise_features/test/test/</link>
       <pubDate>Thu, 12 Sep 2019 14:49:40 +0200</pubDate>
       
-      <guid>/enterprise_features/test/test/</guid>
+      <guid>/Docs/enterprise_features/test/test/</guid>
       <description>Lorem Ipsum. nico</description>
     </item>
     
     <item>
       <title>Webtests</title>
-      <link>/writing_tests/webtests/</link>
+      <link>/Docs/writing_tests/webtests/</link>
       <pubDate>Thu, 12 Sep 2019 13:16:37 +0200</pubDate>
       
-      <guid>/writing_tests/webtests/</guid>
+      <guid>/Docs/writing_tests/webtests/</guid>
       <description>Web tests For DOM based testing most of the functions from Sahi tests can be used (please note that Sakuli only implements the open source APIs).
 The main difference between Sakuli v1 and Sakuli v2 is the usage of Promises in the action API, meaning that you have to await a click for example.
 On the other hand, element selectors remain synchronized functions but will not do the actual DOM fetching anymore.</description>

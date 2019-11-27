@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Enterprise Features on </title>
-    <link>/enterprise_features/</link>
+    <link>/Docs/enterprise_features/</link>
     <description>Recent content in Enterprise Features on </description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 12 Sep 2019 14:16:46 +0200</lastBuildDate>
     
-	<atom:link href="/enterprise_features/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/Docs/enterprise_features/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Icinga2 Forwarder</title>
-      <link>/enterprise_features/icinga/</link>
+      <link>/Docs/enterprise_features/icinga/</link>
       <pubDate>Thu, 12 Sep 2019 14:15:55 +0200</pubDate>
       
-      <guid>/enterprise_features/icinga/</guid>
+      <guid>/Docs/enterprise_features/icinga/</guid>
       <description>Icinga2 Forwarder Add the forwarder to your project with:
 npm i @sakuli/forwarder-icinga2 To register the forwarder into your project you have to edit the package.json file and add the preset to the Sakuli configuration key:
 { &amp;#34;sakuli&amp;#34;: { &amp;#34;presetProvider&amp;#34;: [ &amp;#34;@sakuli/legacy&amp;#34;, &amp;#34;@sakuli/forwarder-icinga2&amp;#34; ] } } Installation of any enterprise feature requires a proper setup of your license information. You can find further information in theenterprise section.
@@ -24,10 +24,10 @@ Enable the Icinga2 API All steps required to enable the Icinga2 API are describe
     
     <item>
       <title>Check MK Fowarder</title>
-      <link>/enterprise_features/check/</link>
+      <link>/Docs/enterprise_features/check/</link>
       <pubDate>Thu, 12 Sep 2019 14:16:04 +0200</pubDate>
       
-      <guid>/enterprise_features/check/</guid>
+      <guid>/Docs/enterprise_features/check/</guid>
       <description>Check_MK Forwarder Add the forwarder to your project with:
 npm i @sakuli/forwarder-checkmk To register the forwarder into your project you have to edit the package.json file and add the preset to the Sakuli configuration key:
 { &amp;#34;sakuli&amp;#34;: { &amp;#34;presetProvider&amp;#34;: [ &amp;#34;@sakuli/legacy&amp;#34;, &amp;#34;@sakuli/forwarder-checkmk&amp;#34; ] } } Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the enterprise section.
@@ -36,10 +36,10 @@ Sakuli Client Configuration It is assumed that the client is already monitored b
     
     <item>
       <title>OMD Forwarder</title>
-      <link>/enterprise_features/omd/</link>
+      <link>/Docs/enterprise_features/omd/</link>
       <pubDate>Thu, 12 Sep 2019 14:16:13 +0200</pubDate>
       
-      <guid>/enterprise_features/omd/</guid>
+      <guid>/Docs/enterprise_features/omd/</guid>
       <description>OMD / Gearman Forwarder Install the forwarder to your project with:
 npm i @sakuli/forwarder-gearman To register the forwarder into your project you have to edit the package.json file and add the preset to the Sakuli configuration key:
 { &amp;#34;sakuli&amp;#34;: { &amp;#34;presetProvider&amp;#34;: [ &amp;#34;@sakuli/legacy&amp;#34;, &amp;#34;@sakuli/forwarder-gearman&amp;#34; ] } } Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the enterprise section.</description>
@@ -47,10 +47,10 @@ npm i @sakuli/forwarder-gearman To register the forwarder into your project you 
     
     <item>
       <title>E2E Test Container</title>
-      <link>/enterprise_features/e2e/</link>
+      <link>/Docs/enterprise_features/e2e/</link>
       <pubDate>Thu, 12 Sep 2019 14:16:23 +0200</pubDate>
       
-      <guid>/enterprise_features/e2e/</guid>
+      <guid>/Docs/enterprise_features/e2e/</guid>
       <description>E2E Test Container Lorem Ipsum.</description>
     </item>
     
