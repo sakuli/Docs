@@ -53,14 +53,5 @@ Each testsuite is located in its own particular folder. Generally, a testsuite r
 mkdir my-sut To describe the testsuite and its testcases, two additional files are needed: testsuite.</description>
     </item>
     
-    <item>
-      <title>Temp</title>
-      <link>/Docs/start/temp/</link>
-      <pubDate>Wed, 18 Sep 2019 11:55:01 +0200</pubDate>
-      
-      <guid>/Docs/start/temp/</guid>
-      <description>for code snippets use this template wrapper for the typescript color scheme (async () =&amp;gt; {})().then(done); // 5 example heading 1 (tallest) Example Text</description>
-    </item>
-    
   </channel>
 </rss>

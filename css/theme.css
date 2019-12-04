@@ -1139,3 +1139,20 @@ pre .copy-to-clipboard:hover {
 #searchResults {
     text-align: left;
 }
+
+
+
+/* API DOCS added by myself */
+#apiHead {
+    font-weight: bold; 
+    font-family: "Novacento Sans Wide", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+    color: white;
+    padding-left: 1rem;
+}
+
+.apiChild {
+    font-family: "Novacento Sans Wide", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+    color: white;
+    padding-left: 2rem;
+}
+/****************************/

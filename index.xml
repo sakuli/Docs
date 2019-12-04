@@ -5,7 +5,7 @@
     <link>/Docs/</link>
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 18 Sep 2019 11:55:01 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 12 Sep 2019 14:16:23 +0200</lastBuildDate>
     
 	<atom:link href="/Docs/index.xml" rel="self" type="application/rss+xml" />
     
@@ -125,15 +125,6 @@ Of course, you can also use Sakulis native testing power on its own, e.</descrip
       <description>Setup Setup your first Test Since we wanted to keep Sakuli mostly compatible to v1, the file layout looks basically the same for testsuites.
 Each testsuite is located in its own particular folder. Generally, a testsuite represents the system you want to test. Therefore, you need to create that folder in your project root (where the package.json file is located):
 mkdir my-sut To describe the testsuite and its testcases, two additional files are needed: testsuite.</description>
-    </item>
-    
-    <item>
-      <title>Temp</title>
-      <link>/Docs/start/temp/</link>
-      <pubDate>Wed, 18 Sep 2019 11:55:01 +0200</pubDate>
-      
-      <guid>/Docs/start/temp/</guid>
-      <description>for code snippets use this template wrapper for the typescript color scheme (async () =&amp;gt; {})().then(done); // 5 example heading 1 (tallest) Example Text</description>
     </item>
     
     <item>
