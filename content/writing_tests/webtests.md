@@ -6,9 +6,9 @@ weight : 5
 
 # Web tests
 
-For DOM based testing most of the functions from [Sahi tests](https://sahipro.com/docs/sahi-apis/) can be used (please note that Sakuli only implements the open source APIs).
+For DOM based testing most of the functions from <a href="https://sahipro.com/docs/sahi-apis/" target="_blank">Sahi tests</a> can be used (please note that Sakuli only implements the open source APIs).
 
-The main difference between Sakuli v1 and Sakuli v2 is the usage of [Promises](https://developers.google.com/web/fundamentals/primers/promises) in the action API, meaning that you have to `await` a click for example.
+The main difference between Sakuli v1 and Sakuli v2 is the usage of <a href="https://developers.google.com/web/fundamentals/primers/promises" target="_blank">Promises</a> in the action API, meaning that you have to `await` a click for example.
 
 On the other hand, element selectors remain synchronized functions but will not do the actual DOM fetching anymore. While an expression like `var $e=_link('Sakuli')` did an actual DOM-access in Sakuli v1.x, it returns a kind of abstract query for an element now. So, action can fetch this element whenever it is required.
 
@@ -18,11 +18,12 @@ A detailed list of all available functions can be found in the [Sahi API interfa
 
 The Accessor API is described in the [Accessor API interface](/apidoc/sakuli-legacy/interfaces/accessorapi.html).
 
-Sakuli uses the concept of reusable [Queries](/apidoc/sakuli-legacy/interfaces/sahielementquery.html) rather than directly working on an element-object (like in Selenium). Sakuli offers an expressive set of [Accessors](/apidoc/sakuli-legacy/interfaces/accessorapi.html) like `_div`, `_textbox` or `_table`. These accessors will not return an actual element or any reference to it. Rather it will create a [SahiElementQuery](/apidoc/sakuli-legacy/interfaces/sahielementquery.html). This query can then be used in various [Actions](#action-api) like `_click`, `_highlight` or `_isVisible`. This concept could be compared with [Locators in Selenium](https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index_exports_By.html).
+Sakuli uses the concept of reusable [Queries](/apidoc/sakuli-legacy/interfaces/sahielementquery.html) rather than directly working on an element-object (like in Selenium). Sakuli offers an expressive set of [Accessors](/apidoc/sakuli-legacy/interfaces/accessorapi.html) like `_div`, `_textbox` or `_table`. These accessors will not return an actual element or any reference to it. Rather it will create a [SahiElementQuery](/apidoc/sakuli-legacy/interfaces/sahielementquery.html). This query can then be used in various [Actions](#action-api) like `_click`, `_highlight` or `_isVisible`. This concept could be compared with <a href="https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index_exports_By.html" target="_blank">Locators in Selenium</a>.
+
 This architecture gives us two nice benefits:
 
-- Compatibility with [Sahi API](https://sahipro.com/docs/sahi-apis/index.html)
-- Since Sakuli handles the actual fetching and validation of an element by performing retries, refreshes, implicit wait etc. which reduce annoying issues with Selenium a lot (e.g. [StaleElementReferenceError](https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/error_exports_StaleElementReferenceError.html))
+- Compatibility with <a href="https://sahipro.com/docs/sahi-apis/index.html" target="_blank">Sahi API</a>
+- Since Sakuli handles the actual fetching and validation of an element by performing retries, refreshes, implicit wait etc. which reduce annoying issues with Selenium a lot (e.g. <a href="https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/error_exports_StaleElementReferenceError.html" target="_blank">StaleElementReferenceError</a>)
 
 Most accessors are defined in the same way: They are functions that take an [AccessorIdentifier](apidoc/sakuli-legacy/globals.html#accessoridentifier) as a first parameter and a variadic list of [Relations](#relations-api):
 
@@ -30,7 +31,9 @@ Most accessors are defined in the same way: They are functions that take an [Acc
 _NAME(identifier, ...relations): SahiElementQuery
 {{</highlight>}}
 
-The accessor adds a static [Locator](https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index_exports_By.html) to the returned query. Since a query object consists of a locator, an identifier and a list of relations, we will eventually get an entire query object. The locator basically is a CSS element selector which you would expect from the accessor name - so `_div` for example adds `By.css('div')`, `_textbox` adds `By.css('input[type="text"], input:not([type])')` and so on.
+The accessor adds a static <a href="https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index_exports_By.html" target="_blank">Locator</a> to the returned query. Since 
+
+a query object consists of a locator, an identifier and a list of relations, we will eventually get an entire query object. The locator basically is a CSS element selector which you would expect from the accessor name - so `_div` for example adds `By.css('div')`, `_textbox` adds `By.css('input[type="text"], input:not([type])')` and so on.
 
 ## ElementQueries
 
@@ -67,11 +70,12 @@ The identifer is another relict from Sahi that can be one of the following types
 
 The Action API is described in the [Action Api interface](/apidoc/sakuli-legacy/interfaces/accessorapi.html).
 
-Actions usually invoke a [Selenium action sequence](https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/input_exports_Actions.html) with an activated bridge mode to cover compatibility to most webdriver implementations. An action accepts a [SahiElementQuery or a WebElement](/apidoc/sakuli-legacy/globals.html#sahielementqueryorwebelement) and tries to perform the action on this element several times. This approach reduces the count of StaleElementReferenceErrors dramatically, especially when a query is used.
+Actions usually invoke a <a href="https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/input_exports_Actions.html" target="_blank">Selenium action sequence</a> with an activated bridge mode to cover compatibility to most webdriver implementations. An action accepts a [SahiElementQuery or a WebElement](/apidoc/sakuli-legacy/globals.html#sahielementqueryorwebelement) and tries to perform the action on this element several times. This approach reduces the count of StaleElementReferenceErrors dramatically, especially when a query is used.
 
 ### _eval
 
-Beside the fact that actions work asynchronously now, they behave like in Sahi. One exception is the [`_eval`](/apidoc/sakuli-legacy/interfaces/actionapi.html#_eval) method, which accepts a string now containing some JavaScript code, which is performed on the website by the webdriver implementation (see `executeAsyncScript` method of [Seleniums Thenablewebdriver](https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index_exports_ThenableWebDriver.html)).
+Beside the fact that actions work asynchronously now, they behave like in Sahi. One exception is the [`_eval`](/apidoc/sakuli-legacy/interfaces/actionapi.html#_eval) method, which accepts a string now containing some JavaScript code, which is performed on the website by the webdriver implementation (see `executeAsyncScript` method of 
+ <a href="https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index_exports_ThenableWebDriver.html" target="_blank">Seleniums Thenablewebdriver</a>).
 
 {{<highlight javascript>}}
 const windowOuterHeight = await _eval(`return window.outerHeight`)
@@ -97,13 +101,13 @@ if(await _exists(_div('cookie-banner'))) {
 
 ## Selenium Fallbacks
 
-Since Sakuli uses [Seleniums webdriver](https://www.npmjs.com/package/selenium-webdriver) it also provides various ways to access the functionality of this backend.
+Since Sakuli uses <a href="https://www.npmjs.com/package/selenium-webdriver" target="_blank">Seleniums webdriver</a> it also provides various ways to access the functionality of this backend.
 
 > It is recommended to use Sakulis built-in functionalities rather than work with the driver instances or any WebElement directly. At the moment, Sakuli is built upon Selenium. Nevertheless, a switch to other technologies in the future is possible. Downwards compatibility is only possible for Sakulis built-in functionalities. Direct use of webdriver instance methods is not supported.
 
 ### WebDriver instance
 
-Sakuli test scripts provide a globally accessible object of the current [WebDriver instance](https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index_exports_ThenableWebDriver.html) which can be used to invoke its native methods directly. This might be useful for switching between frames:
+Sakuli test scripts provide a globally accessible object of the current <a href="https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index_exports_ThenableWebDriver.html" target="_blank">WebDriver instance</a> which can be used to invoke its native methods directly. This might be useful for switching between frames:
 
 {{<highlight javascript>}}
 await driver.switchTo().frame(1);
@@ -113,7 +117,7 @@ await driver.switchTo().defaultContent();
 
 ### WebElement instances
 
-The Fetch API provides the `_fetch` function which returns the native [WebElement](https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index_exports_WebElement.html) instance from Seleniums webdriver for a query:
+The Fetch API provides the `_fetch` function which returns the native <a href="https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index_exports_WebElement.html" target="_blank">WebElement</a> instance from Seleniums webdriver for a query:
 
 {{<highlight javascript>}}
 const webElement = await _fetch(_image('funny-cat-image.png')); 
