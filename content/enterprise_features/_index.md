@@ -44,7 +44,7 @@ These commands will set the NPM-Token and License Key globally. This is good for
 Now you are ready to go for using Sakuli with its enterprise features like
 
 - [Check_MK](check)
-- [Icinga2](icinga2)
+- [Icinga2](icinga)
 - [OMD](omd)
 
 ### Per-Project configuration of NPM-Token
@@ -105,7 +105,7 @@ The name of the environment variable for the license-key is `SAKULI_LICENSE_KEY`
 > An environment variable is a dynamic-named value that can affect the way running processes will behave on a computer.
 > They are part of the environment in which a process runs. For example, a running process can query the value of the TEMP environment variable to discover a suitable location to store temporary files, or the HOME or USERPROFILE variable to find the directory structure owned by the user running the process.
 
-\- [Wikipedia, 08/2019](https://en.wikipedia.org/wiki/Environment_variable)
+\- <a href="https://en.wikipedia.org/wiki/Environment_variable" target="_blank">Wikipedia, 08/2019</a>
 
 So basically an environment variable is just a simple key-value pair provided to a certain process e.g. `VAR_NAME=VALUE`. They can be set for each process or system-wide - so that they become accessible for each upcoming process.
 
@@ -122,9 +122,9 @@ To set up an environment variable on Windows you have to:
   - Click on the button _Environment Variables_ (at the bottom of the dialog)
 - You should see two tables including _Variable_ and _Value_ columns for _User Variables_ and _System variables_
 
-There you can set, edit or delete environment variables permanently on your system (it is recommended to edit the system variables table if possible). A more detailed guide can be found [here](https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/).
+There you can set, edit or delete environment variables permanently on your system (it is recommended to edit the system variables table if possible). A more detailed guide can be found <a href="https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/" target="_blank">here</a>.
 
-Alternatively you can use [Rapid Environment Editor](https://www.rapidee.com/en/about) which is a nice tool for editing environment variables on Windows.
+Alternatively you can use <a href="https://www.rapidee.com/en/about" target="_blank">Rapid Environment Editor</a> which is a nice tool for editing environment variables on Windows.
 
 In case of a more restrictive environment - where it is not possible to edit environment variables that easily - you can set them in a batch script:
 
