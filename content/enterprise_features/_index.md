@@ -7,11 +7,11 @@ weight : 3
 
 # Enterprise Features
 
-Some features of Sakuli require an enterprise license. Please consult our [overview](/enterprise) to see and request packages and prices. After you registered for an enterprise subscription, you will get a license-key and an NPM access token which are required to use enterprise features.
+Some features of Sakuli require an enterprise license. Please consult our [overview](/Docs/enterprise) to see and request packages and prices. After you registered for an enterprise subscription, you will get a license-key and an NPM access token which are required to use enterprise features.
 
 ## Using License Information
 
-With your active [Sakuli Enterprise](/enterprise) subscription you will receive an email with:
+With your active [Sakuli Enterprise](/Docs/enterprise) subscription you will receive an email with:
 
 - _Sakuli license-key_ - Contains information about your subscription and is used by Sakuli itself
 - and a _NPM-Token_ - Allows access to Sakuli's private enterprise packages on NPM
@@ -43,9 +43,9 @@ These commands will set the NPM-Token and License Key globally. This is good for
 
 Now you are ready to go for using Sakuli with its enterprise features like
 
-- [Check_MK](check_mk-forwarder)
-- [Icinga2](icinga2-forwarder)
-- [OMD](omd-forwarder)
+- [Check_MK](/Docs/check_mk-forwarder)
+- [Icinga2](/Docs/icinga2-forwarder)
+- [OMD](/Docs/omd-forwarder)
 
 ### Per-Project configuration of NPM-Token
 
