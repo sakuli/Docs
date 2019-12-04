@@ -598,9 +598,9 @@ Once the initial setup is done, we will dive right into our first test.</p>
 
 <h2 id="webdriver-installation">WebDriver Installation</h2>
 
-<p>Sakuli utilizes the <a href="https://www.w3.org/TR/webdriver1/">WebDriver protocol</a> to remote control browsers during test execution.
+<p>Sakuli utilizes the <a href="https://www.w3.org/TR/webdriver1/" target="_blank">WebDriver protocol</a> to remote control browsers during test execution.
 In addition to the browser itself, you need to install the corresponding WebDriver as well.
-Several wrapper packages can be found on <a href="https://npmjs.com">npmjs.com</a>, which allow the installation of the required binaries via <code>npm</code>.</p>
+Several wrapper packages can be found on <a href="https://npmjs.com" target="_blank">npmjs.com</a>, which allow the installation of the required binaries via <code>npm</code>.</p>
 
 <p>Since some users encountered issues with geckodriver on Firefox, we recommend using chromedriver for now. We are working on fixes and workarounds for geckodriver.</p>
 
@@ -612,7 +612,7 @@ Several wrapper packages can be found on <a href="https://npmjs.com">npmjs.com</
 
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yarn add chromedriver</code></pre></div>
 
-<p>There are also WebDriver packages for <a href="https://www.npmjs.com/package/iedriver">IE</a> and <a href="https://www.npmjs.com/package/edgedriver">Edge</a>.
+<p>There are also WebDriver packages for <a href="https://www.npmjs.com/package/iedriver" target="_blank">IE</a> and <a href="https://www.npmjs.com/package/edgedriver" target="_blank">Edge</a>.
 macOS already ships a WebDriver for Safari, so there is no need to install an additional package.</p>
 
 <p>Attention: Be careful to install the correct version of a WebDriver package according to the installed browser version. To install e.g. ChromeDriver for Chrome 73 you have to install:</p>
@@ -631,12 +631,12 @@ When installing multiple WebDriver packages, you can easily switch between diffe
 
 <h3 id="3rd-party-dependencies">3rd-party dependencies</h3>
 
-<p>One of Sakuli&rsquo;s core components, <a href="https://github.com/nut-tree/nut-js">nut.js</a>, requires OpenCV.
+<p>One of Sakuli&rsquo;s core components, <a href="https://github.com/nut-tree/nut-js" target="_blank">nut.js</a>, requires OpenCV.
 Sakuli ships a pre-built version of OpenCV. Nonetheless, the installation still requires some 3rd-party dependencies.</p>
 
 <h3 id="windows">Windows</h3>
 
-<p>In order to install and run Sakuli on Windows you need two additional tools: <a href="https://www.python.org/downloads/windows/">Python 2</a> and the <a href="https://www.microsoft.com/en-us/download/details.aspx?id=48159">Windows Build Tools</a>.</p>
+<p>In order to install and run Sakuli on Windows you need two additional tools: <a href="https://www.python.org/downloads/windows/" target="_blank">Python 2</a> and the <a href="https://www.microsoft.com/en-us/download/details.aspx?id=48159" target="_blank">Windows Build Tools</a>.</p>
 
 <p>To avoid eventual installation problems for Windows users we recommend to first install Python 2 on your system separately by downloading the required version from the official web page. Afterwards you can install the Windows Build Tools manually or via NPM using:</p>
 
@@ -647,7 +647,7 @@ Sakuli ships a pre-built version of OpenCV. Nonetheless, the installation still 
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yarn global add windows-build-tools</code></pre></div>
 
 <p>In case of errors while installing the Windows Build Tools package via <code>npm</code>, please make sure that the PowerShell is available on your system <code>PATH</code>. Additionally, you should install the Windows Build Tools by using the PowerShell in administrative mode.<br />
-See <a href="https://github.com/felixrieseberg/windows-build-tools/issues/20#issuecomment-373885943">this issue</a> for further reference.</p>
+See <a href="https://github.com/felixrieseberg/windows-build-tools/issues/20#issuecomment-373885943" target="_blank">this issue</a>.</p>
 
 <h3 id="macos">macOS</h3>
 
@@ -689,8 +689,8 @@ You can install them by running:
 <h3 id="reference">Reference</h3>
 
 <ul>
-<li><a href="https://github.com/justadudewhohacks/opencv4nodejs#how-to-install">opencv4nodejs</a></li>
-<li><a href="http://robotjs.io/docs/building">robotjs</a></li>
+<li><a href="https://github.com/justadudewhohacks/opencv4nodejs#how-to-install" target="_blank">opencv4nodejs</a></li>
+<li><a href="http://robotjs.io/docs/building" target="_blank">robotjs</a></li>
 </ul>
 
 
