@@ -4,12 +4,12 @@ date :  2019-09-10T15:29:27+02:00
 weight : 3
 ---
 
-# Install Sakuli
+# Installation Process
 
 The following steps are required to set up Sakuli to work with multiple browsers.
 Once the initial setup is done, we will dive right into our first test.
 
-### WebDriver Installation
+## WebDriver Installation
 
 Sakuli utilizes the [WebDriver protocol](https://www.w3.org/TR/webdriver1/) to remote control browsers during test execution.
 In addition to the browser itself, you need to install the corresponding WebDriver as well.
@@ -48,12 +48,14 @@ Sample path:
 %USERPROFILE%\\AppData\\Roaming\\npm\\node_modules\\chromedriver\\lib\\chromedriver\\
 {{< /highlight >}}
 
-#### 3rd-party dependencies
+## Sakuli Installation
+
+### 3rd-party dependencies
 
 One of Sakuli's core components, [nut.js](https://github.com/nut-tree/nut-js), requires OpenCV.
 Sakuli ships a pre-built version of OpenCV. Nonetheless, the installation still requires some 3rd-party dependencies.
 
-#### Windows
+### Windows
 
 In order to install and run Sakuli on Windows you need two additional tools: [Python 2](https://www.python.org/downloads/windows/) and the [Windows Build Tools](https://www.microsoft.com/en-us/download/details.aspx?id=48159). 
 
@@ -72,7 +74,7 @@ yarn global add windows-build-tools
 In case of errors while installing the Windows Build Tools package via `npm`, please make sure that the PowerShell is available on your system `PATH`. Additionally, you should install the Windows Build Tools by using the PowerShell in administrative mode.  
 See [this issue](https://github.com/felixrieseberg/windows-build-tools/issues/20#issuecomment-373885943) for further reference.
 
-#### macOS
+### macOS
 
 On macOS, Xcode command line tools are required.
 You can install them by running:
@@ -80,7 +82,7 @@ You can install them by running:
 xcode-select --install
 {{< /highlight >}}
 
-#### Linux
+### Linux
 
 Depending on your distribution, Linux setups may differ.
 
@@ -99,7 +101,7 @@ sudo apt-get install build-essential python libxtst-dev libpng++-dev
 
 The installation process is an open issue and will be improved in the near future, so using Sakuli will become even more enjoyable!
 
-#### Sakuli Installation
+### Sakuli Installation
 
 We will now install Sakuli in our newly created project by running:
 
@@ -115,7 +117,7 @@ yarn add @sakuli/cli
 
 This will install Sakuli and its required dependencies.
 
-#### Reference
+### Reference
 
 - [opencv4nodejs](https://github.com/justadudewhohacks/opencv4nodejs#how-to-install)
 - [robotjs](http://robotjs.io/docs/building)
