@@ -43,9 +43,9 @@ These commands will set the NPM-Token and License Key globally. This is good for
 
 Now you are ready to go for using Sakuli with its enterprise features like
 
-- [Check_MK](/Docs/check_mk-forwarder)
-- [Icinga2](/Docs/icinga2-forwarder)
-- [OMD](/Docs/omd-forwarder)
+- [Check_MK](/check)
+- [Icinga2](/icinga2)
+- [OMD](/omd)
 
 ### Per-Project configuration of NPM-Token
 
