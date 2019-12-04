@@ -554,19 +554,17 @@
     <div class="wrapper">
 <nav id="TableOfContents">
 <ul>
-<li><a href="#install-sakuli">Install Sakuli</a>
+<li><a href="#installation-process">Installation Process</a>
 <ul>
-<li>
-<ul>
-<li><a href="#webdriver-installation">WebDriver Installation</a>
+<li><a href="#webdriver-installation">WebDriver Installation</a></li>
+<li><a href="#sakuli-installation">Sakuli Installation</a>
 <ul>
 <li><a href="#3rd-party-dependencies">3rd-party dependencies</a></li>
 <li><a href="#windows">Windows</a></li>
 <li><a href="#macos">macOS</a></li>
 <li><a href="#linux">Linux</a></li>
-<li><a href="#sakuli-installation">Sakuli Installation</a></li>
+<li><a href="#sakuli-installation-1">Sakuli Installation</a></li>
 <li><a href="#reference">Reference</a></li>
-</ul></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -593,12 +591,12 @@
 
 
 
-<h1 id="install-sakuli">Install Sakuli</h1>
+<h1 id="installation-process">Installation Process</h1>
 
 <p>The following steps are required to set up Sakuli to work with multiple browsers.
 Once the initial setup is done, we will dive right into our first test.</p>
 
-<h3 id="webdriver-installation">WebDriver Installation</h3>
+<h2 id="webdriver-installation">WebDriver Installation</h2>
 
 <p>Sakuli utilizes the <a href="https://www.w3.org/TR/webdriver1/">WebDriver protocol</a> to remote control browsers during test execution.
 In addition to the browser itself, you need to install the corresponding WebDriver as well.
@@ -629,12 +627,14 @@ When installing multiple WebDriver packages, you can easily switch between diffe
 <p>Sample path:
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">%USERPROFILE%<span style="color:#ae81ff">\\</span>AppData<span style="color:#ae81ff">\\</span>Roaming<span style="color:#ae81ff">\\</span>npm<span style="color:#ae81ff">\\</span>node_modules<span style="color:#ae81ff">\\</span>chromedriver<span style="color:#ae81ff">\\</span>lib<span style="color:#ae81ff">\\</span>chromedriver<span style="color:#ae81ff">\\</span></code></pre></div></p>
 
-<h4 id="3rd-party-dependencies">3rd-party dependencies</h4>
+<h2 id="sakuli-installation">Sakuli Installation</h2>
+
+<h3 id="3rd-party-dependencies">3rd-party dependencies</h3>
 
 <p>One of Sakuli&rsquo;s core components, <a href="https://github.com/nut-tree/nut-js">nut.js</a>, requires OpenCV.
 Sakuli ships a pre-built version of OpenCV. Nonetheless, the installation still requires some 3rd-party dependencies.</p>
 
-<h4 id="windows">Windows</h4>
+<h3 id="windows">Windows</h3>
 
 <p>In order to install and run Sakuli on Windows you need two additional tools: <a href="https://www.python.org/downloads/windows/">Python 2</a> and the <a href="https://www.microsoft.com/en-us/download/details.aspx?id=48159">Windows Build Tools</a>.</p>
 
@@ -649,13 +649,13 @@ Sakuli ships a pre-built version of OpenCV. Nonetheless, the installation still 
 <p>In case of errors while installing the Windows Build Tools package via <code>npm</code>, please make sure that the PowerShell is available on your system <code>PATH</code>. Additionally, you should install the Windows Build Tools by using the PowerShell in administrative mode.<br />
 See <a href="https://github.com/felixrieseberg/windows-build-tools/issues/20#issuecomment-373885943">this issue</a> for further reference.</p>
 
-<h4 id="macos">macOS</h4>
+<h3 id="macos">macOS</h3>
 
 <p>On macOS, Xcode command line tools are required.
 You can install them by running:
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">xcode-select --install</code></pre></div></p>
 
-<h4 id="linux">Linux</h4>
+<h3 id="linux">Linux</h3>
 
 <p>Depending on your distribution, Linux setups may differ.</p>
 
@@ -674,7 +674,7 @@ You can install them by running:
 
 <p>The installation process is an open issue and will be improved in the near future, so using Sakuli will become even more enjoyable!</p>
 
-<h4 id="sakuli-installation">Sakuli Installation</h4>
+<h3 id="sakuli-installation-1">Sakuli Installation</h3>
 
 <p>We will now install Sakuli in our newly created project by running:</p>
 
@@ -686,7 +686,7 @@ You can install them by running:
 
 <p>This will install Sakuli and its required dependencies.</p>
 
-<h4 id="reference">Reference</h4>
+<h3 id="reference">Reference</h3>
 
 <ul>
 <li><a href="https://github.com/justadudewhohacks/opencv4nodejs#how-to-install">opencv4nodejs</a></li>

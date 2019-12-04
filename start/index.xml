@@ -38,7 +38,7 @@ npm init This interactive prompt will ask you for some metadata regarding your p
       <pubDate>Tue, 10 Sep 2019 15:29:27 +0200</pubDate>
       
       <guid>/Docs/start/installation/</guid>
-      <description>Install Sakuli The following steps are required to set up Sakuli to work with multiple browsers. Once the initial setup is done, we will dive right into our first test.
+      <description>Installation Process The following steps are required to set up Sakuli to work with multiple browsers. Once the initial setup is done, we will dive right into our first test.
 WebDriver Installation Sakuli utilizes the WebDriver protocol to remote control browsers during test execution. In addition to the browser itself, you need to install the corresponding WebDriver as well. Several wrapper packages can be found on npmjs.com, which allow the installation of the required binaries via npm.</description>
     </item>
     
