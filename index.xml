@@ -137,15 +137,6 @@ mkdir my-sut To describe the testsuite and its testcases, two additional files a
     </item>
     
     <item>
-      <title>Test</title>
-      <link>/Docs/enterprise_features/test/test/</link>
-      <pubDate>Thu, 12 Sep 2019 14:49:40 +0200</pubDate>
-      
-      <guid>/Docs/enterprise_features/test/test/</guid>
-      <description>Lorem Ipsum. nico</description>
-    </item>
-    
-    <item>
       <title>Webtests</title>
       <link>/Docs/writing_tests/webtests/</link>
       <pubDate>Thu, 12 Sep 2019 13:16:37 +0200</pubDate>
