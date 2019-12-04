@@ -11,9 +11,9 @@ Once the initial setup is done, we will dive right into our first test.
 
 ## WebDriver Installation
 
-Sakuli utilizes the [WebDriver protocol](https://www.w3.org/TR/webdriver1/) to remote control browsers during test execution.
+Sakuli utilizes the <a href="https://www.w3.org/TR/webdriver1/" target="_blank">WebDriver protocol</a> to remote control browsers during test execution.
 In addition to the browser itself, you need to install the corresponding WebDriver as well.
-Several wrapper packages can be found on [npmjs.com](https://npmjs.com), which allow the installation of the required binaries via `npm`.
+Several wrapper packages can be found on <a href="https://npmjs.com" target="_blank">npmjs.com</a>, which allow the installation of the required binaries via `npm`.
 
 Since some users encountered issues with geckodriver on Firefox, we recommend using chromedriver for now. We are working on fixes and workarounds for geckodriver.
 
@@ -29,7 +29,7 @@ or
 yarn add chromedriver
 {{< /highlight >}}
 
-There are also WebDriver packages for [IE](https://www.npmjs.com/package/iedriver) and [Edge](https://www.npmjs.com/package/edgedriver).
+There are also WebDriver packages for <a href="https://www.npmjs.com/package/iedriver" target="_blank">IE</a> and <a href="https://www.npmjs.com/package/edgedriver" target="_blank">Edge</a>.
 macOS already ships a WebDriver for Safari, so there is no need to install an additional package.
 
 Attention: Be careful to install the correct version of a WebDriver package according to the installed browser version. To install e.g. ChromeDriver for Chrome 73 you have to install:
@@ -52,12 +52,12 @@ Sample path:
 
 ### 3rd-party dependencies
 
-One of Sakuli's core components, [nut.js](https://github.com/nut-tree/nut-js), requires OpenCV.
+One of Sakuli's core components, <a href="https://github.com/nut-tree/nut-js" target="_blank">nut.js</a>, requires OpenCV.
 Sakuli ships a pre-built version of OpenCV. Nonetheless, the installation still requires some 3rd-party dependencies.
 
 ### Windows
 
-In order to install and run Sakuli on Windows you need two additional tools: [Python 2](https://www.python.org/downloads/windows/) and the [Windows Build Tools](https://www.microsoft.com/en-us/download/details.aspx?id=48159). 
+In order to install and run Sakuli on Windows you need two additional tools: <a href="https://www.python.org/downloads/windows/" target="_blank">Python 2</a> and the <a href="https://www.microsoft.com/en-us/download/details.aspx?id=48159" target="_blank">Windows Build Tools</a>. 
 
 To avoid eventual installation problems for Windows users we recommend to first install Python 2 on your system separately by downloading the required version from the official web page. Afterwards you can install the Windows Build Tools manually or via NPM using: 
 
@@ -72,10 +72,9 @@ yarn global add windows-build-tools
 {{< /highlight >}}
 
 In case of errors while installing the Windows Build Tools package via `npm`, please make sure that the PowerShell is available on your system `PATH`. Additionally, you should install the Windows Build Tools by using the PowerShell in administrative mode.  
-See [this issue](https://github.com/felixrieseberg/windows-build-tools/issues/20#issuecomment-373885943) for further reference.
+See <a href="https://github.com/felixrieseberg/windows-build-tools/issues/20#issuecomment-373885943" target="_blank">this issue</a>.
 
 ### macOS
-
 On macOS, Xcode command line tools are required.
 You can install them by running:
 {{< highlight bash >}}
@@ -118,9 +117,8 @@ yarn add @sakuli/cli
 This will install Sakuli and its required dependencies.
 
 ### Reference
-
-- [opencv4nodejs](https://github.com/justadudewhohacks/opencv4nodejs#how-to-install)
-- [robotjs](http://robotjs.io/docs/building)
+- <a href="https://github.com/justadudewhohacks/opencv4nodejs#how-to-install" target="_blank">opencv4nodejs</a>
+- <a href="http://robotjs.io/docs/building" target="_blank">robotjs</a>
 
 
 
