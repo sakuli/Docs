@@ -52,7 +52,7 @@ Sample path:
 
 ### 3rd-party dependencies
 
-One of Sakuli's core components, <a href="https://github.com/nut-tree/nut-js" target="_blank">nut.js</a>, requires OpenCV.
+One of Sakuli's core components, <a href="https://github.com/nut-tree/nut.js" target="_blank">nut.js</a>, requires OpenCV.
 Sakuli ships a pre-built version of OpenCV. Nonetheless, the installation still requires some 3rd-party dependencies.
 
 ### Windows

@@ -171,7 +171,7 @@ You must set the global properties for the gearman receiver on the Sakuli client
 |----------|-------------|------|
 | `sakuli.forwarder.gearman.enabled` | `false` | Enable forwarding to OMD |
 | `sakuli.forwarder.gearman.encryption` | `true` | Enable encryption and set the key only if you did not activate `accept_clear_results` in mod-gearman. Otherwise, set encryption to false |
-| `sakuli.forwarder.gearman.secret.key`| `secret-password` | The password configured in [enable and configure mod-gearman](#enable-and-configure mod-gearman) |
+| `sakuli.forwarder.gearman.secret.key`| `secret-password` | The password configured in [enable and configure mod-gearman](#enable-and-configure-mod-gearman) |
 | `sakuli.forwarder.gearman.server.host`| | The host where OMD is running |
-| `sakuli.forwarder.gearman.server.port`| `4730` | The port where gearman is listing (configured in [enable and configure mod-gearman](#enable-and-configure mod-gearman)) |
+| `sakuli.forwarder.gearman.server.port`| `4730` | The port where gearman is listing (configured in [enable and configure mod-gearman](#enable-and-configure-mod-gearman)) |
 | `sakuli.forwarder.gearman.server.queue`| `check_results` | The default queue for Sakuli |
