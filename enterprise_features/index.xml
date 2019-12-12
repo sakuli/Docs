@@ -48,7 +48,7 @@ npm i @sakuli/forwarder-gearman To register the forwarder into your project you 
     <item>
       <title>E2E Test Container</title>
       <link>/Docs/enterprise_features/e2e/</link>
-      <pubDate>Thu, 12 Sep 2019 14:16:23 +0200</pubDate>
+      <pubDate>Thu, 12 Sep 2019 14:16:13 +0200</pubDate>
       
       <guid>/Docs/enterprise_features/e2e/</guid>
       <description>E2E Test Container Lorem Ipsum.</description>

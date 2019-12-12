@@ -18,7 +18,7 @@
 	"title": "Getting Started",
 	"tags": [],
 	"description": "",
-	"content": "hello (async () =\u0026gt; { // 1 const testCase = new TestCase(); // 2 try { // actual test code goes here } catch (e) { await testCase.handleException(e); // 3 } finally { await testCase.saveResult(); // 4 } })().then(done); // 5\n"
+	"content": "Your browser does not support the video tag.   "
 },
 {
 	"uri": "/Docs/enterprise_features/check/",
