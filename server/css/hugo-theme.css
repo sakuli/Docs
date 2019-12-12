@@ -22,7 +22,7 @@
 }
 
 #TableOfContents > ul > li > a   {
-  font-weight: bold; padding: 0 18px; margin: 0 2px;
+  font-weight: bold; padding-left: 0px; float: left; margin-left: 10px
 }
 
 #TableOfContents > ul > li > ul > li > a {
