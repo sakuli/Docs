@@ -1147,12 +1147,21 @@ pre .copy-to-clipboard:hover {
     font-weight: bold; 
     font-family: "Novacento Sans Wide", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
     color: white;
-    padding-left: 1rem;
+    padding-left: 2rem;
 }
 
 .apiChild {
     font-family: "Novacento Sans Wide", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
     color: white;
     padding-left: 2rem;
+}
+
+#apiMenu {
+    font-size: 12px;
+    
+}
+
+#apiMenu a{
+    margin-left: 2rem;
 }
 /****************************/
