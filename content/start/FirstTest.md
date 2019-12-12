@@ -111,9 +111,9 @@ Since Sakuli 2 is built with Node, there are at least two different ways to exec
 Organizing tests as NPM projects makes it easier for you to distribute testcode.
 Everything required to execute the test is described in a project config, so tests should be ready to use after running `npm install` inside a project. 👍
 
-### <a href="https://www.npmjs.com/package/npx" target="_blank">npx</a>
+### npx
 
-Because of the way we have set up and configured our project in this guide, Sakuli is only available to this particular project. `npx` is a really handy tool, which allows us to execute our Sakuli CLI directly from the command line, even though we did not add it to the system `PATH`.
+Because of the way we have set up and configured our project in this guide, Sakuli is only available to this particular project. <a href="https://www.npmjs.com/package/npx" target="_blank">npx</a> is a really handy tool, which allows us to execute our Sakuli CLI directly from the command line, even though we did not add it to the system `PATH`.
 
 In order to run our first test, we just have to execute `npx sakuli run my-sut` inside our project folder (e.g. `/tmp/sakuli_starter` on *nix).
 By default, Sakuli will pick up the browser configured in the `testsuite.properties` file, but with npx it is possible to change the browser on the fly:
