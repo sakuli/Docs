@@ -2,7 +2,6 @@
 title : "Prerequisites"
 date  :  2019-09-10T15:25:53+02:00
 weight : 1
-chapter : true
 ---
 
 # What you need
