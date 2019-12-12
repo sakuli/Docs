@@ -6,7 +6,7 @@ weight: 1
 ---
 
 <div style="background-color: #fff; padding: 20px; margin-top:10px; margin-bottom:10px; box-shadow: 0px 0px 10px #7C7C7B; width:50%, margin: 0">
-    <video width="100%" controls preload="none">
+    <video width="100%" controls>
         <source src="/Docs/videos/GettingStarted.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
