@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>FAQ on </title>
-    <link>/docs/faq/</link>
-    <description>Recent content in FAQ on </description>
+    <title>Cookbook on </title>
+    <link>/docs/cookbook/</link>
+    <description>Recent content in Cookbook on </description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 13 Dec 2019 12:39:00 +0100</lastBuildDate>
     
-	<atom:link href="/docs/faq/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/docs/cookbook/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Frames</title>
-      <link>/docs/faq/frames/</link>
+      <link>/docs/cookbook/frames/</link>
       <pubDate>Fri, 13 Dec 2019 12:41:40 +0100</pubDate>
       
-      <guid>/docs/faq/frames/</guid>
+      <guid>/docs/cookbook/frames/</guid>
       <description>How can I handle frames or iframes in Sakuli? Since v2.2.0 Sakuli will automatically detect different frames (and iframes) and will search for elements in each frame when the element can not be found in default frame. But it is also possible to switch between frames manually by using the iframe webelement or its respective index.
 const myIframe = await _fetch(_iframe(&amp;#39;frameName&amp;#39;)); await driver.switchTo().frame(myIframe);  const frameIndex = 0; await driver.</description>
     </item>

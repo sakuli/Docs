@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs/faq/">
+  <body class="" data-url="/docs/cookbook/frames/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -428,13 +428,13 @@
  
   
     
-    <li data-nav-id="/docs/faq/" title="FAQ" class="dd-item 
+    <li data-nav-id="/docs/cookbook/" title="Cookbook" class="dd-item 
         parent
-        active
+        
         
         ">
-      <a href="/docs/faq/">
-          FAQ
+      <a href="/docs/cookbook/">
+          <i class='fas fa-chevron-right'></i>  Cookbook
           
             <i class="fas fa-check read-icon"></i>
           
@@ -455,8 +455,8 @@
  
   
     
-      <li data-nav-id="/docs/faq/frames/" title="Frames" class="dd-item ">
-        <a href="/docs/faq/frames/">
+      <li data-nav-id="/docs/cookbook/frames/" title="Frames" class="dd-item active">
+        <a href="/docs/cookbook/frames/">
         Frames
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -546,7 +546,13 @@
             
           
           
-            <a href='/docs/'></a> > FAQ
+            
+            
+          
+          
+            <a href='/docs/'></a> > <a href='/docs/cookbook/'>Cookbook</a> > Frames
+          
+         
           
          
           
@@ -559,7 +565,10 @@
     <div class="wrapper">
         <nav id="TableOfContents">
 <ul>
-<li><a href="#browse-through-our-frequently-asked-questions-and-get-answers-right-away">Browse through our frequently asked questions and get answers right away&hellip;!</a></li>
+<li>
+<ul>
+<li><a href="#how-can-i-handle-frames-or-iframes-in-sakuli">How can I handle frames or iframes in Sakuli?</a></li>
+</ul></li>
 </ul>
 </nav>
     </div>
@@ -583,17 +592,26 @@
 
 
 
-	
 
-<h1 id="browse-through-our-frequently-asked-questions-and-get-answers-right-away">Browse through our frequently asked questions and get answers right away&hellip;!</h1>
+<h2 id="how-can-i-handle-frames-or-iframes-in-sakuli">How can I handle frames or iframes in Sakuli?</h2>
 
+<p>Since v2.2.0 Sakuli will automatically detect different frames (and iframes) and will search for elements in each frame
+when the element can not be found in default frame. But it is also possible to switch between frames manually by using
+the iframe webelement or its respective index.</p>
 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">myIframe</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_fetch</span>(<span style="color:#a6e22e">_iframe</span>(<span style="color:#e6db74">&#39;frameName&#39;</span>));
+<span style="color:#66d9ef">await</span> <span style="color:#a6e22e">driver</span>.<span style="color:#a6e22e">switchTo</span>().<span style="color:#a6e22e">frame</span>(<span style="color:#a6e22e">myIframe</span>);
+</code></pre></div>
 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">frameIndex</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+<span style="color:#66d9ef">await</span> <span style="color:#a6e22e">driver</span>.<span style="color:#a6e22e">switchTo</span>().<span style="color:#a6e22e">frame</span>(<span style="color:#a6e22e">frameIndex</span>);
+</code></pre></div>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -899,8 +917,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -925,10 +941,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/docs/enterprise_features/s2i/" title="S2I Image"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/docs/cookbook/" title="Cookbook"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/docs/faq/frames/" title="Frames" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/docs/start/" title="Getting Started" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -958,3 +974,4 @@
 
   </body>
 </html>
+

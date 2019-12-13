@@ -131,10 +131,10 @@ mkdir my-sut To describe the testsuite and its testcases, two additional files a
     
     <item>
       <title>Frames</title>
-      <link>/docs/faq/frames/</link>
+      <link>/docs/cookbook/frames/</link>
       <pubDate>Fri, 13 Dec 2019 12:41:40 +0100</pubDate>
       
-      <guid>/docs/faq/frames/</guid>
+      <guid>/docs/cookbook/frames/</guid>
       <description>How can I handle frames or iframes in Sakuli? Since v2.2.0 Sakuli will automatically detect different frames (and iframes) and will search for elements in each frame when the element can not be found in default frame. But it is also possible to switch between frames manually by using the iframe webelement or its respective index.
 const myIframe = await _fetch(_iframe(&amp;#39;frameName&amp;#39;)); await driver.switchTo().frame(myIframe);  const frameIndex = 0; await driver.</description>
     </item>
