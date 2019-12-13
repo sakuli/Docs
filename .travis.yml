@@ -6,7 +6,7 @@ install:
 
 # script - run the build script
 script:
-    - hugo -b /Docs
+    - hugo -b /docs
 
 # github pages master branch
 deploy:
