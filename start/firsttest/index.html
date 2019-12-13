@@ -567,7 +567,10 @@
 <ul>
 <li><a href="#setup">Setup</a>
 <ul>
-<li><a href="#setup-your-first-test">Setup your first Test</a></li>
+<li><a href="#setup-your-first-test">Setup Your First Test</a>
+<ul>
+<li><a href="#setup-the-project-manually">Setup the Project Manually</a></li>
+</ul></li>
 <li><a href="#write-your-first-test">Write your first test</a></li>
 <li><a href="#execute-your-first-test">Execute your first test</a>
 <ul>
@@ -600,7 +603,15 @@
 
 <h1 id="setup">Setup</h1>
 
-<h2 id="setup-your-first-test">Setup your first Test</h2>
+<h2 id="setup-your-first-test">Setup Your First Test</h2>
+
+<p>Since v2.2.0 Sakuli provides an easy to use mechanism to initialize testcases and testsuites.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli create project . my-sut</code></pre></div>
+
+<p>This will create all necessary files and folders to start writing your first Sakuli test right away. With this, you can skip the next section and directly start to <a href="#write-your-first-test">write your first test</a></p>
+
+<h3 id="setup-the-project-manually">Setup the Project Manually</h3>
 
 <p>Since we wanted to keep Sakuli mostly compatible to v1, the file layout looks basically the same for testsuites.</p>
 
@@ -611,7 +622,7 @@
 <p>To describe the testsuite and its testcases, two additional files are needed: <code>testsuite.properties</code> and <code>testsuite.suite</code>. These files are required for backwards compatibility (they might not be necessary in the future but will at least be supported). These files should be added to the <code>my-sut</code> folder:</p>
 
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd my-sut
-echo &gt; testsuite.suite 
+echo &gt; testsuite.suite
 echo &gt; testsuite.properties</code></pre></div>
 
 <p>We can add the following contents to <code>testsuite.properties</code>:</p>
@@ -655,7 +666,7 @@ echo &gt; my-testcase/testcase.js</code></pre></div>
 <li>To provide Sakuli information about our actual testcase, we create a TestCase object, which handles the execution of a testcase.</li>
 <li>If any error occurs during testing, it will be redirected to the TestCase object. It triggers Sakuli&rsquo;s internal error handling e.g. taking a screenshot of the actual failed test execution.</li>
 <li>Regardless of a failed or passed test execution, Sakuli saves all results. This is more like a legacy artifact and will be removed in the future.</li>
-<li>When the async code within the main function (see 1.) is completed, a callback passed to the <code>then</code> function is invoked. <code>done</code> is a global function, which is injected by Sakuli and which tells the engine that the test execution is over (in theory you could call this function <code>done()</code> but the syntax above is recommended).</li>
+<li>The <code>()</code> at the end of this line will invoke the defined function. Since v2.2.0 Sakuli is able to detect this invocation without explicitly chaining the call of <code>done</code> function like in previous versions (it is still possible to add <code>.then(done)</code>)</li>
 </ol>
 
 <h2 id="write-your-first-test">Write your first test</h2>

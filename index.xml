@@ -123,9 +123,9 @@ Of course, you can also use Sakulis native testing power on its own, e.</descrip
       <pubDate>Tue, 10 Sep 2019 15:30:30 +0200</pubDate>
       
       <guid>/docs/start/firsttest/</guid>
-      <description>Setup Setup your first Test Since we wanted to keep Sakuli mostly compatible to v1, the file layout looks basically the same for testsuites.
-Each testsuite is located in its own particular folder. Generally, a testsuite represents the system you want to test. Therefore, you need to create that folder in your project root (where the package.json file is located):
-mkdir my-sut To describe the testsuite and its testcases, two additional files are needed: testsuite.</description>
+      <description>Setup Setup Your First Test Since v2.2.0 Sakuli provides an easy to use mechanism to initialize testcases and testsuites.
+npx sakuli create project . my-sut This will create all necessary files and folders to start writing your first Sakuli test right away. With this, you can skip the next section and directly start to write your first test
+Setup the Project Manually Since we wanted to keep Sakuli mostly compatible to v1, the file layout looks basically the same for testsuites.</description>
     </item>
     
     <item>
