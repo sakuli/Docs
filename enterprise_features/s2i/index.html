@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs/start/firsttest/">
+  <body class="" data-url="/docs/enterprise_features/s2i/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -80,7 +80,7 @@
   
     
     <li data-nav-id="/docs/start/" title="Getting Started" class="dd-item 
-        parent
+        
         
         
         ">
@@ -163,7 +163,7 @@
  
   
     
-      <li data-nav-id="/docs/start/firsttest/" title="First Setup" class="dd-item active">
+      <li data-nav-id="/docs/start/firsttest/" title="First Setup" class="dd-item ">
         <a href="/docs/start/firsttest/">
         First Setup
         <i class="fas fa-check read-icon"></i>
@@ -300,7 +300,7 @@
   
     
     <li data-nav-id="/docs/enterprise_features/" title="Enterprise Features" class="dd-item 
-        
+        parent
         
         
         ">
@@ -402,7 +402,7 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/s2i/" title="S2I Image" class="dd-item ">
+      <li data-nav-id="/docs/enterprise_features/s2i/" title="S2I Image" class="dd-item active">
         <a href="/docs/enterprise_features/s2i/">
         S2I Image
         <i class="fas fa-check read-icon"></i>
@@ -497,7 +497,7 @@
             
           
           
-            <a href='/docs/'></a> > <a href='/docs/start/'>Getting Started</a> > First Setup
+            <a href='/docs/'></a> > <a href='/docs/enterprise_features/'>Enterprise Features</a> > S2I Image
           
          
           
@@ -512,14 +512,14 @@
     <div class="wrapper">
         <nav id="TableOfContents">
 <ul>
-<li><a href="#setup">Setup</a>
+<li><a href="#s2i-image">S2I Image</a>
 <ul>
-<li><a href="#setup-your-first-test">Setup your first Test</a></li>
-<li><a href="#write-your-first-test">Write your first test</a></li>
-<li><a href="#execute-your-first-test">Execute your first test</a>
+<li><a href="#setup">Setup</a></li>
+<li><a href="#create-s2i-build">Creating an S2I build</a>
 <ul>
-<li><a href="#npx">npx</a></li>
+<li><a href="#advanced-s2i-build-configuration">Advanced S2I build configuration</a></li>
 </ul></li>
+<li><a href="#s2i-template">S2I build template</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -545,111 +545,210 @@
 
 
 
-<h1 id="setup">Setup</h1>
+<h1 id="s2i-image">S2I Image</h1>
 
-<h2 id="setup-your-first-test">Setup your first Test</h2>
+<p>Sakuli enterprise comes with ready-to-use <a href="https://github.com/openshift/source-to-image">source to image (S2I)</a>
+containers for RedHat OpenShift. Using this builder container, it is easily possible to create deployable Sakuli images
+shipped with a test suite straight from your code repository.</p>
 
-<p>Since we wanted to keep Sakuli mostly compatible to v1, the file layout looks basically the same for testsuites.</p>
+<h2 id="setup">Setup</h2>
 
-<p>Each testsuite is located in its own particular folder. Generally, a testsuite represents the system you want to test. Therefore, you need to create that folder in your project root (where the package.json file is located):</p>
+<p>To setup the source to image builds on your OpenShift cluster, it is required to import the images from
+<code>taconsol/sakuli-s2i</code>. To achieve this, you have to create a docker-registry secret with your <code>&lt;docker-username&gt;</code> and
+<code>&lt;docker-password&gt;</code> and link it to your <code>builder</code> service account to authenticate on docker.io during build.
+Once you obtained a Sakuli Enterprise license your Docker user will be granted access to the private Sakuli S2I images.</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir my-sut</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc create secret docker-registry dockerhub-sakuli-secret <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --docker-server<span style="color:#f92672">=</span>docker.io <span style="color:#ae81ff">\
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="color:#ae81ff"></span>    --docker-username<span style="color:#f92672">=</span>&lt;docker-username&gt; <span style="color:#ae81ff">\
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="color:#ae81ff"></span>    --docker-password<span style="color:#f92672">=</span>&lt;docker-password&gt; <span style="color:#ae81ff">\
+</span></span><span style="color:#ae81ff"></span>    --docker-email<span style="color:#f92672">=</span>unused
 
-<p>To describe the testsuite and its testcases, two additional files are needed: <code>testsuite.properties</code> and <code>testsuite.suite</code>. These files are required for backwards compatibility (they might not be necessary in the future but will at least be supported). These files should be added to the <code>my-sut</code> folder:</p>
+oc secrets link builder dockerhub-sakuli-secret</code></pre></div>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd my-sut
-echo &gt; testsuite.suite 
-echo &gt; testsuite.properties</code></pre></div>
+<p>After you&rsquo;ve created and linked the secret, you can import the images from the secured registry.</p>
 
-<p>We can add the following contents to <code>testsuite.properties</code>:</p>
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc import-image sakuli-s2i <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --from<span style="color:#f92672">=</span>docker.io/taconsol/sakuli-s2i <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --confirm <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --scheduled<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --all<span style="color:#f92672">=</span>true</code></pre></div>
+<em>Note: The <code>oc import-image</code> statement is configured to not only import all available Sakuli S2I images but also to
+check for updates automatically.</em></p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo testsuite.id<span style="color:#f92672">=</span>my-sut &gt; testsuite.properties</code></pre></div>
+<h2 id="create-s2i-build">Creating an S2I build</h2>
 
-<p>This is the minimum configuration for using Sakuli. The <code>.properties</code> file adds some metadata needed by the Sakuli-Runtime and can be changed to configure other things like forwarders or the default browser for the execution.</p>
+<p>The following build-config template is ready to use to create Sakuli S2I builds for various repositories and test suites.
+Just copy and save the <a href="#s2i-template">S2I build template</a> as <code>sakuli-s2i-build-template.yml</code>. To process the template
+some additional information is required that are not part of the template. First of all, you have to provide a
+<code>SAKULI_LICENSE_KEY</code> to be able to execute the images resulting from the build process and you have to specify the
+repository to pull the test case from as <code>TESTSUITE_REPOSITORY_URL</code>. To install such a basic setup on your OpenShift
+cluster, just use the following command and replace the placeholder with actual values.</p>
 
-<p>The <code>testsuite.suite</code> file tells Sakuli which testcases are running. The format is:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc process -f sakuli-s2i-build-template.yml <span style="color:#ae81ff">\
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="color:#ae81ff"></span>    SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;SAKULI_LICENSE_KEY&gt; <span style="color:#ae81ff">\
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="color:#ae81ff"></span>    TESTSUITE_REPOSITORY_URL<span style="color:#f92672">=</span>&lt;TESTSUITE_REPOSITORY_URL&gt; | oc apply -f -</span></code></pre></div>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&lt;FOLDER-NAME&gt;/&lt;FILE-NAME&gt;.js &lt;START_URL&gt;</code></pre></div>
+<h3 id="advanced-s2i-build-configuration">Advanced S2I build configuration</h3>
 
-<p>The actual testcase file must be placed inside a folder (this is due to the format forced by Sahi in Sakuli v1). The start-url also needs to be added but has no effect in v2+.</p>
+<p>The provided template comes with a lot of optional parameter to customize your build process. The following table
+contains all available parameters. Additional parameters are specified in the same way as seen in the
+<a href="#create-s2i-build">Creating an S2I build</a> section.</p>
 
-<p>With this in mind, we can add a testcase file:</p>
+<table>
+    <tr>
+        <th>Parameter</th>
+        <th>Optional</th>
+        <th>Description</th>
+        <th>Default value</th>
+    </tr>
+    <tr>
+        <td>SAKULI_LICENSE_KEY</td>
+        <td>NO</td>
+        <td>Sakuli2 License key.</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>TESTSUITE_REPOSITORY_URL</td>
+        <td>NO</td>
+        <td>Git source URL containing the test suite.</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>TESTSUITE_REPOSITORY_REF</td>
+        <td>YES</td>
+        <td>Git branch/tag reference.</td>
+        <td>master</td>
+    </tr>
+    <tr>
+        <td>IMAGE</td>
+        <td>YES</td>
+        <td>Name for the target image to be build.</td>
+        <td>sakuli-s2i-testsuite</td>
+    </tr>
+    <tr>
+        <td>IMAGE_TAG</td>
+        <td>YES</td>
+        <td>Tag to push build images to.</td>
+        <td>latest</td>
+    </tr>
+    <tr>
+        <td>TESTSUITE_CONTEXT_DIR</td>
+        <td>YES</td>
+        <td>Source folder where the test suite is located.</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>TESTSUITE_REPOSITORY_SECRET</td>
+        <td>YES</td>
+        <td>Secret to access the testsuite repository.</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>BUILDER_IMAGE</td>
+        <td>YES</td>
+        <td>Name of the builder image.</td>
+        <td>sakuli-s2i</td>
+    </tr>
+    <tr>
+        <td>BUILDER_IMAGE_TAG</td>
+        <td>YES</td>
+        <td>Tag of the builder image to use.</td>
+        <td>latest</td>
+    </tr>
+</table>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir my-testcase
-echo &gt; my-testcase/testcase.js</code></pre></div>
+<h2 id="s2i-template">S2I build template</h2>
 
-<p>And add the following information to the <code>testsuite.suite</code> file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">apiVersion: v1
+kind: Template
+labels:
+  template: sakuli-s2i-testsuite-image-build
+metadata:
+  annotations:
+    description: Build config to create a ready to run Sakuli2 container with the specified testsuite
+    tags: consol, sakuli2, custom-image, s2i, source-to-image
+  name: sakuli-s2i-testsuite-image-build
+parameters:
+  - description: Name for the target image of the build.
+    name: IMAGE
+    required: <span style="color:#66d9ef">true</span>
+    value: sakuli-s2i-testsuite
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo my-testcase/testcase.js https://sakuli.io &gt; testsuite.suite</code></pre></div>
+  - description: Image tag of the target image.
+    name: IMAGE_TAG
+    required: <span style="color:#66d9ef">true</span>
+    value: latest
 
-<p>After the setup you can add the actual testcode to <code>my-testcase/testcase.js</code>:</p>
+  - description: Sakuli2 License key.
+    name: SAKULI_LICENSE_KEY
+    required: <span style="color:#66d9ef">true</span>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript">(<span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> {  <span style="color:#75715e">// 1
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">testCase</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TestCase</span>(); <span style="color:#75715e">// 2
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">try</span> {
-        <span style="color:#75715e">// actual testcode goes here
-</span><span style="color:#75715e"></span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">e</span>) {
-        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">handleException</span>(<span style="color:#a6e22e">e</span>); <span style="color:#75715e">// 3
-</span><span style="color:#75715e"></span>    } <span style="color:#66d9ef">finally</span> {
-        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">saveResult</span>(); <span style="color:#75715e">// 4
-</span><span style="color:#75715e"></span>    }
-})().<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">done</span>); <span style="color:#960050;background-color:#1e0010">// 5</span></code></pre></div>
+  - description: Git source URL containing the test suite.
+    name: TESTSUITE_REPOSITORY_URL
+    required: <span style="color:#66d9ef">true</span>
 
-<p>Let us examine this piece of code:</p>
+  - description: Git branch/tag reference.
+    name: TESTSUITE_REPOSITORY_REF
+    value: <span style="color:#e6db74">&#34;master&#34;</span>
+    required: <span style="color:#66d9ef">true</span>
 
-<ol>
-<li>The whole test is wrapped in an async immediate invoked function. It allows us to use the async/await syntax of ES6. Since Sakuli makes heavy use of async operations, it makes your code more readable.</li>
-<li>To provide Sakuli information about our actual testcase, we create a TestCase object, which handles the execution of a testcase.</li>
-<li>If any error occurs during testing, it will be redirected to the TestCase object. It triggers Sakuli&rsquo;s internal error handling e.g. taking a screenshot of the actual failed test execution.</li>
-<li>Regardless of a failed or passed test execution, Sakuli saves all results. This is more like a legacy artifact and will be removed in the future.</li>
-<li>When the async code within the main function (see 1.) is completed, a callback passed to the <code>then</code> function is invoked. <code>done</code> is a global function, which is injected by Sakuli and which tells the engine that the test execution is over (in theory you could call this function <code>done()</code> but the syntax above is recommended).</li>
-</ol>
+  - description: Source folder where the test suite is located.
+    name: TESTSUITE_CONTEXT_DIR
 
-<h2 id="write-your-first-test">Write your first test</h2>
+  - description: Secret to access the testsuite repository.
+    name: TESTSUITE_REPOSITORY_SECRET
 
-<p>Let us write a simple test using the Sakuli.io homepage as test subject. This test will verify if our &ldquo;Getting Started&rdquo; guide that you are reading at this very moment is still accessible.</p>
+  - description: Name of the builder image.
+    name: BUILDER_IMAGE
+    required: <span style="color:#66d9ef">true</span>
+    value: sakuli-s2i
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript">(<span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> {
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">testCase</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TestCase</span>();
-    <span style="color:#66d9ef">try</span> {
-        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_navigateTo</span>(<span style="color:#e6db74">&#34;https://sakuli.io&#34;</span>);                  <span style="color:#75715e">// 1
-</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">endOfStep</span>(<span style="color:#e6db74">&#34;Open Landing Page&#34;</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">10</span>);          <span style="color:#75715e">// 2
-</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_link</span>(<span style="color:#e6db74">&#34;Getting started&#34;</span>));                  <span style="color:#75715e">// 3
-</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">endOfStep</span>(<span style="color:#e6db74">&#34;Navigate to Getting Started&#34;</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>);
-        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_highlight</span>(<span style="color:#a6e22e">_code</span>(<span style="color:#e6db74">&#34;npm init&#34;</span>));                     <span style="color:#75715e">// 4
-</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">endOfStep</span>(<span style="color:#e6db74">&#34;Find npm init code sample&#34;</span>);
-    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">e</span>) {
-        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">handleException</span>(<span style="color:#a6e22e">e</span>);
-    } <span style="color:#66d9ef">finally</span> {
-        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">saveResult</span>();
-    }
-})().<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">done</span>);</code></pre></div>
+  - description: Tag of the builder image to use.
+    name: BUILDER_IMAGE_TAG
+    required: <span style="color:#66d9ef">true</span>
+    value: latest
 
-<ol>
-<li>Since we are dealing with a web test, the first thing we want to do is to <code>_navigateTo</code> our target page. Instead of manually setting up the correct WebDriver instance, we just have to provide a target URL. Sakuli will take care of the rest for us. <code>await</code> indicates that we are patiently waiting for our page to load before we continue with our next testing step.</li>
-<li>Once our initial page load has been completed, it is of our great interest to know how long it took to render. When it comes to runtime, Sakuli does not only measure the execution time of testcases, but also allows to split a single testcase into several logical steps. This way it becomes possible to accurately measure the runtime of certain processes like e.g. <em>login</em>, <em>shopping cart</em>, <em>checkout</em> and so on. By calling <code>testCase.endOfStep(&quot;Open Landing Page&quot;, 5, 10);</code>, we are ending our first step, the initial page load. Additionally, it is also possible to specify <code>warning</code> and <code>critical</code> thresholds for each step. Whenever a step exceeds one of these values, the result will change from <code>OK</code> to <code>WARNING</code> or <code>CRITICAL</code>.</li>
-<li>With Sakuli it becomes very easy to interact with web elements. In our current example, we want to <code>_click</code> a <code>_link</code> which is identified by some given text. Once again, we do not have to take care of many details, as Sakuli will do most of the heavy lifting for us. We are just passing the link text to Sakuli, which will search for our desired element using multiple identifiers. This way we do not have to worry about using an ID, a CSS selector or something else to identify our element. As we have already seen in our first test action, <code>await</code> will wait until the test action has been completed.</li>
-<li>In some cases, it is really helpful to visually verify test execution. Sakuli comes with a built-in <code>_highlight</code> function, which will highlight an element with a bright red border. Although being useful, <code>_highlight</code> should be used carefully since it will increase the overall testing runtime.</li>
-</ol>
+objects:
+  - apiVersion: v1
+    kind: ImageStream
+    metadata:
+      labels:
+        application: ${IMAGE}
+      name: ${IMAGE}
 
-<h2 id="execute-your-first-test">Execute your first test</h2>
-
-<p>Since Sakuli 2 is built with Node, there are at least two different ways to execute a Sakuli test. We will take a look at each one of them.
-Organizing tests as NPM projects makes it easier for you to distribute testcode.
-Everything required to execute the test is described in a project config, so tests should be ready to use after running <code>npm install</code> inside a project. 👍</p>
-
-<h3 id="npx">npx</h3>
-
-<p>Because of the way we have set up and configured our project in this guide, Sakuli is only available to this particular project. <a href="https://www.npmjs.com/package/npx" target="_blank">npx</a> is a really handy tool, which allows us to execute our Sakuli CLI directly from the command line, even though we did not add it to the system <code>PATH</code>.</p>
-
-<p>In order to run our first test, we just have to execute <code>npx sakuli run my-sut</code> inside our project folder (e.g. <code>/tmp/sakuli_starter</code> on *nix).
-By default, Sakuli will pick up the browser configured in the <code>testsuite.properties</code> file, but with npx it is possible to change the browser on the fly:</p>
-
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli run my-sut --browser chrome</code></pre></div>
-This command will execute our test in Chrome.</p>
-
-<p>Regardless of the browser choice, as long as our site did not slow down, you should see a successful test result, similar to the image on the right.
-The advantage of running your tests with <code>npx</code> is the flexibility to easily customize your test runs without having to edit files.</p>
+  - apiVersion: v1
+    kind: BuildConfig
+    metadata:
+      labels:
+        build: ${IMAGE}
+      name: ${IMAGE}
+    spec:
+      output:
+        to:
+          kind: ImageStreamTag
+          name: ${IMAGE}:${IMAGE_TAG}
+      source:
+        type: Git
+        git:
+          ref: ${TESTSUITE_REPOSITORY_REF}
+          uri: ${TESTSUITE_REPOSITORY_URL}
+        contextDir: ${TESTSUITE_CONTEXT_DIR}
+        sourceSecret:
+          name: ${TESTSUITE_REPOSITORY_SECRET}
+      strategy:
+        type: Source
+        sourceStrategy:
+          from:
+            kind: ImageStreamTag
+            name: ${BUILDER_IMAGE}:${BUILDER_IMAGE_TAG}
+          env:
+            - name: <span style="color:#e6db74">&#34;SAKULI_LICENSE_KEY&#34;</span>
+              value: ${SAKULI_LICENSE_KEY}
+      triggers:
+        - imageChange: {}
+          type: ImageChange
+        - type: ConfigChange</code></pre></div>
 
 
 <footer class=" footline" >
@@ -688,91 +787,6 @@ The advantage of running your tests with <code>npx</code> is the flexibility to 
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                         
                         
                     
@@ -928,10 +942,95 @@ The advantage of running your tests with <code>npx</code> is the flexibility to 
             
         
                     
+            
+        
+                    
                         
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
                     
                 
                 
@@ -956,10 +1055,10 @@ The advantage of running your tests with <code>npx</code> is the flexibility to 
 	 
 	 
 		
-			<a class="nav nav-prev" href="/docs/start/installation/" title="Installation"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/docs/enterprise_features/e2e/" title="Container"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/docs/writing_tests/" title="Writing Tests" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/docs/enterprise_features/icinga/" title="Icinga2 Forwarder" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
