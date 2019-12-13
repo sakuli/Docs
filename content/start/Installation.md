@@ -17,7 +17,7 @@ Several wrapper packages can be found on <a href="https://npmjs.com" target="_bl
 
 Since some users encountered issues with geckodriver on Firefox, we recommend using chromedriver for now. We are working on fixes and workarounds for geckodriver.
 
-Therefore, Chrome is the preferred browser for running Sakuli tests at the moment. A suitable WebDriver can be installed via: 
+Therefore, Chrome is the preferred browser for running Sakuli tests at the moment. A suitable WebDriver can be installed via:
 
 {{< highlight bash >}}
 npm i chromedriver
@@ -57,9 +57,9 @@ Sakuli ships a pre-built version of OpenCV. Nonetheless, the installation still 
 
 ### Windows
 
-In order to install and run Sakuli on Windows you need two additional tools: <a href="https://www.python.org/downloads/windows/" target="_blank">Python 2</a> and the <a href="https://www.microsoft.com/en-us/download/details.aspx?id=48159" target="_blank">Windows Build Tools</a>. 
+In order to install and run Sakuli on Windows you need two additional tools: <a href="https://www.python.org/downloads/windows/" target="_blank">Python 2</a> and the <a href="https://www.microsoft.com/en-us/download/details.aspx?id=48159" target="_blank">Windows Build Tools</a>.
 
-To avoid eventual installation problems for Windows users we recommend to first install Python 2 on your system separately by downloading the required version from the official web page. Afterwards you can install the Windows Build Tools manually or via NPM using: 
+To avoid eventual installation problems for Windows users we recommend to first install Python 2 on your system separately by downloading the required version from the official web page. Afterwards you can install the Windows Build Tools manually or via NPM using:
 
 {{< highlight bash >}}
 npm install --global windows-build-tools
@@ -71,7 +71,7 @@ or
 yarn global add windows-build-tools
 {{< /highlight >}}
 
-In case of errors while installing the Windows Build Tools package via `npm`, please make sure that the PowerShell is available on your system `PATH`. Additionally, you should install the Windows Build Tools by using the PowerShell in administrative mode.  
+In case of errors while installing the Windows Build Tools package via `npm`, please make sure that the PowerShell is available on your system `PATH`. Additionally, you should install the Windows Build Tools by using the PowerShell in administrative mode.
 See <a href="https://github.com/felixrieseberg/windows-build-tools/issues/20#issuecomment-373885943" target="_blank">this issue</a>.
 
 ### macOS
@@ -119,6 +119,3 @@ This will install Sakuli and its required dependencies.
 ### Reference
 - <a href="https://github.com/justadudewhohacks/opencv4nodejs#how-to-install" target="_blank">opencv4nodejs</a>
 - <a href="http://robotjs.io/docs/building" target="_blank">robotjs</a>
-
-
-
