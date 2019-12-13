@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Getting Started on </title>
-    <link>/Docs/start/</link>
+    <link>/docs/start/</link>
     <description>Recent content in Getting Started on </description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 10 Sep 2019 15:21:15 +0200</lastBuildDate>
     
-	<atom:link href="/Docs/start/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/docs/start/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Prerequisites</title>
-      <link>/Docs/start/prerequisites/</link>
+      <link>/docs/start/prerequisites/</link>
       <pubDate>Tue, 10 Sep 2019 15:25:53 +0200</pubDate>
       
-      <guid>/Docs/start/prerequisites/</guid>
+      <guid>/docs/start/prerequisites/</guid>
       <description>What you need Sakuli is built and tested against the current LTS version of Node.js. In order to be able to run Sakuli on your system, we will assume that you have a Node v10.15.3 (lts/dubnium) installed on it.
 To install Node on your system, you can either go to the Node website or you can use tools like Node Version Manager utility to manage various Node versions on a per-user basis.</description>
     </item>
     
     <item>
       <title>Initialization</title>
-      <link>/Docs/start/initialization/</link>
+      <link>/docs/start/initialization/</link>
       <pubDate>Tue, 10 Sep 2019 15:26:17 +0200</pubDate>
       
-      <guid>/Docs/start/initialization/</guid>
+      <guid>/docs/start/initialization/</guid>
       <description>Initialize a project This guide will get you started with writing Sakuli tests from scratch. To follow this tutorial, you should create a new NPM project in an empty folder.
 For this guide, we will assume that our working directory is /tmp/sakuli_starter on a *nix system, or %Temp%\sakuli_starter on a Windows machine.
 To create a new, empty project, first run:
@@ -34,20 +34,20 @@ npm init This interactive prompt will ask you for some metadata regarding your p
     
     <item>
       <title>Installation</title>
-      <link>/Docs/start/installation/</link>
+      <link>/docs/start/installation/</link>
       <pubDate>Tue, 10 Sep 2019 15:29:27 +0200</pubDate>
       
-      <guid>/Docs/start/installation/</guid>
+      <guid>/docs/start/installation/</guid>
       <description>Installation Process The following steps are required to set up Sakuli to work with multiple browsers. Once the initial setup is done, we will dive right into our first test.
 WebDriver Installation Sakuli utilizes the WebDriver protocol to remote control browsers during test execution. In addition to the browser itself, you need to install the corresponding WebDriver as well. Several wrapper packages can be found on npmjs.com, which allow the installation of the required binaries via npm.</description>
     </item>
     
     <item>
       <title>First Setup</title>
-      <link>/Docs/start/firsttest/</link>
+      <link>/docs/start/firsttest/</link>
       <pubDate>Tue, 10 Sep 2019 15:30:30 +0200</pubDate>
       
-      <guid>/Docs/start/firsttest/</guid>
+      <guid>/docs/start/firsttest/</guid>
       <description>Setup Setup your first Test Since we wanted to keep Sakuli mostly compatible to v1, the file layout looks basically the same for testsuites.
 Each testsuite is located in its own particular folder. Generally, a testsuite represents the system you want to test. Therefore, you need to create that folder in your project root (where the package.json file is located):
 mkdir my-sut To describe the testsuite and its testcases, two additional files are needed: testsuite.</description>

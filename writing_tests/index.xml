@@ -2,50 +2,50 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Writing Tests on </title>
-    <link>/Docs/writing_tests/</link>
+    <link>/docs/writing_tests/</link>
     <description>Recent content in Writing Tests on </description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 10 Sep 2019 15:23:43 +0200</lastBuildDate>
     
-	<atom:link href="/Docs/writing_tests/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/docs/writing_tests/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Anatomy</title>
-      <link>/Docs/writing_tests/anatomy/</link>
+      <link>/docs/writing_tests/anatomy/</link>
       <pubDate>Thu, 12 Sep 2019 13:18:58 +0200</pubDate>
       
-      <guid>/Docs/writing_tests/anatomy/</guid>
+      <guid>/docs/writing_tests/anatomy/</guid>
       <description>Anatomy of a Project This guide assumes that you have finished the &amp;ldquo;Getting started&amp;rdquo; tutorial or that you are experienced with Sakuli v1.
  Most of the complexity and conventions are due to the backwards compatibility to v1, which requires a specific folder and file structure for various reasons (the biggest is Sahi). Sakuli offers now various ways to reduce this complexity dramatically. These features will eventually become part of upcoming releases.</description>
     </item>
     
     <item>
       <title>Interact</title>
-      <link>/Docs/writing_tests/interact/</link>
+      <link>/docs/writing_tests/interact/</link>
       <pubDate>Thu, 12 Sep 2019 13:18:18 +0200</pubDate>
       
-      <guid>/Docs/writing_tests/interact/</guid>
+      <guid>/docs/writing_tests/interact/</guid>
       <description>Interacting with the environment In addition to screenshot-based test actions, Sakuli is capable of utilizing your keyboard, clipboard and environment variables. All these features are incorporated in the Environment class.
 Keyboard actions The following snippet shows a possible use-case for native keyboard actions. When initiating a download in Firefox, a native file download dialog opens. To start the download, we need to accept the file dialog, something that is not possible within the capabilities of Selenium.</description>
     </item>
     
     <item>
       <title>Screenshot</title>
-      <link>/Docs/writing_tests/screenshot/</link>
+      <link>/docs/writing_tests/screenshot/</link>
       <pubDate>Thu, 12 Sep 2019 13:18:02 +0200</pubDate>
       
-      <guid>/Docs/writing_tests/screenshot/</guid>
+      <guid>/docs/writing_tests/screenshot/</guid>
       <description>Screenshot based Testing A lot of E2E scenarios exceed the capabilities of browsers and webdrivers. This might include common use-cases like a drag and drop from the host system to a webpage or exporting a report into a spreadsheet or PDF-format. In these cases, your web-based tests can be extended to also validate behavior and invoke interactions outside the browser, all within a single test.
 Of course, you can also use Sakulis native testing power on its own, e.</description>
     </item>
     
     <item>
       <title>Webtests</title>
-      <link>/Docs/writing_tests/webtests/</link>
+      <link>/docs/writing_tests/webtests/</link>
       <pubDate>Thu, 12 Sep 2019 13:16:37 +0200</pubDate>
       
-      <guid>/Docs/writing_tests/webtests/</guid>
+      <guid>/docs/writing_tests/webtests/</guid>
       <description>Web tests For DOM based testing most of the functions from Sahi tests can be used (please note that Sakuli only implements the open source APIs).
 The main difference between Sakuli v1 and Sakuli v2 is the usage of Promises in the action API, meaning that you have to await a click for example.
 On the other hand, element selectors remain synchronized functions but will not do the actual DOM fetching anymore.</description>
