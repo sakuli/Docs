@@ -6,7 +6,7 @@ weight : 1
 
 # Icinga2 Forwarder
 
-Add the forwarder to your project with:
+Add the forwarder using the [assistant](/docs/enterprise/#assisted-setup) or configure it manually:
 
 {{<highlight bash>}}
 npm i @sakuli/forwarder-icinga2

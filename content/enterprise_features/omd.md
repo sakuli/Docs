@@ -6,7 +6,7 @@ weight : 3
 
 # OMD / Gearman Forwarder
 
-Install the forwarder to your project with:
+Add the forwarder using the [assistant](/docs/enterprise/#assisted-setup) or configure it manually:
 
 {{<highlight bash>}}
 npm i @sakuli/forwarder-gearman
