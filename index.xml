@@ -5,7 +5,7 @@
     <link>/docs/</link>
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 12 Sep 2019 14:16:13 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 13 Dec 2019 12:41:40 +0100</lastBuildDate>
     
 	<atom:link href="/docs/index.xml" rel="self" type="application/rss+xml" />
     
@@ -127,6 +127,16 @@ Of course, you can also use Sakulis native testing power on its own, e.</descrip
       <description>Setup Setup your first Test Since we wanted to keep Sakuli mostly compatible to v1, the file layout looks basically the same for testsuites.
 Each testsuite is located in its own particular folder. Generally, a testsuite represents the system you want to test. Therefore, you need to create that folder in your project root (where the package.json file is located):
 mkdir my-sut To describe the testsuite and its testcases, two additional files are needed: testsuite.</description>
+    </item>
+    
+    <item>
+      <title>Frames</title>
+      <link>/docs/faq/frames/</link>
+      <pubDate>Fri, 13 Dec 2019 12:41:40 +0100</pubDate>
+      
+      <guid>/docs/faq/frames/</guid>
+      <description>How can I handle frames or iframes in Sakuli? Since v2.2.0 Sakuli will automatically detect different frames (and iframes) and will search for elements in each frame when the element can not be found in default frame. But it is also possible to switch between frames manually by using the iframe webelement or its respective index.
+const myIframe = await _fetch(_iframe(&amp;#39;frameName&amp;#39;)); await driver.switchTo().frame(myIframe);  const frameIndex = 0; await driver.</description>
     </item>
     
     <item>

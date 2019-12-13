@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs/start/initialization/">
+  <body class="" data-url="/docs/faq/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -80,7 +80,7 @@
   
     
     <li data-nav-id="/docs/start/" title="Getting Started" class="dd-item 
-        parent
+        
         
         
         ">
@@ -125,7 +125,7 @@
  
   
     
-      <li data-nav-id="/docs/start/initialization/" title="Initialization" class="dd-item active">
+      <li data-nav-id="/docs/start/initialization/" title="Initialization" class="dd-item ">
         <a href="/docs/start/initialization/">
         Initialization
         <i class="fas fa-check read-icon"></i>
@@ -429,8 +429,8 @@
   
     
     <li data-nav-id="/docs/faq/" title="FAQ" class="dd-item 
-        
-        
+        parent
+        active
         
         ">
       <a href="/docs/faq/">
@@ -546,13 +546,7 @@
             
           
           
-            
-            
-          
-          
-            <a href='/docs/'></a> > <a href='/docs/start/'>Getting Started</a> > Initialization
-          
-         
+            <a href='/docs/'></a> > FAQ
           
          
           
@@ -565,7 +559,7 @@
     <div class="wrapper">
         <nav id="TableOfContents">
 <ul>
-<li><a href="#initialize-a-project">Initialize a project</a></li>
+<li><a href="#browse-through-our-frequently-asked-questions-and-get-answers-right-away">Browse through our frequently asked questions and get answers right away&hellip;!</a></li>
 </ul>
 </nav>
     </div>
@@ -589,47 +583,17 @@
 
 
 
+	
 
-<h1 id="initialize-a-project">Initialize a project</h1>
-
-<p>This guide will get you started with writing Sakuli tests from scratch.
-To follow this tutorial, you should create a new NPM project in an empty folder.</p>
-
-<p>For this guide, we will assume that our working directory is <code>/tmp/sakuli_starter</code> on a *nix system, or <code>%Temp%\sakuli_starter</code> on a Windows machine.</p>
-
-<p>To create a new, empty project, first run:</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm init</code></pre></div>
-
-<p>This interactive prompt will ask you for some metadata regarding your project.
-You can either modify these fields to your needs or just accept the defaults.</p>
-
-<p>Once completed, you should see a short summary similar to the following snippet:</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">About to write to /tmp/sakuli_starter/package.json:
-
-<span style="color:#f92672">{</span>
-  <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;sakuli_starter&#34;</span>,
-  <span style="color:#e6db74">&#34;version&#34;</span>: <span style="color:#e6db74">&#34;1.0.0&#34;</span>,
-  <span style="color:#e6db74">&#34;description&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
-  <span style="color:#e6db74">&#34;main&#34;</span>: <span style="color:#e6db74">&#34;index.js&#34;</span>,
-  <span style="color:#e6db74">&#34;scripts&#34;</span>: <span style="color:#f92672">{</span>
-    <span style="color:#e6db74">&#34;test&#34;</span>: <span style="color:#e6db74">&#34;echo \&#34;Error: no test specified\&#34; &amp;&amp; exit 1&#34;</span>
-  <span style="color:#f92672">}</span>,
-  <span style="color:#e6db74">&#34;author&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
-  <span style="color:#e6db74">&#34;license&#34;</span>: <span style="color:#e6db74">&#34;ISC&#34;</span>
-<span style="color:#f92672">}</span>
+<h1 id="browse-through-our-frequently-asked-questions-and-get-answers-right-away">Browse through our frequently asked questions and get answers right away&hellip;!</h1>
 
 
-Is this OK? <span style="color:#f92672">(</span>yes<span style="color:#f92672">)</span></code></pre></div>
 
-<p>The empty project has been initialized after confirming the prompt.</p>
 
 
 <footer class=" footline" >
 	
 </footer>
-
 
         
         </div> 
@@ -662,6 +626,8 @@ Is this OK? <span style="color:#f92672">(</span>yes<span style="color:#f92672">)
             
                 
                     
+                        
+                        
                     
                 
                 
@@ -675,26 +641,6 @@ Is this OK? <span style="color:#f92672">(</span>yes<span style="color:#f92672">)
             
             
                 
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                     
                 
                 
@@ -712,8 +658,21 @@ Is this OK? <span style="color:#f92672">(</span>yes<span style="color:#f92672">)
             
                 
                     
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
                         
-                        
+            
+            
+                
                     
                 
                 
@@ -926,6 +885,7 @@ Is this OK? <span style="color:#f92672">(</span>yes<span style="color:#f92672">)
             
                 
                     
+                    
                 
                 
 
@@ -938,6 +898,9 @@ Is this OK? <span style="color:#f92672">(</span>yes<span style="color:#f92672">)
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -962,10 +925,10 @@ Is this OK? <span style="color:#f92672">(</span>yes<span style="color:#f92672">)
 	 
 	 
 		
-			<a class="nav nav-prev" href="/docs/start/prerequisites/" title="Prerequisites"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/docs/enterprise_features/s2i/" title="S2I Image"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/docs/start/installation/" title="Installation" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/docs/faq/frames/" title="Frames" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -995,4 +958,3 @@ Is this OK? <span style="color:#f92672">(</span>yes<span style="color:#f92672">)
 
   </body>
 </html>
-
