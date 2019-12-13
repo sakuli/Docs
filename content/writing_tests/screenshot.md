@@ -14,7 +14,7 @@ When creating a new instance without parameters, a `Region` spans over the whole
 But, it is also possible to create new regions by specifying `left`, `top`, `width` and `height` parameters.
 
 The following example represents a test which drags a source element to a target region.
-In this demo scenario, both source and target are both located on screen via template image.  
+In this demo scenario, both source and target are both located on screen via template image.
 To reproduce this scenario, you need to capture screenshots of the egg and the pan.
 
 {{< highlight typescript >}}
@@ -44,20 +44,13 @@ To reproduce this scenario, you need to capture screenshots of the egg and the p
 </div>
 -->
 
-<div style="background-color: #fff; padding: 20px; margin-top:10px; margin-bottom:10px; box-shadow: 0px 0px 10px #7C7C7B;">
-    <video width="100%" autoplay loop controls>
-        <source src="/videos/FryAnEgg.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</div>
-
-
+{{<video "/videos/FryAnEgg.mp4">}}
 
 
 The `dragAndDropTo(...)` methods always move straight to the target region.
 In order to follow a more complex path, it is also possible to perform the drag gesture manually.
 Once the source image has been located on the screen, Sakuli moves the mouse to its location, presses and holds the left mouse button.
-Afterwards, it locates the target image, moves the mouse there while still holding the mouse button and releases it, once it reaches the target location.  
+Afterwards, it locates the target image, moves the mouse there while still holding the mouse button and releases it, once it reaches the target location.
 To reproduce this scenario, you need to capture screenshots of the egg and the pan.
 
 {{< highlight typescript >}}
