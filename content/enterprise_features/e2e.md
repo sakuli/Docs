@@ -8,10 +8,10 @@ weight : 4
 Once you obtained a Sakuli Enterprise license your docker-user will be granted access to the private Sakuli test container image.
 This image is ready to go and ships with already installed:
 
-  - Sakuli
-  - Icinga2 / Check_MK / OMD Forwarder
-  - VNC / noVNC
-  - Chrome / Firefox (incl. webdriver)
+- Sakuli
+- Icinga2 / Check_MK / OMD Forwarder
+- VNC / noVNC
+- Chrome / Firefox (incl. webdriver)
 
 ## 1 Obtaining the Image
 
@@ -95,17 +95,16 @@ Now that the test is done and wont change frequently, it would be feasible to bu
 
 We can do so by creating our own Dockerfile next to our project directory:
 
-- <i class="fas fa-folder"></i> **/folder/containing/Dockerfile/and/project**
-    - <i class="far fa-file"></i> **Dockerfile**
-    - <i class="fas fa-folder"></i> **testsuite-a**
-        - <i class="far fa-file"></i> **package.json**
-        - <i class="far fa-file"></i> **...**
-
+- <i class="fas fa-folder"></i> **/folder/containing/Dockerfile/and/project** 
+- <i class="far fa-file"></i> **Dockerfile** 
+- <i class="fas fa-folder"></i> **testsuite-a** 
+- <i class="far fa-file"></i> **package.json** 
+- <i class="far fa-file"></i> **...**
 
 {{<highlight bash>}}
 FROM taconsol/sakuli:2.1.2
 
-ADD ./testsuite-a $HOME/sakuli_testsuite
+ADD ./testsuite-a \$HOME/sakuli_testsuite
 {{</highlight>}}
 
 Using this Dockerfile we can now build our own test image by running
@@ -152,9 +151,9 @@ An empty project initialised via `npm init` already contains one script: `npm te
 
 {{<highlight js>}}
 ...
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+"scripts": {
+"test": "echo \"Error: no test specified\" && exit 1"
+},
 ...
 {{</highlight>}}
 
@@ -165,9 +164,9 @@ Our test suites are located within the same folder as our `package.json`, so a t
 
 {{<highlight js>}}
 ...
-  "scripts": {
-    "test": "sakuli run /path/to/your/test/suite"
-  },
+"scripts": {
+"test": "sakuli run /path/to/your/test/suite"
+},
 ...
 {{</highlight>}}
 
@@ -193,9 +192,9 @@ In case your test project requires additional dependencies, it's possible to run
 
 {{<highlight js>}}
 ...
-  "scripts": {
-    "test": "npm i && sakuli run /path/to/your/test/suite"
-  },
+"scripts": {
+"test": "npm i && sakuli run /path/to/your/test/suite"
+},
 ...
 {{</highlight>}}
 
@@ -228,19 +227,19 @@ In this example container port 5901 is forwarded to port 5000 on the host system
 The following VNC environment variables can be overwritten at the docker run phase to customize your desktop environment inside the container:
 
 {{<highlight bash>}}
-VNC_COL_DEPTH, default: 24          // Color depth
+VNC_COL_DEPTH, default: 24 // Color depth
 
-VNC_RESOLUTION, default: 1280x1024  // Screen resolution
+VNC_RESOLUTION, default: 1280x1024 // Screen resolution
 
-VNC_PW, default: vncpassword        // VNC password
+VNC_PW, default: vncpassword // VNC password
 
-VNC_VIEW_ONLY, default: false       // Run in view only mode, no keyboard / mouse interaction possible
+VNC_VIEW_ONLY, default: false // Run in view only mode, no keyboard / mouse interaction possible
 {{</highlight>}}
 
 For example, the password for VNC could be set like this:
 
 {{<highlight bash>}}
-~$ docker run -p 5901:5901 -p 6901:6901 -e VNC_PW=my-new-password taconsol/sakuli:2.1.2
+~\$ docker run -p 5901:5901 -p 6901:6901 -e VNC_PW=my-new-password taconsol/sakuli:2.1.2
 {{</highlight>}}
 
 ### 5.3 Container User
@@ -249,21 +248,66 @@ Per default all container processes will be executed with user id 1000.
 
 - Using root (user id 0):
 
-    Add the \-\-user flag to your docker run command:
+      Add the \-\-user flag to your docker run command:
 
-    {{<highlight bash>}}
-~$ docker run -it -p 5901:5901 -p 6901:6901 --user 0 taconsol/sakuli:2.1.2
-    {{</highlight>}}
+      {{<highlight bash>}}
+
+  ~\$ docker run -it -p 5901:5901 -p 6901:6901 --user 0 taconsol/sakuli:2.1.2
+  {{</highlight>}}
 
 - Using user and group id of host system
 
-    Add the \-\-user flag to your docker run command:
+      Add the \-\-user flag to your docker run command:
 
-    {{<highlight bash>}}
-~$ docker run -it -p 5901:5901 -p 6901:6901 --user $(id -u):$(id -g) taconsol/sakuli:2.1.2
-    {{</highlight>}}
+      {{<highlight bash>}}
 
-## 6 Summary
+  ~$ docker run -it -p 5901:5901 -p 6901:6901 --user $(id -u):\$(id -g) taconsol/sakuli:2.1.2
+  {{</highlight>}}
+
+## 6 Custom Certificates
+
+Internal infrastructure often uses custom certificates with own root CAs etc.
+Things like untrusted certificates cause Sakuli tests to fail, since no connection to an seemingly insecure host will be established (`InsecureCertificateError`).
+
+Unfortunately, browsers use their own certificate store, which requires some additional work to add custom certificates.
+
+#### 6.1 Adding Custom Certificates
+
+In order to add custom certificates to a Sakuli container, one has to provide two things:
+
+- A directory containing certificates for import (_.crt, _.cer, \*.pem)
+- An environment variable called `SAKULI_TRUSTED_CERT_DIR` which holds the path to the directory where certificates for import are located inside the container
+
+If the environment variable has been set, a startup script will pick up all certificates contained in the given folder and import each of them to all available browser certificate stores within `$HOME`, supporting both `cert8.db` databases for older browser versions as well as `cert9.db` files for recent browser versions.
+
+
+#### 6.2 Sample
+
+{{<highlight bash>}}
+~$ docker run -v /path/to/certificates/:/certificate_import -e SAKULI_TRUSTED_CERT_DIR=/certificate_import/ taconsol/sakuli:2.2.0
+{{</highlight>}}
+
+#### 6.3 Firefox
+
+By default, a Firefox test uses a new, blank profile for each test run. In order to pick up the added certificates, a Firefox profile containing the appropriate certificate database has to be specified via `selenium.firefox.profile=/path/to/profile/folder` in `testsuite.properties`. In order to make this process easier, a dedicated Firefox profile for use with certificates is located at `/headless/firefox-certificates` to be used, instead of the generated profiles in `/headless/.mozilla/firefox/long_random_id.default`.
+
+**Attention:** If this property is not set, added certificates will have no effect.
+
+## 7 Overview Environment Variables
+
+| Environment Variable    | Default Value        | Description                                         |
+| ----------------------- | -------------------- | --------------------------------------------------- |
+| SAKULI_TEST_SUITE       | \$HOME/demo_testcase | Path to Sakuli testsuite to be executed             |
+| SAKULI_LICENSE_KEY      |                      | Sakuli license to use the container                 |
+| VNC_COL_DEPTH           | 24                   | Color depth of container monitor                    |
+| VNC_RESOLUTION          | 1280x1024            | Screen resolution of container                      |
+| VNC_PW                  | vncpassword          | Password to access NoVNC/VNC connection             |
+| VNC_VIEW_ONLY           | false                | Enable/Disable view-only mode                       |
+| NODE_NO_WARNINGS        | 1                    | Enable/Disable node warnings (deprecations etc.)    |
+| NPM_TOKEN               |                      | NPM token to access npmjs.com registry              |
+| SAKULI_TRUSTED_CERT_DIR |                      | Directory containing custom certificates for import |
+
+## 8 Summary
 
 Once we have
 
