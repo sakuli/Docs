@@ -23,10 +23,10 @@ npm i @sakuli/forwarder-icinga2 To register the forwarder into your project you 
     
     <item>
       <title>Prerequisites</title>
-      <link>/docs/start/prerequisites/</link>
+      <link>/docs/getting-started/prerequisites/</link>
       <pubDate>Tue, 10 Sep 2019 15:25:53 +0200</pubDate>
       
-      <guid>/docs/start/prerequisites/</guid>
+      <guid>/docs/getting-started/prerequisites/</guid>
       <description>What you need Sakuli is built and tested against the current LTS version of Node.js. In order to be able to run Sakuli on your system, we will assume that you have a Node v10.15.3 (lts/dubnium) installed on it.
 To install Node on your system, you can either go to the Node website or you can use tools like Node Version Manager utility to manage various Node versions on a per-user basis.</description>
     </item>
@@ -55,10 +55,10 @@ npm i @sakuli/forwarder-checkmk To register the forwarder into your project you 
     
     <item>
       <title>Initialization</title>
-      <link>/docs/start/initialization/</link>
+      <link>/docs/getting-started/initialization/</link>
       <pubDate>Tue, 10 Sep 2019 15:26:17 +0200</pubDate>
       
-      <guid>/docs/start/initialization/</guid>
+      <guid>/docs/getting-started/initialization/</guid>
       <description>Initialize a project This guide will get you started with writing Sakuli tests from scratch. To follow this tutorial, you should create a new NPM project in an empty folder.
 For this guide, we will assume that our working directory is /tmp/sakuli_starter on a *nix system, or %Temp%\sakuli_starter on a Windows machine.
 To create a new, empty project, first run:
@@ -88,10 +88,10 @@ Keyboard actions The following snippet shows a possible use-case for native keyb
     
     <item>
       <title>Installation</title>
-      <link>/docs/start/installation/</link>
+      <link>/docs/getting-started/installation/</link>
       <pubDate>Tue, 10 Sep 2019 15:29:27 +0200</pubDate>
       
-      <guid>/docs/start/installation/</guid>
+      <guid>/docs/getting-started/installation/</guid>
       <description>Installation Process The following steps are required to set up Sakuli to work with multiple browsers. Once the initial setup is done, we will dive right into our first test.
 WebDriver Installation Sakuli utilizes the WebDriver protocol to remote control browsers during test execution. In addition to the browser itself, you need to install the corresponding WebDriver as well. Several wrapper packages can be found on npmjs.com, which allow the installation of the required binaries via npm.</description>
     </item>
@@ -119,10 +119,10 @@ Of course, you can also use Sakulis native testing power on its own, e.</descrip
     
     <item>
       <title>First Setup</title>
-      <link>/docs/start/firsttest/</link>
+      <link>/docs/getting-started/firsttest/</link>
       <pubDate>Tue, 10 Sep 2019 15:30:30 +0200</pubDate>
       
-      <guid>/docs/start/firsttest/</guid>
+      <guid>/docs/getting-started/firsttest/</guid>
       <description>Setup Setup Your First Test Since v2.2.0 Sakuli provides an easy to use mechanism to initialize testcases and testsuites.
 npx sakuli create project . my-sut This will create all necessary files and folders to start writing your first Sakuli test right away. With this, you can skip the next section and directly start to write your first test
 Setup the Project Manually Since we wanted to keep Sakuli mostly compatible to v1, the file layout looks basically the same for testsuites.</description>

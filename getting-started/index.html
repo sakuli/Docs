@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs/start/installation/">
+  <body class="" data-url="/docs/getting-started/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -79,12 +79,12 @@
  
   
     
-    <li data-nav-id="/docs/start/" title="Getting Started" class="dd-item 
+    <li data-nav-id="/docs/getting-started/" title="Getting Started" class="dd-item 
         parent
-        
+        active
         
         ">
-      <a href="/docs/start/">
+      <a href="/docs/getting-started/">
           <i class='fas fa-chevron-right'></i>  Getting Started
           
             <i class="fas fa-check read-icon"></i>
@@ -106,8 +106,8 @@
  
   
     
-      <li data-nav-id="/docs/start/prerequisites/" title="Prerequisites" class="dd-item ">
-        <a href="/docs/start/prerequisites/">
+      <li data-nav-id="/docs/getting-started/prerequisites/" title="Prerequisites" class="dd-item ">
+        <a href="/docs/getting-started/prerequisites/">
         Prerequisites
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -125,8 +125,8 @@
  
   
     
-      <li data-nav-id="/docs/start/initialization/" title="Initialization" class="dd-item ">
-        <a href="/docs/start/initialization/">
+      <li data-nav-id="/docs/getting-started/initialization/" title="Initialization" class="dd-item ">
+        <a href="/docs/getting-started/initialization/">
         Initialization
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -144,8 +144,8 @@
  
   
     
-      <li data-nav-id="/docs/start/installation/" title="Installation" class="dd-item active">
-        <a href="/docs/start/installation/">
+      <li data-nav-id="/docs/getting-started/installation/" title="Installation" class="dd-item ">
+        <a href="/docs/getting-started/installation/">
         Installation
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -163,8 +163,8 @@
  
   
     
-      <li data-nav-id="/docs/start/firsttest/" title="First Setup" class="dd-item ">
-        <a href="/docs/start/firsttest/">
+      <li data-nav-id="/docs/getting-started/firsttest/" title="First Setup" class="dd-item ">
+        <a href="/docs/getting-started/firsttest/">
         First Setup
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -546,13 +546,7 @@
             
           
           
-            
-            
-          
-          
-            <a href='/docs/'></a> > <a href='/docs/start/'>Getting Started</a> > Installation
-          
-         
+            <a href='/docs/'></a> > Getting Started
           
          
           
@@ -565,19 +559,7 @@
     <div class="wrapper">
         <nav id="TableOfContents">
 <ul>
-<li><a href="#installation-process">Installation Process</a>
-<ul>
-<li><a href="#webdriver-installation">WebDriver Installation</a></li>
-<li><a href="#sakuli-installation">Sakuli Installation</a>
-<ul>
-<li><a href="#3rd-party-dependencies">3rd-party dependencies</a></li>
-<li><a href="#windows">Windows</a></li>
-<li><a href="#macos">macOS</a></li>
-<li><a href="#linux">Linux</a></li>
-<li><a href="#sakuli-installation-1">Sakuli Installation</a></li>
-<li><a href="#reference">Reference</a></li>
-</ul></li>
-</ul></li>
+<li><a href="#easy-start">Easy Start</a></li>
 </ul>
 </nav>
     </div>
@@ -601,114 +583,27 @@
 
 
 
+	
 
-<h1 id="installation-process">Installation Process</h1>
+<h1 id="easy-start">Easy Start</h1>
 
-<p>The following steps are required to set up Sakuli to work with multiple browsers.
-Once the initial setup is done, we will dive right into our first test.</p>
+<p>The following video shows a quick introduction on how to install and bootstrap <strong>Sakuli</strong> and how to setup and start your first UI-Test on a MAC computer. For a detailed installation procedure, please click the green arrow to the right or navigate through the table of content on the left navigation pane.</p>
 
-<h2 id="webdriver-installation">WebDriver Installation</h2>
+<div style="background-color: #fff; padding: 20px; box-shadow: 0px 0px 10px #7C7C7B; margin-left: 10%; margin-right: 10%; margin-top: 50px; margin-bottom: 50px">
+    <video width="100%" style='margin: 0' controls >
+        <source src="/videos/GettingStarted.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div background-color: #fff;>Sakuli in a minute</div>
+</div>
 
-<p>Sakuli utilizes the <a href="https://www.w3.org/TR/webdriver1/" target="_blank">WebDriver protocol</a> to remote control browsers during test execution.
-In addition to the browser itself, you need to install the corresponding WebDriver as well.
-Several wrapper packages can be found on <a href="https://npmjs.com" target="_blank">npmjs.com</a>, which allow the installation of the required binaries via <code>npm</code>.</p>
 
-<p>Since some users encountered issues with geckodriver on Firefox, we recommend using chromedriver for now. We are working on fixes and workarounds for geckodriver.</p>
 
-<p>Therefore, Chrome is the preferred browser for running Sakuli tests at the moment. A suitable WebDriver can be installed via:</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm i chromedriver</code></pre></div>
-
-<p>or</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yarn add chromedriver</code></pre></div>
-
-<p>There are also WebDriver packages for <a href="https://www.npmjs.com/package/iedriver" target="_blank">IE</a> and <a href="https://www.npmjs.com/package/edgedriver" target="_blank">Edge</a>.
-macOS already ships a WebDriver for Safari, so there is no need to install an additional package.</p>
-
-<p>Attention: Be careful to install the correct version of a WebDriver package according to the installed browser version. To install e.g. ChromeDriver for Chrome 73 you have to install:</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm i chromedriver@73.0.0</code></pre></div>
-
-<p>Sakuli is not limited to work with only a single browser.
-When installing multiple WebDriver packages, you can easily switch between different browsers.</p>
-
-<p>Regarding Windows Users: You will have to manually add the respective WebDriver location to your system <code>PATH</code>, otherwise Sakuli will not be able to find and use it. Once you installed a WebDriver package via NPM, you will be prompted with its installation path, so you can easily add it to your <code>%PATH%</code> variable.</p>
-
-<p>Sample path:
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">%USERPROFILE%<span style="color:#ae81ff">\\</span>AppData<span style="color:#ae81ff">\\</span>Roaming<span style="color:#ae81ff">\\</span>npm<span style="color:#ae81ff">\\</span>node_modules<span style="color:#ae81ff">\\</span>chromedriver<span style="color:#ae81ff">\\</span>lib<span style="color:#ae81ff">\\</span>chromedriver<span style="color:#ae81ff">\\</span></code></pre></div></p>
-
-<h2 id="sakuli-installation">Sakuli Installation</h2>
-
-<h3 id="3rd-party-dependencies">3rd-party dependencies</h3>
-
-<p>One of Sakuli&rsquo;s core components, <a href="https://github.com/nut-tree/nut.js" target="_blank">nut.js</a>, requires OpenCV.
-Sakuli ships a pre-built version of OpenCV. Nonetheless, the installation still requires some 3rd-party dependencies.</p>
-
-<h3 id="windows">Windows</h3>
-
-<p>In order to install and run Sakuli on Windows you need two additional tools: <a href="https://www.python.org/downloads/windows/" target="_blank">Python 2</a> and the <a href="https://www.microsoft.com/en-us/download/details.aspx?id=48159" target="_blank">Windows Build Tools</a>.</p>
-
-<p>To avoid eventual installation problems for Windows users we recommend to first install Python 2 on your system separately by downloading the required version from the official web page. Afterwards you can install the Windows Build Tools manually or via NPM using:</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm install --global windows-build-tools</code></pre></div>
-
-<p>or</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yarn global add windows-build-tools</code></pre></div>
-
-<p>In case of errors while installing the Windows Build Tools package via <code>npm</code>, please make sure that the PowerShell is available on your system <code>PATH</code>. Additionally, you should install the Windows Build Tools by using the PowerShell in administrative mode.
-See <a href="https://github.com/felixrieseberg/windows-build-tools/issues/20#issuecomment-373885943" target="_blank">this issue</a>.</p>
-
-<h3 id="macos">macOS</h3>
-
-<p>On macOS, Xcode command line tools are required.
-You can install them by running:
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">xcode-select --install</code></pre></div></p>
-
-<h3 id="linux">Linux</h3>
-
-<p>Depending on your distribution, Linux setups may differ.</p>
-
-<p>In general, Sakuli requires:</p>
-
-<ul>
-<li>Python 2</li>
-<li>g++</li>
-<li>make</li>
-<li>libXtst</li>
-<li>libPng</li>
-</ul>
-
-<p>Installation on *buntu:
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt-get install build-essential python libxtst-dev libpng++-dev</code></pre></div></p>
-
-<p>The installation process is an open issue and will be improved in the near future, so using Sakuli will become even more enjoyable!</p>
-
-<h3 id="sakuli-installation-1">Sakuli Installation</h3>
-
-<p>We will now install Sakuli in our newly created project by running:</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm i @sakuli/cli</code></pre></div>
-
-<p>or</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yarn add @sakuli/cli</code></pre></div>
-
-<p>This will install Sakuli and its required dependencies.</p>
-
-<h3 id="reference">Reference</h3>
-
-<ul>
-<li><a href="https://github.com/justadudewhohacks/opencv4nodejs#how-to-install" target="_blank">opencv4nodejs</a></li>
-<li><a href="http://robotjs.io/docs/building" target="_blank">robotjs</a></li>
-</ul>
 
 
 <footer class=" footline" >
 	
 </footer>
-
 
         
         </div> 
@@ -790,7 +685,6 @@ You can install them by running:
             
                 
                     
-                    
                 
                 
 
@@ -806,9 +700,6 @@ You can install them by running:
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1041,10 +932,10 @@ You can install them by running:
 	 
 	 
 		
-			<a class="nav nav-prev" href="/docs/start/initialization/" title="Initialization"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/docs/" title=""> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/docs/start/firsttest/" title="First Setup" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/docs/getting-started/prerequisites/" title="Prerequisites" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1074,4 +965,3 @@ You can install them by running:
 
   </body>
 </html>
-
