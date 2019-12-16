@@ -479,9 +479,9 @@
  
   
     
-      <li data-nav-id="/docs/cookbook/proxy/" title="Container behind proxies" class="dd-item active">
+      <li data-nav-id="/docs/cookbook/proxy/" title="Container and Proxies" class="dd-item active">
         <a href="/docs/cookbook/proxy/">
-        Container behind proxies
+        Container and Proxies
         <i class="fas fa-check read-icon"></i>
         </a>
     </li>
@@ -589,7 +589,7 @@
             
           
           
-            <a href='/docs/'></a> > <a href='/docs/cookbook/'>Cookbook</a> > Container behind proxies
+            <a href='/docs/'></a> > <a href='/docs/cookbook/'>Cookbook</a> > Container and Proxies
           
         
           
@@ -602,7 +602,11 @@
                 
                     <div class="progress">
     <div class="wrapper">
-        
+        <nav id="TableOfContents">
+<ul>
+<li><a href="#container-behind-proxies">Container behind Proxies</a></li>
+</ul>
+</nav>
     </div>
 </div>
 
@@ -623,12 +627,16 @@
 
 
 
-<p>To configure a proxy within your docker container, set one or both of the following environment variables within your docker run command:</p>
+
+
+<h1 id="container-behind-proxies">Container behind Proxies</h1>
+
+<p>To configure a proxy within your docker container, set one or both of the following environment variables within your docker run command.</p>
 
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">-e HTTP_PROXY<span style="color:#f92672">=</span>http://server-ip:port/
 -e HTTPS_PROXY<span style="color:#f92672">=</span>http<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>://server-ip:port/ </code></pre></div>
 
-<p>e.g. like this:</p>
+<p>Use a HTTP_PROXY for http target sites and HTTPS_PROXY for https sites, if you switch between secure and insecure sites or just to be sure not to worry about it, you can also define both proxies at the same time, e.g. like this:</p>
 
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm -p <span style="color:#ae81ff">5901</span>:5901 -p <span style="color:#ae81ff">6901</span>:6901 -e HTTP_PROXY<span style="color:#f92672">=</span>http://server-ip:port/ -e HTTPS_PROXY<span style="color:#f92672">=</span>http<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>://server-ip:port/ -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>yourLicenseKey taconsol/sakuli:2.2.0</code></pre></div>
 
