@@ -38,7 +38,7 @@ Use Firefox as a browser for this test to work, as Chrome simply downloads the f
     } finally {
         testCase.saveResult();
     }
-})().then(done);
+})();
 {{< /highlight >}}
 
 It is even possible to change the download location dynamically in some environments, by entering a new save path via: 

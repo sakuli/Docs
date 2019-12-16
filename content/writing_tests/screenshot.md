@@ -22,8 +22,10 @@ To reproduce this scenario, you need to capture screenshots of the egg and the p
     const testCase = new TestCase("native_keyboard_demo");
     const url = "https://codepen.io/naturalhanglider/full/jQMWoq";
     const screen = new Region();
+    const env = new Environment();
     try {
         await _navigateTo(url);
+        await env.setSimilarity(0.8);
         await screen
             .find("source_egg.png")
             .mouseMove()
@@ -36,7 +38,7 @@ To reproduce this scenario, you need to capture screenshots of the egg and the p
     } finally {
         testCase.saveResult();
     }
-})().then(done);
+})();
 {{< /highlight>}}
 
 <!--self built wrapper with a frame and shaddow
@@ -58,8 +60,10 @@ To reproduce this scenario, you need to capture screenshots of the egg and the p
     const testCase = new TestCase("native_demo");
     const url = "https://codepen.io/naturalhanglider/full/jQMWoq";
     const screen = new Region();
+    const env = new Environment();
     try {
         await _navigateTo(url);
+        await env.setSimilarity(0.8);
         await screen.find("source_egg.png").mouseMove().mouseDown(MouseButton.LEFT);
         await new Region(0, 0, 10, 10).mouseMove();
         await new Region(500, 700, 50, 100).mouseMove();
