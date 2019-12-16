@@ -479,6 +479,25 @@
  
   
     
+      <li data-nav-id="/docs/cookbook/container/" title="Run Container" class="dd-item ">
+        <a href="/docs/cookbook/container/">
+        Run Container
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
       <li data-nav-id="/docs/cookbook/proxy/" title="Container and Proxies" class="dd-item ">
         <a href="/docs/cookbook/proxy/">
         Container and Proxies
@@ -685,7 +704,7 @@ echo &gt; my-testcase/testcase.js</code></pre></div>
 
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo my-testcase/testcase.js https://sakuli.io &gt; testsuite.suite</code></pre></div>
 
-<p>After the setup you can add the actual testcode to <code>my-testcase/testcase.js</code>:</p>
+<p>After the setup you can add the actual test code to <code>my-testcase/testcase.js</code>:</p>
 
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript">(<span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> {  <span style="color:#75715e">// 1
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">testCase</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TestCase</span>(); <span style="color:#75715e">// 2
@@ -696,7 +715,7 @@ echo &gt; my-testcase/testcase.js</code></pre></div>
 </span><span style="color:#75715e"></span>    } <span style="color:#66d9ef">finally</span> {
         <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">saveResult</span>(); <span style="color:#75715e">// 4
 </span><span style="color:#75715e"></span>    }
-})().<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">done</span>); <span style="color:#960050;background-color:#1e0010">// 5</span></code></pre></div>
+})(); <span style="color:#960050;background-color:#1e0010">// 5</span></code></pre></div>
 
 <p>Let us examine this piece of code:</p>
 
@@ -718,7 +737,8 @@ echo &gt; my-testcase/testcase.js</code></pre></div>
         <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_navigateTo</span>(<span style="color:#e6db74">&#34;https://sakuli.io&#34;</span>);                  <span style="color:#75715e">// 1
 </span><span style="color:#75715e"></span>        <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">endOfStep</span>(<span style="color:#e6db74">&#34;Open Landing Page&#34;</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">10</span>);          <span style="color:#75715e">// 2
 </span><span style="color:#75715e"></span>        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_link</span>(<span style="color:#e6db74">&#34;Getting started&#34;</span>));                  <span style="color:#75715e">// 3
-</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">endOfStep</span>(<span style="color:#e6db74">&#34;Navigate to Getting Started&#34;</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>);
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_link</span>(<span style="color:#e6db74">&#34;Initialization&#34;</span>));
+        <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">endOfStep</span>(<span style="color:#e6db74">&#34;Navigate to Initialization Section&#34;</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>);
         <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_highlight</span>(<span style="color:#a6e22e">_code</span>(<span style="color:#e6db74">&#34;npm init&#34;</span>));                     <span style="color:#75715e">// 4
 </span><span style="color:#75715e"></span>        <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">endOfStep</span>(<span style="color:#e6db74">&#34;Find npm init code sample&#34;</span>);
     } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">e</span>) {
@@ -726,7 +746,7 @@ echo &gt; my-testcase/testcase.js</code></pre></div>
     } <span style="color:#66d9ef">finally</span> {
         <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">saveResult</span>();
     }
-})().<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">done</span>);</code></pre></div>
+})();</code></pre></div>
 
 <ol>
 <li>Since we are dealing with a web test, the first thing we want to do is to <code>_navigateTo</code> our target page. Instead of manually setting up the correct WebDriver instance, we just have to provide a target URL. Sakuli will take care of the rest for us. <code>await</code> indicates that we are patiently waiting for our page to load before we continue with our next testing step.</li>
@@ -1078,6 +1098,22 @@ The advantage of running your tests with <code>npx</code> is the flexibility to 
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
                     
                         
             

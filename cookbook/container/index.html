@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs/enterprise_features/s2i/">
+  <body class="" data-url="/docs/cookbook/container/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -300,7 +300,7 @@
   
     
     <li data-nav-id="/docs/enterprise_features/" title="Enterprise Features" class="dd-item
-        parent
+        
         
         
         ">
@@ -402,7 +402,7 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/s2i/" title="S2I Image" class="dd-item active">
+      <li data-nav-id="/docs/enterprise_features/s2i/" title="S2I Image" class="dd-item ">
         <a href="/docs/enterprise_features/s2i/">
         S2I Image
         <i class="fas fa-check read-icon"></i>
@@ -453,7 +453,7 @@
   
     
     <li data-nav-id="/docs/cookbook/" title="Cookbook" class="dd-item
-        
+        parent
         
         
         ">
@@ -479,7 +479,7 @@
  
   
     
-      <li data-nav-id="/docs/cookbook/container/" title="Run Container" class="dd-item ">
+      <li data-nav-id="/docs/cookbook/container/" title="Run Container" class="dd-item active">
         <a href="/docs/cookbook/container/">
         Run Container
         <i class="fas fa-check read-icon"></i>
@@ -608,7 +608,7 @@
             
           
           
-            <a href='/docs/'></a> > <a href='/docs/enterprise_features/'>Enterprise Features</a> > S2I Image
+            <a href='/docs/'></a> > <a href='/docs/cookbook/'>Cookbook</a> > Run Container
           
         
           
@@ -623,23 +623,13 @@
     <div class="wrapper">
         <nav id="TableOfContents">
 <ul>
-<li><a href="#s2i-image">S2I Image</a>
+<li><a href="#how-to-run-a-container-with-sakuli-tests">How to run a Container with Sakuli Tests</a>
 <ul>
-<li><a href="#setup">Setup</a></li>
-<li><a href="#adding-custom-certificates">Adding Custom Certificates</a>
-<ul>
-<li><a href="#certificate-secret">Certificate Secret</a></li>
-<li><a href="#certificate-volume-mount">Certificate Volume Mount</a></li>
-<li><a href="#sakuli-trusted-cert-dir-variable">SAKULI_TRUSTED_CERT_DIR Variable</a>
-<ul>
-<li><a href="#firefox">Firefox</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#create-s2i-build">Creating an S2I build</a>
-<ul>
-<li><a href="#advanced-s2i-build-configuration">Advanced S2I build configuration</a></li>
-</ul></li>
-<li><a href="#s2i-template">S2I build template</a></li>
+<li><a href="#download-the-image">Download the image</a></li>
+<li><a href="#folder-structure-and-necessary-files">Folder structure and necessary files</a></li>
+<li><a href="#run">Run</a></li>
+<li><a href="#watch-the-magic">Watch the magic</a></li>
+<li><a href="#what-s-more">What´s more?</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -665,291 +655,50 @@
 
 
 
-<h1 id="s2i-image">S2I Image</h1>
+<h1 id="how-to-run-a-container-with-sakuli-tests">How to run a Container with Sakuli Tests</h1>
 
-<p>Sakuli enterprise comes with ready-to-use <a href="https://github.com/openshift/source-to-image">source to image (S2I)</a>
-containers for RedHat OpenShift. Using this builder container, it is easily possible to create deployable Sakuli images
-shipped with a test suite straight from your code repository.</p>
+<blockquote>
+<p>Sakuli Container are only available with an active Sakuli subscription.</p>
+</blockquote>
 
-<h2 id="setup">Setup</h2>
+<p>A Sakuli Container ships with pre-installed Sakuli, Monitoring forwarder and other additional features, it is not necessary to install anything on your docker-host, except for docker.</p>
 
-<p>To setup the source to image builds on your OpenShift cluster, it is required to import the images from
-<code>taconsol/sakuli-s2i</code>. To achieve this, you have to create a docker-registry secret with your <code>&lt;docker-username&gt;</code> and
-<code>&lt;docker-password&gt;</code> and link it to your <code>builder</code> service account to authenticate on docker.io during build.
-Once you obtained a Sakuli Enterprise license your Docker user will be granted access to the private Sakuli S2I images.</p>
+<h2 id="download-the-image">Download the image</h2>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc create secret docker-registry dockerhub-sakuli-secret <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --docker-server<span style="color:#f92672">=</span>docker.io <span style="color:#ae81ff">\
-</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="color:#ae81ff"></span>    --docker-username<span style="color:#f92672">=</span>&lt;docker-username&gt; <span style="color:#ae81ff">\
-</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="color:#ae81ff"></span>    --docker-password<span style="color:#f92672">=</span>&lt;docker-password&gt; <span style="color:#ae81ff">\
-</span></span><span style="color:#ae81ff"></span>    --docker-email<span style="color:#f92672">=</span>unused
+<p>With your logged-in docker-user (which is authorized to access the repository with an active subscription), you first need to download the Sakuli image:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull taconsol/sakuli:2.2.0</code></pre></div></p>
 
-oc secrets link builder dockerhub-sakuli-secret</code></pre></div>
+<h2 id="folder-structure-and-necessary-files">Folder structure and necessary files</h2>
 
-<p>After you&rsquo;ve created and linked the secret, you can import the images from the secured registry.</p>
+<p>You will need a proper Sakuli Test setup on your docker-host. Download the following template for an easy start:
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc import-image sakuli-s2i <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --from<span style="color:#f92672">=</span>docker.io/taconsol/sakuli-s2i <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --confirm <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --scheduled<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --all<span style="color:#f92672">=</span>true</code></pre></div>
-<em>Note: The <code>oc import-image</code> statement is configured to not only import all available Sakuli S2I images but also to
-check for updates automatically.</em></p>
+<div style="background-color: #fff; padding: 20px; box-shadow: 0px 0px 10px #7C7C7B; margin-left: 0%; margin-right: 0%; margin-top: 20px; margin-bottom: 20px">
+        <a href="/docs/files/folderStructure.zip">Download</a>
+</div>
 
-<h2 id="adding-custom-certificates">Adding Custom Certificates</h2>
 
-<p>The following requirements have to be met to add custom certificates to a Sakuli S2I build:</p>
+After unzipping the file, you will have a folder structure like this with the proper files to run a test using a Sakuli container:
 
-<ul>
-<li>An OpenShift secret holding custom certificates</li>
-<li>A volume mount for the required certificates</li>
-<li>An environment variable called <code>SAKULI_TRUSTED_CERT_DIR</code> which holds the path to the directory where certificates for import are located inside the container</li>
-</ul>
+<div style="background-color: #fff; padding: 5px; box-shadow: 0px 0px 10px #7C7C7B; margin-left: 0%; margin-right: 0%; margin-top: 20px; margin-bottom: 20px">
+        <img src="/docs/images/folderStructureContainerTest.png" alt="Showing the folder structure in a Editor" >
+</div>
 
-<h3 id="certificate-secret">Certificate Secret</h3>
+</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc create secret generic custom-certs <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --from-file<span style="color:#f92672">=</span>my-first-cert.cer<span style="color:#f92672">=</span>/path/to/first/cert.cer <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --from-file<span style="color:#f92672">=</span>another-cert.crt<span style="color:#f92672">=</span>/path/to/another/cert.crt <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --from-file<span style="color:#f92672">=</span>last-cert.pem<span style="color:#f92672">=</span>/path/to/last/cert.pem</code></pre></div>
+<h2 id="run">Run</h2>
 
-<p>The above snippet will create a new secret called <code>custom-certs</code> which holds three key-value pairs storing our certificates.</p>
+<p>Open a terminal and navigate to the folder &ldquo;container_test&rdquo;.
+Within this folder, run the following docker command (you will have to insert your active Sakuli License Key):
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/suite -p <span style="color:#ae81ff">5901</span>:5901 -p <span style="color:#ae81ff">6901</span>:6901 -e SAKULI_TEST_SUITE<span style="color:#f92672">=</span>/suite -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>YourLicenseKey taconsol/sakuli:2.2.0</code></pre></div></p>
 
-<h3 id="certificate-volume-mount">Certificate Volume Mount</h3>
+<h2 id="watch-the-magic">Watch the magic</h2>
 
-<p>The next step to include custom certificates is to mount them in a test container.</p>
+<p>You can use the noVNC feature to have a live-view of what is happening within the Container by opening the following link on your docker-host while the container is running and a test is executed:
+<a href="http://localhost:6901/?password=vncpassword">http://localhost:6901/?password=vncpassword</a></p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">spec:
-  containers:
-  - name: ...
-    image: ...
-    volumeMounts:
-      - name: custom-certs
-        mountPath: /etc/custom-certs
-  volumes:
-  - name: custom-certs
-    secret:
-        secretName: custom-certs</code></pre></div>
+<h2 id="what-s-more">What´s more?</h2>
 
-<p>We are defining a volume <code>custom-certs</code> which holds the content of our previously generated secrets.
-By mounting this volume in our test container we&rsquo;re able to provide the custom certificates to the container at runtime.</p>
-
-<p>If one does not want to mount all certificates, certificates can be selected via <code>subPath</code>:</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">spec:
-  containers:
-  - name: ...
-    image: ...
-    volumeMounts:
-      - name: custom-certs
-<span style="display:block;width:100%;background-color:#3c3d38">        subPath: first-cert.cer
-</span><span style="display:block;width:100%;background-color:#3c3d38">        mountPath: /etc/custom-certs/first-cert.cer
-</span>      - name: custom-certs
-<span style="display:block;width:100%;background-color:#3c3d38">        subPath: another-cert.crt
-</span><span style="display:block;width:100%;background-color:#3c3d38">        mountPath: /etc/custom-certs/another-cert.crt
-</span>  volumes:
-  - name: custom-certs
-    secret:
-        secretName: custom-certs</code></pre></div>
-
-<h3 id="sakuli-trusted-cert-dir-variable">SAKULI_TRUSTED_CERT_DIR Variable</h3>
-
-<p>The final step to enable custom certificates is to provide the certificate location via environment variable:</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">spec:
-  containers:
-  - name: ...
-    image: ...
-<span style="display:block;width:100%;background-color:#3c3d38">    env:
-</span><span style="display:block;width:100%;background-color:#3c3d38">      - name: SAKULI_TRUSTED_CERT_DIR
-</span><span style="display:block;width:100%;background-color:#3c3d38">        value: /etc/custom-certs
-</span>    volumeMounts:
-      - name: custom-certs
-        mountPath: /etc/custom-certs
-  volumes:
-  - name: custom-certs
-    secret:
-        secretName: custom-certs</code></pre></div>
-
-<h4 id="firefox">Firefox</h4>
-
-<p>By default, a Firefox test uses a new, blank profile for each test run. In order to pick up the added certificates, a Firefox profile containing the appropriate certificate database has to be specified via <code>selenium.firefox.profile=/path/to/profile/folder</code> in <code>testsuite.properties</code>. In order to make this process easier, a dedicated Firefox profile for use with certificates is located at <code>/headless/firefox-certificates</code> to be used, instead of the generated profiles in <code>/headless/.mozilla/firefox/long_random_id.default</code>.</p>
-
-<p><strong>Attention:</strong> If this property is not set, added certificates will have no effect.</p>
-
-<h2 id="create-s2i-build">Creating an S2I build</h2>
-
-<p>The following build-config template is ready to use to create Sakuli S2I builds for various repositories and test suites.
-Just copy and save the <a href="#s2i-template">S2I build template</a> as <code>sakuli-s2i-build-template.yml</code>. To process the template
-some additional information is required that are not part of the template. First of all, you have to provide a
-<code>SAKULI_LICENSE_KEY</code> to be able to execute the images resulting from the build process and you have to specify the
-repository to pull the test case from as <code>TESTSUITE_REPOSITORY_URL</code>. To install such a basic setup on your OpenShift
-cluster, just use the following command and replace the placeholder with actual values.</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc process -f sakuli-s2i-build-template.yml <span style="color:#ae81ff">\
-</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="color:#ae81ff"></span>    SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;SAKULI_LICENSE_KEY&gt; <span style="color:#ae81ff">\
-</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="color:#ae81ff"></span>    TESTSUITE_REPOSITORY_URL<span style="color:#f92672">=</span>&lt;TESTSUITE_REPOSITORY_URL&gt; | oc apply -f -</span></code></pre></div>
-
-<h3 id="advanced-s2i-build-configuration">Advanced S2I build configuration</h3>
-
-<p>The provided template comes with a lot of optional parameter to customize your build process. The following table
-contains all available parameters. Additional parameters are specified in the same way as seen in the
-<a href="#create-s2i-build">Creating an S2I build</a> section.</p>
-
-<table>
-    <tr>
-        <th>Parameter</th>
-        <th>Optional</th>
-        <th>Description</th>
-        <th>Default value</th>
-    </tr>
-    <tr>
-        <td>SAKULI_LICENSE_KEY</td>
-        <td>NO</td>
-        <td>Sakuli2 License key.</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>TESTSUITE_REPOSITORY_URL</td>
-        <td>NO</td>
-        <td>Git source URL containing the test suite.</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>TESTSUITE_REPOSITORY_REF</td>
-        <td>YES</td>
-        <td>Git branch/tag reference.</td>
-        <td>master</td>
-    </tr>
-    <tr>
-        <td>IMAGE</td>
-        <td>YES</td>
-        <td>Name for the target image to be build.</td>
-        <td>sakuli-s2i-testsuite</td>
-    </tr>
-    <tr>
-        <td>IMAGE_TAG</td>
-        <td>YES</td>
-        <td>Tag to push build images to.</td>
-        <td>latest</td>
-    </tr>
-    <tr>
-        <td>TESTSUITE_CONTEXT_DIR</td>
-        <td>YES</td>
-        <td>Source folder where the test suite is located.</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>TESTSUITE_REPOSITORY_SECRET</td>
-        <td>YES</td>
-        <td>Secret to access the testsuite repository.</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>BUILDER_IMAGE</td>
-        <td>YES</td>
-        <td>Name of the builder image.</td>
-        <td>sakuli-s2i</td>
-    </tr>
-    <tr>
-        <td>BUILDER_IMAGE_TAG</td>
-        <td>YES</td>
-        <td>Tag of the builder image to use.</td>
-        <td>latest</td>
-    </tr>
-</table>
-
-<h2 id="s2i-template">S2I build template</h2>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">apiVersion: v1
-kind: Template
-labels:
-  template: sakuli-s2i-testsuite-image-build
-metadata:
-  annotations:
-    description: Build config to create a ready to run Sakuli2 container with the specified testsuite
-    tags: consol, sakuli2, custom-image, s2i, source-to-image
-  name: sakuli-s2i-testsuite-image-build
-parameters:
-  - description: Name for the target image of the build.
-    name: IMAGE
-    required: <span style="color:#66d9ef">true</span>
-    value: sakuli-s2i-testsuite
-
-  - description: Image tag of the target image.
-    name: IMAGE_TAG
-    required: <span style="color:#66d9ef">true</span>
-    value: latest
-
-  - description: Sakuli2 License key.
-    name: SAKULI_LICENSE_KEY
-    required: <span style="color:#66d9ef">true</span>
-
-  - description: Git source URL containing the test suite.
-    name: TESTSUITE_REPOSITORY_URL
-    required: <span style="color:#66d9ef">true</span>
-
-  - description: Git branch/tag reference.
-    name: TESTSUITE_REPOSITORY_REF
-    value: <span style="color:#e6db74">&#34;master&#34;</span>
-    required: <span style="color:#66d9ef">true</span>
-
-  - description: Source folder where the test suite is located.
-    name: TESTSUITE_CONTEXT_DIR
-
-  - description: Secret to access the testsuite repository.
-    name: TESTSUITE_REPOSITORY_SECRET
-
-  - description: Name of the builder image.
-    name: BUILDER_IMAGE
-    required: <span style="color:#66d9ef">true</span>
-    value: sakuli-s2i
-
-  - description: Tag of the builder image to use.
-    name: BUILDER_IMAGE_TAG
-    required: <span style="color:#66d9ef">true</span>
-    value: latest
-
-objects:
-  - apiVersion: v1
-    kind: ImageStream
-    metadata:
-      labels:
-        application: ${IMAGE}
-      name: ${IMAGE}
-
-  - apiVersion: v1
-    kind: BuildConfig
-    metadata:
-      labels:
-        build: ${IMAGE}
-      name: ${IMAGE}
-    spec:
-      output:
-        to:
-          kind: ImageStreamTag
-          name: ${IMAGE}:${IMAGE_TAG}
-      source:
-        type: Git
-        git:
-          ref: ${TESTSUITE_REPOSITORY_REF}
-          uri: ${TESTSUITE_REPOSITORY_URL}
-        contextDir: ${TESTSUITE_CONTEXT_DIR}
-        sourceSecret:
-          name: ${TESTSUITE_REPOSITORY_SECRET}
-      strategy:
-        type: Source
-        sourceStrategy:
-          from:
-            kind: ImageStreamTag
-            name: ${BUILDER_IMAGE}:${BUILDER_IMAGE_TAG}
-          env:
-            - name: <span style="color:#e6db74">&#34;SAKULI_LICENSE_KEY&#34;</span>
-              value: ${SAKULI_LICENSE_KEY}
-      triggers:
-        - imageChange: {}
-          type: ImageChange
-        - type: ConfigChange</code></pre></div>
+<p>Have a look at our Enterprise documentation about Container, Forwarder etc. to get a more in-depth knowledge on what is happening and on how to customize the execution of Sakuli tests.</p>
 
 
 <footer class=" footline" >
@@ -1151,7 +900,6 @@ objects:
             
                 
                     
-                    
                 
                 
 
@@ -1165,8 +913,21 @@ objects:
             
                 
                     
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
                         
-                        
+            
+            
+                
                     
                 
                 
@@ -1227,57 +988,8 @@ objects:
             
         
                     
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
             
         
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
                     
                         
             
@@ -1299,6 +1011,40 @@ objects:
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1339,10 +1085,10 @@ objects:
 	 
 	 
 		
-			<a class="nav nav-prev" href="/docs/enterprise_features/e2e/" title="Container"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/docs/cookbook/" title="Cookbook"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/docs/cli/" title="CLI" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/docs/cookbook/proxy/" title="Container and Proxies" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
