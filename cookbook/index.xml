@@ -11,6 +11,17 @@
     
     
     <item>
+      <title>Container behind proxies</title>
+      <link>/docs/cookbook/proxy/</link>
+      <pubDate>Mon, 16 Dec 2019 11:50:07 +0100</pubDate>
+      
+      <guid>/docs/cookbook/proxy/</guid>
+      <description>To configure a proxy within your docker container, set one or both of the following environment variables within your docker run command:
+-e HTTP_PROXY=http://server-ip:port/ -e HTTPS_PROXY=http(s)://server-ip:port/  e.g. like this:
+docker run --rm -p 5901:5901 -p 6901:6901 -e HTTP_PROXY=http://server-ip:port/ -e HTTPS_PROXY=http(s)://server-ip:port/ -e SAKULI_LICENSE_KEY=yourLicenseKey taconsol/sakuli:2.2.0 </description>
+    </item>
+    
+    <item>
       <title>Frames</title>
       <link>/docs/cookbook/frames/</link>
       <pubDate>Fri, 13 Dec 2019 12:41:40 +0100</pubDate>

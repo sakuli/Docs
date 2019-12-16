@@ -37,7 +37,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs/enterprise_features/icinga/">
+  <body class="" data-url="/docs/cookbook/proxy/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -300,7 +300,7 @@
   
     
     <li data-nav-id="/docs/enterprise_features/" title="Enterprise Features" class="dd-item
-        parent
+        
         
         
         ">
@@ -326,7 +326,7 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/icinga/" title="Icinga2 Forwarder" class="dd-item active">
+      <li data-nav-id="/docs/enterprise_features/icinga/" title="Icinga2 Forwarder" class="dd-item ">
         <a href="/docs/enterprise_features/icinga/">
         Icinga2 Forwarder
         <i class="fas fa-check read-icon"></i>
@@ -453,7 +453,7 @@
   
     
     <li data-nav-id="/docs/cookbook/" title="Cookbook" class="dd-item
-        
+        parent
         
         
         ">
@@ -479,7 +479,7 @@
  
   
     
-      <li data-nav-id="/docs/cookbook/proxy/" title="Container behind proxies" class="dd-item ">
+      <li data-nav-id="/docs/cookbook/proxy/" title="Container behind proxies" class="dd-item active">
         <a href="/docs/cookbook/proxy/">
         Container behind proxies
         <i class="fas fa-check read-icon"></i>
@@ -589,7 +589,7 @@
             
           
           
-            <a href='/docs/'></a> > <a href='/docs/enterprise_features/'>Enterprise Features</a> > Icinga2 Forwarder
+            <a href='/docs/'></a> > <a href='/docs/cookbook/'>Cookbook</a> > Container behind proxies
           
         
           
@@ -602,16 +602,7 @@
                 
                     <div class="progress">
     <div class="wrapper">
-        <nav id="TableOfContents">
-<ul>
-<li><a href="#icinga2-forwarder">Icinga2 Forwarder</a>
-<ul>
-<li><a href="#enable-the-icinga2-api">Enable the Icinga2 API</a></li>
-<li><a href="#create-a-icinga2-service">Create a Icinga2 service</a></li>
-<li><a href="#sakuli-client-configuration">Sakuli Client Configuration</a></li>
-</ul></li>
-</ul>
-</nav>
+        
     </div>
 </div>
 
@@ -632,141 +623,14 @@
 
 
 
+<p>To configure a proxy within your docker container, set one or both of the following environment variables within your docker run command:</p>
 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">-e HTTP_PROXY<span style="color:#f92672">=</span>http://server-ip:port/
+-e HTTPS_PROXY<span style="color:#f92672">=</span>http<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>://server-ip:port/ </code></pre></div>
 
-<h1 id="icinga2-forwarder">Icinga2 Forwarder</h1>
+<p>e.g. like this:</p>
 
-<p>Add the forwarder using the <a href="/docs/enterprise/#assisted-setup">assistant</a> or configure it manually:</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm i @sakuli/forwarder-icinga2</code></pre></div>
-
-<p>To register the forwarder into your project you have to edit the <code>package.json</code> file and add the preset to the Sakuli configuration key:</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-    <span style="color:#f92672">&#34;sakuli&#34;</span>: {
-        <span style="color:#f92672">&#34;presetProvider&#34;</span>: [
-            <span style="color:#e6db74">&#34;@sakuli/legacy&#34;</span>,
-            <span style="color:#e6db74">&#34;@sakuli/forwarder-icinga2&#34;</span>
-        ]
-    }
-}</code></pre></div>
-
-<p>Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the<a href="/docs/enterprise#using-licences-information">enterprise section</a>.</p>
-
-<h2 id="enable-the-icinga2-api">Enable the Icinga2 API</h2>
-
-<p>All steps required to enable the Icinga2 API are described in the <a href="http://docs.icinga.org/icinga2/snapshot/doc/module/icinga2/chapter/icinga2-api">REST API documentation</a>.</p>
-
-<h2 id="create-a-icinga2-service">Create a Icinga2 service</h2>
-
-<p>Create a <code>check_command</code> which will only be executed if Icinga2 did not receive a Sakuli result within a certain time. This ensures that you get a notification even if no passive check result reaches Icinga2 at all:</p>
-
-<p><code>/etc/icinga2/conf.d/commands.conf</code>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-conf" data-lang="conf">object CheckCommand &#34;check_dummy&#34; {
-   import &#34;plugin-check-command&#34;
-   command = [
-     PluginDir + &#34;/check_dummy&#34;,&#34;$dummy_state$&#34;,&#34;$dummy_text$&#34;
-   ]
-   vars.dummy_state = 0
-   vars.dummy_text = &#34;Check was successful.&#34;
-}
-
-object CheckCommand &#34;check_sakuli&#34; {
-   import &#34;check_dummy&#34;
-   vars.dummy_state = 3
-   vars.dummy_text = &#34;No passive Sakuli check result received.&#34;
-}</code></pre></div></p>
-
-<p><code>/etc/icinga2/conf.d/hosts.conf</code>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-conf" data-lang="conf">object Host &#34;sakuliclient01&#34; {
-   import &#34;generic-host&#34;
-   address = &#34;&lt;IP&gt;&#34;
-}</code></pre></div></p>
-
-<p>Create the following service object for the first testcase. The <code>freshness_threshold</code> should be slightly higher than the interval Sakuli tests are planned.</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-conf" data-lang="conf">object Service &#34;sakuli_demo&#34; {
-  import &#34;generic-service&#34;
-  host_name = &#34;sakuliclient01&#34;
-  check_command = &#34;check_sakuli&#34;
-  enable_active_checks = 0
-  enable_passive_checks = 1
-  enable_flapping = 0
-  volatile = 1
-  enable_perfdata = 1
-}</code></pre></div>
-
-<p>Reload Icinga2:</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">service icinga2 reload</code></pre></div>
-
-<p>After opening Icingaweb2 you should see the Sakuli host with the service &ldquo;sakuli_demo&rdquo; attached.</p>
-
-<p>The check is waiting now for check results from a Sakuli client.</p>
-
-<h2 id="sakuli-client-configuration">Sakuli Client Configuration</h2>
-
-<p>You must set the global properties for the Icinga2 receiver on the Sakuli client by editing the <code>sakuli.properties</code>. You can find them in the folder containing the testsuites:</p>
-
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Default</th>
-<th>Effect</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td><code>sakuli.forwarder.icinga2.enabled</code></td>
-<td><code>false</code></td>
-<td>Enables result forwarding to Icinga2</td>
-</tr>
-
-<tr>
-<td><code>sakuli.forwarder.icinga2.api.host</code></td>
-<td></td>
-<td>The hostname or IP of the Icinga2 API-endpoints</td>
-</tr>
-
-<tr>
-<td><code>sakuli.forwarder.icinga2.api.port</code></td>
-<td><code>5665</code></td>
-<td>The port or IP of the Icinga2 API-endpoints</td>
-</tr>
-
-<tr>
-<td><code>sakuli.forwarder.icinga2.api.username</code></td>
-<td></td>
-<td>API user name</td>
-</tr>
-
-<tr>
-<td><code>sakuli.forwarder.icinga2.api.password</code></td>
-<td></td>
-<td>API user password</td>
-</tr>
-
-<tr>
-<td><code>sakuli.forwarder.icinga2.hostname</code></td>
-<td></td>
-<td>The name of the host object configured in Icinga2</td>
-</tr>
-
-<tr>
-<td><code>sakuli.forwarder.icinga2.service_description</code></td>
-<td><code>${testsuite.id}</code></td>
-<td>The name of the service in Icinga2</td>
-</tr>
-
-<tr>
-<td><code>sakuli.forwarder.icinga2.allow_insecure_connection</code></td>
-<td><code>false</code></td>
-<td>Disable SSL checks. <strong>Never</strong> use this in production environments!</td>
-</tr>
-</tbody>
-</table>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm -p <span style="color:#ae81ff">5901</span>:5901 -p <span style="color:#ae81ff">6901</span>:6901 -e HTTP_PROXY<span style="color:#f92672">=</span>http://server-ip:port/ -e HTTPS_PROXY<span style="color:#f92672">=</span>http<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>://server-ip:port/ -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>yourLicenseKey taconsol/sakuli:2.2.0</code></pre></div>
 
 
 <footer class=" footline" >
@@ -968,7 +832,6 @@ object CheckCommand &#34;check_sakuli&#34; {
             
                 
                     
-                    
                 
                 
 
@@ -981,7 +844,6 @@ object CheckCommand &#34;check_sakuli&#34; {
             
             
                 
-                    
                     
                 
                 
@@ -998,9 +860,6 @@ object CheckCommand &#34;check_sakuli&#34; {
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1085,6 +944,7 @@ object CheckCommand &#34;check_sakuli&#34; {
             
                 
                     
+                    
                 
                 
 
@@ -1097,6 +957,7 @@ object CheckCommand &#34;check_sakuli&#34; {
             
             
                 
+                    
                     
                 
                 
@@ -1113,6 +974,9 @@ object CheckCommand &#34;check_sakuli&#34; {
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1137,10 +1001,10 @@ object CheckCommand &#34;check_sakuli&#34; {
 	 
 	 
 		
-			<a class="nav nav-prev" href="/docs/enterprise_features/" title="Enterprise Features"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/docs/cookbook/" title="Cookbook"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/docs/enterprise_features/check/" title="Check MK Fowarder" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/docs/cookbook/frames/" title="Frames" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
