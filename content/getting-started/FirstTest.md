@@ -63,10 +63,9 @@ And add the following information to the `testsuite.suite` file:
 echo my-testcase/testcase.js https://sakuli.io > testsuite.suite
 {{< /highlight >}}
 
-After the setup you can add the actual testcode to `my-testcase/testcase.js`:
+After the setup you can add the actual test code to `my-testcase/testcase.js`:
 
 {{< highlight typescript >}}
-
 (async () => {  // 1
     const testCase = new TestCase(); // 2
     try {
@@ -76,8 +75,7 @@ After the setup you can add the actual testcode to `my-testcase/testcase.js`:
     } finally {
         await testCase.saveResult(); // 4
     }
-})().then(done); // 5
-
+})(); // 5
 {{< /highlight >}}
 
 Let us examine this piece of code:
@@ -99,7 +97,8 @@ Let us write a simple test using the Sakuli.io homepage as test subject. This te
         await _navigateTo("https://sakuli.io");                  // 1
         testCase.endOfStep("Open Landing Page", 5, 10);          // 2
         await _click(_link("Getting started"));                  // 3
-        testCase.endOfStep("Navigate to Getting Started", 3, 5);
+        await _click(_link("Initialization"));
+        testCase.endOfStep("Navigate to Initialization Section", 3, 5);
         await _highlight(_code("npm init"));                     // 4
         testCase.endOfStep("Find npm init code sample");
     } catch (e) {
@@ -107,7 +106,7 @@ Let us write a simple test using the Sakuli.io homepage as test subject. This te
     } finally {
         await testCase.saveResult();
     }
-})().then(done);
+})();
 
 {{< /highlight >}}
 

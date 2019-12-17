@@ -4,7 +4,7 @@ date =  2019-12-13T12:41:40+01:00
 weight = 5
 +++
 
-## How can I handle frames or iframes in Sakuli?
+# How can I handle frames or iframes in Sakuli?
 
 Since v2.2.0 Sakuli will automatically detect different frames (and iframes) and will search for elements in each frame
 when the element can not be found in default frame. But it is also possible to switch between frames manually by using
