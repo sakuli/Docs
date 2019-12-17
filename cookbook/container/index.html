@@ -661,7 +661,8 @@
 <p>Sakuli Container are only available with an active Sakuli subscription.</p>
 </blockquote>
 
-<p>A Sakuli Container ships with pre-installed Sakuli, Monitoring forwarder and other additional features, it is not necessary to install anything on your docker-host, except for docker.</p>
+<p>The following how-to aims to help unexperienced users getting started with Sakuli Containers.
+A Sakuli Container ships with pre-installed Sakuli, Monitoring forwarder and other additional features, it is not necessary to install anything on your docker-host, except for docker.</p>
 
 <h2 id="download-the-image">Download the image</h2>
 
@@ -670,14 +671,22 @@
 
 <h2 id="folder-structure-and-necessary-files">Folder structure and necessary files</h2>
 
-<p>You will need a proper Sakuli Test setup on your docker-host. Download the following template for an easy start:
+<p>You will need a proper Sakuli Test setup on your docker-host. Do one of the following to bootstrap this setup:</p>
+
+<p>Either clone the Git Repository
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone git@github.com:sakuli/container_bootstrap.git sakuli-container_bootstrap</code></pre></div></p>
+
+<p>OR</p>
+
+<p>Download the following ZIP
 
 <div style="background-color: #fff; padding: 20px; box-shadow: 0px 0px 10px #7C7C7B; margin-left: 0%; margin-right: 0%; margin-top: 20px; margin-bottom: 20px">
-        <a href="/docs/files/folderStructure.zip">Download</a>
+        <a href="https://github.com/sakuli/container_bootstrap/zipball/master/">Download as ZIP</a>
 </div>
 
+</p>
 
-After unzipping the file, you will have a folder structure like this with the proper files to run a test using a Sakuli container:
+<p>After cloning the repo / unzipping the file, you will have a folder structure like this with the proper files to run a test using a Sakuli container:
 
 <div style="background-color: #fff; padding: 5px; box-shadow: 0px 0px 10px #7C7C7B; margin-left: 0%; margin-right: 0%; margin-top: 20px; margin-bottom: 20px">
         <img src="/docs/images/folderStructureContainerTest.png" alt="Showing the folder structure in a Editor" >
@@ -687,7 +696,7 @@ After unzipping the file, you will have a folder structure like this with the pr
 
 <h2 id="run">Run</h2>
 
-<p>Open a terminal and navigate to the folder &ldquo;container_test&rdquo;.
+<p>Open a terminal and navigate to the folder &ldquo;sakuli-container_bootstrap*&ldquo;.
 Within this folder, run the following docker command (you will have to insert your active Sakuli License Key):
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/suite -p <span style="color:#ae81ff">5901</span>:5901 -p <span style="color:#ae81ff">6901</span>:6901 -e SAKULI_TEST_SUITE<span style="color:#f92672">=</span>/suite -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>YourLicenseKey taconsol/sakuli:2.2.0</code></pre></div></p>
 

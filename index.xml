@@ -135,7 +135,7 @@ Setup the Project Manually Since we wanted to keep Sakuli mostly compatible to v
       
       <guid>/docs/cookbook/container/</guid>
       <description>How to run a Container with Sakuli Tests  Sakuli Container are only available with an active Sakuli subscription.
- A Sakuli Container ships with pre-installed Sakuli, Monitoring forwarder and other additional features, it is not necessary to install anything on your docker-host, except for docker.
+ The following how-to aims to help unexperienced users getting started with Sakuli Containers. A Sakuli Container ships with pre-installed Sakuli, Monitoring forwarder and other additional features, it is not necessary to install anything on your docker-host, except for docker.
 Download the image With your logged-in docker-user (which is authorized to access the repository with an active subscription), you first need to download the Sakuli image: docker pull taconsol/sakuli:2.</description>
     </item>
     
