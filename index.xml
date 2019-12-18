@@ -32,12 +32,12 @@ To install Node on your system, you can either go to the Node website or you can
     </item>
     
     <item>
-      <title>Check MK Fowarder</title>
+      <title>checkmk Fowarder</title>
       <link>/docs/enterprise_features/check/</link>
       <pubDate>Thu, 12 Sep 2019 14:16:04 +0200</pubDate>
       
       <guid>/docs/enterprise_features/check/</guid>
-      <description>Check_MK Forwarder Add the forwarder using the assistant or configure it manually:
+      <description>checkmk Forwarder Add the forwarder using the assistant or configure it manually:
 Add the forwarder to your project with:
 npm i @sakuli/forwarder-checkmk To register the forwarder into your project you have to edit the package.json file and add the preset to the Sakuli configuration key:
 { &amp;#34;sakuli&amp;#34;: { &amp;#34;presetProvider&amp;#34;: [ &amp;#34;@sakuli/legacy&amp;#34;, &amp;#34;@sakuli/forwarder-checkmk&amp;#34; ] } } Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the enterprise section.</description>
@@ -103,7 +103,7 @@ WebDriver Installation Sakuli utilizes the WebDriver protocol to remote control 
       
       <guid>/docs/enterprise_features/e2e/</guid>
       <description>Pre-configured Container Once you obtained a Sakuli Enterprise license your docker-user will be granted access to the private Sakuli test container image. This image is ready to go and ships with already installed:
- Sakuli Icinga2 / Check_MK / OMD Forwarder VNC / noVNC Chrome / Firefox (incl. webdriver)  1 Obtaining the Image The registered docker-hub user will then be able to pull the private image:
+ Sakuli Icinga2 / checkmk / OMD Forwarder VNC / noVNC Chrome / Firefox (incl. webdriver)  1 Obtaining the Image The registered docker-hub user will then be able to pull the private image:
 docker pull taconsol/sakuli:&amp;lt;IMAGE_TAG&amp;gt; Sakuli test containers do not provide a latest tag.</description>
     </item>
     

@@ -345,9 +345,9 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/check/" title="Check MK Fowarder" class="dd-item active">
+      <li data-nav-id="/docs/enterprise_features/check/" title="checkmk Fowarder" class="dd-item active">
         <a href="/docs/enterprise_features/check/">
-        Check MK Fowarder
+        checkmk Fowarder
         <i class="fas fa-check read-icon"></i>
         </a>
     </li>
@@ -608,7 +608,7 @@
             
           
           
-            <a href='/docs/'></a> > <a href='/docs/enterprise_features/'>Enterprise Features</a> > Check MK Fowarder
+            <a href='/docs/'></a> > <a href='/docs/enterprise_features/'>Enterprise Features</a> > checkmk Fowarder
           
         
           
@@ -623,7 +623,7 @@
     <div class="wrapper">
         <nav id="TableOfContents">
 <ul>
-<li><a href="#check-mk-forwarder">Check_MK Forwarder</a>
+<li><a href="#checkmk-forwarder">checkmk Forwarder</a>
 <ul>
 <li><a href="#sakuli-client-configuration">Sakuli Client Configuration</a>
 <ul>
@@ -655,7 +655,7 @@
 
 
 
-<h1 id="check-mk-forwarder">Check_MK Forwarder</h1>
+<h1 id="checkmk-forwarder">checkmk Forwarder</h1>
 
 <p>Add the forwarder using the <a href="/docs/enterprise/#assisted-setup">assistant</a> or configure it manually:</p>
 
@@ -678,15 +678,15 @@
 
 <h2 id="sakuli-client-configuration">Sakuli Client Configuration</h2>
 
-<p>It is assumed that the client is already monitored by Check_MK and that an agent is installed and running on it.</p>
+<p>It is assumed that the client is already monitored by checkmk and that an agent is installed and running on it.</p>
 
 <h3 id="spool-folder">Spool folder</h3>
 
-<p>Create a new folder <code>spool</code> in the installation path of the Check_MK agent. This is the folder where the results will be written and stored into. Don&rsquo;t forget to grant writing permissions for the folder to the user running Sakuli checks.</p>
+<p>Create a new folder <code>spool</code> in the installation path of the checkmk agent. This is the folder where the results will be written and stored into. Don&rsquo;t forget to grant writing permissions for the folder to the user running Sakuli checks.</p>
 
 <h3 id="forwarder-configuration">Forwarder configuration</h3>
 
-<p>Now you have to set up the properties for the Check_MK receiver. In order to do this, edit the <code>sakuli.properties</code> in the folder containing the testsuites:</p>
+<p>Now you have to set up the properties for the checkmk receiver. In order to do this, edit the <code>sakuli.properties</code> in the folder containing the testsuites:</p>
 
 <table>
 <thead>
