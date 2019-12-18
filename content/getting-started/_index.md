@@ -8,4 +8,4 @@ weight: 1
 # Easy Start
 The following video shows a quick introduction on how to install and bootstrap **Sakuli** and how to setup and start your first UI-Test on a MAC computer. For a detailed installation procedure, please click the green arrow to the right or navigate through the table of content on the left navigation pane.
 
-{{<video "/videos/GettingStarted.mp4">}}
+{{<video "/videos/GettingStarted_v2.mp4">}}
