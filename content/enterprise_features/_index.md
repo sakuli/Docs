@@ -44,7 +44,7 @@ The following prompt asks you about the enterprise features which you want to ac
 {{<highlight bash>}}
 ? Please Select Enterprise Features to bootstrap (Press <space> to select, <a> to toggle all, <i> to invert selection)
 ❯◯ Forwarding to Icinga2
- ◯ Forwarding to Check_MK
+ ◯ Forwarding to checkmk
  ◯ Forwarding to OMD
 {{</highlight>}}
 
@@ -53,7 +53,7 @@ Sakuli will then configure the license information globally and add install and 
 You can now just start using your feature:
 
 - [Forwarding to Icinga2](/docs/enterprise/icinga2-forwarder/)
-- [Forwarding to Check_MK](/docs/enterprise/check_mk-forwarder/)
+- [Forwarding to checkmk](/docs/enterprise/check_mk-forwarder/)
 - [Forwarding to OMD](/docs/enterprise/omd-forwarder/)
 
 The next sections is about how to setup enterprise features manually and in more detail.
@@ -92,7 +92,7 @@ These commands will set the NPM-Token and License Key globally. This is good for
 
 Now you are ready to go for using Sakuli with its enterprise features like
 
-- [Check_MK](check)
+- [checkmk](check)
 - [Icinga2](icinga)
 - [OMD](omd)
 

@@ -1,10 +1,10 @@
 ---
-title : "Check MK Fowarder"
+title : "checkmk Fowarder"
 date : 2019-09-12T14:16:04+02:00
 weight : 2
 ---
 
-# Check_MK Forwarder
+# checkmk Forwarder
 
 Add the forwarder using the [assistant](/docs/enterprise/#assisted-setup) or configure it manually:
 
@@ -33,15 +33,15 @@ Installation of any enterprise feature requires a proper setup of your license i
 
 ## Sakuli Client Configuration
 
-It is assumed that the client is already monitored by Check_MK and that an agent is installed and running on it.
+It is assumed that the client is already monitored by checkmk and that an agent is installed and running on it.
 
 ### Spool folder
 
-Create a new folder `spool` in the installation path of the Check_MK agent. This is the folder where the results will be written and stored into. Don't forget to grant writing permissions for the folder to the user running Sakuli checks.
+Create a new folder `spool` in the installation path of the checkmk agent. This is the folder where the results will be written and stored into. Don't forget to grant writing permissions for the folder to the user running Sakuli checks.
 
 ### Forwarder configuration
 
-Now you have to set up the properties for the Check_MK receiver. In order to do this, edit the `sakuli.properties` in the folder containing the testsuites:
+Now you have to set up the properties for the checkmk receiver. In order to do this, edit the `sakuli.properties` in the folder containing the testsuites:
 
 |Property| Default| Effect|
 |--------|--------|-------|
