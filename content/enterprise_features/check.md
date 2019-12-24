@@ -6,7 +6,7 @@ weight : 2
 
 # checkmk Forwarder
 
-Add the forwarder using the [assistant](/docs/enterprise/#assisted-setup) or configure it manually:
+Add the forwarder using the [assistant](/docs/enterprise_features/#assisted-setup) or configure it manually:
 
 Add the forwarder to your project with:
 

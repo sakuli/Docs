@@ -25,7 +25,7 @@ This architecture gives us two nice benefits:
 - Compatibility with <a href="https://sahipro.com/docs/sahi-apis/index.html" target="_blank">Sahi API</a>
 - Since Sakuli handles the actual fetching and validation of an element by performing retries, refreshes, implicit wait etc. which reduce annoying issues with Selenium a lot (e.g. <a href="https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/error_exports_StaleElementReferenceError.html" target="_blank">StaleElementReferenceError</a>)
 
-Most accessors are defined in the same way: They are functions that take an [AccessorIdentifier](apidoc/sakuli-legacy/globals.html#accessoridentifier) as a first parameter and a variadic list of [Relations](#relations-api):
+Most accessors are defined in the same way: They are functions that take an [AccessorIdentifier](/apidoc/sakuli-legacy/globals.html#accessoridentifier) as a first parameter and a variadic list of [Relations](/apidoc/sakuli-legacy/interfaces/relationapi.html):
 
 {{<highlight javascript>}}
 _NAME(identifier, ...relations): SahiElementQuery

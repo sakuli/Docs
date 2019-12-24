@@ -6,7 +6,7 @@ weight : 1
 
 # Icinga2 Forwarder
 
-Add the forwarder using the [assistant](/docs/enterprise/#assisted-setup) or configure it manually:
+Add the forwarder using the [assistant](/docs/enterprise_features/#assisted-setup) or configure it manually:
 
 {{<highlight bash>}}
 npm i @sakuli/forwarder-icinga2
@@ -25,11 +25,11 @@ To register the forwarder into your project you have to edit the `package.json` 
 }
 {{</highlight>}}
 
-Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the[enterprise section](/docs/enterprise#using-licences-information).
+Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the [enterprise section](/docs/enterprise#using-licences-information).
 
 
 ## Enable the Icinga2 API
-All steps required to enable the Icinga2 API are described in the [REST API documentation](http://docs.icinga.org/icinga2/snapshot/doc/module/icinga2/chapter/icinga2-api).
+All steps required to enable the Icinga2 API are described in the <a href="http://docs.icinga.org/icinga2/snapshot/doc/module/icinga2/chapter/icinga2-api" target="_blank">REST API documentation</a>.
 
 ## Create a Icinga2 service
 
