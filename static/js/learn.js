@@ -231,15 +231,20 @@ jQuery(document).ready(function() {
      });
     
     jQuery(document).keydown(function(e) {
-      // prev links - left arrow key
-      if(e.which == '37') {
-        jQuery('.nav.nav-prev').click();
-      }
+        void(0)
 
-      // next links - right arrow key
-      if(e.which == '39') {
-        jQuery('.nav.nav-next').click();
-      }
+    // DEACTIVATED LEFT/RIGHT PAGE-SWITCH-Key-Bindings
+
+
+    //   // prev links - left arrow key
+    //   if(e.which == '37') {
+    //     jQuery('.nav.nav-prev').click();
+    //   }
+
+    //   // next links - right arrow key
+    //   if(e.which == '39') {
+    //     jQuery('.nav.nav-next').click();
+    //   }
     });
 
     $('#top-bar a:not(:has(img)):not(.btn)').addClass('highlight');
