@@ -312,7 +312,7 @@ By default, a Firefox test uses a new, blank profile for each test run. In order
 
 Once we have
 
-- added our test to the container (via [**bind mount**](#4-1-1-bind-mounts) or [**our own image**](#extending-a-base-image))
+- added our test to the container (via [bind mount](#4-1-1-bind-mounts) or [our own image](#extending-a-base-image))
 - configured where our test project is located (via [**SAKULI_TEST_SUITE environment variable**](#7-overview-environment-variables))
 - set up our [**test script**](#4-3-configure-what-to-execute-on-npm-test)
 - (optional) configured the container runtime environment
