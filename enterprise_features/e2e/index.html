@@ -45,7 +45,7 @@
   <div id="header-wrapper">
     <div id="header">
       <a id="logo" href="/">
-  <img src="/docs/images/sakuli_01.svg" width="90%" height="auto" />
+  <img src="/docs/images/sakuli_01.svg" width="250px" display="block" height="auto" />
 </a>
 
     </div>
@@ -710,12 +710,12 @@ You will always have to specify the exact version of Sakuli you intend to use in
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull taconsol/sakuli:2.1.2</code></pre></div>
 
 <blockquote>
-<p>Sakuli does not support a latest tag. When running a containerized test one always has to specify the exact version to use to ensure consistency. You can find a list of available tags on <a href="https://cloud.docker.com/u/taconsol/repository/docker/taconsol/sakuli">Dockerhub</a></p>
+<p>Sakuli does not support a latest tag. When running a containerized test one always has to specify the exact version to use to ensure consistency. You can find a list of available tags on <a href="https://cloud.docker.com/u/taconsol/repository/docker/taconsol/sakuli" target="_blank">Dockerhub</a></p>
 </blockquote>
 
 <h2 id="2-running-sakuli-test-containers">2 Running Sakuli Test Containers</h2>
 
-<p>Containerized Sakuli tests require a valid Sakuli license token which has to be provided via the <code>SAKULI_LICENSE_KEY</code> <a href="/docs/enterprise">environment variable</a>.</p>
+<p>Containerized Sakuli tests require a valid Sakuli license token which has to be provided via the <code>SAKULI_LICENSE_KEY</code> <a href="/docs/enterprise_features/#using-the-license-key">environment variable</a>.</p>
 
 <p>Docker allows to pass environment variable along other parameters when starting a new container:</p>
 
@@ -771,7 +771,7 @@ Inside the test container we can now run a Sakuli test via <code>sakuli run /sak
 
 <p>Bind mounts are easy to use and very useful during development.</p>
 
-<p>For further information, please refer to the <a href="https://docs.docker.com/storage/bind-mounts/">Docker documentation on bind mounts</a></p>
+<p>For further information, please refer to the <a href="https://docs.docker.com/storage/bind-mounts/" target="_blank">Docker documentation on bind mounts</a></p>
 
 <h4 id="4-1-2-extending-a-base-image">4.1.2 Extending a Base Image</h4>
 
@@ -824,7 +824,7 @@ ENV SAKULI_TEST_SUITE<span style="color:#f92672">=</span>$HOME/sakuli_testsuite<
 <h3 id="4-3-configure-what-to-execute-on-npm-test">4.3 Configure what to execute on <code>npm test</code></h3>
 
 <p>The main configuration file of a npm project is its <code>package.json</code> file.
-Within this file it&rsquo;s possible to configure <a href="https://docs.npmjs.com/misc/scripts">npm-scripts</a>, a handy way to execute scripts inside an npm project.</p>
+Within this file it&rsquo;s possible to configure <a href="https://docs.npmjs.com/misc/scripts" target="_blank">npm-scripts</a>, a handy way to execute scripts inside an npm project.</p>
 
 <p>An empty project initialised via <code>npm init</code> already contains one script: <code>npm test</code></p>
 
@@ -1031,9 +1031,9 @@ Things like untrusted certificates cause Sakuli tests to fail, since no connecti
 <p>Once we have</p>
 
 <ul>
-<li>added our test to the container (via <a href="#bind-mounts"><strong>bind mount</strong></a> or <a href="#extending-a-base-image"><strong>our own image</strong></a>)</li>
-<li>configured where our test project is located (via <a href="#specify-the-location-of-our-test-project-inside-the-container"><strong>SAKULI_TEST_SUITE environment variable</strong></a>)</li>
-<li>set up our <a href="#configure-what-to-execute-on-npm-test"><strong>test script</strong></a></li>
+<li>added our test to the container (via <a href="#4-1-1-bind-mounts">bind mount</a> or <a href="#extending-a-base-image">our own image</a>)</li>
+<li>configured where our test project is located (via <a href="#7-overview-environment-variables"><strong>SAKULI_TEST_SUITE environment variable</strong></a>)</li>
+<li>set up our <a href="#4-3-configure-what-to-execute-on-npm-test"><strong>test script</strong></a></li>
 <li>(optional) configured the container runtime environment</li>
 </ul>
 

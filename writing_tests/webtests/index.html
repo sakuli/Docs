@@ -45,7 +45,7 @@
   <div id="header-wrapper">
     <div id="header">
       <a id="logo" href="/">
-  <img src="/docs/images/sakuli_01.svg" width="90%" height="auto" />
+  <img src="/docs/images/sakuli_01.svg" width="250px" display="block" height="auto" />
 </a>
 
     </div>
@@ -688,7 +688,7 @@
 <li>Since Sakuli handles the actual fetching and validation of an element by performing retries, refreshes, implicit wait etc. which reduce annoying issues with Selenium a lot (e.g. <a href="https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/error_exports_StaleElementReferenceError.html" target="_blank">StaleElementReferenceError</a>)</li>
 </ul>
 
-<p>Most accessors are defined in the same way: They are functions that take an <a href="apidoc/sakuli-legacy/globals.html#accessoridentifier">AccessorIdentifier</a> as a first parameter and a variadic list of <a href="#relations-api">Relations</a>:</p>
+<p>Most accessors are defined in the same way: They are functions that take an <a href="/apidoc/sakuli-legacy/globals.html#accessoridentifier">AccessorIdentifier</a> as a first parameter and a variadic list of <a href="/apidoc/sakuli-legacy/interfaces/relationapi.html">Relations</a>:</p>
 
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">_NAME</span>(<span style="color:#a6e22e">identifier</span>, ...<span style="color:#a6e22e">relations</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">SahiElementQuery</span>
 </code></pre></div>
