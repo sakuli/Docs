@@ -30,7 +30,7 @@ Containers are tagged according to Sakuli versions, so in order to use Sakuli v2
 docker pull taconsol/sakuli:2.1.2
 {{</highlight>}}
 
-> Sakuli does not support a latest tag. When running a containerized test one always has to specify the exact version to use to ensure consistency. You can find a list of available tags on <a href="https://cloud.docker.com/u/taconsol/repository/docker/taconsol/sakuli" target="_blank">Dockerhub</a>
+> Sakuli does not support a latest tag. When running a containerized test one always has to specify the exact version to use to ensure consistency. You can find a list of available tags on <a href="https://cloud.docker.com/u/taconsol/repository/docker/taconsol/sakuli" target="_blank" rel="noopener">Dockerhub</a>
 
 ## 2 Running Sakuli Test Containers
 
@@ -86,7 +86,7 @@ Inside the test container we can now run a Sakuli test via `sakuli run /sakuli_t
 
 Bind mounts are easy to use and very useful during development.
 
-For further information, please refer to the <a href="https://docs.docker.com/storage/bind-mounts/" target="_blank">Docker documentation on bind mounts</a>
+For further information, please refer to the <a href="https://docs.docker.com/storage/bind-mounts/" target="_blank" rel="noopener">Docker documentation on bind mounts</a>
 
 
 #### 4.1.2 Extending a Base Image
@@ -146,7 +146,7 @@ ENV SAKULI_TEST_SUITE=$HOME/sakuli_testsuite
 ### 4.3 Configure what to execute on `npm test`
 
 The main configuration file of a npm project is its `package.json` file.
-Within this file it's possible to configure <a href="https://docs.npmjs.com/misc/scripts" target="_blank">npm-scripts</a>, a handy way to execute scripts inside an npm project.
+Within this file it's possible to configure <a href="https://docs.npmjs.com/misc/scripts" target="_blank" rel="noopener">npm-scripts</a>, a handy way to execute scripts inside an npm project.
 
 An empty project initialised via `npm init` already contains one script: `npm test`
 
