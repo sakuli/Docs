@@ -26,7 +26,7 @@ Options:
 
 This creates a Sakuli testsuite folder with the `testsuite.suite` and `testsuite.properties` files and a `case1` folder
 containing an empty `check.js`. With the `--package` option, it is possible to create an additional `package.json`.
-Further information on how to set up a Sakuli project and the needed files can be found [here](../docs/100_writing-tests#setup-and-configuration).
+Further information on how to set up a Sakuli project and the needed files can be found [here](/docs/100_writing-tests#setup-and-configuration).
 
 
 ## sakuli create masterkey
@@ -54,7 +54,7 @@ Configures and enables enterprise features
 {{</highlight>}}
 
 This command starts an assistant which will guide you through the setup of enterprise features. More information on how
-to use the `enable-enterprise` command can be found [here](../enterprise#assisted-setup).
+to use the `enable-enterprise` command can be found [here](/enterprise_features/#assisted-setup).
 
 ## sakuli encrypt
 {{<highlight bash>}}

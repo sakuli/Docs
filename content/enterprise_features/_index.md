@@ -52,15 +52,15 @@ Sakuli will then configure the license information globally and add install and 
 
 You can now just start using your feature:
 
-- [Forwarding to Icinga2](/docs/enterprise/icinga2-forwarder/)
-- [Forwarding to checkmk](/docs/enterprise/check_mk-forwarder/)
-- [Forwarding to OMD](/docs/enterprise/omd-forwarder/)
+- [Forwarding to Icinga2](/docs/enterprise_features/icinga/)
+- [Forwarding to checkmk](/docs/enterprise_features/check/)
+- [Forwarding to OMD](/docs/enterprise_features/omd/)
 
 The next sections is about how to setup enterprise features manually and in more detail.
 
 ## Manual Setup
 
-With your active [Sakuli Enterprise](/Docs/enterprise) subscription you will receive an email with:
+With your active [Sakuli Enterprise](/enterprise) subscription you will receive an email with:
 
 - _Sakuli license-key_ - Contains information about your subscription and is used by Sakuli itself
 - and a _NPM-Token_ - Allows access to Sakuli's private enterprise packages on NPM

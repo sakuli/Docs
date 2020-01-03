@@ -30,11 +30,11 @@ Containers are tagged according to Sakuli versions, so in order to use Sakuli v2
 docker pull taconsol/sakuli:2.1.2
 {{</highlight>}}
 
-> Sakuli does not support a latest tag. When running a containerized test one always has to specify the exact version to use to ensure consistency. You can find a list of available tags on [Dockerhub](https://cloud.docker.com/u/taconsol/repository/docker/taconsol/sakuli)
+> Sakuli does not support a latest tag. When running a containerized test one always has to specify the exact version to use to ensure consistency. You can find a list of available tags on <a href="https://cloud.docker.com/u/taconsol/repository/docker/taconsol/sakuli" target="_blank">Dockerhub</a>
 
 ## 2 Running Sakuli Test Containers
 
-Containerized Sakuli tests require a valid Sakuli license token which has to be provided via the `SAKULI_LICENSE_KEY` [environment variable](/docs/enterprise).
+Containerized Sakuli tests require a valid Sakuli license token which has to be provided via the `SAKULI_LICENSE_KEY` [environment variable](/docs/enterprise_features/#using-the-license-key).
 
 Docker allows to pass environment variable along other parameters when starting a new container:
 
@@ -86,7 +86,8 @@ Inside the test container we can now run a Sakuli test via `sakuli run /sakuli_t
 
 Bind mounts are easy to use and very useful during development.
 
-For further information, please refer to the [Docker documentation on bind mounts](https://docs.docker.com/storage/bind-mounts/)
+For further information, please refer to the <a href="https://docs.docker.com/storage/bind-mounts/" target="_blank">Docker documentation on bind mounts</a>
+
 
 #### 4.1.2 Extending a Base Image
 
@@ -145,7 +146,7 @@ ENV SAKULI_TEST_SUITE=$HOME/sakuli_testsuite
 ### 4.3 Configure what to execute on `npm test`
 
 The main configuration file of a npm project is its `package.json` file.
-Within this file it's possible to configure [npm-scripts](https://docs.npmjs.com/misc/scripts), a handy way to execute scripts inside an npm project.
+Within this file it's possible to configure <a href="https://docs.npmjs.com/misc/scripts" target="_blank">npm-scripts</a>, a handy way to execute scripts inside an npm project.
 
 An empty project initialised via `npm init` already contains one script: `npm test`
 
@@ -311,9 +312,9 @@ By default, a Firefox test uses a new, blank profile for each test run. In order
 
 Once we have
 
-- added our test to the container (via [**bind mount**](#bind-mounts) or [**our own image**](#extending-a-base-image))
-- configured where our test project is located (via [**SAKULI_TEST_SUITE environment variable**](#specify-the-location-of-our-test-project-inside-the-container))
-- set up our [**test script**](#configure-what-to-execute-on-npm-test)
+- added our test to the container (via [bind mount](#4-1-1-bind-mounts) or [our own image](#extending-a-base-image))
+- configured where our test project is located (via [**SAKULI_TEST_SUITE environment variable**](#7-overview-environment-variables))
+- set up our [**test script**](#4-3-configure-what-to-execute-on-npm-test)
 - (optional) configured the container runtime environment
 
 our test will run automatically after the container started.

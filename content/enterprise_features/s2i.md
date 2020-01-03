@@ -5,8 +5,7 @@ weight : 5
 ---
 # S2I Image
 
-Sakuli enterprise comes with ready-to-use [source to image (S2I)](https://github.com/openshift/source-to-image)
-containers for RedHat OpenShift. Using this builder container, it is easily possible to create deployable Sakuli images
+Sakuli enterprise comes with ready-to-use <a href="https://github.com/openshift/source-to-image" target="_blank">source to image (S2I)</a> containers for RedHat OpenShift. Using this builder container, it is easily possible to create deployable Sakuli images
 shipped with a test suite straight from your code repository.
 
 ## Setup
