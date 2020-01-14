@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Configuring Tests on </title>
+    <link>/docs/configuring_tests/</link>
+    <description>Recent content in Configuring Tests on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 14 Jan 2020 15:14:00 +0100</lastBuildDate>
+    
+	<atom:link href="/docs/configuring_tests/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>
