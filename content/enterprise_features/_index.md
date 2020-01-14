@@ -2,7 +2,7 @@
 title : "Enterprise Features"
 pre : "<i class='fas fa-chevron-right'></i>  "
 date :  2019-09-12T14:16:46+02:00
-weight : 3
+weight : 4
 ---
 
 # Enterprise Features
