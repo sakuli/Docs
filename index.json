@@ -18,7 +18,7 @@
 	"title": "Getting Started",
 	"tags": [],
 	"description": "",
-	"content": " easy start the following video shows a quick introduction on how to install and bootstrap sakuli and how to setup and start your first ui-test on a mac computer. for a detailed installation procedure, please click the green arrow to the right or navigate through the table of content on the left navigation pane.\nyour browser does not support the video tag.   "
+	"content": " easy start the following video shows a quick introduction on how to install and bootstrap sakuli and how to setup and start your first ui-test on a mac computer. for a detailed installation procedure, please click the green arrow to the right or navigate through the table of content on the left navigation pane.\nyour browser does not support the video tag.   steps to reproduce easy start prerequisite is a node v10.15.3 (lts/dubnium) installed on your mac.\nnpm init accept all questions with enter key.\nnpm i @sakuli/cli npm i chromedriver npx sakuli create project . my-demo open the file check.jsand insert the following test-script:\n(async () =\u0026gt; { const testcase = new testcase(); try { await _navigateto(\u0026#34;https://sakuli.io\u0026#34;); testcase.endofstep(\u0026#34;open landing page\u0026#34;, 5, 10); await _click(_link(\u0026#34;getting started\u0026#34;)); await _click(_link(\u0026#34;initialization\u0026#34;)); testcase.endofstep(\u0026#34;navigate to initialization section\u0026#34;, 3, 5); await _highlight(_code(\u0026#34;npm init\u0026#34;)); testcase.endofstep(\u0026#34;find npm init code sample\u0026#34;); } catch (e) { await testcase.handleexception(e); } finally { await testcase.saveresult(); } })(); npx sakuli run my-demo "
 },
 {
 	"uri": "/docs/enterprise_features/check/",
