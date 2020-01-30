@@ -22,6 +22,7 @@ Sakuli tests can be fine-tuned via various properties.
 | `sakuli.environment.similarity.default` | Number: 0.99 | Configures the minimum requires similarity for image based matching. Values in range 0 <= x <= 1 |
 | `sakuli.typeDelay` | Number: 300 | Specifies the amount of time in ms to wait between keypresses |
 | `sakuli.encryption.key` | String: / | Master key for en- and decryption |
+| `sakuli.log.folder` | String: `${project.rootDir}`/_logs | Folder for log files  |
 | `sakuli.screenshot.onError` | Boolean: true | Enable / disable screenshots on error |
 | `sakuli.screenshot.dir` | String: `${project.rootDir}`/_logs/_screenshots | Folder for screenshot files (if activated) |
 
