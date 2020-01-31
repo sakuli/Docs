@@ -296,3 +296,37 @@ objects:
           type: ImageChange
         - type: ConfigChange
 {{</highlight>}}
+
+### Increasing shared memory of a Sakuli containers on OpenShift
+The result of a S2I build is a ready to run Sakuli container that can be deployed on OpenShift as a Pod, Job or CronJob.   
+Depending on the size of the websites to be tested, it might be required to provide more shared memory space to the
+container. Indicators that a shared memory enlargement is required are container crashes, the erroneous loading of
+websites or `invalid session id` errors due to crashed browsers. In order to do so, two steps are required.
+
+1. Creating a volume to be used as shared memory
+2. Mounting the shared memory volume into the container
+
+The following snippet shows the required configuration for a Pod deployment: 
+```yaml
+apiVersion: v1
+id: sakuli-test
+kind: Pod
+metadata:
+  name: sakuli-test
+  labels:
+    name: sakuli-test
+spec:
+  volumes:                          
+    - name: dshm
+      emptyDir:
+        medium: Memory
+  containers:
+    - image: mySakuliTest:latest
+      name: mySakuliTest
+      ...
+      volumeMounts:                 
+        - mountPath: /dev/shm
+          name: dshm
+```
+ More information concerning shared memory on OpenShift can be found in the
+ [OKD Documentation](https://docs.okd.io/latest/dev_guide/shared_memory.html).

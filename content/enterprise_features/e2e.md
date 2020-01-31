@@ -47,7 +47,7 @@ Parameters:
 - **\-\-rm**: The test container will be removed after execution, not just stopped
 - **-p**: Port forwardings. VNC is available on port 5901, the HTML5 webVNC view is exposed on port 6901 on the Docker host
 - **-e**: Environment variable flag which is used to provide the `SAKULI_LICENSE_KEY` to the container
-- **--shm-size**: *(Optional Parameter)* Increases the size of the shared memory space of the container. The default value is 64MB. This might be required when testing larger websites. Indicators that a shared memory enlargement is required are container crashes, the erroneous loading of websites or `invalid session id` Errors due to crashed browsers.  
+- **--shm-size**: *(Optional Parameter)* Increases the size of the shared memory space of the container. The default value is 64MB. This might be required when testing larger websites. Indicators that a shared memory enlargement is required are container crashes, the erroneous loading of websites or `invalid session id` errors due to crashed browsers.  
 
 > Sakuli Test Containers run as non-root user, the default UID is 1000.
 
