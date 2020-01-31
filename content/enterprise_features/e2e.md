@@ -39,7 +39,7 @@ Containerized Sakuli tests require a valid Sakuli license token which has to be 
 Docker allows to pass environment variable along other parameters when starting a new container:
 
 {{<highlight bash>}}
-docker run --rm -p 5901:5901 -p 6901:6901 -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> taconsol/sakuli:2.1.2
+docker run --rm -p 5901:5901 -p 6901:6901 -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> [--shm-size=2G] taconsol/sakuli:2.1.2
 {{</highlight>}}
 
 Parameters:
@@ -47,6 +47,7 @@ Parameters:
 - **\-\-rm**: The test container will be removed after execution, not just stopped
 - **-p**: Port forwardings. VNC is available on port 5901, the HTML5 webVNC view is exposed on port 6901 on the Docker host
 - **-e**: Environment variable flag which is used to provide the `SAKULI_LICENSE_KEY` to the container
+- **--shm-size**: *(Optional Parameter)* Increases the size of the shared memory space of the container. The default value is 64MB. This might be required when testing larger websites. Indicators that a shared memory enlargement is required are container crashes, the erroneous loading of websites or `invalid session id` Errors due to crashed browsers.  
 
 > Sakuli Test Containers run as non-root user, the default UID is 1000.
 
