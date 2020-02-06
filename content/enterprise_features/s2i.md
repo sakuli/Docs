@@ -298,7 +298,7 @@ objects:
 {{</highlight>}}
 
 ### Increasing shared memory of a Sakuli containers on OpenShift {#increasing-shared-memory-of-sakuli-on-openshift}
-The result of a S2I build is a ready to run Sakuli container that can be deployed on OpenShift as a Pod, Job or CronJob.   
+The result of an S2I build is a ready to run Sakuli container that can be deployed on OpenShift as a Pod, Job or CronJob.   
 Depending on the size of the websites to be tested, it might be required to provide more shared memory space to the
 container. Indicators that a shared memory enlargement is required are container crashes, the erroneous loading of
 websites or `invalid session id` errors due to crashed browsers. In order to do so, two steps are required.
