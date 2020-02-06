@@ -518,6 +518,25 @@
  
   
     
+      <li data-nav-id="/docs/cookbook/invalid-session-id/" title="Error: Invalid session id" class="dd-item ">
+        <a href="/docs/cookbook/invalid-session-id/">
+        Error: Invalid session id
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
       <li data-nav-id="/docs/cookbook/container/" title="Run Container" class="dd-item ">
         <a href="/docs/cookbook/container/">
         Run Container
@@ -665,7 +684,7 @@
 <li><a href="#pre-configured-container">Pre-configured Container</a>
 <ul>
 <li><a href="#1-obtaining-the-image">1 Obtaining the Image</a></li>
-<li><a href="#2-running-sakuli-test-containers">2 Running Sakuli Test Containers</a></li>
+<li><a href="#running-sakuli-test-containers">2 Running Sakuli Test Containers</a></li>
 <li><a href="#3-anatomy-of-a-containerized-sakuli-test">3 Anatomy of a Containerized Sakuli Test</a></li>
 <li><a href="#4-configuring-a-containerized-test">4 Configuring a Containerized Test</a>
 <ul>
@@ -752,13 +771,13 @@ You will always have to specify the exact version of Sakuli you intend to use in
 <p>Sakuli does not support a latest tag. When running a containerized test one always has to specify the exact version to use to ensure consistency. You can find a list of available tags on <a href="https://cloud.docker.com/u/taconsol/repository/docker/taconsol/sakuli" target="_blank" rel="noopener">Dockerhub</a></p>
 </blockquote>
 
-<h2 id="2-running-sakuli-test-containers">2 Running Sakuli Test Containers</h2>
+<h2 id="running-sakuli-test-containers">2 Running Sakuli Test Containers</h2>
 
 <p>Containerized Sakuli tests require a valid Sakuli license token which has to be provided via the <code>SAKULI_LICENSE_KEY</code> <a href="/docs/enterprise_features/#using-the-license-key">environment variable</a>.</p>
 
 <p>Docker allows to pass environment variable along other parameters when starting a new container:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm -p <span style="color:#ae81ff">5901</span>:5901 -p <span style="color:#ae81ff">6901</span>:6901 -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;YOUR SAKULI LICENSE KEY&gt; taconsol/sakuli:2.1.2</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm -p <span style="color:#ae81ff">5901</span>:5901 -p <span style="color:#ae81ff">6901</span>:6901 -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;YOUR SAKULI LICENSE KEY&gt; <span style="color:#f92672">[</span>--shm-size<span style="color:#f92672">=</span>2G<span style="color:#f92672">]</span> taconsol/sakuli:2.1.2</code></pre></div>
 
 <p>Parameters:</p>
 
@@ -766,6 +785,7 @@ You will always have to specify the exact version of Sakuli you intend to use in
 <li><strong>--rm</strong>: The test container will be removed after execution, not just stopped</li>
 <li><strong>-p</strong>: Port forwardings. VNC is available on port 5901, the HTML5 webVNC view is exposed on port 6901 on the Docker host</li>
 <li><strong>-e</strong>: Environment variable flag which is used to provide the <code>SAKULI_LICENSE_KEY</code> to the container</li>
+<li><strong>&ndash;shm-size</strong>: <em>(Optional Parameter)</em> Increases the size of the shared memory space of the container. The default value is 64MB. This might be required when testing larger websites. Indicators that a shared memory enlargement is required are container crashes, the erroneous loading of websites or <code>invalid session id</code> errors due to crashed browsers.<br /></li>
 </ul>
 
 <blockquote>
@@ -1421,6 +1441,22 @@ Things like untrusted certificates cause Sakuli tests to fail, since no connecti
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
                     
                         
             

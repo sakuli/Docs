@@ -78,6 +78,11 @@
   </url>
   
   <url>
+    <loc>/docs/cookbook/invalid-session-id/</loc>
+    <lastmod>2020-02-03T15:25:42+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/docs/cookbook/container/</loc>
     <lastmod>2019-12-16T18:57:44+01:00</lastmod>
   </url>
@@ -114,7 +119,7 @@
   
   <url>
     <loc>/docs/</loc>
-    <lastmod>2019-12-16T18:57:44+01:00</lastmod>
+    <lastmod>2020-02-03T15:25:42+01:00</lastmod>
   </url>
   
   <url>

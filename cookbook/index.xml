@@ -11,6 +11,16 @@
     
     
     <item>
+      <title>Error: Invalid session id</title>
+      <link>/docs/cookbook/invalid-session-id/</link>
+      <pubDate>Mon, 03 Feb 2020 15:25:42 +0100</pubDate>
+      
+      <guid>/docs/cookbook/invalid-session-id/</guid>
+      <description> Oh noes! Sakuli crashed with an &amp;ldquo;Invalid session id&amp;rdquo; error! When Sakuli crashes with an &amp;ldquo;Invalid session id&amp;rdquo; error, the webdriver itself crashed or least closed the session the Sakuli test or check is using. Such a behavior mostly occurs, when the provided resources for the Sakuli execution are insufficient. When testing bigger websites, please check if enough SHM space is available.
+ Running Sakuli container with &amp;ndash;shm-size Increasing shared memory on openshift  </description>
+    </item>
+    
+    <item>
       <title>Run Container</title>
       <link>/docs/cookbook/container/</link>
       <pubDate>Mon, 16 Dec 2019 18:57:44 +0100</pubDate>

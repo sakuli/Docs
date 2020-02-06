@@ -518,6 +518,25 @@
  
   
     
+      <li data-nav-id="/docs/cookbook/invalid-session-id/" title="Error: Invalid session id" class="dd-item ">
+        <a href="/docs/cookbook/invalid-session-id/">
+        Error: Invalid session id
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
       <li data-nav-id="/docs/cookbook/container/" title="Run Container" class="dd-item ">
         <a href="/docs/cookbook/container/">
         Run Container
@@ -678,7 +697,10 @@
 <ul>
 <li><a href="#advanced-s2i-build-configuration">Advanced S2I build configuration</a></li>
 </ul></li>
-<li><a href="#s2i-template">S2I build template</a></li>
+<li><a href="#s2i-template">S2I build template</a>
+<ul>
+<li><a href="#increasing-shared-memory-of-sakuli-on-openshift">Increasing shared memory of a Sakuli containers on OpenShift</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -988,6 +1010,44 @@ objects:
         - imageChange: {}
           type: ImageChange
         - type: ConfigChange</code></pre></div>
+
+<h3 id="increasing-shared-memory-of-sakuli-on-openshift">Increasing shared memory of a Sakuli containers on OpenShift</h3>
+
+<p>The result of an S2I build is a ready to run Sakuli container that can be deployed on OpenShift as a Pod, Job or CronJob.<br />
+Depending on the size of the websites to be tested, it might be required to provide more shared memory space to the
+container. Indicators that a shared memory enlargement is required are container crashes, the erroneous loading of
+websites or <code>invalid session id</code> errors due to crashed browsers. In order to do so, two steps are required.</p>
+
+<ol>
+<li>Creating a volume to be used as shared memory</li>
+<li>Mounting the shared memory volume into the container</li>
+</ol>
+
+<p>The following snippet shows the required configuration for a Pod deployment:</p>
+
+<pre><code class="language-yaml">apiVersion: v1
+id: sakuli-test
+kind: Pod
+metadata:
+  name: sakuli-test
+  labels:
+    name: sakuli-test
+spec:
+  volumes:                          
+    - name: dshm
+      emptyDir:
+        medium: Memory
+  containers:
+    - image: mySakuliTest:latest
+      name: mySakuliTest
+      ...
+      volumeMounts:                 
+        - mountPath: /dev/shm
+          name: dshm
+</code></pre>
+
+<p>More information concerning shared memory on OpenShift can be found in the
+ <a href="https://docs.okd.io/latest/dev_guide/shared_memory.html">OKD Documentation</a>.</p>
 
 
 <footer class=" footline" >
@@ -1332,6 +1392,22 @@ objects:
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
                     
                         
             

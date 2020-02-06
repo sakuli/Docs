@@ -5,7 +5,7 @@
     <link>/docs/</link>
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 16 Dec 2019 18:57:44 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 03 Feb 2020 15:25:42 +0100</lastBuildDate>
     
 	<atom:link href="/docs/index.xml" rel="self" type="application/rss+xml" />
     
@@ -126,6 +126,16 @@ Of course, you can also use Sakulis native testing power on its own, e.</descrip
       <description>Setup Setup Your First Test Since v2.2.0 Sakuli provides an easy to use mechanism to initialize testcases and testsuites.
 npx sakuli create project . my-sut This will create all necessary files and folders to start writing your first Sakuli test right away. With this, you can skip the next section and directly start to write your first test
 Setup the Project Manually Since we wanted to keep Sakuli mostly compatible to v1, the file layout looks basically the same for testsuites.</description>
+    </item>
+    
+    <item>
+      <title>Error: Invalid session id</title>
+      <link>/docs/cookbook/invalid-session-id/</link>
+      <pubDate>Mon, 03 Feb 2020 15:25:42 +0100</pubDate>
+      
+      <guid>/docs/cookbook/invalid-session-id/</guid>
+      <description> Oh noes! Sakuli crashed with an &amp;ldquo;Invalid session id&amp;rdquo; error! When Sakuli crashes with an &amp;ldquo;Invalid session id&amp;rdquo; error, the webdriver itself crashed or least closed the session the Sakuli test or check is using. Such a behavior mostly occurs, when the provided resources for the Sakuli execution are insufficient. When testing bigger websites, please check if enough SHM space is available.
+ Running Sakuli container with &amp;ndash;shm-size Increasing shared memory on openshift  </description>
     </item>
     
     <item>
