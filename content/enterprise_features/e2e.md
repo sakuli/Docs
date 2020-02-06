@@ -32,7 +32,7 @@ docker pull taconsol/sakuli:2.1.2
 
 > Sakuli does not support a latest tag. When running a containerized test one always has to specify the exact version to use to ensure consistency. You can find a list of available tags on <a href="https://cloud.docker.com/u/taconsol/repository/docker/taconsol/sakuli" target="_blank" rel="noopener">Dockerhub</a>
 
-## 2 Running Sakuli Test Containers
+## 2 Running Sakuli Test Containers {#running-sakuli-test-containers}
 
 Containerized Sakuli tests require a valid Sakuli license token which has to be provided via the `SAKULI_LICENSE_KEY` [environment variable](/docs/enterprise_features/#using-the-license-key).
 
