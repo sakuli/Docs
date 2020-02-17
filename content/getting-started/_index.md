@@ -11,7 +11,7 @@ The following video shows a quick introduction on how to install and bootstrap *
 {{<video "/videos/GettingStarted_v2.mp4">}}
 
 ## Steps to reproduce Easy Start
-Prerequisite is a Node v10.15.3 (lts/dubnium) installed on your Mac.
+Prerequisite is a Node v12 (lts/erbium) installation on your Mac.
 
 {{< highlight bash >}}
 npm init
@@ -37,7 +37,7 @@ Open the file `check.js`and insert the following Test-Script:
 (async () => {
     const testCase = new TestCase();
     try {
-        await _navigateTo("https://sakuli.io");          
+        await _navigateTo("https://sakuli.io");
         testCase.endOfStep("Open Landing Page", 5, 10);
         await _click(_link("Getting started"));
         await _click(_link("Initialization"));
