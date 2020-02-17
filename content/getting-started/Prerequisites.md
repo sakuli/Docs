@@ -8,7 +8,7 @@ weight : 1
 
 Sakuli is built and tested against the current LTS version of Node.js.
 
-Up to version `2.2.0` Sakuli supports node v10.x (`lts/dubnium`), starting with version `2.3.0`, Sakuli also supports v12.x (`lts/erbium`).
+Up to version `2.2.0` Sakuli supports node v10.x (`lts/dubnium`). Starting with version `2.3.0`, Sakuli also supports v12.x (`lts/erbium`).
 In order to be able to run Sakuli on your system, we will assume that you have a working node installation.
 
 To install Node on your system, you can either go to the <a href="https://nodejs.org/en/" target="_blank">Node website</a> or you can use tools like <a href="https://github.com/nvm-sh/nvm" target="_blank">Node Version Manager</a> utility to manage various Node versions on a per-user basis. In general, a per-user installation is the preferred way since it runs in an unprivileged mode.
