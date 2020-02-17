@@ -27,7 +27,8 @@ npm i @sakuli/forwarder-icinga2 To register the forwarder into your project you 
       <pubDate>Tue, 10 Sep 2019 15:25:53 +0200</pubDate>
       
       <guid>/docs/getting-started/prerequisites/</guid>
-      <description>What you need Sakuli is built and tested against the current LTS version of Node.js. In order to be able to run Sakuli on your system, we will assume that you have a Node v10.15.3 (lts/dubnium) installed on it.
+      <description>What you need Sakuli is built and tested against the current LTS version of Node.js.
+Up to version 2.2.0 Sakuli supports node v10.x (lts/dubnium). Starting with version 2.3.0, Sakuli also supports v12.x (lts/erbium). In order to be able to run Sakuli on your system, we will assume that you have a working node installation.
 To install Node on your system, you can either go to the Node website or you can use tools like Node Version Manager utility to manage various Node versions on a per-user basis.</description>
     </item>
     
