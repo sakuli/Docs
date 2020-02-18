@@ -53,7 +53,7 @@ Now you have to set up the properties for the checkmk receiver. In order to do t
 |`sakuli.forwarder.check_mk.piggyback_hostname`|`local`|Defines Hostname for check results, configurable for piggyback results |
 |`sakuli.forwarder.check_mk.output.details`|`true`|Dis- / Enables detailed HTML output|
 |`sakuli.forwarder.check_mk.section_name`|`local`|Name of the reported section (&lt;&lt;&lt;YOUR_SECTION_NAME&gt;&gt;&gt;)|
-|`sakuli.forwarder.check_mk.url.enabled`|`false`| Enables the addition of a URL to the spool file (Available from version 2.3.0) |
+|`sakuli.forwarder.check_mk.url.enabled`|`false`| Adds the URL specified in `sakuli.forwarder.check_mk.url` to the spool file (Available from version 2.3.0) |
 |`sakuli.forwarder.check_mk.url`|    | URL address which will be added in the spool file (Available from version 2.3.0)|
 
 
