@@ -28,8 +28,11 @@ function initLunr() {
           boost: 5
         });
 
+        // Remove stemmer and trimmer to enable matching of special characters (brackets, dots, etc.)
         this.pipeline.remove(lunr.stemmer);
+        this.pipeline.remove(lunr.trimmer);
         this.searchPipeline.remove(lunr.stemmer);
+        this.searchPipeline.remove(lunr.trimmer);
 
         // Feed lunr with each file and let lunr actually index them
         pagesIndex.forEach(function (page) {
@@ -43,6 +46,10 @@ function initLunr() {
     });
 }
 
+const escapeAndTrim = (query) => {
+  return query.replace(/^\s*/, '').replace(/\s*$/, '').replace(/[-+~:\^]/g, '\\$&')
+}
+
 /**
  * Trigger a search in lunr and transform the result
  *
@@ -50,15 +57,17 @@ function initLunr() {
  * @return {Array}  results
  */
 function search(queryTerm) {
-  console.log("String to search for: " + queryTerm);
+  const trimmedQuery = escapeAndTrim(queryTerm);
   // Find the item in our index corresponding to the lunr one to have more info
-  return lunrIndex.search(queryTerm + "^100" + " " + queryTerm + "*^10" + " " + "*" + queryTerm + "^10").map(function (result) {
-    console.log(result);
-    var matches = pagesIndex.filter(function (page) {
-      return page.uri === result.ref;
-    })[0];
-    return Object.assign(matches, {metadata: result.matchData.metadata});
-  });
+  if (trimmedQuery.length) {
+    return lunrIndex.search(`${trimmedQuery}^100 *${trimmedQuery}*^10`).map(function (result) {
+      var matches = pagesIndex.filter(function (page) {
+        return page.uri === result.ref;
+      })[0];
+      return Object.assign(matches, {metadata: result.matchData.metadata});
+    });
+  }
+  return [];
 }
 
 // Let's get started
