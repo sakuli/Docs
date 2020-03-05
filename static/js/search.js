@@ -46,6 +46,10 @@ function initLunr() {
     });
 }
 
+const escapeAndTrim = (query) => {
+  return query.replace(/^\s*/, '').replace(/\s*$/, '').replace(/[-+~:\^]/g, '\\$&')
+}
+
 /**
  * Trigger a search in lunr and transform the result
  *
@@ -53,7 +57,7 @@ function initLunr() {
  * @return {Array}  results
  */
 function search(queryTerm) {
-  const trimmedQuery = queryTerm.replace(/^\s*/, '').replace(/\s*$/, '');
+  const trimmedQuery = escapeAndTrim(queryTerm);
   // Find the item in our index corresponding to the lunr one to have more info
   if (trimmedQuery.length) {
     return lunrIndex.search(`${trimmedQuery}^100 *${trimmedQuery}*^10`).map(function (result) {
