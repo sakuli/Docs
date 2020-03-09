@@ -64,15 +64,122 @@ To reproduce this scenario, you need to capture screenshots of the egg and the p
     try {
         await _navigateTo(url);
         await env.setSimilarity(0.8);
-        await screen.find("source_egg.png").mouseMove().mouseDown(MouseButton.LEFT);
-        await new Region(0, 0, 10, 10).mouseMove();
-        await new Region(500, 700, 50, 100).mouseMove();
-        await screen.find("target_pan.png").mouseMove().mouseUp(MouseButton.LEFT);
+        await screen
+            .find("source_egg.png")
+            .mouseMove()
+            .mouseDown(MouseButton.LEFT)
+            .setX(0)
+            .setY(0)
+            .mouseMove()
+            .move(200, 700)
+            .mouseMove();
+        await screen.find("target_pan.png")
+            .mouseMove()
+            .mouseUp(MouseButton.LEFT);
         await _wait(3000);
     } catch (e) {
         await testCase.handleException(e);
     } finally {
         testCase.saveResult();
     }
-})().then(done);
+})();
+{{< /highlight >}}
+
+## How to Control the Mouse in a Sakuli Test
+
+Before using a `region` it is best to instantiate a `region` over the entire display, to use it multiple times shown in
+the examples above.
+
+### Moving the mouse to a screenshot
+
+To find a screenshot on the screen, you can use `find` or `waitForImage`. With `waitForImage` you can specify a timeout
+in which Sakuli continuously searches for the screenshot. This is useful, when e.g. starting a program like excel.
+
+{{< highlight typescript >}}
+await screen.find("search_this_screenshot.jpg")
+    .mouseMove();
+    
+//searches the screen for 5 seconds for the excel homescreen
+await screen.waitForImage("excel_homescreen.jpg", 5000)
+    .mouseMove();
+{{< /highlight >}} 
+
+`find` and `waitForImage` returns the found screenshot as a region, so chaining as follows might not work, if the second
+screenshot is not in the region of the first one.
+{{< highlight typescript >}}
+await screen.find("google_search.png")
+    .mouseMove()
+    .find("browser_address_bar.jpg")
+    .mouseMove();
+{{< /highlight >}}
+
+### Moving the mouse relative to current position
+A method to change the position is to use the `move()` method. This allows us to shift the used region, e.g.
+{{< highlight typescript >}}
+await screen.find("login_mask.png")
+    .mouseMove()
+    .click()
+    .type("MyUsername")
+    //shifts the region 50px down to e.g. a password field
+    .move(0,50)
+    //moves the mouse according to the shifted region
+    .mouseMove()
+    .click()
+    .type("MyPassword")
+    //shifts the region 50px down and 50px to the right and moves the mouse to e.g. the login button
+    .move(50,50)
+    .mouseMove()
+    .click();
+})();
+{{< /highlight >}}
+
+
+### Moving the Mouse to an Absolute Position
+
+As mentioned before, you need to create a region with a width and heigth of 1 and your x/y coordinates.
+{{< highlight typescript >}}
+//moves the mouse cursor to (100/200)
+await new Region(100, 200, 1, 1).mouseMove();
+{{< /highlight >}}
+
+### Drag And Drop
+There are two ways to use drag and drop. Firstly, you can use `dragAndDropTo()`, which drags from one point to another.
+{{< highlight typescript >}}
+await screen.find("drag_mouse_start.png").mouseMove().dragAndDropTo(new Region(200,200,1,1));
+
+await new Region(300,300,1,1).mouseMove().dragAndDropTo(new Region(1000, 1000, 1, 1));
+
+await new Region(0,0,1,1).mouseMove().dragAndDropTo(await screen.find("drag_mouse_end.png"));
+{{< /highlight >}}
+
+Using `mouseDown`/`mouseUp` allows us to drag and drop over multiple locations.
+{{< highlight typescript >}}
+await screen.find("drag_mouse_start.png")
+    .mouseMove()
+    .mouseDown(MouseButton.LEFT)
+    .move(200,200)
+    .mouseMove()
+    .move(-100, -100)
+    .mouseMove()
+    .mouseUp(MouseButton.LEFT);
+{{< /highlight >}}
+
+`mouseUp`/`mouseDown` can be used with either `MouseButton.LEFT`, `MouseButton.MIDDLE` or `MouseButton.RIGHT`.
+
+
+`Region` also provides methods to use the keyboards, which also are implemented by `Environment`. This allows for easy
+chaining, like 
+{{< highlight typescript >}}
+await screen.find("google_search.png")
+    .mouseMove()
+    .click()
+    .type("sakuli.io")
+    //moves to the search button
+    .move(-100, 100)
+    .mouseMove()
+    .click()
+    .sleepMs(1000)
+    //moves to the first search result
+    .move(-400,100)
+    .click();
 {{< /highlight >}}
