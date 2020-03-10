@@ -87,8 +87,8 @@ To reproduce this scenario, you need to capture screenshots of the egg and the p
 
 ## How to Control the Mouse in a Sakuli Test
 
-Before using a `region` it is best to instantiate a `region` over the entire display, to use it multiple times shown in
-the examples above.
+Sakuli provides two ways to steer mouse movement. Either via coordinates, or via screenshot data. In order to search for
+image data on your screen you have to instantiate a `Region` spanning the entire display to access it's image content.
 
 ### Moving the mouse to a screenshot
 
