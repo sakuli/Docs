@@ -55,6 +55,7 @@ You can now just start using your feature:
 - [Forwarding to Icinga2](/docs/enterprise_features/icinga/)
 - [Forwarding to checkmk](/docs/enterprise_features/check/)
 - [Forwarding to OMD](/docs/enterprise_features/omd/)
+- [Forwarding to Prometheus (Currently not available during CLI setup)](/docs/enterprise_features/prometheus/)
 
 The next sections is about how to setup enterprise features manually and in more detail.
 
@@ -95,6 +96,7 @@ Now you are ready to go for using Sakuli with its enterprise features like
 - [checkmk](check)
 - [Icinga2](icinga)
 - [OMD](omd)
+- [Prometheus](prometheus)
 
 ### Per-Project configuration of NPM-Token
 
