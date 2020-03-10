@@ -121,8 +121,7 @@ does not include the current Region. `right`, `below` and `above` behaves equiva
 
 {{< highlight typescript >}}
 const screen = new Region();
-await new Region(500, 500, 100, 100)
-    .left(200)
+await new Region(500, 500, 100, 100).left(200)
 //this returns a new region with (300/500/200/100)
 {{< /highlight >}}
 
@@ -130,8 +129,7 @@ You can also manipulate the current `Region` with `setX(number)`, `setY(number)`
 `grow(range)`. With `grow` you can expand the current region with _range_ px in all four directions.
 {{< highlight typescript >}}
 await screen = new Region();
-await new Region(500, 500, 100, 100)
-    .grow(100);
+await new Region(500, 500, 100, 100).grow(100);
 //this returns a new region with (300,300,300,300)
 {{< /highlight >}}
 
@@ -160,11 +158,13 @@ await screen.find("login_mask.png")
 
 ### Moving the Mouse to an Absolute Position
 
-As mentioned before, you need to create a region with a width and heigth of 1 and your x/y coordinates.
+Due to the fact that `mouseMove()` always moves the mouse to the **center** of a `region`, we need to instantiate a 
+`region` with a height and width of 1.
+
 {{< highlight typescript >}}
 const screen = new Region();
-//moves the mouse cursor to (100/200)
 await new Region(100, 200, 1, 1).mouseMove();
+//moves the mouse cursor to (100/200)
 {{< /highlight >}}
 
 ### Drag And Drop
