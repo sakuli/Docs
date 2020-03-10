@@ -96,6 +96,7 @@ To find a screenshot on the screen, you can use `find` or `waitForImage`. With `
 in which Sakuli continuously searches for the screenshot. This is useful, when e.g. starting a program like excel.
 
 {{< highlight typescript >}}
+const screen = new Region();
 await screen.find("search_this_screenshot.jpg")
     .mouseMove();
     
@@ -107,6 +108,7 @@ await screen.waitForImage("excel_homescreen.jpg", 5000)
 `find` and `waitForImage` returns the found screenshot as a region, so chaining as follows might not work, if the second
 screenshot is not in the region of the first one.
 {{< highlight typescript >}}
+const screen = new Region();
 await screen.find("google_search.png")
     .mouseMove()
     .find("browser_address_bar.jpg")
@@ -116,6 +118,7 @@ await screen.find("google_search.png")
 ### Moving the mouse relative to current position
 A method to change the position is to use the `move()` method. This allows us to shift the used region, e.g.
 {{< highlight typescript >}}
+const screen = new Region();
 await screen.find("login_mask.png")
     .mouseMove()
     .click()
@@ -138,6 +141,7 @@ await screen.find("login_mask.png")
 
 As mentioned before, you need to create a region with a width and heigth of 1 and your x/y coordinates.
 {{< highlight typescript >}}
+const screen = new Region();
 //moves the mouse cursor to (100/200)
 await new Region(100, 200, 1, 1).mouseMove();
 {{< /highlight >}}
@@ -145,6 +149,7 @@ await new Region(100, 200, 1, 1).mouseMove();
 ### Drag And Drop
 There are two ways to use drag and drop. Firstly, you can use `dragAndDropTo()`, which drags from one point to another.
 {{< highlight typescript >}}
+const screen = new Region();
 await screen.find("drag_mouse_start.png").mouseMove().dragAndDropTo(new Region(200,200,1,1));
 
 await new Region(300,300,1,1).mouseMove().dragAndDropTo(new Region(1000, 1000, 1, 1));
@@ -154,6 +159,7 @@ await new Region(0,0,1,1).mouseMove().dragAndDropTo(await screen.find("drag_mous
 
 Using `mouseDown`/`mouseUp` allows us to drag and drop over multiple locations.
 {{< highlight typescript >}}
+const screen = new Region();
 await screen.find("drag_mouse_start.png")
     .mouseMove()
     .mouseDown(MouseButton.LEFT)
@@ -170,6 +176,7 @@ await screen.find("drag_mouse_start.png")
 `Region` also provides methods to use the keyboards, which also are implemented by `Environment`. This allows for easy
 chaining, like 
 {{< highlight typescript >}}
+const screen = new Region();
 await screen.find("google_search.png")
     .mouseMove()
     .click()
