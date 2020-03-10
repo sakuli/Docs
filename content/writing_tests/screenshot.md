@@ -105,8 +105,8 @@ await screen.waitForImage("excel_homescreen.jpg", 5000)
     .mouseMove();
 {{< /highlight >}} 
 
-`find` and `waitForImage` returns the found screenshot as a region, so chaining as follows might not work, if the second
-screenshot is not in the region of the first one.
+`find` and `waitForImage` will return a `Region` for matched screenshots, so chaining as follows might not work, if the second
+screenshot is not within the `Region` of the first one.
 {{< highlight typescript >}}
 const screen = new Region();
 await screen.find("google_search.png")
@@ -116,7 +116,7 @@ await screen.find("google_search.png")
 {{< /highlight >}}
 
 ### Moving the mouse relative to current position
-A method to change the position is to use the `move()` method. This allows us to shift the used region, e.g.
+One way to change a `Region`'s position is to use the `move(x, y)` method. This allows us to shift a region in `x` and / or `y` direction, e.g.
 {{< highlight typescript >}}
 const screen = new Region();
 await screen.find("login_mask.png")
