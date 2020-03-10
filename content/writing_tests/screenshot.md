@@ -114,7 +114,7 @@ await screen.find("google_search.png")
 {{< /highlight >}}
 
 ### Moving the mouse relative to current position
-A method to change the position is to use the `move()` method. This allows us to shift the used region, e.g.
+One way to change a `Region`'s position is to use the `move(x, y)` method. This allows us to shift a region in `x` and / or `y` direction, e.g.
 {{< highlight typescript >}}
 await screen.find("login_mask.png")
     .mouseMove()
