@@ -104,7 +104,7 @@ await screen.waitForImage("excel_homescreen.jpg", 5000)
     .mouseMove();
 {{< /highlight >}} 
 
-`find` and `waitForImage` returns the found screenshot as a region, so chaining as follows might not work, if the second
+`find` and `waitForImage` will return a `Region` for matched screenshots, so chaining as follows might not work, if the second
 screenshot is not within the `Region` of the first one.
 {{< highlight typescript >}}
 await screen.find("google_search.png")
