@@ -130,7 +130,7 @@ You can also manipulate the current `Region` with `setX(number)`, `setY(number)`
 {{< highlight typescript >}}
 await screen = new Region();
 await new Region(500, 500, 100, 100).grow(100);
-//this returns a new region with (300,300,300,300)
+//this returns a new region with (400, 400, 300,300)
 {{< /highlight >}}
 
 
