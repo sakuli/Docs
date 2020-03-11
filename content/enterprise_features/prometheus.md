@@ -6,6 +6,8 @@ weight : 2
 
 # Prometheus Forwarder
 
+**Available from version 2.3.0**
+
 Add the forwarder manually as follows:
 
 {{<highlight bash>}}
