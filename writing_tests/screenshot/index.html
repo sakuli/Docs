@@ -681,7 +681,16 @@
     <div class="wrapper">
         <nav id="TableOfContents">
 <ul>
-<li><a href="#screenshot-based-testing">Screenshot based Testing</a></li>
+<li><a href="#screenshot-based-testing">Screenshot based Testing</a>
+<ul>
+<li><a href="#how-to-control-the-mouse-in-a-sakuli-test">How to Control the Mouse in a Sakuli Test</a>
+<ul>
+<li><a href="#moving-the-mouse-to-a-screenshot">Moving the mouse to a screenshot</a></li>
+<li><a href="#moving-the-mouse-relative-to-current-position">Moving the mouse relative to current position</a></li>
+<li><a href="#moving-the-mouse-to-an-absolute-position">Moving the Mouse to an Absolute Position</a></li>
+<li><a href="#drag-and-drop">Drag And Drop</a></li>
+</ul></li>
+</ul></li>
 </ul>
 </nav>
     </div>
@@ -772,17 +781,133 @@ To reproduce this scenario, you need to capture screenshots of the egg and the p
     <span style="color:#66d9ef">try</span> {
         <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_navigateTo</span>(<span style="color:#a6e22e">url</span>);
         <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">setSimilarity</span>(<span style="color:#ae81ff">0.8</span>);
-        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;source_egg.png&#34;</span>).<span style="color:#a6e22e">mouseMove</span>().<span style="color:#a6e22e">mouseDown</span>(<span style="color:#a6e22e">MouseButton</span>.<span style="color:#a6e22e">LEFT</span>);
-        <span style="color:#a6e22e">await</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">10</span>).<span style="color:#a6e22e">mouseMove</span>();
-        <span style="color:#a6e22e">await</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">500</span>, <span style="color:#ae81ff">700</span>, <span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">100</span>).<span style="color:#a6e22e">mouseMove</span>();
-        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;target_pan.png&#34;</span>).<span style="color:#a6e22e">mouseMove</span>().<span style="color:#a6e22e">mouseUp</span>(<span style="color:#a6e22e">MouseButton</span>.<span style="color:#a6e22e">LEFT</span>);
+        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>
+            .<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;source_egg.png&#34;</span>)
+            .<span style="color:#a6e22e">mouseMove</span>()
+            .<span style="color:#a6e22e">mouseDown</span>(<span style="color:#a6e22e">MouseButton</span>.<span style="color:#a6e22e">LEFT</span>)
+            .<span style="color:#a6e22e">setX</span>(<span style="color:#ae81ff">0</span>)
+            .<span style="color:#a6e22e">setY</span>(<span style="color:#ae81ff">0</span>)
+            .<span style="color:#a6e22e">mouseMove</span>()
+            .<span style="color:#a6e22e">move</span>(<span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">700</span>)
+            .<span style="color:#a6e22e">mouseMove</span>();
+        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;target_pan.png&#34;</span>)
+            .<span style="color:#a6e22e">mouseMove</span>()
+            .<span style="color:#a6e22e">mouseUp</span>(<span style="color:#a6e22e">MouseButton</span>.<span style="color:#a6e22e">LEFT</span>);
         <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_wait</span>(<span style="color:#ae81ff">3000</span>);
     } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">e</span>) {
         <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">handleException</span>(<span style="color:#a6e22e">e</span>);
     } <span style="color:#66d9ef">finally</span> {
         <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">saveResult</span>();
     }
-})().<span style="color:#a6e22e">then</span>(<span style="color:#a6e22e">done</span>);</code></pre></div>
+})();</code></pre></div>
+
+<h2 id="how-to-control-the-mouse-in-a-sakuli-test">How to Control the Mouse in a Sakuli Test</h2>
+
+<p>Sakuli provides two ways to steer mouse movement. Either via coordinates, or via screenshot data. In order to search for
+image data on your screen you have to instantiate a <code>Region</code> spanning the entire display to access it&rsquo;s image content.</p>
+
+<h3 id="moving-the-mouse-to-a-screenshot">Moving the mouse to a screenshot</h3>
+
+<p>To find a screenshot on the screen, you can use <code>find</code> or <code>waitForImage</code>. With <code>waitForImage</code> you can specify a timeout
+in which Sakuli continuously searches for the screenshot. This is useful, when e.g. starting a program like excel.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;search_this_screenshot.jpg&#34;</span>)
+    .<span style="color:#a6e22e">mouseMove</span>();
+    
+<span style="color:#75715e">//searches the screen for 5 seconds for the excel homescreen
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">waitForImage</span>(<span style="color:#e6db74">&#34;excel_homescreen.jpg&#34;</span>, <span style="color:#ae81ff">5000</span>)
+    .<span style="color:#a6e22e">mouseMove</span>();</code></pre></div>
+
+<p><code>find</code> and <code>waitForImage</code> will return a <code>Region</code> for matched screenshots, so chaining as follows might not work, if the
+second screenshot is not within the <code>Region</code> of the first one.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;google_search.png&#34;</span>)
+    .<span style="color:#a6e22e">mouseMove</span>()
+    .<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;browser_address_bar.jpg&#34;</span>)
+    .<span style="color:#a6e22e">mouseMove</span>();</code></pre></div></p>
+
+<p>To get around this problem, you can use <code>left(range)</code>, <code>right(range)</code>, <code>above(range)</code> or <code>below(range)</code>, which returns a
+new <code>Region</code>. <code>left(range)</code> return a <code>Region</code> that is left of the current region&rsquo;s border with a width of <em>range</em>, so it
+does not include the current Region. <code>right</code>, <code>below</code> and <code>above</code> behaves equivalently.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
+<span style="color:#a6e22e">await</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">500</span>, <span style="color:#ae81ff">500</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>).<span style="color:#a6e22e">left</span>(<span style="color:#ae81ff">200</span>)
+<span style="color:#960050;background-color:#1e0010">//this returns a new region with (300/500/200/100)</span></code></pre></div>
+
+<p>You can also manipulate the current <code>Region</code> with <code>setX(number)</code>, <code>setY(number)</code>, <code>setH(number)</code>, <code>setW(number)</code> or
+<code>grow(range)</code>. With <code>grow</code> you can expand the current region with <em>range</em> px in all four directions.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
+<span style="color:#a6e22e">await</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">500</span>, <span style="color:#ae81ff">500</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>).<span style="color:#a6e22e">grow</span>(<span style="color:#ae81ff">100</span>);
+<span style="color:#960050;background-color:#1e0010">//this returns a new region with (400, 400, 300,300)</span></code></pre></div></p>
+
+<h3 id="moving-the-mouse-relative-to-current-position">Moving the mouse relative to current position</h3>
+
+<p>One way to change a <code>Region</code>&rsquo;s position is to use the <code>move(x, y)</code> method. This allows us to shift a region in <code>x</code> and / or <code>y</code> direction, e.g.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;login_mask.png&#34;</span>)
+    .<span style="color:#a6e22e">mouseMove</span>()
+    .<span style="color:#a6e22e">click</span>()
+    .<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;MyUsername&#34;</span>)
+    <span style="color:#75715e">//shifts the region 50px down to e.g. a password field
+</span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">move</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">50</span>)
+    <span style="color:#75715e">//moves the mouse according to the shifted region
+</span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">mouseMove</span>()
+    .<span style="color:#a6e22e">click</span>()
+    .<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;MyPassword&#34;</span>)
+    <span style="color:#75715e">//shifts the region 50px down and 50px to the right and moves the mouse to e.g. the login button
+</span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">move</span>(<span style="color:#ae81ff">50</span>,<span style="color:#ae81ff">50</span>)
+    .<span style="color:#a6e22e">mouseMove</span>()
+    .<span style="color:#a6e22e">click</span>();
+})();</code></pre></div></p>
+
+<h3 id="moving-the-mouse-to-an-absolute-position">Moving the Mouse to an Absolute Position</h3>
+
+<p>Due to the fact that <code>mouseMove()</code> always moves the mouse to the <strong>center</strong> of a <code>region</code>, we need to instantiate a
+<code>region</code> with a height and width of 1.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
+<span style="color:#a6e22e">await</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>).<span style="color:#a6e22e">mouseMove</span>();
+<span style="color:#960050;background-color:#1e0010">//moves the mouse cursor to (100/200)</span></code></pre></div>
+
+<h3 id="drag-and-drop">Drag And Drop</h3>
+
+<p>There are two ways to use drag and drop. Firstly, you can use <code>dragAndDropTo()</code>, which drags from one point to another.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;drag_mouse_start.png&#34;</span>).<span style="color:#a6e22e">mouseMove</span>().<span style="color:#a6e22e">dragAndDropTo</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">200</span>,<span style="color:#ae81ff">200</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>));
+
+<span style="color:#a6e22e">await</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">300</span>,<span style="color:#ae81ff">300</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>).<span style="color:#a6e22e">mouseMove</span>().<span style="color:#a6e22e">dragAndDropTo</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>));
+
+<span style="color:#a6e22e">await</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>).<span style="color:#a6e22e">mouseMove</span>().<span style="color:#a6e22e">dragAndDropTo</span>(<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;drag_mouse_end.png&#34;</span>));</code></pre></div></p>
+
+<p>Using <code>mouseDown</code>/<code>mouseUp</code> allows us to drag and drop over multiple locations.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;drag_mouse_start.png&#34;</span>)
+    .<span style="color:#a6e22e">mouseMove</span>()
+    .<span style="color:#a6e22e">mouseDown</span>(<span style="color:#a6e22e">MouseButton</span>.<span style="color:#a6e22e">LEFT</span>)
+    .<span style="color:#a6e22e">move</span>(<span style="color:#ae81ff">200</span>,<span style="color:#ae81ff">200</span>)
+    .<span style="color:#a6e22e">mouseMove</span>()
+    .<span style="color:#a6e22e">move</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">100</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">100</span>)
+    .<span style="color:#a6e22e">mouseMove</span>()
+    .<span style="color:#a6e22e">mouseUp</span>(<span style="color:#a6e22e">MouseButton</span>.<span style="color:#a6e22e">LEFT</span>);</code></pre></div></p>
+
+<p><code>mouseUp</code>/<code>mouseDown</code> can be used with either <code>MouseButton.LEFT</code>, <code>MouseButton.MIDDLE</code> or <code>MouseButton.RIGHT</code>.</p>
+
+<p><code>Region</code> also provides methods to use the keyboards, which also are implemented by <code>Environment</code>. This allows for easy
+chaining, like
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;google_search.png&#34;</span>)
+    .<span style="color:#a6e22e">mouseMove</span>()
+    .<span style="color:#a6e22e">click</span>()
+    .<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;sakuli.io&#34;</span>)
+    <span style="color:#75715e">//moves to the search button
+</span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">move</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
+    .<span style="color:#a6e22e">mouseMove</span>()
+    .<span style="color:#a6e22e">click</span>()
+    .<span style="color:#a6e22e">sleepMs</span>(<span style="color:#ae81ff">1000</span>)
+    <span style="color:#75715e">//moves to the first search result
+</span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">move</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">400</span>,<span style="color:#ae81ff">100</span>)
+    .<span style="color:#a6e22e">click</span>();</code></pre></div></p>
 
 
 <footer class=" footline" >
