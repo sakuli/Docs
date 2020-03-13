@@ -36,7 +36,7 @@ It is assumed that a push gateway is available in your monitoring setup. As Saku
 
 ## Forwarder configuration
 
-Configuration is located in the file `sakuli.properties` within the root folder of your project or respectively in the `testsuite.properties` in your testsuite folders for testsuite specific configuration:
+Configuration is located in `sakuli.properties` within the root folder of your project or respectively in `testsuite.properties` in your testsuite folders for testsuite specific configuration:
 
 | Property                               | Default | Effect                                                                                         |
 |----------------------------------------|---------|------------------------------------------------------------------------------------------------|
