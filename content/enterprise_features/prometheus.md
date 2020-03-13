@@ -14,7 +14,7 @@ Add the forwarder manually as follows:
 npm i @sakuli/forwarder-prometheus
 {{</highlight>}}
 
-To register the forwarder into your project you have to edit the `package.json` file and add the preset to the Sakuli configuration key:
+To register the forwarder in your project, edit your `package.json` and add the preset to the Sakuli configuration key:
 
 {{<highlight json>}}
 {
