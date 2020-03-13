@@ -32,7 +32,7 @@ Installation of any enterprise feature requires a proper setup of your license i
 
 
 ## Push gateway
-It is assumed that a push gateway is available in your monitoring setup. As Sakuli checks are not constantly available like e.g. a Webservice, it is required to use a prometheus push gateway to provide a scraping endpoint for prometheus to obtain measurements gathered by Sakuli. 
+It is assumed that a push gateway is available in your monitoring setup. As Sakuli checks are not constantly available like e.g. a Webservice, it is required to use a Prometheus push gateway to provide a scraping endpoint for Prometheus to obtain measurements gathered by Sakuli.
 
 ## Forwarder configuration
 
