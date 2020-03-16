@@ -9,7 +9,7 @@ Once you obtained a Sakuli Enterprise license your docker-user will be granted a
 This image is ready to go and ships with already installed:
 
 - Sakuli
-- Icinga2 / checkmk / OMD Forwarder
+- Icinga2 / checkmk / OMD / Prometheus Forwarder 
 - VNC / noVNC
 - Chrome / Firefox (incl. webdriver)
 
