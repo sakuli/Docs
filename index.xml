@@ -83,8 +83,8 @@ npm i @sakuli/forwarder-gearman To register the forwarder into your project you 
       <pubDate>Thu, 12 Sep 2019 13:18:18 +0200</pubDate>
       
       <guid>/docs/writing_tests/interact/</guid>
-      <description>Interacting with the environment In addition to screenshot-based test actions, Sakuli is capable of utilizing your keyboard, clipboard and environment variables. All these features are incorporated in the Environment class.
-Keyboard actions The following snippet shows a possible use-case for native keyboard actions. When initiating a download in Firefox, a native file download dialog opens. To start the download, we need to accept the file dialog, something that is not possible within the capabilities of Selenium.</description>
+      <description>Interacting with the environment In addition to screenshot-based test actions, Sakuli is capable of utilizing your keyboard, clipboard and environment variables. All these features are incorporated with the ThenableEnvironment interface.
+Environment variable To get a environment variable you can use getEnv(key) or getEnvMasked(key). Only difference between these two is the log output. getEnv(key) will also output key unlike getEnvMasked(key). const env = new Environment(); const path = await env.getEnv(&amp;#34;PATH&amp;#34;); const homeDir = await env.</description>
     </item>
     
     <item>
