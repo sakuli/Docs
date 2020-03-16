@@ -155,8 +155,10 @@ const env = new Environment();
 await env.paste("Just paste this text somewhere");
 
 await env.type("pls write this all in capital letters", Key.SHIFT);
+
 //open print dialog
 await env.type(Key.P, Key.CTRL);
+
 
 await env.keyDown(Key.CTRL);
 //click links to open in a new Tab or do something else
