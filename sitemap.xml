@@ -18,6 +18,11 @@
   </url>
   
   <url>
+    <loc>/docs/enterprise_features/prometheus/</loc>
+    <lastmod>2020-03-10T17:26:00+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/docs/enterprise_features/check/</loc>
     <lastmod>2019-09-12T14:16:04+02:00</lastmod>
   </url>
@@ -119,7 +124,7 @@
   
   <url>
     <loc>/docs/</loc>
-    <lastmod>2020-02-03T15:25:42+01:00</lastmod>
+    <lastmod>2020-03-10T17:26:00+02:00</lastmod>
   </url>
   
   <url>

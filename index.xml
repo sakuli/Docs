@@ -5,7 +5,7 @@
     <link>/docs/</link>
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 03 Feb 2020 15:25:42 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 10 Mar 2020 17:26:00 +0200</lastBuildDate>
     
 	<atom:link href="/docs/index.xml" rel="self" type="application/rss+xml" />
     
@@ -30,6 +30,19 @@ npm i @sakuli/forwarder-icinga2 To register the forwarder into your project you 
       <description>What you need Sakuli is built and tested against the current LTS version of Node.js.
 Up to version 2.2.0 Sakuli supports node v10.x (lts/dubnium). Starting with version 2.3.0, Sakuli also supports v12.x (lts/erbium). In order to be able to run Sakuli on your system, we will assume that you have a working node installation.
 To install Node on your system, you can either go to the Node website or you can use tools like Node Version Manager utility to manage various Node versions on a per-user basis.</description>
+    </item>
+    
+    <item>
+      <title>Prometheus Fowarder</title>
+      <link>/docs/enterprise_features/prometheus/</link>
+      <pubDate>Tue, 10 Mar 2020 17:26:00 +0200</pubDate>
+      
+      <guid>/docs/enterprise_features/prometheus/</guid>
+      <description>Prometheus Forwarder Available from version 2.3.0
+Add the forwarder manually as follows:
+npm i @sakuli/forwarder-prometheus To register the forwarder in your project, edit your package.json and add the preset to the Sakuli configuration key:
+{ &amp;#34;sakuli&amp;#34;: { &amp;#34;presetProvider&amp;#34;: [ &amp;#34;@sakuli/legacy&amp;#34;, &amp;#34;@sakuli/forwarder-prometheus&amp;#34; ] } } Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the enterprise section.
+Push gateway It is assumed that a push gateway is available in your monitoring setup.</description>
     </item>
     
     <item>
@@ -104,8 +117,7 @@ WebDriver Installation Sakuli utilizes the WebDriver protocol to remote control 
       
       <guid>/docs/enterprise_features/e2e/</guid>
       <description>Pre-configured Container Once you obtained a Sakuli Enterprise license your docker-user will be granted access to the private Sakuli test container image. This image is ready to go and ships with already installed:
- Sakuli Icinga2 / checkmk / OMD Forwarder VNC / noVNC Chrome / Firefox (incl. webdriver)  1 Obtaining the Image The registered docker-hub user will then be able to pull the private image:
-docker pull taconsol/sakuli:&amp;lt;IMAGE_TAG&amp;gt; Sakuli test containers do not provide a latest tag.</description>
+ Sakuli Icinga2 / checkmk / OMD / Prometheus Forwarder VNC / noVNC Chrome / Firefox (incl. webdriver)  1 Obtaining the Image The registered docker-hub user will then be able to pull the private image:</description>
     </item>
     
     <item>
