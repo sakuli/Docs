@@ -7,7 +7,9 @@ weight : 3
 # Interacting with the environment
 
 In addition to screenshot-based test actions, Sakuli is capable of utilizing your keyboard, clipboard and environment variables.
-All these features are incorporated with the `ThenableEnvironment` interface.
+All these features are incorporated with the
+<a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/thenableenvironment.html" target="_blank">ThenableEnvironment</a>
+interface.
 
 ### Environment variable
 To get a environment variable you can use `getEnv(key)` or `getEnvMasked(key)`. Only difference between these two is the
@@ -25,7 +27,7 @@ You also might want to read some properties of your `sakuli.properties`/`testsui
 const env = new Environment();
 
 const id = await env.getProperty("testsuite.id");
-const browser = await env.getPropertyMasked("testsuite.) 
+const browser = await env.getPropertyMasked("testsuite.id") 
 {{< /highlight >}}
 
 Only difference
