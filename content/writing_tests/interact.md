@@ -34,9 +34,10 @@ Only difference
 between these `getProperty(key)` and `getPropertyMasked(key)` is the log output. `getEnv(key)` will also output `key` unlike `getEnvMasked(key)`.
 
 ### getSimilarity/setSimilarity
-For screenshot-based testing you can set the similarity in your `testsuite.properties` or `sakuli.propoerties` file as 
-`sakuli.environment.similarity.default=0.99`. But you might want to adjust the similarity during the test. This is possible
-with `setSimilarity(number)`.
+For screenshot-based testing you can configure image-matching similarity in either `testsuite.properties` or
+`sakuli.properties` file via `sakuli.environment.similarity.default`. `Environment.setSimilarity(number)` allows to
+adjust this value during a testcase for additional flexibility.
+
 {{< highlight typescript >}}
 const env = new Environment();
 
