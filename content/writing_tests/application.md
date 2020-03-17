@@ -42,7 +42,7 @@ You can either use `close()` or `kill()`. `close()` sends a `SIGTERM` signal and
 process.
 
 {{< highlight typescript >}}
-await calc = new Application('gnome-calculator');
+await calc = new Application('gnome-calculator').open();
 
 await calc.close();
 await calc.kill();
