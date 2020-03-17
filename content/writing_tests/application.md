@@ -18,13 +18,19 @@ added it to your PATH environment variable. If your path contains spaces, you ha
 {{< highlight typescript >}}
 // path to excel 'C:\\path to excel \excel.exe'
 const excel = new Application("C:\\path\\ to\\ excel\excel.exe");
+await excel.open();
 
 // open browser with parameters
 const chromium = new Application("chromium-browser --incognito --proxy-server=localhost:1234");
+await chromium.open();
 
 // path to chrome is e.g. 'C:\\Program\\ Files\google-chrome\chrome.exe'
 const chrome = new Application("C:\\Program\\ Files\google-chrome\chrome.exe --incognito");
+await chrome.open();
 {{< /highlight >}}
+
+After creating an application with `new Application()`, it is necessary to call `open()` for Sakuli to start it.
+
 
 With `setSleepTime(seconds)` you can set the waiting time after opening an application. This is particularly useful for
 larger applications that have an initial loading time.
