@@ -113,13 +113,18 @@
   </url>
   
   <url>
-    <loc>/docs/writing_tests/webtests/</loc>
-    <lastmod>2019-09-12T13:16:37+02:00</lastmod>
+    <loc>/docs/writing_tests/application/</loc>
+    <lastmod>2019-09-12T13:18:58+02:00</lastmod>
   </url>
   
   <url>
     <loc>/docs/cookbook/</loc>
     <lastmod>2019-12-13T12:39:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/writing_tests/webtests/</loc>
+    <lastmod>2019-09-12T13:16:37+02:00</lastmod>
   </url>
   
   <url>

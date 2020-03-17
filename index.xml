@@ -193,6 +193,16 @@ Setup To setup the source to image builds on your OpenShift cluster, it is requi
     </item>
     
     <item>
+      <title>Native applications</title>
+      <link>/docs/writing_tests/application/</link>
+      <pubDate>Thu, 12 Sep 2019 13:18:58 +0200</pubDate>
+      
+      <guid>/docs/writing_tests/application/</guid>
+      <description>Interacting with a native application Now that we have covered how to interact with an operating system and used screenshot based testing capabilities of Sakuli, we can move on how to utilize one or multiple applications. All features are incorporated in the ThenableApplication Interface.
+Open an application To open an application, you enter the path to the application or respectively the application name, if you already added it to your PATH environment variable.</description>
+    </item>
+    
+    <item>
       <title>Webtests</title>
       <link>/docs/writing_tests/webtests/</link>
       <pubDate>Thu, 12 Sep 2019 13:16:37 +0200</pubDate>

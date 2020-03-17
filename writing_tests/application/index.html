@@ -48,7 +48,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs/cli/">
+  <body class="" data-url="/docs/writing_tests/application/">
     
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TMFSKHB" height="0" width="0"
       style="display:none;visibility:hidden"></iframe></noscript>
@@ -205,7 +205,7 @@
   
     
     <li data-nav-id="/docs/writing_tests/" title="Writing Tests" class="dd-item
-        
+        parent
         
         
         ">
@@ -288,7 +288,7 @@
  
   
     
-      <li data-nav-id="/docs/writing_tests/application/" title="Native applications" class="dd-item ">
+      <li data-nav-id="/docs/writing_tests/application/" title="Native applications" class="dd-item active">
         <a href="/docs/writing_tests/application/">
         Native applications
         <i class="fas fa-check read-icon"></i>
@@ -506,8 +506,8 @@
   
     
     <li data-nav-id="/docs/cli/" title="CLI" class="dd-item
-        parent
-        active
+        
+        
         
         ">
       <a href="/docs/cli/">
@@ -700,7 +700,13 @@
             
           
           
-            <a href='/docs/'></a> > CLI
+            
+            
+          
+          
+            <a href='/docs/'></a> > <a href='/docs/writing_tests/'>Writing Tests</a> > Native applications
+          
+        
           
         
           
@@ -713,14 +719,14 @@
     <div class="wrapper">
         <nav id="TableOfContents">
 <ul>
-<li><a href="#sakuli-cli-commands">Sakuli CLI commands</a>
+<li><a href="#interacting-with-a-native-application">Interacting with a native application</a>
 <ul>
-<li><a href="#sakuli-create-project">sakuli create project</a></li>
-<li><a href="#sakuli-create-masterkey">sakuli create masterkey</a></li>
-<li><a href="#sakuli-enable-enterprise">sakuli enable-enterprise</a></li>
-<li><a href="#sakuli-encrypt">sakuli encrypt</a></li>
-<li><a href="#sakuli-migrate">sakuli migrate</a></li>
-<li><a href="#sakuli-run">sakuli run</a></li>
+<li>
+<ul>
+<li><a href="#open-an-application">Open an application</a></li>
+<li><a href="#closing-an-application">Closing an application</a></li>
+<li><a href="#combining-with-region">Combining with Region</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -745,104 +751,71 @@
 
 
 
-	
 
-<h1 id="sakuli-cli-commands">Sakuli CLI commands</h1>
+<h1 id="interacting-with-a-native-application">Interacting with a native application</h1>
 
-<h2 id="sakuli-create-project">sakuli create project</h2>
+<p>Now that we have covered how to interact with an operating system and used screenshot based testing
+capabilities of Sakuli, we can move on how to utilize one or multiple applications.
+All features are incorporated in the <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/thenableapplication.html" target="_blank">ThenableApplication Interface</a>.</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli create project <span style="color:#f92672">[</span> &lt;path&gt; <span style="color:#f92672">]</span> <span style="color:#f92672">[</span> &lt;suiteName&gt; <span style="color:#f92672">]</span> <span style="color:#f92672">[</span> --force | -f <span style="color:#f92672">]</span> <span style="color:#f92672">[</span> --package <span style="color:#f92672">]</span>
+<h3 id="open-an-application">Open an application</h3>
 
+<p>To open an application, you enter the path to the application or respectively the application name, if you already
+added it to your PATH environment variable. If your path contains spaces, you have to escape them with <code>\\</code> because white spaces are reserved for parameter separation.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#75715e">// path to excel &#39;C:\\path to excel \excel.exe&#39;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">excel</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Application</span>(<span style="color:#e6db74">&#34;C:\\path\\ to\\ excel\excel.exe&#34;</span>);
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">excel</span>.<span style="color:#a6e22e">open</span>();
 
-Generates a default project structure
+<span style="color:#75715e">// open browser with parameters
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">chromium</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Application</span>(<span style="color:#e6db74">&#34;chromium-browser --incognito --proxy-server=localhost:1234&#34;</span>);
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">chromium</span>.<span style="color:#a6e22e">open</span>();
 
+<span style="color:#75715e">// path to chrome is e.g. &#39;C:\\Program\\ Files\google-chrome\chrome.exe&#39;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">chrome</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Application</span>(<span style="color:#e6db74">&#34;C:\\Program\\ Files\google-chrome\chrome.exe --incognito&#34;</span>);
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">chrome</span>.<span style="color:#a6e22e">open</span>();</code></pre></div></p>
 
-Positionals:
-  path                  Path to create testsuite                                    <span style="color:#f92672">[</span>optional<span style="color:#f92672">][</span>default: $PWD<span style="color:#f92672">]</span>
-  suiteName             Name of testsuite                                           <span style="color:#f92672">[</span>optional<span style="color:#f92672">][</span>default: sakuli_test_suite<span style="color:#f92672">]</span>
-  
-Options:
-  --force <span style="color:#f92672">(</span>alias -f<span style="color:#f92672">)</span>    Forces sakuli to create testsuite
-  --package             Create additional package.json <span style="color:#66d9ef">for</span> testsuite</code></pre></div>
+<p>After creating an application with <code>new Application()</code>, it is necessary to call <code>open()</code> for Sakuli to start it.</p>
 
-<p>This creates a Sakuli testsuite folder with the <code>testsuite.suite</code> and <code>testsuite.properties</code> files and a <code>case1</code> folder
-containing an empty <code>check.js</code>. With the <code>--package</code> option, it is possible to create an additional <code>package.json</code>.
-Further information on how to set up a Sakuli project and the needed files can be found <a href="/docs/100_writing-tests#setup-and-configuration">here</a>.</p>
+<p>With <code>setSleepTime(seconds)</code> you can set the waiting time after opening an application. This is particularly useful for
+larger applications that have an initial loading time.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">calc</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Application</span>(<span style="color:#e6db74">&#34;gnome-calculator&#34;</span>);
+<span style="color:#75715e">//sleepTime of 1 second
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">setSleepTime</span>(<span style="color:#ae81ff">1</span>)
+    .<span style="color:#a6e22e">open</span>();</code></pre></div></p>
 
-<h2 id="sakuli-create-masterkey">sakuli create masterkey</h2>
+<h3 id="closing-an-application">Closing an application</h3>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli create masterkey <span style="color:#f92672">[</span> --algorithm <span style="color:#f92672">]</span>
+<p>You can either use <code>close()</code> or <code>kill()</code>. <code>close()</code> sends a <code>SIGTERM</code> signal and <code>kill()</code> a <code>SIGKILL</code> signal to end the
+process.</p>
 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Application</span>(<span style="color:#e6db74">&#39;gnome-calculator&#39;</span>).<span style="color:#a6e22e">open</span>();
 
-Generates a new masterkey
-
-
-Positionals:
-  algorithm             The algorithm to create a key <span style="color:#66d9ef">for</span>                           <span style="color:#f92672">[</span>optional<span style="color:#f92672">][</span>default: <span style="color:#e6db74">&#34;aes-128-cbc&#34;</span><span style="color:#f92672">]</span></code></pre></div>
-
-<p>This command outputs a masterkey which can be used to encrypt a secret with the <a href="#sakuli-encrypt">sakuli encrypt</a>
-command or to decrypt a secret in a testcase with a Sakuli function like <code>Environment.decryptSecret()</code>.</p>
-
-<h2 id="sakuli-enable-enterprise">sakuli enable-enterprise</h2>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli enable-enterprise
-
-
-Configures and enables enterprise features</code></pre></div>
-
-<p>This command starts an assistant which will guide you through the setup of enterprise features. More information on how
-to use the <code>enable-enterprise</code> command can be found <a href="/enterprise_features/#assisted-setup">here</a>.</p>
-
-<h2 id="sakuli-encrypt">sakuli encrypt</h2>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli encrypt &lt;secret&gt; --masterkey
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">close</span>();
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">kill</span>();
 
 
-Encrypts a secret via provided masterkey
+<span style="color:#75715e">//throws an exception if ending the process fails
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">close</span>(<span style="color:#66d9ef">false</span>);
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">kill</span>(<span style="color:#66d9ef">false</span>);</code></pre></div>
 
+<h3 id="combining-with-region">Combining with Region</h3>
 
-Positionals:
-  secret                The secret to encrypt                                       <span style="color:#f92672">[</span>required<span style="color:#f92672">]</span>
-  
-Options:
-  --masterkey           The masterkey used <span style="color:#66d9ef">for</span> encryption                           <span style="color:#f92672">[</span>required<span style="color:#f92672">]</span></code></pre></div>
+<p>Currently (Sakuli v2.3.0) it is not possible to get the region from the application or the focused window. Therefore the
+following methods will return the desktop instead.</p>
 
-<p>To use this command it is necessary to create a masterkey with <a href="#sakuli-create-masterkey"><code>npx create masterkey</code></a> first.
-With <code>npx sakuli encrypt</code> you can now encrypt a secret or password which then can be decrypted in the Sakuli testcase
-with one of the decryption functions like <code>Environment.decryptSecret()</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">calc</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Application</span>(<span style="color:#e6db74">&#39;gnome-calculator&#39;</span>);
 
-<h2 id="sakuli-migrate">sakuli migrate</h2>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli migrate &lt;path&gt;
-
-
-Transforms all legacy testsuites into new syntax
-
-
-Positional
-  path                  path to a legacy suite                                      <span style="color:#f92672">[</span>required<span style="color:#f92672">]</span></code></pre></div>
-
-<p>Since Sakuli had some minor changes in the syntax with v2, old Sakuli v1 testcases need to be adapted to the new syntax.
-With this command Sakuli takes over this task.</p>
-
-<h2 id="sakuli-run">sakuli run</h2>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli run &lt;path&gt;
-
-
-Runs a Sakuli Suite
-
-
-Positionals:
-  path                  path to Sakuli suite                                        <span style="color:#f92672">[</span>required<span style="color:#f92672">]</span></code></pre></div>
-
-
-
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">open</span>()
+    .<span style="color:#a6e22e">getRegion</span>();
+    
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">open</span>()
+    .<span style="color:#a6e22e">getRegionForWindow</span>();</code></pre></div>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -958,6 +931,126 @@ Positionals:
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
                 
                 
 
@@ -1046,118 +1139,6 @@ Positionals:
             
         
                     
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
             
             
@@ -1182,7 +1163,6 @@ Positionals:
             
                 
                     
-                    
                 
                 
 
@@ -1198,9 +1178,6 @@ Positionals:
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1286,10 +1263,10 @@ Positionals:
 	 
 	 
 		
-			<a class="nav nav-prev" href="/docs/enterprise_features/s2i/" title="S2I Image"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/docs/writing_tests/screenshot/" title="Screenshot"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/docs/cookbook/" title="Cookbook" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/docs/writing_tests/webtests/" title="Webtests" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1319,3 +1296,4 @@ Positionals:
 
   </body>
 </html>
+
