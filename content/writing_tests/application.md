@@ -14,11 +14,10 @@ All features are incorporated in the <a href="https://sakuli.io/apidoc/sakuli-le
 ### Open an application
 
 To open an application, you enter the path to the application or respectively the application name, if you already
-added it to your PATH environment variable. If your path contains spaces, you can escape them with `\\` because parameters
-are separated with spaces.
+added it to your PATH environment variable. If your path contains spaces, you have to escape them with `\\` because white spaces are reserved for parameter separation.
 {{< highlight typescript >}}
-// path to excel 'C:\\path to excel dir\excel.exe'
-const excel = new Application("C:\\path\\ to\\ excel\\ dir\excel.exe");
+// path to excel 'C:\\path to excel \excel.exe'
+const excel = new Application("C:\\path\\ to\\ excel\excel.exe");
 
 // open browser with parameters
 const chromium = new Application("chromium-browser --incognito --proxy-server=localhost:1234");
