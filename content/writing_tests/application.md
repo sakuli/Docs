@@ -65,7 +65,5 @@ await calc.open()
     .getRegion();
     
 await calc.open()
-    .getRegionForWindow()
-    .mouseMove()
-    .click();
+    .getRegionForWindow();
 {{< /highlight >}}
