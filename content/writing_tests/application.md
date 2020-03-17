@@ -62,9 +62,7 @@ following methods will return the desktop instead.
 const calc = new Application('gnome-calculator');
 
 await calc.open()
-    .getRegion()
-    .mouseMove()
-    .click();
+    .getRegion();
     
 await calc.open()
     .getRegionForWindow()
