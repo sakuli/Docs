@@ -6,8 +6,8 @@ weight : 5
 
 # Interacting with a native application
 
-Now that we have covered how to interact with an operating system and use the screenshot based testing
-capabilities of Sakuli, we can move on how to utilize an one or multiple applications.
+Now that we have covered how to interact with an operating system and used screenshot based testing
+capabilities of Sakuli, we can move on how to utilize one or multiple applications.
 All features are incorporated in the <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/thenableapplication.html" target="_blank">ThenableApplication Interface</a>.
 
 
