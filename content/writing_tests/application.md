@@ -4,7 +4,7 @@ date :  2019-09-12T13:18:58+02:00
 weight : 5
 ---
 
-# Interacting With an Application
+# Interacting with a native application
 
 Now that we have covered how to interact with an operating system and use the screenshot based testing
 capabilities of Sakuli, we can move on how to utilize an one or multiple applications.
