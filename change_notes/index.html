@@ -48,7 +48,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs/writing_tests/application/">
+  <body class="" data-url="/docs/change_notes/">
     
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TMFSKHB" height="0" width="0"
       style="display:none;visibility:hidden"></iframe></noscript>
@@ -205,7 +205,7 @@
   
     
     <li data-nav-id="/docs/writing_tests/" title="Writing Tests" class="dd-item
-        parent
+        
         
         
         ">
@@ -288,7 +288,7 @@
  
   
     
-      <li data-nav-id="/docs/writing_tests/application/" title="Native applications" class="dd-item active">
+      <li data-nav-id="/docs/writing_tests/application/" title="Native applications" class="dd-item ">
         <a href="/docs/writing_tests/application/">
         Native applications
         <i class="fas fa-check read-icon"></i>
@@ -640,8 +640,8 @@
   
     
     <li data-nav-id="/docs/change_notes/" title="Change notes" class="dd-item
-        
-        
+        parent
+        active
         
         ">
       <a href="/docs/change_notes/">
@@ -753,13 +753,7 @@
             
           
           
-            
-            
-          
-          
-            <a href='/docs/'></a> > <a href='/docs/writing_tests/'>Writing Tests</a> > Native applications
-          
-        
+            <a href='/docs/'></a> > Change notes
           
         
           
@@ -772,14 +766,9 @@
     <div class="wrapper">
         <nav id="TableOfContents">
 <ul>
-<li><a href="#interacting-with-a-native-application">Interacting with a native application</a>
+<li><a href="#change-notes">Change notes</a>
 <ul>
-<li>
-<ul>
-<li><a href="#open-an-application">Open an application</a></li>
-<li><a href="#closing-an-application">Closing an application</a></li>
-<li><a href="#combining-with-region">Combining with Region</a></li>
-</ul></li>
+<li><a href="#v2-3-0-hahahugoshortcode-s0-hbhb">-<a href="HAHAHUGOSHORTCODE-s0-HBHB">V2.3.0</a></a></li>
 </ul></li>
 </ul>
 </nav>
@@ -804,71 +793,19 @@
 
 
 
+	
 
-<h1 id="interacting-with-a-native-application">Interacting with a native application</h1>
+<h1 id="change-notes">Change notes</h1>
 
-<p>Now that we have covered how to interact with an operating system and used screenshot based testing
-capabilities of Sakuli, we can move on how to utilize one or multiple applications.
-All features are incorporated in the <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/thenableapplication.html" target="_blank">ThenableApplication Interface</a>.</p>
-
-<h3 id="open-an-application">Open an application</h3>
-
-<p>To open an application, you enter the path to the application or respectively the application name, if you already
-added it to your PATH environment variable. If your path contains spaces, you have to escape them with <code>\\</code> because white spaces are reserved for parameter separation.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#75715e">// path to excel &#39;C:\\path to excel \excel.exe&#39;
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">excel</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Application</span>(<span style="color:#e6db74">&#34;C:\\path\\ to\\ excel\excel.exe&#34;</span>);
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">excel</span>.<span style="color:#a6e22e">open</span>();
-
-<span style="color:#75715e">// open browser with parameters
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">chromium</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Application</span>(<span style="color:#e6db74">&#34;chromium-browser --incognito --proxy-server=localhost:1234&#34;</span>);
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">chromium</span>.<span style="color:#a6e22e">open</span>();
-
-<span style="color:#75715e">// path to chrome is e.g. &#39;C:\\Program\\ Files\google-chrome\chrome.exe&#39;
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">chrome</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Application</span>(<span style="color:#e6db74">&#34;C:\\Program\\ Files\google-chrome\chrome.exe --incognito&#34;</span>);
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">chrome</span>.<span style="color:#a6e22e">open</span>();</code></pre></div></p>
-
-<p>After creating an application with <code>new Application()</code>, it is necessary to call <code>open()</code> for Sakuli to start it.</p>
-
-<p>With <code>setSleepTime(seconds)</code> you can set the waiting time after opening an application. This is particularly useful for
-larger applications that have an initial loading time.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">calc</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Application</span>(<span style="color:#e6db74">&#34;gnome-calculator&#34;</span>);
-<span style="color:#75715e">//sleepTime of 1 second
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">setSleepTime</span>(<span style="color:#ae81ff">1</span>)
-    .<span style="color:#a6e22e">open</span>();</code></pre></div></p>
-
-<h3 id="closing-an-application">Closing an application</h3>
-
-<p>You can either use <code>close()</code> or <code>kill()</code>. <code>close()</code> sends a <code>SIGTERM</code> signal and <code>kill()</code> a <code>SIGKILL</code> signal to end the
-process.</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Application</span>(<span style="color:#e6db74">&#39;gnome-calculator&#39;</span>).<span style="color:#a6e22e">open</span>();
-
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">close</span>();
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">kill</span>();
+<h2 id="v2-3-0-hahahugoshortcode-s0-hbhb">-<a href="/docs/change_notes/2.3.0/">V2.3.0</a></h2>
 
 
-<span style="color:#75715e">//throws an exception if ending the process fails
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">close</span>(<span style="color:#66d9ef">false</span>);
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">kill</span>(<span style="color:#66d9ef">false</span>);</code></pre></div>
 
-<h3 id="combining-with-region">Combining with Region</h3>
-
-<p>Currently (Sakuli v2.3.0) it is not possible to get the region from the application or the focused window. Therefore the
-following methods will return the desktop instead.</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">calc</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Application</span>(<span style="color:#e6db74">&#39;gnome-calculator&#39;</span>);
-
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">open</span>()
-    .<span style="color:#a6e22e">getRegion</span>();
-    
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">open</span>()
-    .<span style="color:#a6e22e">getRegionForWindow</span>();</code></pre></div>
 
 
 <footer class=" footline" >
 	
 </footer>
-
 
         
         </div> 
@@ -984,7 +921,6 @@ following methods will return the desktop instead.</p>
             
                 
                     
-                    
                 
                 
 
@@ -997,9 +933,6 @@ following methods will return the desktop instead.</p>
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1049,7 +982,6 @@ following methods will return the desktop instead.</p>
             
                 
                     
-                    
                 
                 
 
@@ -1065,9 +997,6 @@ following methods will return the desktop instead.</p>
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1312,6 +1241,7 @@ following methods will return the desktop instead.</p>
             
                 
                     
+                    
                 
                 
 
@@ -1324,6 +1254,9 @@ following methods will return the desktop instead.</p>
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1348,10 +1281,10 @@ following methods will return the desktop instead.</p>
 	 
 	 
 		
-			<a class="nav nav-prev" href="/docs/writing_tests/screenshot/" title="Screenshot"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/docs/cookbook/frames/" title="Frames"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/docs/writing_tests/webtests/" title="Webtests" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/docs/change_notes/2.3.0/" title="V2.3.0" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1381,4 +1314,3 @@ following methods will return the desktop instead.</p>
 
   </body>
 </html>
-

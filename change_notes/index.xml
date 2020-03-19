@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Change notes on </title>
+    <link>/docs/change_notes/</link>
+    <description>Recent content in Change notes on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 17 Mar 2020 15:37:00 +0100</lastBuildDate>
+    
+	<atom:link href="/docs/change_notes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>V2.3.0</title>
+      <link>/docs/change_notes/2.3.0/</link>
+      <pubDate>Tue, 17 Mar 2020 10:28:41 +0100</pubDate>
+      
+      <guid>/docs/change_notes/2.3.0/</guid>
+      <description>V2.3.0 Sakuli V2.3.0 comes with a lot of improvements in performance and stability as well as with a lot of bug fixes and a completely new forwarder integration. Let&amp;rsquo;s have a look at the major changes for this release.
+Sakuli Core Besides node 12 support and adjustments in Sakuli click actions, we&amp;rsquo;ve improved CLI output in case of check/test failures and added ways to ensure a stable website before performing any action.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -5,10 +5,20 @@
     <link>/docs/</link>
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 10 Mar 2020 17:26:00 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 17 Mar 2020 10:28:41 +0100</lastBuildDate>
     
 	<atom:link href="/docs/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>V2.3.0</title>
+      <link>/docs/change_notes/2.3.0/</link>
+      <pubDate>Tue, 17 Mar 2020 10:28:41 +0100</pubDate>
+      
+      <guid>/docs/change_notes/2.3.0/</guid>
+      <description>V2.3.0 Sakuli V2.3.0 comes with a lot of improvements in performance and stability as well as with a lot of bug fixes and a completely new forwarder integration. Let&amp;rsquo;s have a look at the major changes for this release.
+Sakuli Core Besides node 12 support and adjustments in Sakuli click actions, we&amp;rsquo;ve improved CLI output in case of check/test failures and added ways to ensure a stable website before performing any action.</description>
+    </item>
     
     <item>
       <title>Icinga2 Forwarder</title>

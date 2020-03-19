@@ -48,7 +48,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs/writing_tests/application/">
+  <body class="" data-url="/docs/change_notes/2.3.0/">
     
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TMFSKHB" height="0" width="0"
       style="display:none;visibility:hidden"></iframe></noscript>
@@ -205,7 +205,7 @@
   
     
     <li data-nav-id="/docs/writing_tests/" title="Writing Tests" class="dd-item
-        parent
+        
         
         
         ">
@@ -288,7 +288,7 @@
  
   
     
-      <li data-nav-id="/docs/writing_tests/application/" title="Native applications" class="dd-item active">
+      <li data-nav-id="/docs/writing_tests/application/" title="Native applications" class="dd-item ">
         <a href="/docs/writing_tests/application/">
         Native applications
         <i class="fas fa-check read-icon"></i>
@@ -640,7 +640,7 @@
   
     
     <li data-nav-id="/docs/change_notes/" title="Change notes" class="dd-item
-        
+        parent
         
         
         ">
@@ -666,7 +666,7 @@
  
   
     
-      <li data-nav-id="/docs/change_notes/2.3.0/" title="V2.3.0" class="dd-item ">
+      <li data-nav-id="/docs/change_notes/2.3.0/" title="V2.3.0" class="dd-item active">
         <a href="/docs/change_notes/2.3.0/">
         V2.3.0
         <i class="fas fa-check read-icon"></i>
@@ -757,7 +757,7 @@
             
           
           
-            <a href='/docs/'></a> > <a href='/docs/writing_tests/'>Writing Tests</a> > Native applications
+            <a href='/docs/'></a> > <a href='/docs/change_notes/'>Change notes</a> > V2.3.0
           
         
           
@@ -772,13 +772,20 @@
     <div class="wrapper">
         <nav id="TableOfContents">
 <ul>
-<li><a href="#interacting-with-a-native-application">Interacting with a native application</a>
+<li><a href="#v2-3-0">V2.3.0</a>
 <ul>
-<li>
+<li><a href="#sakuli-core">Sakuli Core</a>
 <ul>
-<li><a href="#open-an-application">Open an application</a></li>
-<li><a href="#closing-an-application">Closing an application</a></li>
-<li><a href="#combining-with-region">Combining with Region</a></li>
+<li><a href="#node-12">Node 12</a></li>
+<li><a href="#changes-on-click-functionality">Changes on <code>_click()</code> functionality</a></li>
+<li><a href="#improved-cli-error-messages">Improved CLI error messages</a></li>
+<li><a href="#optional-website-stabilization">Optional website stabilization</a></li>
+</ul></li>
+<li><a href="#enterprise-packages">Enterprise packages</a>
+<ul>
+<li><a href="#sakuli-prometheus-forwarder">Sakuli Prometheus forwarder</a></li>
+<li><a href="#checkmk-forwarder-website-link-in-spool-files">CheckMK forwarder - Website link in spool files</a></li>
+<li><a href="#sakuli-container">Sakuli Container</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -805,64 +812,80 @@
 
 
 
-<h1 id="interacting-with-a-native-application">Interacting with a native application</h1>
+<h1 id="v2-3-0">V2.3.0</h1>
 
-<p>Now that we have covered how to interact with an operating system and used screenshot based testing
-capabilities of Sakuli, we can move on how to utilize one or multiple applications.
-All features are incorporated in the <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/thenableapplication.html" target="_blank">ThenableApplication Interface</a>.</p>
+<p>Sakuli V2.3.0 comes with a lot of improvements in performance and stability as well as with a lot of bug fixes and a
+completely new forwarder integration. Let&rsquo;s have a look at the major changes for this release.</p>
 
-<h3 id="open-an-application">Open an application</h3>
+<h2 id="sakuli-core">Sakuli Core</h2>
 
-<p>To open an application, you enter the path to the application or respectively the application name, if you already
-added it to your PATH environment variable. If your path contains spaces, you have to escape them with <code>\\</code> because white spaces are reserved for parameter separation.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#75715e">// path to excel &#39;C:\\path to excel \excel.exe&#39;
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">excel</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Application</span>(<span style="color:#e6db74">&#34;C:\\path\\ to\\ excel\excel.exe&#34;</span>);
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">excel</span>.<span style="color:#a6e22e">open</span>();
+<p>Besides node 12 support and adjustments in Sakuli click actions, we&rsquo;ve improved CLI output in case of check/test failures and added ways to ensure a stable website before performing any action.
+A detailed list of all applied enhancement and fixes can be found in the
+<a href="https://github.com/sakuli/sakuli/blob/develop/CHANGELOG.md">CHANGELOG.md</a>.</p>
 
-<span style="color:#75715e">// open browser with parameters
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">chromium</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Application</span>(<span style="color:#e6db74">&#34;chromium-browser --incognito --proxy-server=localhost:1234&#34;</span>);
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">chromium</span>.<span style="color:#a6e22e">open</span>();
+<h3 id="node-12">Node 12</h3>
 
-<span style="color:#75715e">// path to chrome is e.g. &#39;C:\\Program\\ Files\google-chrome\chrome.exe&#39;
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">chrome</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Application</span>(<span style="color:#e6db74">&#34;C:\\Program\\ Files\google-chrome\chrome.exe --incognito&#34;</span>);
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">chrome</span>.<span style="color:#a6e22e">open</span>();</code></pre></div></p>
+<p>From now on, Sakuli also supports the current LTS version of node (v12.x, codename <code>lts/erbium</code>), so feel free to upgrade your systems to latest LTS.
+We updated our enterprise containers accordingly, so starting with 2.3.0 they are now running on <code>lts/erbium</code>.</p>
 
-<p>After creating an application with <code>new Application()</code>, it is necessary to call <code>open()</code> for Sakuli to start it.</p>
+<h3 id="changes-on-click-functionality">Changes on <code>_click()</code> functionality</h3>
 
-<p>With <code>setSleepTime(seconds)</code> you can set the waiting time after opening an application. This is particularly useful for
-larger applications that have an initial loading time.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">calc</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Application</span>(<span style="color:#e6db74">&#34;gnome-calculator&#34;</span>);
-<span style="color:#75715e">//sleepTime of 1 second
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">setSleepTime</span>(<span style="color:#ae81ff">1</span>)
-    .<span style="color:#a6e22e">open</span>();</code></pre></div></p>
+<p>A lot of effort went into stabilizing the click functionality on websites.
+Clicking a web element might sound trivial at first, but being as heterogenous as it is, the web allows for quite a few edge cases.
+Depending on the implementation it might be hard for Sakuli to reliably perform click actions on buttons, links, etc.
+Until now, we advised to switch to native desktop interactions in such cases to perform clicks without using the webdriver interface.
+For this release, we spent some time on investigating the root cause for these issues. Now Sakuli click actions perform
+several technical validations e.g. whether the element to click is visible, before the actual click is performed. If one of
+these checks fails, an error will be thrown. On some websites, these strict checks might fail the technical validation.
+For those cases, it is still possible to avoid all technical checks and validation by passing the configuration object <code>{force: true}</code> to the click action.</p>
 
-<h3 id="closing-an-application">Closing an application</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_button</span>(<span style="color:#e6db74">&#34;Click Me&#34;</span>), {<span style="color:#a6e22e">force</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>}); <span style="color:#75715e">// clicks without validation
+</span></code></pre></div>
 
-<p>You can either use <code>close()</code> or <code>kill()</code>. <code>close()</code> sends a <code>SIGTERM</code> signal and <code>kill()</code> a <code>SIGKILL</code> signal to end the
-process.</p>
+<p><em>Please note that a forced click might lead to false positives, as no validation takes place.</em><br />
+For more information, please have a look at the
+<a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_click">_click() API documentation</a>.</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Application</span>(<span style="color:#e6db74">&#39;gnome-calculator&#39;</span>).<span style="color:#a6e22e">open</span>();
+<h3 id="improved-cli-error-messages">Improved CLI error messages</h3>
 
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">close</span>();
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">kill</span>();
+<p>We improved the error messages of the CLI output. You will now receive detailed information about syntax errors
+in test scripts as well as more detailed information on the root cause for errors.</p>
 
+<h3 id="optional-website-stabilization">Optional website stabilization</h3>
 
-<span style="color:#75715e">//throws an exception if ending the process fails
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">close</span>(<span style="color:#66d9ef">false</span>);
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">kill</span>(<span style="color:#66d9ef">false</span>);</code></pre></div>
+<p>Many modern websites use visual effects regularly. Such effects have impaired test setups in the past. Some users compensated such situations by using <code>_wait()</code> with a fixed timeout. Depending on the system the checks are running on, we have observed that a strict <code>_wait()</code> is not reliable. Therefore we added <code>_pageIsStable()</code> to the
+Sakuli API. <code>_pageIsStable()</code> allows you to wait until the DOM of your website has stabilized e.g. after animations are finished or dynamic content has been loaded. As soon as the DOM is stable, test execution continues. It is possible to
+configure the maximum timeout to wait and even the intervals in which the DOM is checked.</p>
 
-<h3 id="combining-with-region">Combining with Region</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Wait for the DOM to stabilize within a maximum 5 seconds and check in an interval of 100 milliseconds.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_pageIsStable</span>(<span style="color:#ae81ff">5000</span>, <span style="color:#ae81ff">100</span>);
+</code></pre></div>
 
-<p>Currently (Sakuli v2.3.0) it is not possible to get the region from the application or the focused window. Therefore the
-following methods will return the desktop instead.</p>
+<p>For more information, please have a look at the
+<a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/commonactionsapi.html#_pageisstable">_pageIsStable() API documentation</a>.</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">calc</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Application</span>(<span style="color:#e6db74">&#39;gnome-calculator&#39;</span>);
+<h2 id="enterprise-packages">Enterprise packages</h2>
 
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">open</span>()
-    .<span style="color:#a6e22e">getRegion</span>();
-    
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">open</span>()
-    .<span style="color:#a6e22e">getRegionForWindow</span>();</code></pre></div>
+<h3 id="sakuli-prometheus-forwarder">Sakuli Prometheus forwarder</h3>
+
+<p>With 2.3.0, we have added a <a href="https://prometheus.io/">Prometheus</a> forwarder to the enterprise forwarder packages. To use the Prometheus forwarder, a valid Sakuli enterprise license is required.</p>
+
+<p>As Sakuli checks are not designed to provide a persistent endpoint for Prometheus to scrape, the forwarder leverages the Prometheus push gateway. For more information about configuration and setup, please have a look at the <a href="https://sakuli.io/docs/enterprise_features/prometheus/">Prometheus forwarder documentation</a>.</p>
+
+<h3 id="checkmk-forwarder-website-link-in-spool-files">CheckMK forwarder - Website link in spool files</h3>
+
+<p>From now on, Sakuli allows to add an optional website URL to the CheckMK spool files. These URLs will be displayed in the CheckMK Web Interface which allows an easy access for the monitoring staff to systems under test in case of an error.</p>
+
+<p>For more information, please have a look at the <a href="https://sakuli.io/docs/enterprise_features/check/#forwarder-configuration">CheckMK forwarder documentation</a>.</p>
+
+<h3 id="sakuli-container">Sakuli Container</h3>
+
+<p>As usual, we updated the container to use the latest Sakuli version, latest security patches and also added node 12 as well as all changes to the
+enterprise forwarders. Besides that, we created a completely new container which aims to control remote
+Windows machines via RDP. The new image can be found in the enterprise repository on docker hub under
+<code>taconsol/sakuli-remote-connection</code>.<br />
+<em>To be able to use the new <code>taconsol/sakuli-remote-connection</code> image, a valid Sakuli enterprise licence of
+<strong>L</strong> level or higher is required.</em></p>
 
 
 <footer class=" footline" >
@@ -984,7 +1007,6 @@ following methods will return the desktop instead.</p>
             
                 
                     
-                    
                 
                 
 
@@ -997,9 +1019,6 @@ following methods will return the desktop instead.</p>
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1049,7 +1068,6 @@ following methods will return the desktop instead.</p>
             
                 
                     
-                    
                 
                 
 
@@ -1065,9 +1083,6 @@ following methods will return the desktop instead.</p>
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1312,6 +1327,7 @@ following methods will return the desktop instead.</p>
             
                 
                     
+                    
                 
                 
 
@@ -1324,6 +1340,7 @@ following methods will return the desktop instead.</p>
             
             
                 
+                    
                     
                 
                 
@@ -1348,10 +1365,10 @@ following methods will return the desktop instead.</p>
 	 
 	 
 		
-			<a class="nav nav-prev" href="/docs/writing_tests/screenshot/" title="Screenshot"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/docs/change_notes/" title="Change notes"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/docs/writing_tests/webtests/" title="Webtests" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/docs/getting-started/" title="Getting Started" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

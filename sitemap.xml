@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/docs/change_notes/2.3.0/</loc>
+    <lastmod>2020-03-17T10:28:41+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/docs/enterprise_features/icinga/</loc>
     <lastmod>2019-09-12T14:15:55+02:00</lastmod>
   </url>
@@ -128,8 +133,13 @@
   </url>
   
   <url>
+    <loc>/docs/change_notes/</loc>
+    <lastmod>2020-03-17T15:37:00+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/docs/</loc>
-    <lastmod>2020-03-10T17:26:00+02:00</lastmod>
+    <lastmod>2020-03-17T10:28:41+01:00</lastmod>
   </url>
   
   <url>
