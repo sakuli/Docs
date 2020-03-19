@@ -75,7 +75,7 @@ testcase folder. Hence you need to use `tc.addImagePaths("./assets")` to tell Sa
 directory during the Sakuli test is the corresponding testcase folder.
 
 Next we are setting the similarity level for image recognition. The higher the value you choose, the higher the matching
-score must be.
+score must be. You can change this during your test.
 
 After this we are setting the sleeptime of our application, which is just a timeout after trying to open the application.
 This time is needed because the operating system needs to load the application.
@@ -91,6 +91,7 @@ correctly. So we try to find it with to following screenshot.
 So we add the following lines to our test
 
 {{< highlight typescript >}}
+await env.setSimilarity(0.98);
 await screen.waitForImage('whitepaper.png', 3);
 tc.endOfStep('validate open whitepaper');
 {{< /highlight >}}
@@ -142,6 +143,7 @@ So the full Sakuli test should look like this.
       .click();
     tc.endOfStep('open whitepaper');
 
+    await env.setSimilarity(0.98);
     await screen.waitForImage('whitepaper.png', 3);
     tc.endOfStep('validate open whitepaper');
 
