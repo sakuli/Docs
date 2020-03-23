@@ -1,17 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ .Page.Language | default "en" }}" class="js csstransforms3d">
   <head>
-    <!-- Google Tag Manager (needs to stay as first element in head) -->
-    <script>(function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-          'gtm.start':
-              new Date().getTime(), event: 'gtm.js'
-      }); var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-              'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', 'GTM-TMFSKHB');
-    </script>
-    <!-- End Google Tag Manager -->
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {{ hugo.Generator }}
@@ -48,10 +38,6 @@
     {{ partial "custom-header.html" . }}
   </head>
   <body class="" data-url="{{ .RelPermalink }}">
-    <!-- Google Tag Manager (noscript) (needs to stay as first element in body) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TMFSKHB" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
     {{ partial "menu.html" . }}
         <section id="body">
         <div id="overlay"></div>
