@@ -14,7 +14,7 @@ The complete test will be at the bottom of the page.
 
 ## Setting up a Sakuli Test Suite
 
-Sakuli will bootstrap a test suite with following command. A detailed explanation on what files are needed, can be found
+Sakuli will bootstrap a test suite with the following command. A detailed explanation on what files are needed, can be found
 [in anatomy chapter](anatomy.md).
 {{< highlight bash >}}
 npx @sakuli/cli create project . --package
@@ -34,10 +34,10 @@ We also need to rename `sakuli_test_suite/case1/check.js` to `check.ts`
 
 ## Native-testing Tutorial
 
-The example for this tutorial is to open the `10 Step Guide to E2E Monitoring` whitepaper only with native interaction
+For this tutorial we will create a test that opens the `10 Step Guide to E2E Monitoring` whitepaper only using native interaction
 and download the . For this we are going to set `testsuite.uiOnly=true` in the testsuite.properties.
 
-First we are going to open a chromium browser and navigate to the whitepaper section to download the whitepaper.
+First we are going to open a chromium browser, navigate to the whitepaper section and download the whitepaper.
 {{< highlight typescript >}}
 (async () => {
   const tc = new TestCase();
@@ -70,25 +70,23 @@ First we are going to open a chromium browser and navigate to the whitepaper sec
 
 So let's have a closer look on the code. First we are want to open the chromium in incognito mode so we added the parameter.
 
-Because we are going to use multiple screenshot, we are going to add them to a new folder to remove cluttering of the
+As we are using multiple screenshot for this testcase, we will add them to a new folder and therefore eliminate cluttering of the
 testcase folder. Hence you need to use `tc.addImagePaths("./assets")` to tell Sakuli to look into this folder. The base
 directory during the Sakuli test is the corresponding testcase folder.
 
 Next we are setting the similarity level for image recognition. The higher the value you choose, the higher the matching
-score must be. You can change this during your test.
+score must be. You can also change this within your test to react to different matching-score needs.
 
-After this we are setting the sleeptime of our application, which is just a timeout after trying to open the application.
-This time is needed because the operating system needs to load the application.
+As the operating system needs some time to start the application (in this case the browser), we will set a sleeptime.
 
-After the chromium browser is opened we type the url we want to navigate to. Now we can get the region of the desktop to
-search for icon of the whitepaper:
+After the chromium browser is opened the focus will be on the url-tab by default - we can just start typing the url we want to navigate to and hit Enter. The next step is to get the region of the desktop and search for the icon of the whitepaper:
 <img src="/images/tutorial/open_whitepaper.png" />
 
-After clicking the icon the whitepaper will open in a new tab. Now we want to verify whether the whitepaper was opened
-correctly. So we try to find it with to following screenshot.
+After clicking the icon, the whitepaper PDF will be opened in a new tab. To verify whether the whitepaper was opened
+correctly, we try to find the following screenshot on the screen:
 <img src="/images/tutorial/whitepaper.png" />
 
-So we add the following lines to our test
+To do so, we add the following lines to our test:
 
 {{< highlight typescript >}}
 await env.setSimilarity(0.98);
@@ -96,7 +94,7 @@ await screen.waitForImage('whitepaper.png', 3);
 tc.endOfStep('validate open whitepaper');
 {{< /highlight >}}
 
-The last step is to print this whitepaper as a pdf. We can do this with the following code
+As a last step we want to print this whitepaper as a pdf (saving it to the file-system). We can do this with the following code:
 {{< highlight typescript >}}
 await env.type(Key.P, Key.CTRL)
   .getRegionFromFocusedWindow()
@@ -112,14 +110,14 @@ tc.endOfStep("download whitepaper");
 With `CTRL+P` we open the print dialog which could look like this.
 <img src="/images/tutorial/print_dialog.png" />
 
-Now we need to move the mouse to the save button and click. So we need to find the following image
+Now we need to move the mouse to the save button and click using this screenshot:
 <img src="/images/tutorial/print_dialog_save.png" />
 
 Afterwards another pop up dialog appears, which allows us to change the name of the pdf-file.
 For this instance we want to name it `sakuli-tutorial`.
 In the end we need to press enter to save the file.
 
-So the full Sakuli test should look like this.
+The complete Sakuli test should look like this:
 
 {{< highlight typescript >}}
 (async () => {
@@ -170,8 +168,7 @@ So the full Sakuli test should look like this.
 
 # Combining DOM and Native Testing
 
-When the `testsuite.uiOnly` is set to `false`, you can use both simultaneously. For our example above we can remove opening
-chromium with application and navigation to sakuli.io/wp via the address bar just with `_navigateTo()` as wells as for the click afterwards.
+When the `testsuite.uiOnly` is set to `false`, you can use both DOM based- and native interaction simultaneously. For our example above we can exchange the steps for opening chromium and navigating to sakuli.io/wp just with `_navigateTo("https://sakuli.io/wp")` .
 
 {{< highlight typescript >}}
 (async () => {
