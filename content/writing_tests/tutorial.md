@@ -9,8 +9,6 @@ weight : 7
 After learning about the native and DOM-based testing capabilities of Sakuli, show a demonstration what you probably need
 to set up a monitoring check. The 10 do's and don'ts is a nice guideline to start, on what should be checked.
 
-We will use the sakuli docs page, which you are on right now, but starting from the sakuli.io page.
-The complete test will be at the bottom of the page.
 
 ## Setting up a Sakuli Test Suite
 
@@ -30,12 +28,14 @@ an error during compilation. But this tutorial will also work if you decide to n
 npx sakuli enable-typescript .
 {{< /highlight >}}
 
-We also need to rename `sakuli_test_suite/case1/check.js` to `check.ts`
+For Typescript to find the respective test-files, you need to change the file extension from `.js` for JavaScript to `.ts`
+for TypeScript or create a new file. After doing so, it is necessary to update `testsuite.suite` for Sakuli to find the
+testfile.
 
 ## Native-testing Tutorial
 
 For this tutorial we will create a test that opens the `10 Step Guide to E2E Monitoring` whitepaper only using native interaction
-and download the . For this we are going to set `testsuite.uiOnly=true` in the testsuite.properties.
+and download the document. As we only want to use native interaction we can set `testsuite.uiOnly=true` in the `testsuite.properties`.
 
 First we are going to open a chromium browser, navigate to the whitepaper section and download the whitepaper.
 {{< highlight typescript >}}
@@ -68,7 +68,9 @@ First we are going to open a chromium browser, navigate to the whitepaper sectio
 })();
 {{< /highlight >}}
 
-So let's have a closer look on the code. First we are want to open the chromium in incognito mode so we added the parameter.
+The following section will describes the details of the test. As a first step we want to open the chromium browser and 
+use incognito mode. This can be achieved by opening the application with the respective parameter:
+`const chromium = new Application('chromium-browser --incognito');`
 
 As we are using multiple screenshot for this testcase, we will add them to a new folder and therefore eliminate cluttering of the
 testcase folder. Hence you need to use `tc.addImagePaths("./assets")` to tell Sakuli to look into this folder. The base
