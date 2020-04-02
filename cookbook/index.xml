@@ -11,6 +11,26 @@
     
     
     <item>
+      <title>Handling forms</title>
+      <link>/docs/cookbook/handling-forms/</link>
+      <pubDate>Fri, 20 Mar 2020 13:18:11 +0100</pubDate>
+      
+      <guid>/docs/cookbook/handling-forms/</guid>
+      <description>Handling forms Filling forms and verifying their functionality is one of the major use cases in E2E-Testing and -Monitoring. Most of the web elements have been abstracted from their technical specification in HTML. An &amp;lt;intput name=&amp;quot;last-name&amp;quot; /&amp;gt; for example is abstracted as a _textbox(&amp;quot;last-name&amp;quot;) accessor. Let&amp;rsquo;s have a look at the most common accessors to interact with forms.
+Input fields Textarea Filling text into a textarea can easily be achieved by combining the _setValue() action with the _textarea() accessor.</description>
+    </item>
+    
+    <item>
+      <title>Waiting</title>
+      <link>/docs/cookbook/waiting/</link>
+      <pubDate>Thu, 19 Mar 2020 12:05:50 +0100</pubDate>
+      
+      <guid>/docs/cookbook/waiting/</guid>
+      <description>Waiting In some cases, it might be required to wait for an animation to finish or for page to load dynamic content to use it in test cases or checks. To achieve this, Sakuli provides various options to wait a certain time or for a specified condition until test execution continues.
+Static wait // wait for three seconds await _wait(3000);  Wait for an element to be visible // wait for three seconds until the DIV &amp;#34;MyDiv&amp;#34; is visible await _wait(3000, () =&amp;gt; _isVisible(_div(&amp;#34;MyDiv&amp;#34;)));  Wait for any condition to be met It is possible to pass a boolean function (function returning true or false) as a second optional parameter of the _wait() action.</description>
+    </item>
+    
+    <item>
       <title>Error: Invalid session id</title>
       <link>/docs/cookbook/invalid-session-id/</link>
       <pubDate>Mon, 03 Feb 2020 15:25:42 +0100</pubDate>

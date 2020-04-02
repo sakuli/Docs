@@ -38,7 +38,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs/cookbook/invalid-session-id/">
+  <body class="" data-url="/docs/cookbook/waiting/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -561,7 +561,7 @@
  
   
     
-      <li data-nav-id="/docs/cookbook/waiting/" title="Waiting" class="dd-item ">
+      <li data-nav-id="/docs/cookbook/waiting/" title="Waiting" class="dd-item active">
         <a href="/docs/cookbook/waiting/">
         Waiting
         <i class="fas fa-check read-icon"></i>
@@ -580,7 +580,7 @@
  
   
     
-      <li data-nav-id="/docs/cookbook/invalid-session-id/" title="Error: Invalid session id" class="dd-item active">
+      <li data-nav-id="/docs/cookbook/invalid-session-id/" title="Error: Invalid session id" class="dd-item ">
         <a href="/docs/cookbook/invalid-session-id/">
         Error: Invalid session id
         <i class="fas fa-check read-icon"></i>
@@ -781,7 +781,7 @@
             
           
           
-            <a href='/docs/'></a> > <a href='/docs/cookbook/'>Cookbook</a> > Error: Invalid session id
+            <a href='/docs/'></a> > <a href='/docs/cookbook/'>Cookbook</a> > Waiting
           
         
           
@@ -796,7 +796,14 @@
     <div class="wrapper">
         <nav id="TableOfContents">
 <ul>
-<li><a href="#oh-noes-sakuli-crashed-with-an-invalid-session-id-error">Oh noes! Sakuli crashed with an <em>&ldquo;Invalid session id&rdquo;</em> error!</a></li>
+<li><a href="#waiting">Waiting</a>
+<ul>
+<li><a href="#static-wait">Static wait</a></li>
+<li><a href="#wait-for-an-element-to-be-visible">Wait for an element to be visible</a></li>
+<li><a href="#wait-for-any-condition-to-be-met">Wait for any condition to be met</a></li>
+<li><a href="#wait-until-page-stabilized">Wait until page stabilized</a></li>
+<li><a href="#abort-if-page-does-not-stabilize">Abort if page does not stabilize</a></li>
+</ul></li>
 </ul>
 </nav>
     </div>
@@ -821,16 +828,61 @@
 
 
 
-<h1 id="oh-noes-sakuli-crashed-with-an-invalid-session-id-error">Oh noes! Sakuli crashed with an <em>&ldquo;Invalid session id&rdquo;</em> error!</h1>
+<h1 id="waiting">Waiting</h1>
 
-<p>When Sakuli crashes with an <em>&ldquo;Invalid session id&rdquo;</em> error, the webdriver itself crashed or least closed the session
-the Sakuli test or check is using. Such a behavior mostly occurs, when the provided resources for the Sakuli execution
-are insufficient. When testing bigger websites, please check if enough SHM space is available.</p>
+<p>In some cases, it might be required to wait for an animation to finish or for page to load dynamic content to use it in test cases or checks. To achieve this, Sakuli provides various options to wait a certain time or for a specified condition until test execution continues.</p>
 
-<ol>
-<li><a href="/docs/enterprise_features/e2e/#running-sakuli-test-containers">Running Sakuli container with &ndash;shm-size</a></li>
-<li><a href="/docs/enterprise_features/s2i/#increasing-shared-memory-of-sakuli-on-openshift">Increasing shared memory on openshift</a></li>
-</ol>
+<h2 id="static-wait">Static wait</h2>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// wait for three seconds
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_wait</span>(<span style="color:#ae81ff">3000</span>);
+</code></pre></div>
+
+<h2 id="wait-for-an-element-to-be-visible">Wait for an element to be visible</h2>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// wait for three seconds until the DIV &#34;MyDiv&#34; is visible
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_wait</span>(<span style="color:#ae81ff">3000</span>, () =&gt; <span style="color:#a6e22e">_isVisible</span>(<span style="color:#a6e22e">_div</span>(<span style="color:#e6db74">&#34;MyDiv&#34;</span>)));
+</code></pre></div>
+
+<h2 id="wait-for-any-condition-to-be-met">Wait for any condition to be met</h2>
+
+<p>It is possible to pass a boolean function (function returning <code>true</code> or <code>false</code>) as a second optional parameter of the <code>_wait()</code> action. Hence it is not only possible to wait until e.g. an item is visible on the website, but also for any boolean condition required in your use case. The <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/fetchapi.html">Sakuli fetch API</a> is a good point to start but you can also always define your own conditions in your test suite.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// wait at most three seconds until the first list item contains an entry &#34;Sakuli&#34;.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_wait</span>(<span style="color:#ae81ff">3000</span>, () =&gt; <span style="color:#a6e22e">_areEqual</span>(<span style="color:#a6e22e">_listItem</span>(<span style="color:#ae81ff">0</span>), <span style="color:#a6e22e">_listItem</span>(<span style="color:#e6db74">&#34;Sakuli&#34;</span>)));
+</code></pre></div>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// wait at most three seconds until the textbox is enabled - e.g. after the form has been dynamically loaded.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_wait</span>(<span style="color:#ae81ff">3000</span>, () =&gt; <span style="color:#a6e22e">_isEnabled</span>(<span style="color:#a6e22e">_textbox</span>(<span style="color:#e6db74">&#39;enabled-input&#39;</span>)));
+</code></pre></div>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// wait at most three seconds until at least 10 products have been loaded.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_wait</span>(<span style="color:#ae81ff">3000</span>, () =&gt; <span style="color:#a6e22e">_count</span>(<span style="color:#a6e22e">_div</span>(<span style="color:#e6db74">&#34;product&#34;</span>)) <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">10</span>);
+</code></pre></div>
+
+<h2 id="wait-until-page-stabilized">Wait until page stabilized</h2>
+
+<p>A very popular use case of the <code>wait()</code> function is to check for a certain element to be visible. Mostly this checks tries to verify that a certain asynchronous change has been finished. In some cases it is hard to identify an element to reliably ensure that such an asynchronous task has been finished. Therefore the <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/actionapi.html">Sakuli action API</a> provides a <code>_pageIsStable()</code> action.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// wait at most two seconds until the dom stabilized and check it in 200ms intervals.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_pageIsStable</span>();
+</code></pre></div>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// wait at most five seconds until the dom stabilized and check it in 200ms intervals.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_pageIsStable</span>(<span style="color:#ae81ff">5000</span>);
+</code></pre></div>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// wait at most five seconds until the dom stabilized and check it in 500ms intervals.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_pageIsStable</span>(<span style="color:#ae81ff">5000</span>, <span style="color:#ae81ff">500</span>);
+</code></pre></div>
+
+<h2 id="abort-if-page-does-not-stabilize">Abort if page does not stabilize</h2>
+
+<p>In case the page is not able to stabilize in time, it might be required to abort the test case as e.g. a quality gate for loading the page has not been fulfilled. For such a use case, it is possible to wrap <code>_pageIsStable()</code> into assertions of the <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/assertionapi.html">Sakuli assertion API</a>.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Wait for a stable DOM, stop test execution if it does not stabilize within timeout
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_assert</span>(<span style="color:#a6e22e">_pageIsStable</span>());
+</code></pre></div>
 
 
 <footer class=" footline" >
@@ -1225,22 +1277,6 @@ are insufficient. When testing bigger websites, please check if enough SHM space
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                     
                 
                 
@@ -1260,6 +1296,22 @@ are insufficient. When testing bigger websites, please check if enough SHM space
                     
                         
                         
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
@@ -1348,10 +1400,10 @@ are insufficient. When testing bigger websites, please check if enough SHM space
 	 
 	 
 		
-			<a class="nav nav-prev" href="/docs/cookbook/waiting/" title="Waiting"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/docs/cookbook/handling-forms/" title="Handling forms"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/docs/cookbook/container/" title="Run Container" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/docs/cookbook/invalid-session-id/" title="Error: Invalid session id" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
