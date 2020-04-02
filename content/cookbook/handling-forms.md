@@ -5,7 +5,7 @@ weight = 5
 +++
 
 # Handling forms
-Filling forms and verifying their functionality is one of the major use cases in E2E-Testing and -Monitoring. Most of the web element have been abstracted from their technical specification in HTML. A `<intput name="last-name" /> ` for example is abstracted as a via the `_textbox("last-name")` accessor. Let's have a look at some more of the most common accessors to interact with forms.
+Filling forms and verifying their functionality is one of the major use cases in E2E-Testing and -Monitoring. Most of the web elements have been abstracted from their technical specification in HTML. An `<intput name="last-name" /> ` for example is abstracted as a `_textbox("last-name")` accessor. Let's have a look at the most common accessors to interact with forms.
 
 ## Input fields
 
