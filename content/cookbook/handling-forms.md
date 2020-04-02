@@ -61,7 +61,7 @@ await _setValue(_password('password-input'), "$ecret")
 
 ## Buttons
 ### Standard buttons
-Just as for other elements, Sakuli provides a [_button accessor](https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_button). The difference to e.g. input fields is the action you perform on button elements. Instead of setting a text value you would rather click the button. To do so, Sakuli provides a [_click action](https://sakuli.io/apidoc/sakuli-legacy/interfaces/actionapi.html#_click).
+Just like other elements, Sakuli provides a [_button accessor](https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_button). The difference to e.g. input fields is the action you perform on button elements. Instead of setting a text value, you would rather click the button. To do so, Sakuli provides a [_click action](https://sakuli.io/apidoc/sakuli-legacy/interfaces/actionapi.html#_click).
 
 {{<highlight html>}}
 <button>Click Me</button>
