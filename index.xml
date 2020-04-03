@@ -5,7 +5,7 @@
     <link>/docs/</link>
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 20 Mar 2020 13:18:11 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 03 Apr 2020 09:00:42 +0200</lastBuildDate>
     
 	<atom:link href="/docs/index.xml" rel="self" type="application/rss+xml" />
     
@@ -149,6 +149,15 @@ Of course, you can also use Sakulis native testing power on its own, e.</descrip
       <description>Setup Setup Your First Test Since v2.2.0 Sakuli provides an easy to use mechanism to initialize testcases and testsuites.
 npx sakuli create project . my-sut This will create all necessary files and folders to start writing your first Sakuli test right away. With this, you can skip the next section and directly start to write your first test
 Setup the Project Manually Since we wanted to keep Sakuli mostly compatible to v1, the file layout looks basically the same for testsuites.</description>
+    </item>
+    
+    <item>
+      <title>Version control systems</title>
+      <link>/docs/getting-started/version-control/</link>
+      <pubDate>Fri, 03 Apr 2020 09:00:42 +0200</pubDate>
+      
+      <guid>/docs/getting-started/version-control/</guid>
+      <description>Version control systems We highly recommend using version control systems for your test/check files, configs, etc. This ensures that changes are tracked, eases development processes as well as backup strategies and allows to release versions of tests/checks in relation to a certain version of your system under test. During test/check execution, Sakuli creates various files like logs and error screenshots which should be ignored when using version control. Common version control systems support strategies to ignore files and folders.</description>
     </item>
     
     <item>

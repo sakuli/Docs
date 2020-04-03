@@ -38,7 +38,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs/tags/">
+  <body class="" data-url="/docs/getting-started/version-control/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -81,7 +81,7 @@
   
     
     <li data-nav-id="/docs/getting-started/" title="Getting Started" class="dd-item
-        
+        parent
         
         
         ">
@@ -183,7 +183,7 @@
  
   
     
-      <li data-nav-id="/docs/getting-started/version-control/" title="Version control systems" class="dd-item ">
+      <li data-nav-id="/docs/getting-started/version-control/" title="Version control systems" class="dd-item active">
         <a href="/docs/getting-started/version-control/">
         Version control systems
         <i class="fas fa-check read-icon"></i>
@@ -792,7 +792,19 @@
                     
           
           
-            Tags
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/docs/'></a> > <a href='/docs/getting-started/'>Getting Started</a> > Version control systems
+          
+        
+          
+        
           
         
                  
@@ -801,7 +813,14 @@
                 
                     <div class="progress">
     <div class="wrapper">
-        
+        <nav id="TableOfContents">
+<ul>
+<li><a href="#version-control-systems">Version control systems</a>
+<ul>
+<li><a href="#git">Git</a></li>
+</ul></li>
+</ul>
+</nav>
     </div>
 </div>
 
@@ -824,15 +843,25 @@
 
 
 
+<h1 id="version-control-systems">Version control systems</h1>
 
-<ul>
-	
-</ul>
+<p>We highly recommend using version control systems for your test/check files, configs, etc. This ensures that changes are tracked, eases development processes as well as backup strategies and allows to release versions of tests/checks in relation to a certain version of your system under test. During test/check execution, Sakuli creates various files like logs and error screenshots which should be ignored when using version control. Common version control systems support strategies to ignore files and folders. Here are prepared configurations for you to use with Sakuli.</p>
+
+<h2 id="git">Git</h2>
+
+<p>To ignore files and folders in Git, a <code>.gitignore</code> file is used. The following snippet contains the config for Sakuli.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">#Sakuli 
+*.steps.cache
+**/_logs</code></pre></div>
+
+<p>For more information about <code>.gitingore</code> files, please have a look at the <a href="https://git-scm.com/docs/gitignore">official git documentation</a>.</p>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -865,8 +894,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -880,6 +907,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -945,6 +975,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -963,6 +994,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1352,8 +1386,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/docs/getting-started/firsttest/" title="First Setup"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/docs/getting-started/" title="Getting Started" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/docs/writing_tests/" title="Writing Tests" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1383,3 +1419,4 @@
 
   </body>
 </html>
+
