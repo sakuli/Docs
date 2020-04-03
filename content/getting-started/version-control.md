@@ -13,7 +13,7 @@ To ignore files and folders in Git, a `.gitignore` file is used. The following s
 {{<highlight text>}}
 #Sakuli 
 *.steps.cache
-_logs/
+**/_logs
 {{</highlight>}}
 
 For more information about `.gitingore` files, please have a look at the [official git documentation](https://git-scm.com/docs/gitignore).
