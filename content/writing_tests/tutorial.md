@@ -6,8 +6,8 @@ weight : 7
 
 # Tutorial
 
-After learning about the native and DOM-based testing capabilities of Sakuli, show a demonstration what you probably need
-to set up a monitoring check. The 10 do's and don'ts is a nice guideline to start, on what should be checked.
+This tutorial shows how to set up a Sakuli test using the CLI and how to use a combination of the native and DOM-based
+features of Sakuli.
 
 
 ## Setting up a Sakuli Test Suite
