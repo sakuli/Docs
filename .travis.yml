@@ -1,12 +1,12 @@
 dist: xenial
 
 install:
-  - wget -O /tmp/hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.56.3/hugo_extended_0.56.3_Linux-64bit.deb
+  - wget -O /tmp/hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.68.3/hugo_extended_0.68.3_Linux-64bit.deb
   - sudo dpkg -i /tmp/hugo.deb
 
 # script - run the build script
 script:
-    - hugo -b /docs
+    - hugo -b /docs --environment production
 
 # github pages master branch
 deploy:
