@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
   <head>
-
+    
+      
+      
+      <script data-name="googleanalytics" data-type="application/javascript" type="text/plain">(function (w, d, s, l, i) {
+                      w[l] = w[l] || []; w[l].push({
+                          'gtm.start':
+                              new Date().getTime(), event: 'gtm.js'
+                      }); var f = d.getElementsByTagName(s)[0],
+                          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                              'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                  })(window, document, 'script', 'dataLayer', 'GTM-TMFSKHB');</script>
+      
+    
+    
+      <script data-type="application/javascript" type="text/plain" data-src="https://app.primeleads.de/api/v1/4uewa4e9rh"
+        data-name="primeLeads"></script>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.56.3" />
+    <meta name="generator" content="Hugo 0.68.3" />
     <meta name="description" content="">
 
 
@@ -755,6 +771,22 @@
       
         <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
       
+      <li>
+        <a class="padding" onclick="klaro.show();return false;">
+          <i class="fas fa-cog fa-fw"></i> Cookie Settings
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../dataprivacy/">
+          <i class="fas fa-user-secret fa-fw"></i> Data Privacy
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../legalnotice/">
+          <i class="fas fa-balance-scale fa-fw"></i> Legal Notice
+        </a>
+      </li>
+      
       </ul>
     </section>
     
@@ -814,24 +846,23 @@
                     <div class="progress">
     <div class="wrapper">
         <nav id="TableOfContents">
-<ul>
-<li><a href="#v2-3-0">V2.3.0</a>
-<ul>
-<li><a href="#sakuli-core">Sakuli Core</a>
-<ul>
-<li><a href="#node-12">Node 12</a></li>
-<li><a href="#changes-on-click-functionality">Changes on <code>_click()</code> functionality</a></li>
-<li><a href="#improved-cli-error-messages">Improved CLI error messages</a></li>
-<li><a href="#optional-website-stabilization">Optional website stabilization</a></li>
-</ul></li>
-<li><a href="#enterprise-packages">Enterprise packages</a>
-<ul>
-<li><a href="#sakuli-prometheus-forwarder">Sakuli Prometheus forwarder</a></li>
-<li><a href="#checkmk-forwarder-website-link-in-spool-files">CheckMK forwarder - Website link in spool files</a></li>
-<li><a href="#sakuli-container">Sakuli Container</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#sakuli-core">Sakuli Core</a>
+      <ul>
+        <li><a href="#node-12">Node 12</a></li>
+        <li><a href="#changes-on-_click-functionality">Changes on <code>_click()</code> functionality</a></li>
+        <li><a href="#improved-cli-error-messages">Improved CLI error messages</a></li>
+        <li><a href="#optional-website-stabilization">Optional website stabilization</a></li>
+      </ul>
+    </li>
+    <li><a href="#enterprise-packages">Enterprise packages</a>
+      <ul>
+        <li><a href="#sakuli-prometheus-forwarder">Sakuli Prometheus forwarder</a></li>
+        <li><a href="#checkmk-forwarder---website-link-in-spool-files">CheckMK forwarder - Website link in spool files</a></li>
+        <li><a href="#sakuli-container">Sakuli Container</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
     </div>
 </div>
@@ -853,26 +884,17 @@
 
 
 
-
-
-<h1 id="v2-3-0">V2.3.0</h1>
-
+<h1 id="v230">V2.3.0</h1>
 <p>Sakuli V2.3.0 comes with a lot of improvements in performance and stability as well as with a lot of bug fixes and a
 completely new forwarder integration. Let&rsquo;s have a look at the major changes for this release.</p>
-
 <h2 id="sakuli-core">Sakuli Core</h2>
-
 <p>Besides node 12 support and adjustments in Sakuli click actions, we&rsquo;ve improved CLI output in case of check/test failures and added ways to ensure a stable website before performing any action.
 A detailed list of all applied enhancement and fixes can be found in the
 <a href="https://github.com/sakuli/sakuli/blob/develop/CHANGELOG.md">CHANGELOG.md</a>.</p>
-
 <h3 id="node-12">Node 12</h3>
-
 <p>From now on, Sakuli also supports the current LTS version of node (v12.x, codename <code>lts/erbium</code>), so feel free to upgrade your systems to latest LTS.
 We updated our enterprise containers accordingly, so starting with 2.3.0 they are now running on <code>lts/erbium</code>.</p>
-
-<h3 id="changes-on-click-functionality">Changes on <code>_click()</code> functionality</h3>
-
+<h3 id="changes-on-_click-functionality">Changes on <code>_click()</code> functionality</h3>
 <p>A lot of effort went into stabilizing the click functionality on websites.
 Clicking a web element might sound trivial at first, but being as heterogenous as it is, the web allows for quite a few edge cases.
 Depending on the implementation it might be hard for Sakuli to reliably perform click actions on buttons, links, etc.
@@ -881,52 +903,35 @@ For this release, we spent some time on investigating the root cause for these i
 several technical validations e.g. whether the element to click is visible, before the actual click is performed. If one of
 these checks fails, an error will be thrown. On some websites, these strict checks might fail the technical validation.
 For those cases, it is still possible to avoid all technical checks and validation by passing the configuration object <code>{force: true}</code> to the click action.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_button</span>(<span style="color:#e6db74">&#34;Click Me&#34;</span>), {<span style="color:#a6e22e">force</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>}); <span style="color:#75715e">// clicks without validation
 </span></code></pre></div>
-
-<p><em>Please note that a forced click might lead to false positives, as no validation takes place.</em><br />
+<p><em>Please note that a forced click might lead to false positives, as no validation takes place.</em><br>
 For more information, please have a look at the
 <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_click">_click() API documentation</a>.</p>
-
 <h3 id="improved-cli-error-messages">Improved CLI error messages</h3>
-
 <p>We improved the error messages of the CLI output. You will now receive detailed information about syntax errors
 in test scripts as well as more detailed information on the root cause for errors.</p>
-
 <h3 id="optional-website-stabilization">Optional website stabilization</h3>
-
 <p>Many modern websites use visual effects regularly. Such effects have impaired test setups in the past. Some users compensated such situations by using <code>_wait()</code> with a fixed timeout. Depending on the system the checks are running on, we have observed that a strict <code>_wait()</code> is not reliable. Therefore we added <code>_pageIsStable()</code> to the
 Sakuli API. <code>_pageIsStable()</code> allows you to wait until the DOM of your website has stabilized e.g. after animations are finished or dynamic content has been loaded. As soon as the DOM is stable, test execution continues. It is possible to
 configure the maximum timeout to wait and even the intervals in which the DOM is checked.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Wait for the DOM to stabilize within a maximum 5 seconds and check in an interval of 100 milliseconds.
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_pageIsStable</span>(<span style="color:#ae81ff">5000</span>, <span style="color:#ae81ff">100</span>);
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_pageIsStable</span>(<span style="color:#ae81ff">5000</span>, <span style="color:#ae81ff">100</span>);
 </code></pre></div>
-
 <p>For more information, please have a look at the
 <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/commonactionsapi.html#_pageisstable">_pageIsStable() API documentation</a>.</p>
-
 <h2 id="enterprise-packages">Enterprise packages</h2>
-
 <h3 id="sakuli-prometheus-forwarder">Sakuli Prometheus forwarder</h3>
-
 <p>With 2.3.0, we have added a <a href="https://prometheus.io/">Prometheus</a> forwarder to the enterprise forwarder packages. To use the Prometheus forwarder, a valid Sakuli enterprise license is required.</p>
-
 <p>As Sakuli checks are not designed to provide a persistent endpoint for Prometheus to scrape, the forwarder leverages the Prometheus push gateway. For more information about configuration and setup, please have a look at the <a href="https://sakuli.io/docs/enterprise_features/prometheus/">Prometheus forwarder documentation</a>.</p>
-
-<h3 id="checkmk-forwarder-website-link-in-spool-files">CheckMK forwarder - Website link in spool files</h3>
-
+<h3 id="checkmk-forwarder---website-link-in-spool-files">CheckMK forwarder - Website link in spool files</h3>
 <p>From now on, Sakuli allows to add an optional website URL to the CheckMK spool files. These URLs will be displayed in the CheckMK Web Interface which allows an easy access for the monitoring staff to systems under test in case of an error.</p>
-
 <p>For more information, please have a look at the <a href="https://sakuli.io/docs/enterprise_features/check/#forwarder-configuration">CheckMK forwarder documentation</a>.</p>
-
 <h3 id="sakuli-container">Sakuli Container</h3>
-
 <p>As usual, we updated the container to use the latest Sakuli version, latest security patches and also added node 12 as well as all changes to the
 enterprise forwarders. Besides that, we created a completely new container which aims to control remote
 Windows machines via RDP. The new image can be found in the enterprise repository on docker hub under
-<code>taconsol/sakuli-remote-connection</code>.<br />
+<code>taconsol/sakuli-remote-connection</code>.<br>
 <em>To be able to use the new <code>taconsol/sakuli-remote-connection</code> image, a valid Sakuli enterprise licence of
 <strong>L</strong> level or higher is required.</em></p>
 
@@ -1479,6 +1484,8 @@ Windows machines via RDP. The new image can be found in the enterprise repositor
     <script src="/docs/js/modernizr.custom-3.6.0.js"></script>
     <script src="/docs/js/learn.js"></script>
     <script src="/docs/js/hugo-learn.js"></script>
+    <script src="/docs/js/klaroCookie/config.js"></script>
+    <script src="/docs/js/klaroCookie/klaro.js"></script>
 
     <link href="/docs/mermaid/mermaid.css" rel="stylesheet" />
     <script src="/docs/mermaid/mermaid.js"></script>

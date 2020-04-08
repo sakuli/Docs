@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
   <head>
-
+    
+      
+      
+      <script data-name="googleanalytics" data-type="application/javascript" type="text/plain">(function (w, d, s, l, i) {
+                      w[l] = w[l] || []; w[l].push({
+                          'gtm.start':
+                              new Date().getTime(), event: 'gtm.js'
+                      }); var f = d.getElementsByTagName(s)[0],
+                          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                              'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                  })(window, document, 'script', 'dataLayer', 'GTM-TMFSKHB');</script>
+      
+    
+    
+      <script data-type="application/javascript" type="text/plain" data-src="https://app.primeleads.de/api/v1/4uewa4e9rh"
+        data-name="primeLeads"></script>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.56.3" />
+    <meta name="generator" content="Hugo 0.68.3" />
     <meta name="description" content="">
 
 
@@ -755,6 +771,22 @@
       
         <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
       
+      <li>
+        <a class="padding" onclick="klaro.show();return false;">
+          <i class="fas fa-cog fa-fw"></i> Cookie Settings
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../dataprivacy/">
+          <i class="fas fa-user-secret fa-fw"></i> Data Privacy
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../legalnotice/">
+          <i class="fas fa-balance-scale fa-fw"></i> Legal Notice
+        </a>
+      </li>
+      
       </ul>
     </section>
     
@@ -808,17 +840,14 @@
                     <div class="progress">
     <div class="wrapper">
         <nav id="TableOfContents">
-<ul>
-<li><a href="#sakuli-cli-commands">Sakuli CLI commands</a>
-<ul>
-<li><a href="#sakuli-create-project">sakuli create project</a></li>
-<li><a href="#sakuli-create-masterkey">sakuli create masterkey</a></li>
-<li><a href="#sakuli-enable-enterprise">sakuli enable-enterprise</a></li>
-<li><a href="#sakuli-encrypt">sakuli encrypt</a></li>
-<li><a href="#sakuli-migrate">sakuli migrate</a></li>
-<li><a href="#sakuli-run">sakuli run</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#sakuli-create-project">sakuli create project</a></li>
+    <li><a href="#sakuli-create-masterkey">sakuli create masterkey</a></li>
+    <li><a href="#sakuli-enable-enterprise">sakuli enable-enterprise</a></li>
+    <li><a href="#sakuli-encrypt">sakuli encrypt</a></li>
+    <li><a href="#sakuli-migrate">sakuli migrate</a></li>
+    <li><a href="#sakuli-run">sakuli run</a></li>
+  </ul>
 </nav>
     </div>
 </div>
@@ -841,12 +870,8 @@
 
 
 
-	
-
-<h1 id="sakuli-cli-commands">Sakuli CLI commands</h1>
-
+	<h1 id="sakuli-cli-commands">Sakuli CLI commands</h1>
 <h2 id="sakuli-create-project">sakuli create project</h2>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli create project <span style="color:#f92672">[</span> &lt;path&gt; <span style="color:#f92672">]</span> <span style="color:#f92672">[</span> &lt;suiteName&gt; <span style="color:#f92672">]</span> <span style="color:#f92672">[</span> --force | -f <span style="color:#f92672">]</span> <span style="color:#f92672">[</span> --package <span style="color:#f92672">]</span>
 
 
@@ -860,13 +885,10 @@ Positionals:
 Options:
   --force <span style="color:#f92672">(</span>alias -f<span style="color:#f92672">)</span>    Forces sakuli to create testsuite
   --package             Create additional package.json <span style="color:#66d9ef">for</span> testsuite</code></pre></div>
-
 <p>This creates a Sakuli testsuite folder with the <code>testsuite.suite</code> and <code>testsuite.properties</code> files and a <code>case1</code> folder
 containing an empty <code>check.js</code>. With the <code>--package</code> option, it is possible to create an additional <code>package.json</code>.
 Further information on how to set up a Sakuli project and the needed files can be found <a href="/docs/100_writing-tests#setup-and-configuration">here</a>.</p>
-
 <h2 id="sakuli-create-masterkey">sakuli create masterkey</h2>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli create masterkey <span style="color:#f92672">[</span> --algorithm <span style="color:#f92672">]</span>
 
 
@@ -875,22 +897,16 @@ Generates a new masterkey
 
 Positionals:
   algorithm             The algorithm to create a key <span style="color:#66d9ef">for</span>                           <span style="color:#f92672">[</span>optional<span style="color:#f92672">][</span>default: <span style="color:#e6db74">&#34;aes-128-cbc&#34;</span><span style="color:#f92672">]</span></code></pre></div>
-
 <p>This command outputs a masterkey which can be used to encrypt a secret with the <a href="#sakuli-encrypt">sakuli encrypt</a>
 command or to decrypt a secret in a testcase with a Sakuli function like <code>Environment.decryptSecret()</code>.</p>
-
 <h2 id="sakuli-enable-enterprise">sakuli enable-enterprise</h2>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli enable-enterprise
 
 
 Configures and enables enterprise features</code></pre></div>
-
 <p>This command starts an assistant which will guide you through the setup of enterprise features. More information on how
 to use the <code>enable-enterprise</code> command can be found <a href="/enterprise_features/#assisted-setup">here</a>.</p>
-
 <h2 id="sakuli-encrypt">sakuli encrypt</h2>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli encrypt &lt;secret&gt; --masterkey
 
 
@@ -902,13 +918,10 @@ Positionals:
   
 Options:
   --masterkey           The masterkey used <span style="color:#66d9ef">for</span> encryption                           <span style="color:#f92672">[</span>required<span style="color:#f92672">]</span></code></pre></div>
-
 <p>To use this command it is necessary to create a masterkey with <a href="#sakuli-create-masterkey"><code>npx create masterkey</code></a> first.
 With <code>npx sakuli encrypt</code> you can now encrypt a secret or password which then can be decrypted in the Sakuli testcase
 with one of the decryption functions like <code>Environment.decryptSecret()</code>.</p>
-
 <h2 id="sakuli-migrate">sakuli migrate</h2>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli migrate &lt;path&gt;
 
 
@@ -917,12 +930,9 @@ Transforms all legacy testsuites into new syntax
 
 Positional
   path                  path to a legacy suite                                      <span style="color:#f92672">[</span>required<span style="color:#f92672">]</span></code></pre></div>
-
 <p>Since Sakuli had some minor changes in the syntax with v2, old Sakuli v1 testcases need to be adapted to the new syntax.
 With this command Sakuli takes over this task.</p>
-
 <h2 id="sakuli-run">sakuli run</h2>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli run &lt;path&gt;
 
 
@@ -1485,6 +1495,8 @@ Positionals:
     <script src="/docs/js/modernizr.custom-3.6.0.js"></script>
     <script src="/docs/js/learn.js"></script>
     <script src="/docs/js/hugo-learn.js"></script>
+    <script src="/docs/js/klaroCookie/config.js"></script>
+    <script src="/docs/js/klaroCookie/klaro.js"></script>
 
     <link href="/docs/mermaid/mermaid.css" rel="stylesheet" />
     <script src="/docs/mermaid/mermaid.js"></script>

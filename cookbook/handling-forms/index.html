@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
   <head>
-
+    
+      
+      
+      <script data-name="googleanalytics" data-type="application/javascript" type="text/plain">(function (w, d, s, l, i) {
+                      w[l] = w[l] || []; w[l].push({
+                          'gtm.start':
+                              new Date().getTime(), event: 'gtm.js'
+                      }); var f = d.getElementsByTagName(s)[0],
+                          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                              'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                  })(window, document, 'script', 'dataLayer', 'GTM-TMFSKHB');</script>
+      
+    
+    
+      <script data-type="application/javascript" type="text/plain" data-src="https://app.primeleads.de/api/v1/4uewa4e9rh"
+        data-name="primeLeads"></script>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.56.3" />
+    <meta name="generator" content="Hugo 0.68.3" />
     <meta name="description" content="">
 
 
@@ -755,6 +771,22 @@
       
         <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
       
+      <li>
+        <a class="padding" onclick="klaro.show();return false;">
+          <i class="fas fa-cog fa-fw"></i> Cookie Settings
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../dataprivacy/">
+          <i class="fas fa-user-secret fa-fw"></i> Data Privacy
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../legalnotice/">
+          <i class="fas fa-balance-scale fa-fw"></i> Legal Notice
+        </a>
+      </li>
+      
       </ul>
     </section>
     
@@ -814,28 +846,27 @@
                     <div class="progress">
     <div class="wrapper">
         <nav id="TableOfContents">
-<ul>
-<li><a href="#handling-forms">Handling forms</a>
-<ul>
-<li><a href="#input-fields">Input fields</a>
-<ul>
-<li><a href="#textarea">Textarea</a></li>
-<li><a href="#textboxes">Textboxes</a></li>
-<li><a href="#emails">Emails</a></li>
-<li><a href="#passwords">Passwords</a></li>
-</ul></li>
-<li><a href="#buttons">Buttons</a>
-<ul>
-<li><a href="#standard-buttons">Standard buttons</a></li>
-<li><a href="#submit-buttons">Submit buttons</a></li>
-<li><a href="#buttons-with-images">Buttons with images</a></li>
-</ul></li>
-<li><a href="#checkboxes">Checkboxes</a></li>
-<li><a href="#select-boxes">Select boxes</a></li>
-<li><a href="#radiobuttons">Radiobuttons</a></li>
-<li><a href="#access-by-xpath">Access by XPath</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#input-fields">Input fields</a>
+      <ul>
+        <li><a href="#textarea">Textarea</a></li>
+        <li><a href="#textboxes">Textboxes</a></li>
+        <li><a href="#emails">Emails</a></li>
+        <li><a href="#passwords">Passwords</a></li>
+      </ul>
+    </li>
+    <li><a href="#buttons">Buttons</a>
+      <ul>
+        <li><a href="#standard-buttons">Standard buttons</a></li>
+        <li><a href="#submit-buttons">Submit buttons</a></li>
+        <li><a href="#buttons-with-images">Buttons with images</a></li>
+      </ul>
+    </li>
+    <li><a href="#checkboxes">Checkboxes</a></li>
+    <li><a href="#select-boxes">Select boxes</a></li>
+    <li><a href="#radiobuttons">Radiobuttons</a></li>
+    <li><a href="#access-by-xpath">Access by XPath</a></li>
+  </ul>
 </nav>
     </div>
 </div>
@@ -857,120 +888,76 @@
 
 
 
-
-
 <h1 id="handling-forms">Handling forms</h1>
-
-<p>Filling forms and verifying their functionality is one of the major use cases in E2E-Testing and -Monitoring. Most of the web elements have been abstracted from their technical specification in HTML. An <code>&lt;intput name=&quot;last-name&quot; /&gt;</code> for example is abstracted as a <code>_textbox(&quot;last-name&quot;)</code> accessor. Let&rsquo;s have a look at the most common accessors to interact with forms.</p>
-
+<p>Filling forms and verifying their functionality is one of the major use cases in E2E-Testing and -Monitoring. Most of the web elements have been abstracted from their technical specification in HTML. An <code>&lt;intput name=&quot;last-name&quot; /&gt; </code> for example is abstracted as a <code>_textbox(&quot;last-name&quot;)</code> accessor. Let&rsquo;s have a look at the most common accessors to interact with forms.</p>
 <h2 id="input-fields">Input fields</h2>
-
 <h3 id="textarea">Textarea</h3>
-
 <p>Filling text into a textarea can easily be achieved by combining the <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/actionapi.html#_setvalue">_setValue() action</a> with the <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_textarea">_textarea() accessor</a>.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">textarea</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;textarea-input&#34;</span> &gt;&lt;/<span style="color:#f92672">textarea</span>&gt;</code></pre></div>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_setValue</span>(<span style="color:#a6e22e">_textarea</span>(<span style="color:#e6db74">&#39;textarea-input&#39;</span>), <span style="color:#e6db74">&#39;Some longer text maybe...&#39;</span>)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_setValue</span>(<span style="color:#a6e22e">_textarea</span>(<span style="color:#e6db74">&#39;textarea-input&#39;</span>), <span style="color:#e6db74">&#39;Some longer text maybe...&#39;</span>)
 </code></pre></div>
-
 <h3 id="textboxes">Textboxes</h3>
-
 <p>Similar to <code>&lt;textarea&gt;</code> elements, text input fields can easily be filled with text by combining the <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/actionapi.html#_setvalue">_setValue() action</a> with the <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_textbox">_textbox() accessor</a>. The <code>_textbox()</code> accessor is configured to catch <code>&lt;input&gt;</code> fields without any <code>type</code> or with <code>type=text</code>.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;first-name&#34;</span> /&gt;
 &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;last-name&#34;</span> /&gt;
 &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Street&#34;</span> /&gt;</code></pre></div>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_setValue</span>(<span style="color:#a6e22e">_textbox</span>(<span style="color:#e6db74">&#39;first-name&#39;</span>) ,<span style="color:#e6db74">&#34;Bill&#34;</span>)
-<span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_setValue</span>(<span style="color:#a6e22e">_textbox</span>(<span style="color:#e6db74">&#39;last-name&#39;</span>) ,<span style="color:#e6db74">&#34;Jobs&#34;</span>)
-<span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_setValue</span>(<span style="color:#a6e22e">_textbox</span>(<span style="color:#e6db74">&#39;street&#39;</span>) ,<span style="color:#e6db74">&#34;Money Blvd.&#34;</span>)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_setValue</span>(<span style="color:#a6e22e">_textbox</span>(<span style="color:#e6db74">&#39;first-name&#39;</span>) ,<span style="color:#e6db74">&#34;Bill&#34;</span>)
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_setValue</span>(<span style="color:#a6e22e">_textbox</span>(<span style="color:#e6db74">&#39;last-name&#39;</span>) ,<span style="color:#e6db74">&#34;Jobs&#34;</span>)
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_setValue</span>(<span style="color:#a6e22e">_textbox</span>(<span style="color:#e6db74">&#39;street&#39;</span>) ,<span style="color:#e6db74">&#34;Money Blvd.&#34;</span>)
 </code></pre></div>
-
 <h3 id="emails">Emails</h3>
-
 <p>Similar to <code>&lt;input type=&quot;text&quot;&gt;</code> elements, E-Mail input fields can easily be filled with an E-Mail address by combining the <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/actionapi.html#_setvalue">_setValue() action</a> with the <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_emailbox">_emailbox() accessor</a>. The <code>_emailbox()</code> accessor is configured to catch <code>&lt;input&gt;</code> fields or with <code>type=email</code>.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;email&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mail-input&#34;</span> /&gt;</code></pre></div>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_setValue</span>(<span style="color:#a6e22e">_emailbox</span>(<span style="color:#e6db74">&#39;mail-input&#39;</span>), <span style="color:#e6db74">&#39;do-not-spam@sakuli.io&#39;</span>)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_setValue</span>(<span style="color:#a6e22e">_emailbox</span>(<span style="color:#e6db74">&#39;mail-input&#39;</span>), <span style="color:#e6db74">&#39;do-not-spam@sakuli.io&#39;</span>)
 </code></pre></div>
-
 <h3 id="passwords">Passwords</h3>
-
 <p>Password fields are a little different compared to standard input fields as they are hiding the provided input. Sakuli provides a <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_password">_password() accessor</a> to access <code>&lt;input&gt;</code> fields with <code>type=password</code>. In combination with the <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/actionapi.html#_setvalue">_setValue() action</a>, it is easily possible to set passwords in those fields.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;password&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;password-input&#34;</span> /&gt;</code></pre></div>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_setValue</span>(<span style="color:#a6e22e">_password</span>(<span style="color:#e6db74">&#39;password-input&#39;</span>), <span style="color:#e6db74">&#34;$ecret&#34;</span>)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_setValue</span>(<span style="color:#a6e22e">_password</span>(<span style="color:#e6db74">&#39;password-input&#39;</span>), <span style="color:#e6db74">&#34;$ecret&#34;</span>)
 </code></pre></div>
-
 <h2 id="buttons">Buttons</h2>
-
 <h3 id="standard-buttons">Standard buttons</h3>
-
 <p>Just like other elements, Sakuli provides a <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_button">_button accessor</a>. The difference to e.g. input fields is the action you perform on button elements. Instead of setting a text value, you would rather click the button. To do so, Sakuli provides a <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/actionapi.html#_click">_click action</a>.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">button</span>&gt;Click Me&lt;/<span style="color:#f92672">button</span>&gt;</code></pre></div>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_button</span>(<span style="color:#e6db74">&#39;Click Me&#39;</span>));
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_button</span>(<span style="color:#e6db74">&#39;Click Me&#39;</span>));
 </code></pre></div>
-
 <h3 id="submit-buttons">Submit buttons</h3>
-
 <p>Submit buttons are the standard HTML way of submitting web forms. Those buttons provide specialized functionality and markup. Therefore Sakuli provides a dedicated <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_submit">_submit accessor</a> looking for <code>&lt;input&gt;</code> elements with <code>type=&quot;submit&quot;</code>. Such an accessor decorated with a <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/actionapi.html#_click">_click action</a> will submit the respective web form associated with the submit button.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">form</span>&gt;
     &lt;<span style="color:#f92672">label</span>&gt;User: &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;username&#34;</span> /&gt;&lt;/<span style="color:#f92672">label</span>&gt;
     &lt;<span style="color:#f92672">label</span>&gt;Password: &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;password&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;password&#34;</span> /&gt;&lt;/<span style="color:#f92672">label</span>&gt;
     &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit&#34;</span>&gt;Login&lt;/<span style="color:#f92672">button</span>&gt;
 &lt;/<span style="color:#f92672">form</span>&gt;</code></pre></div>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_submit</span>(<span style="color:#e6db74">&#39;Login&#39;</span>));
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_submit</span>(<span style="color:#e6db74">&#39;Login&#39;</span>));
 </code></pre></div>
-
 <h3 id="buttons-with-images">Buttons with images</h3>
-
 <p>A special kind of buttons is the image submit button that is not displayed as a regular button but represented by an image. These buttons can be accessed by the <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_imagesubmitbutton">_imageSubmitButton accessor</a> which searches for <code>&lt;input&gt;</code> elements with <code>type=&quot;image&quot;</code>. As these elements are still meant to be clicked, a decoration with a <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/actionapi.html#_click">_click action</a> is possible.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">form</span>&gt;
     &lt;<span style="color:#f92672">label</span>&gt;User: &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;username&#34;</span> /&gt;&lt;/<span style="color:#f92672">label</span>&gt;
     &lt;<span style="color:#f92672">label</span>&gt;Password: &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;password&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;password&#34;</span> /&gt;&lt;/<span style="color:#f92672">label</span>&gt;
     &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;image&#34;</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cool-button.png&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;login&#34;</span> /&gt;
 &lt;/<span style="color:#f92672">form</span>&gt;</code></pre></div>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_imageSubmitButton</span>(<span style="color:#e6db74">&#39;login&#39;</span>));
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_imageSubmitButton</span>(<span style="color:#e6db74">&#39;login&#39;</span>));
 </code></pre></div>
-
 <h2 id="checkboxes">Checkboxes</h2>
-
 <p>As for many other HTML elements, Sakuli provides a dedicated accessor and action to handle checkbox inputs. By using the <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_checkbox">_checkbox selector</a> and decorating it with a <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/actionapi.html#_check">_check action</a> you are able to check any checkbox on your website.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">label</span>&gt;
     &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;checkbox&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;like-pizza&#34;</span>&gt;
     &lt;<span style="color:#f92672">span</span>&gt;Like Pizza?&lt;/<span style="color:#f92672">span</span>&gt;
 &lt;/<span style="color:#f92672">label</span>&gt;</code></pre></div>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_check</span>(<span style="color:#a6e22e">_checkbox</span>(<span style="color:#e6db74">&#39;like-pizza&#39;</span>));
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_check</span>(<span style="color:#a6e22e">_checkbox</span>(<span style="color:#e6db74">&#39;like-pizza&#39;</span>));
 </code></pre></div>
-
 <h2 id="select-boxes">Select boxes</h2>
-
 <p>Selecting a specific value in select boxes is easy using the common accessor/action combination in Sakuli. To access the select box, use the <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_select">_select accessor</a> in combination with the <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/actionapi.html#_setselected">_setSelected action</a>. The <code>_select</code> accessor is built to fetch <code>&lt;select&gt;</code> elements from the given DOM.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">select</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;preferred-drink&#34;</span>&gt;
     &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;water&#34;</span>&gt;Water&lt;/<span style="color:#f92672">option</span>&gt;
     &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;wine&#34;</span>&gt;Wine&lt;/<span style="color:#f92672">option</span>&gt;
     &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;beer&#34;</span>&gt;Beer&lt;/<span style="color:#f92672">option</span>&gt;
 &lt;/<span style="color:#f92672">select</span>&gt;</code></pre></div>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_setSelected</span>(<span style="color:#a6e22e">_select</span>(<span style="color:#e6db74">&#39;preferred-drink&#39;</span>), <span style="color:#e6db74">&#39;beer&#39;</span>);
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_setSelected</span>(<span style="color:#a6e22e">_select</span>(<span style="color:#e6db74">&#39;preferred-drink&#39;</span>), <span style="color:#e6db74">&#39;beer&#39;</span>);
 </code></pre></div>
-
 <h2 id="radiobuttons">Radiobuttons</h2>
-
 <p>Similar to select boxes, radio buttons come with their own <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_radio">_radio accessor</a> but reuse the <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/actionapi.html#_click">_click action</a>. The <code>_radio</code> accessor is looking for <code>&lt;input&gt;</code> fields with <code>type=radio</code>.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">h2</span>&gt;Prefered Drink?&lt;/<span style="color:#f92672">h2</span>&gt;
 &lt;<span style="color:#f92672">label</span>&gt;
     &lt;<span style="color:#f92672">span</span>&gt;Water&lt;/<span style="color:#f92672">span</span>&gt;
@@ -984,14 +971,10 @@
     &lt;<span style="color:#f92672">span</span>&gt;Beer&lt;/<span style="color:#f92672">span</span>&gt;
     &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;radio&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;drink&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;beer&#34;</span> /&gt;
 &lt;/<span style="color:#f92672">label</span>&gt;  </code></pre></div>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_radio</span>(<span style="color:#ae81ff">1</span>)); <span style="color:#75715e">// Selects &#39;Wine&#39;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_radio</span>(<span style="color:#ae81ff">1</span>)); <span style="color:#75715e">// Selects &#39;Wine&#39;
 </span></code></pre></div>
-
 <h2 id="access-by-xpath">Access by XPath</h2>
-
 <p>In some cases it might be necessary to use XPath expression to navigate the DOM structure because you might use custom HTML elements or your elements do not match the criteria of Sakuli accessors. As the <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_byxpath">_byXPath accessor</a> is just an accessor as every other, it is possible to combine it with actions.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">h2</span>&gt;Prefered Drink?&lt;/<span style="color:#f92672">h2</span>&gt;
 &lt;<span style="color:#f92672">label</span>&gt;
     &lt;<span style="color:#f92672">span</span>&gt;Water&lt;/<span style="color:#f92672">span</span>&gt;
@@ -1005,8 +988,7 @@
     &lt;<span style="color:#f92672">span</span>&gt;Beer&lt;/<span style="color:#f92672">span</span>&gt;
     &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;radio&#34;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;drink&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;beer&#34;</span> /&gt;
 &lt;/<span style="color:#f92672">label</span>&gt;  </code></pre></div>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_byXPath</span>(<span style="color:#e6db74">&#34;/html/body/label[2]/span&#34;</span>)); <span style="color:#75715e">// Selects &#39;Wine&#39;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_byXPath</span>(<span style="color:#e6db74">&#34;/html/body/label[2]/span&#34;</span>)); <span style="color:#75715e">// Selects &#39;Wine&#39;
 </span></code></pre></div>
 
 
@@ -1561,6 +1543,8 @@
     <script src="/docs/js/modernizr.custom-3.6.0.js"></script>
     <script src="/docs/js/learn.js"></script>
     <script src="/docs/js/hugo-learn.js"></script>
+    <script src="/docs/js/klaroCookie/config.js"></script>
+    <script src="/docs/js/klaroCookie/klaro.js"></script>
 
     <link href="/docs/mermaid/mermaid.css" rel="stylesheet" />
     <script src="/docs/mermaid/mermaid.js"></script>

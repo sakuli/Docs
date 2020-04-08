@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
   <head>
-
+    
+      
+      
+      <script data-name="googleanalytics" data-type="application/javascript" type="text/plain">(function (w, d, s, l, i) {
+                      w[l] = w[l] || []; w[l].push({
+                          'gtm.start':
+                              new Date().getTime(), event: 'gtm.js'
+                      }); var f = d.getElementsByTagName(s)[0],
+                          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                              'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                  })(window, document, 'script', 'dataLayer', 'GTM-TMFSKHB');</script>
+      
+    
+    
+      <script data-type="application/javascript" type="text/plain" data-src="https://app.primeleads.de/api/v1/4uewa4e9rh"
+        data-name="primeLeads"></script>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.56.3" />
+    <meta name="generator" content="Hugo 0.68.3" />
     <meta name="description" content="">
 
 
@@ -755,6 +771,22 @@
       
         <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
       
+      <li>
+        <a class="padding" onclick="klaro.show();return false;">
+          <i class="fas fa-cog fa-fw"></i> Cookie Settings
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../dataprivacy/">
+          <i class="fas fa-user-secret fa-fw"></i> Data Privacy
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../legalnotice/">
+          <i class="fas fa-balance-scale fa-fw"></i> Legal Notice
+        </a>
+      </li>
+      
       </ul>
     </section>
     
@@ -814,17 +846,15 @@
                     <div class="progress">
     <div class="wrapper">
         <nav id="TableOfContents">
-<ul>
-<li><a href="#interacting-with-a-native-application">Interacting with a native application</a>
-<ul>
-<li>
-<ul>
-<li><a href="#open-an-application">Open an application</a></li>
-<li><a href="#closing-an-application">Closing an application</a></li>
-<li><a href="#combining-with-region">Combining with Region</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#open-an-application">Open an application</a></li>
+        <li><a href="#closing-an-application">Closing an application</a></li>
+        <li><a href="#combining-with-region">Combining with Region</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
     </div>
 </div>
@@ -846,16 +876,11 @@
 
 
 
-
-
 <h1 id="interacting-with-a-native-application">Interacting with a native application</h1>
-
 <p>Now that we have covered how to interact with an operating system and used screenshot based testing
 capabilities of Sakuli, we can move on how to utilize one or multiple applications.
-All features are incorporated in the <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/thenableapplication.html" target="_blank">ThenableApplication Interface</a>.</p>
-
+All features are incorporated in the <!-- raw HTML omitted -->ThenableApplication Interface<!-- raw HTML omitted -->.</p>
 <h3 id="open-an-application">Open an application</h3>
-
 <p>To open an application, you enter the path to the application or respectively the application name, if you already
 added it to your PATH environment variable. If your path contains spaces, you have to escape them with <code>\\</code> because white spaces are reserved for parameter separation.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#75715e">// path to excel &#39;C:\\path to excel \excel.exe&#39;
@@ -868,22 +893,19 @@ added it to your PATH environment variable. If your path contains spaces, you ha
 
 <span style="color:#75715e">// path to chrome is e.g. &#39;C:\\Program\\ Files\google-chrome\chrome.exe&#39;
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">chrome</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Application</span>(<span style="color:#e6db74">&#34;C:\\Program\\ Files\google-chrome\chrome.exe --incognito&#34;</span>);
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">chrome</span>.<span style="color:#a6e22e">open</span>();</code></pre></div></p>
-
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">chrome</span>.<span style="color:#a6e22e">open</span>();
+</code></pre></div></p>
 <p>After creating an application with <code>new Application()</code>, it is necessary to call <code>open()</code> for Sakuli to start it.</p>
-
 <p>With <code>setSleepTime(seconds)</code> you can set the waiting time after opening an application. This is particularly useful for
 larger applications that have an initial loading time.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">calc</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Application</span>(<span style="color:#e6db74">&#34;gnome-calculator&#34;</span>);
 <span style="color:#75715e">//sleepTime of 1 second
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">setSleepTime</span>(<span style="color:#ae81ff">1</span>)
-    .<span style="color:#a6e22e">open</span>();</code></pre></div></p>
-
+    .<span style="color:#a6e22e">open</span>();
+</code></pre></div></p>
 <h3 id="closing-an-application">Closing an application</h3>
-
 <p>You can either use <code>close()</code> or <code>kill()</code>. <code>close()</code> sends a <code>SIGTERM</code> signal and <code>kill()</code> a <code>SIGKILL</code> signal to end the
 process.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Application</span>(<span style="color:#e6db74">&#39;gnome-calculator&#39;</span>).<span style="color:#a6e22e">open</span>();
 
 <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">close</span>();
@@ -892,20 +914,19 @@ process.</p>
 
 <span style="color:#75715e">//throws an exception if ending the process fails
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">close</span>(<span style="color:#66d9ef">false</span>);
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">kill</span>(<span style="color:#66d9ef">false</span>);</code></pre></div>
-
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">kill</span>(<span style="color:#66d9ef">false</span>);
+</code></pre></div>
 <h3 id="combining-with-region">Combining with Region</h3>
-
 <p>Currently (Sakuli v2.3.0) it is not possible to get the region from the application or the focused window. Therefore the
 following methods will return the desktop instead.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">calc</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Application</span>(<span style="color:#e6db74">&#39;gnome-calculator&#39;</span>);
 
 <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">open</span>()
     .<span style="color:#a6e22e">getRegion</span>();
     
 <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">calc</span>.<span style="color:#a6e22e">open</span>()
-    .<span style="color:#a6e22e">getRegionForWindow</span>();</code></pre></div>
+    .<span style="color:#a6e22e">getRegionForWindow</span>();
+</code></pre></div>
 
 
 <footer class=" footline" >
@@ -1462,6 +1483,8 @@ following methods will return the desktop instead.</p>
     <script src="/docs/js/modernizr.custom-3.6.0.js"></script>
     <script src="/docs/js/learn.js"></script>
     <script src="/docs/js/hugo-learn.js"></script>
+    <script src="/docs/js/klaroCookie/config.js"></script>
+    <script src="/docs/js/klaroCookie/klaro.js"></script>
 
     <link href="/docs/mermaid/mermaid.css" rel="stylesheet" />
     <script src="/docs/mermaid/mermaid.js"></script>

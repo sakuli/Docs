@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title></title>
@@ -39,7 +39,7 @@ npm i @sakuli/forwarder-icinga2 To register the forwarder into your project you 
       <guid>/docs/getting-started/prerequisites/</guid>
       <description>What you need Sakuli is built and tested against the current LTS version of Node.js.
 Up to version 2.2.0 Sakuli supports node v10.x (lts/dubnium). Starting with version 2.3.0, Sakuli also supports v12.x (lts/erbium). In order to be able to run Sakuli on your system, we will assume that you have a working node installation.
-To install Node on your system, you can either go to the Node website or you can use tools like Node Version Manager utility to manage various Node versions on a per-user basis.</description>
+To install Node on your system, you can either go to the Node websiteor you can use tools like Node Version Managerutility to manage various Node versions on a per-user basis.</description>
     </item>
     
     <item>
@@ -106,7 +106,7 @@ npm i @sakuli/forwarder-gearman To register the forwarder into your project you 
       <pubDate>Thu, 12 Sep 2019 13:18:18 +0200</pubDate>
       
       <guid>/docs/writing_tests/interact/</guid>
-      <description>Interacting with the environment In addition to screenshot-based test actions, Sakuli is capable of utilizing your keyboard, clipboard and environment variables. All these features are incorporated with the ThenableEnvironment interface.
+      <description>Interacting with the environment In addition to screenshot-based test actions, Sakuli is capable of utilizing your keyboard, clipboard and environment variables. All these features are incorporated with the ThenableEnvironmentinterface.
 Environment variable To get a environment variable you can use getEnv(key) or getEnvMasked(key). Only difference between these two is the log output. getEnv(key) will also output key unlike getEnvMasked(key). const env = new Environment(); const path = await env.getEnv(&amp;#34;PATH&amp;#34;); const homeDir = await env.</description>
     </item>
     
@@ -117,7 +117,7 @@ Environment variable To get a environment variable you can use getEnv(key) or ge
       
       <guid>/docs/getting-started/installation/</guid>
       <description>Installation Process The following steps are required to set up Sakuli to work with multiple browsers. Once the initial setup is done, we will dive right into our first test.
-WebDriver Installation Sakuli utilizes the WebDriver protocol to remote control browsers during test execution. In addition to the browser itself, you need to install the corresponding WebDriver as well. Several wrapper packages can be found on npmjs.com, which allow the installation of the required binaries via npm.</description>
+WebDriver Installation Sakuli utilizes the WebDriver protocolto remote control browsers during test execution. In addition to the browser itself, you need to install the corresponding WebDriver as well. Several wrapper packages can be found on npmjs.com, which allow the installation of the required binaries via npm.</description>
     </item>
     
     <item>
@@ -127,7 +127,8 @@ WebDriver Installation Sakuli utilizes the WebDriver protocol to remote control 
       
       <guid>/docs/enterprise_features/e2e/</guid>
       <description>Pre-configured Container Once you obtained a Sakuli Enterprise license your docker-user will be granted access to the private Sakuli test container image. This image is ready to go and ships with already installed:
- Sakuli Icinga2 / checkmk / OMD / Prometheus Forwarder VNC / noVNC Chrome / Firefox (incl. webdriver)  1 Obtaining the Image The registered docker-hub user will then be able to pull the private image:</description>
+ Sakuli Icinga2 / checkmk / OMD / Prometheus Forwarder VNC / noVNC Chrome / Firefox (incl. webdriver)  1 Obtaining the Image The registered docker-hub user will then be able to pull the private image:
+docker pull taconsol/sakuli:&amp;lt;IMAGE_TAG&amp;gt; Sakuli test containers do not provide a latest tag.</description>
     </item>
     
     <item>
@@ -166,7 +167,7 @@ Setup the Project Manually Since we wanted to keep Sakuli mostly compatible to v
       <pubDate>Fri, 20 Mar 2020 13:18:11 +0100</pubDate>
       
       <guid>/docs/cookbook/handling-forms/</guid>
-      <description>Handling forms Filling forms and verifying their functionality is one of the major use cases in E2E-Testing and -Monitoring. Most of the web elements have been abstracted from their technical specification in HTML. An &amp;lt;intput name=&amp;quot;last-name&amp;quot; /&amp;gt; for example is abstracted as a _textbox(&amp;quot;last-name&amp;quot;) accessor. Let&amp;rsquo;s have a look at the most common accessors to interact with forms.
+      <description>Handling forms Filling forms and verifying their functionality is one of the major use cases in E2E-Testing and -Monitoring. Most of the web elements have been abstracted from their technical specification in HTML. An &amp;lt;intput name=&amp;quot;last-name&amp;quot; /&amp;gt;  for example is abstracted as a _textbox(&amp;quot;last-name&amp;quot;) accessor. Let&amp;rsquo;s have a look at the most common accessors to interact with forms.
 Input fields Textarea Filling text into a textarea can easily be achieved by combining the _setValue() action with the _textarea() accessor.</description>
     </item>
     
@@ -186,7 +187,7 @@ Static wait // wait for three seconds await _wait(3000);  Wait for an element to
       <pubDate>Mon, 03 Feb 2020 15:25:42 +0100</pubDate>
       
       <guid>/docs/cookbook/invalid-session-id/</guid>
-      <description> Oh noes! Sakuli crashed with an &amp;ldquo;Invalid session id&amp;rdquo; error! When Sakuli crashes with an &amp;ldquo;Invalid session id&amp;rdquo; error, the webdriver itself crashed or least closed the session the Sakuli test or check is using. Such a behavior mostly occurs, when the provided resources for the Sakuli execution are insufficient. When testing bigger websites, please check if enough SHM space is available.
+      <description>Oh noes! Sakuli crashed with an &amp;ldquo;Invalid session id&amp;rdquo; error! When Sakuli crashes with an &amp;ldquo;Invalid session id&amp;rdquo; error, the webdriver itself crashed or least closed the session the Sakuli test or check is using. Such a behavior mostly occurs, when the provided resources for the Sakuli execution are insufficient. When testing bigger websites, please check if enough SHM space is available.
  Running Sakuli container with &amp;ndash;shm-size Increasing shared memory on openshift  </description>
     </item>
     
@@ -218,7 +219,7 @@ Download the image With your logged-in docker-user (which is authorized to acces
       
       <guid>/docs/cookbook/frames/</guid>
       <description>How can I handle frames or iframes in Sakuli? Since v2.2.0 Sakuli will automatically detect different frames (and iframes) and will search for elements in each frame when the element can not be found in default frame. But it is also possible to switch between frames manually by using the iframe webelement or its respective index.
-const myIframe = await _fetch(_iframe(&amp;#39;frameName&amp;#39;)); await driver.switchTo().frame(myIframe);  const frameIndex = 0; await driver.</description>
+const myIframe = await _fetch(_iframe(&amp;#39;frameName&amp;#39;)); await driver.switchTo().frame(myIframe);  const frameIndex = 0; await driver.switchTo().frame(frameIndex);  </description>
     </item>
     
     <item>
@@ -227,7 +228,7 @@ const myIframe = await _fetch(_iframe(&amp;#39;frameName&amp;#39;)); await drive
       <pubDate>Thu, 12 Sep 2019 14:16:13 +0200</pubDate>
       
       <guid>/docs/enterprise_features/s2i/</guid>
-      <description>S2I Image Sakuli enterprise comes with ready-to-use source to image (S2I) containers for RedHat OpenShift. Using this builder container, it is easily possible to create deployable Sakuli images shipped with a test suite straight from your code repository.
+      <description>S2I Image Sakuli enterprise comes with ready-to-use source to image (S2I)containers for RedHat OpenShift. Using this builder container, it is easily possible to create deployable Sakuli images shipped with a test suite straight from your code repository.
 Setup To setup the source to image builds on your OpenShift cluster, it is required to import the images from taconsol/sakuli-s2i. To achieve this, you have to create a docker-registry secret with your &amp;lt;docker-username&amp;gt; and &amp;lt;docker-password&amp;gt; and link it to your builder service account to authenticate on docker.</description>
     </item>
     
@@ -247,9 +248,9 @@ Open an application To open an application, you enter the path to the applicatio
       <pubDate>Thu, 12 Sep 2019 13:16:37 +0200</pubDate>
       
       <guid>/docs/writing_tests/webtests/</guid>
-      <description>Web tests For DOM based testing most of the functions from Sahi tests can be used (please note that Sakuli only implements the open source APIs).
-The main difference between Sakuli v1 and Sakuli v2 is the usage of Promises in the action API, meaning that you have to await a click for example.
-On the other hand, element selectors remain synchronized functions but will not do the actual DOM fetching anymore.</description>
+      <description>Web tests For DOM based testing most of the functions from Sahi testscan be used (please note that Sakuli only implements the open source APIs).
+The main difference between Sakuli v1 and Sakuli v2 is the usage of Promisesin the action API, meaning that you have to await a click for example.
+On the other hand, element selectors remain synchronized functions but will not do the actual DOM fetching anymore. While an expression like var $e=_link(&#39;Sakuli&#39;) did an actual DOM-access in Sakuli v1.</description>
     </item>
     
   </channel>

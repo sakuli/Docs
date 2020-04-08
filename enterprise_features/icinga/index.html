@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
   <head>
-
+    
+      
+      
+      <script data-name="googleanalytics" data-type="application/javascript" type="text/plain">(function (w, d, s, l, i) {
+                      w[l] = w[l] || []; w[l].push({
+                          'gtm.start':
+                              new Date().getTime(), event: 'gtm.js'
+                      }); var f = d.getElementsByTagName(s)[0],
+                          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                              'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                  })(window, document, 'script', 'dataLayer', 'GTM-TMFSKHB');</script>
+      
+    
+    
+      <script data-type="application/javascript" type="text/plain" data-src="https://app.primeleads.de/api/v1/4uewa4e9rh"
+        data-name="primeLeads"></script>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.56.3" />
+    <meta name="generator" content="Hugo 0.68.3" />
     <meta name="description" content="">
 
 
@@ -755,6 +771,22 @@
       
         <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
       
+      <li>
+        <a class="padding" onclick="klaro.show();return false;">
+          <i class="fas fa-cog fa-fw"></i> Cookie Settings
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../dataprivacy/">
+          <i class="fas fa-user-secret fa-fw"></i> Data Privacy
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../legalnotice/">
+          <i class="fas fa-balance-scale fa-fw"></i> Legal Notice
+        </a>
+      </li>
+      
       </ul>
     </section>
     
@@ -814,14 +846,11 @@
                     <div class="progress">
     <div class="wrapper">
         <nav id="TableOfContents">
-<ul>
-<li><a href="#icinga2-forwarder">Icinga2 Forwarder</a>
-<ul>
-<li><a href="#enable-the-icinga2-api">Enable the Icinga2 API</a></li>
-<li><a href="#create-a-icinga2-service">Create a Icinga2 service</a></li>
-<li><a href="#sakuli-client-configuration">Sakuli Client Configuration</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#enable-the-icinga2-api">Enable the Icinga2 API</a></li>
+    <li><a href="#create-a-icinga2-service">Create a Icinga2 service</a></li>
+    <li><a href="#sakuli-client-configuration">Sakuli Client Configuration</a></li>
+  </ul>
 </nav>
     </div>
 </div>
@@ -843,16 +872,10 @@
 
 
 
-
-
 <h1 id="icinga2-forwarder">Icinga2 Forwarder</h1>
-
 <p>Add the forwarder using the <a href="/docs/enterprise_features/#assisted-setup">assistant</a> or configure it manually:</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm i @sakuli/forwarder-icinga2</code></pre></div>
-
 <p>To register the forwarder into your project you have to edit the <code>package.json</code> file and add the preset to the Sakuli configuration key:</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
     <span style="color:#f92672">&#34;sakuli&#34;</span>: {
         <span style="color:#f92672">&#34;presetProvider&#34;</span>: [
@@ -861,19 +884,13 @@
         ]
     }
 }</code></pre></div>
-
 <p>Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the <a href="/docs/enterprise#using-licences-information">enterprise section</a>.</p>
-
 <h2 id="enable-the-icinga2-api">Enable the Icinga2 API</h2>
-
-<p>All steps required to enable the Icinga2 API are described in the <a href="http://docs.icinga.org/icinga2/snapshot/doc/module/icinga2/chapter/icinga2-api" target="_blank" rel="noopener">REST API documentation</a>.</p>
-
+<p>All steps required to enable the Icinga2 API are described in the <!-- raw HTML omitted -->REST API documentation<!-- raw HTML omitted -->.</p>
 <h2 id="create-a-icinga2-service">Create a Icinga2 service</h2>
-
 <p>Create a <code>check_command</code> which will only be executed if Icinga2 did not receive a Sakuli result within a certain time. This ensures that you get a notification even if no passive check result reaches Icinga2 at all:</p>
-
 <p><code>/etc/icinga2/conf.d/commands.conf</code>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-conf" data-lang="conf">object CheckCommand &#34;check_dummy&#34; {
+<pre><code class="language-conf" data-lang="conf">object CheckCommand &#34;check_dummy&#34; {
    import &#34;plugin-check-command&#34;
    command = [
      PluginDir + &#34;/check_dummy&#34;,&#34;$dummy_state$&#34;,&#34;$dummy_text$&#34;
@@ -886,17 +903,14 @@ object CheckCommand &#34;check_sakuli&#34; {
    import &#34;check_dummy&#34;
    vars.dummy_state = 3
    vars.dummy_text = &#34;No passive Sakuli check result received.&#34;
-}</code></pre></div></p>
-
+}</code></pre></p>
 <p><code>/etc/icinga2/conf.d/hosts.conf</code>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-conf" data-lang="conf">object Host &#34;sakuliclient01&#34; {
+<pre><code class="language-conf" data-lang="conf">object Host &#34;sakuliclient01&#34; {
    import &#34;generic-host&#34;
    address = &#34;&lt;IP&gt;&#34;
-}</code></pre></div></p>
-
+}</code></pre></p>
 <p>Create the following service object for the first testcase. The <code>freshness_threshold</code> should be slightly higher than the interval Sakuli tests are planned.</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-conf" data-lang="conf">object Service &#34;sakuli_demo&#34; {
+<pre><code class="language-conf" data-lang="conf">object Service &#34;sakuli_demo&#34; {
   import &#34;generic-service&#34;
   host_name = &#34;sakuliclient01&#34;
   check_command = &#34;check_sakuli&#34;
@@ -905,20 +919,13 @@ object CheckCommand &#34;check_sakuli&#34; {
   enable_flapping = 0
   volatile = 1
   enable_perfdata = 1
-}</code></pre></div>
-
+}</code></pre>
 <p>Reload Icinga2:</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">service icinga2 reload</code></pre></div>
-
 <p>After opening Icingaweb2 you should see the Sakuli host with the service &ldquo;sakuli_demo&rdquo; attached.</p>
-
 <p>The check is waiting now for check results from a Sakuli client.</p>
-
 <h2 id="sakuli-client-configuration">Sakuli Client Configuration</h2>
-
 <p>You must set the global properties for the Icinga2 receiver on the Sakuli client by editing the <code>sakuli.properties</code>. You can find them in the folder containing the testsuites:</p>
-
 <table>
 <thead>
 <tr>
@@ -927,50 +934,42 @@ object CheckCommand &#34;check_sakuli&#34; {
 <th>Effect</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><code>sakuli.forwarder.icinga2.enabled</code></td>
 <td><code>false</code></td>
 <td>Enables result forwarding to Icinga2</td>
 </tr>
-
 <tr>
 <td><code>sakuli.forwarder.icinga2.api.host</code></td>
 <td></td>
 <td>The hostname or IP of the Icinga2 API-endpoints</td>
 </tr>
-
 <tr>
 <td><code>sakuli.forwarder.icinga2.api.port</code></td>
 <td><code>5665</code></td>
 <td>The port or IP of the Icinga2 API-endpoints</td>
 </tr>
-
 <tr>
 <td><code>sakuli.forwarder.icinga2.api.username</code></td>
 <td></td>
 <td>API user name</td>
 </tr>
-
 <tr>
 <td><code>sakuli.forwarder.icinga2.api.password</code></td>
 <td></td>
 <td>API user password</td>
 </tr>
-
 <tr>
 <td><code>sakuli.forwarder.icinga2.hostname</code></td>
 <td></td>
 <td>The name of the host object configured in Icinga2</td>
 </tr>
-
 <tr>
 <td><code>sakuli.forwarder.icinga2.service_description</code></td>
 <td><code>${testsuite.id}</code></td>
 <td>The name of the service in Icinga2</td>
 </tr>
-
 <tr>
 <td><code>sakuli.forwarder.icinga2.allow_insecure_connection</code></td>
 <td><code>false</code></td>
@@ -1531,6 +1530,8 @@ object CheckCommand &#34;check_sakuli&#34; {
     <script src="/docs/js/modernizr.custom-3.6.0.js"></script>
     <script src="/docs/js/learn.js"></script>
     <script src="/docs/js/hugo-learn.js"></script>
+    <script src="/docs/js/klaroCookie/config.js"></script>
+    <script src="/docs/js/klaroCookie/klaro.js"></script>
 
     <link href="/docs/mermaid/mermaid.css" rel="stylesheet" />
     <script src="/docs/mermaid/mermaid.js"></script>

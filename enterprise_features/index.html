@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
   <head>
-
+    
+      
+      
+      <script data-name="googleanalytics" data-type="application/javascript" type="text/plain">(function (w, d, s, l, i) {
+                      w[l] = w[l] || []; w[l].push({
+                          'gtm.start':
+                              new Date().getTime(), event: 'gtm.js'
+                      }); var f = d.getElementsByTagName(s)[0],
+                          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                              'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                  })(window, document, 'script', 'dataLayer', 'GTM-TMFSKHB');</script>
+      
+    
+    
+      <script data-type="application/javascript" type="text/plain" data-src="https://app.primeleads.de/api/v1/4uewa4e9rh"
+        data-name="primeLeads"></script>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.56.3" />
+    <meta name="generator" content="Hugo 0.68.3" />
     <meta name="description" content="">
 
 
@@ -755,6 +771,22 @@
       
         <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
       
+      <li>
+        <a class="padding" onclick="klaro.show();return false;">
+          <i class="fas fa-cog fa-fw"></i> Cookie Settings
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../dataprivacy/">
+          <i class="fas fa-user-secret fa-fw"></i> Data Privacy
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../legalnotice/">
+          <i class="fas fa-balance-scale fa-fw"></i> Legal Notice
+        </a>
+      </li>
+      
       </ul>
     </section>
     
@@ -808,24 +840,23 @@
                     <div class="progress">
     <div class="wrapper">
         <nav id="TableOfContents">
-<ul>
-<li><a href="#enterprise-features">Enterprise Features</a>
-<ul>
-<li><a href="#assisted-setup">Assisted Setup</a></li>
-<li><a href="#manual-setup">Manual Setup</a>
-<ul>
-<li><a href="#global-configuration">Global configuration</a></li>
-<li><a href="#per-project-configuration-of-npm-token">Per-Project configuration of NPM-Token</a></li>
-<li><a href="#per-project-configuration-with-environment-variable">Per-Project configuration with environment variable</a></li>
-</ul></li>
-<li><a href="#using-the-license-key">Using the License-Key</a></li>
-<li><a href="#more-about-environment-variables">More about Environment Variables</a>
-<ul>
-<li><a href="#on-windows">On Windows</a></li>
-<li><a href="#on-linux-or-osx">On Linux or OSX</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#assisted-setup">Assisted Setup</a></li>
+    <li><a href="#manual-setup">Manual Setup</a>
+      <ul>
+        <li><a href="#global-configuration">Global configuration</a></li>
+        <li><a href="#per-project-configuration-of-npm-token">Per-Project configuration of NPM-Token</a></li>
+        <li><a href="#per-project-configuration-with-environment-variable">Per-Project configuration with environment variable</a></li>
+      </ul>
+    </li>
+    <li><a href="#using-the-license-key">Using the License-Key</a></li>
+    <li><a href="#more-about-environment-variables">More about Environment Variables</a>
+      <ul>
+        <li><a href="#on-windows">On Windows</a></li>
+        <li><a href="#on-linux-or-osx">On Linux or OSX</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
     </div>
 </div>
@@ -848,188 +879,121 @@
 
 
 
-	
-
-<h1 id="enterprise-features">Enterprise Features</h1>
-
+	<h1 id="enterprise-features">Enterprise Features</h1>
 <p>Some features of Sakuli require an enterprise license. Please consult our <a href="/enterprise">overview</a> to see and request packages and prices. After you registered for an enterprise subscription, you will get a license-key and an NPM access token which are required to use enterprise features.</p>
-
 <h2 id="assisted-setup">Assisted Setup</h2>
-
 <p>It is assumed that you have setup your environment as described in the <a href="/docs/getting-started">Getting Started Guide</a>.</p>
-
 <p>On the commandline, navigate to the root folder of your Sakuli project (where the <code>package.json</code> file is located) and run the following command:</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli enable-enterprise</code></pre></div>
-
 <p>This command starts an assistant which will guide you through the setup of enterprise features. The first question is regarding the Sakuli-license key which you should have received after subscribing to an enterprise package.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">? Would you like to enter your Sakuli license information? <span style="color:#f92672">(</span>Y/n<span style="color:#f92672">)</span></code></pre></div>
-
 <p>You can enter <code>n</code> when you have already entered the license information before.</p>
-
 <p>You can enter <code>Y</code> and paste the license key in the next prompt:</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">? Please enter your license key:</code></pre></div>
-
 <p>Same applies to the NPM access token which can be pasted / entered in the next prompt:</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">? Please enter your npm key:</code></pre></div>
-
-<p>The following prompt asks you about the enterprise features which you want to activate. You can use <kbd>↑</kbd> and <kbd>↓</kbd> to navigate the cursor and <kbd>SPACE</kbd> to select or deselect a feature. Pressing <kbd>ENTER</kbd> will submit your selection and start the setup process.</p>
-
+<p>The following prompt asks you about the enterprise features which you want to activate. You can use <!-- raw HTML omitted -->↑<!-- raw HTML omitted --> and <!-- raw HTML omitted -->↓<!-- raw HTML omitted --> to navigate the cursor and <!-- raw HTML omitted -->SPACE<!-- raw HTML omitted --> to select or deselect a feature. Pressing <!-- raw HTML omitted -->ENTER<!-- raw HTML omitted --> will submit your selection and start the setup process.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">? Please Select Enterprise Features to bootstrap <span style="color:#f92672">(</span>Press &lt;space&gt; to <span style="color:#66d9ef">select</span>, &lt;a&gt; to toggle all, &lt;i&gt; to invert selection<span style="color:#f92672">)</span>
 ❯◯ Forwarding to Icinga2
  ◯ Forwarding to checkmk
  ◯ Forwarding to OMD</code></pre></div>
-
 <p>Sakuli will then configure the license information globally and add install and preconfigure the selected enterprise features in your project.</p>
-
 <p>You can now just start using your feature:</p>
-
 <ul>
 <li><a href="/docs/enterprise_features/icinga/">Forwarding to Icinga2</a></li>
 <li><a href="/docs/enterprise_features/check/">Forwarding to checkmk</a></li>
 <li><a href="/docs/enterprise_features/omd/">Forwarding to OMD</a></li>
 <li><a href="/docs/enterprise_features/prometheus/">Forwarding to Prometheus (Currently without CLI setup)</a></li>
 </ul>
-
 <p>The next sections is about how to setup enterprise features manually and in more detail.</p>
-
 <h2 id="manual-setup">Manual Setup</h2>
-
 <p>With your active <a href="/enterprise">Sakuli Enterprise</a> subscription you will receive an email with:</p>
-
 <ul>
 <li><em>Sakuli license-key</em> - Contains information about your subscription and is used by Sakuli itself</li>
 <li>and a <em>NPM-Token</em> - Allows access to Sakuli&rsquo;s private enterprise packages on NPM</li>
 </ul>
-
 <p>There are several ways to handle these information. The most simple way for setting up your enterprise features is as follows (<em>substitute the placeholders between the chevrons with the appropriate values</em>):</p>
-
 <h3 id="global-configuration">Global configuration</h3>
-
 <p>The most simple way to get your enterprise features to work is the following configuration (<em>substitute the placeholders marked by the angle-brackets with its appropriate values</em>):</p>
-
 <p><em>On Unix / OSX</em>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo <span style="color:#e6db74">&#34;//registry.npmjs.org/:_authToken=&lt;Put your personal NPM-TOKEN here&gt;&#34;</span> &gt; ~/.npmrc
 echo <span style="color:#e6db74">&#34;export SAKULI_LICENSE_KEY=&lt;Put your personal SAKULI-LICENSE-KEY here&gt;&#34;</span> &gt;&gt; ~/.bashrc</code></pre></div></p>
-
 <p><em>On Windows</em>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo //registry.npmjs.org/:_authToken<span style="color:#f92672">=</span>&lt;Put your personal NPM-TOKEN here&gt; &gt; %USERPROFILE%<span style="color:#ae81ff">\.</span>npmrc
 setx SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;Put your personal SAKULI-LICENSE-KEY here&gt;</code></pre></div></p>
-
 <p>The environment variables might not take effect in the command-line window where the commands above are entered. So you might need to open a new commandline when running the Sakuli command.</p>
-
 <p>These commands will set the NPM-Token and License Key globally. This is good for a first setup on your machine but might have some shortcomings in more advanced situations. The following paragraphs describe alternative ways to provide NPM-Token and License information to your Sakuli installation.</p>
-
 <p>Now you are ready to go for using Sakuli with its enterprise features like</p>
-
 <ul>
 <li><a href="check">checkmk</a></li>
 <li><a href="icinga">Icinga2</a></li>
 <li><a href="omd">OMD</a></li>
 <li><a href="prometheus">Prometheus</a></li>
 </ul>
-
 <h3 id="per-project-configuration-of-npm-token">Per-Project configuration of NPM-Token</h3>
-
 <p>You can set the NPM-Token for each project by adding a <code>.npmrc</code> file to your project&rsquo;s root directory:</p>
-
 <p><em>On Unix / OSX</em>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># cd path/to/project</span>
 echo <span style="color:#e6db74">&#34;//registry.npmjs.org/:_authToken=&lt;Put your personal NPM-TOKEN here&gt;&#34;</span> &gt; .npmrc</code></pre></div></p>
-
 <p><em>On Windows</em>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># cd path/to/project</span>
 echo //registry.npmjs.org/:_authToken<span style="color:#f92672">=</span>&lt;Put your personal NPM-TOKEN here&gt; &gt; .npmrc</code></pre></div></p>
-
 <p>This command will create an <code>.npmrc</code> file with the necessary token configuration inside your specific project folder. Every upcoming <code>npm install</code> will use this configuration.</p>
-
 <h3 id="per-project-configuration-with-environment-variable">Per-Project configuration with environment variable</h3>
-
 <p>If you don&rsquo;t like to save the token in a file (because this file might be shared) you can configure it to use an <a href="#more-about-environment-variables">environment variable</a>:</p>
-
 <p><em>On Unix / OSX</em>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo <span style="color:#e6db74">&#34;//registry.npmjs.org/:_authToken=\${NPM_TOKEN}&#34;</span> &gt; ~/.npmrc</code></pre></div></p>
-
 <p><em>On Windows</em>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo //registry.npmjs.org/:_authToken<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>NPM_TOKEN<span style="color:#e6db74">}</span> &gt; %USERPROFILE%<span style="color:#ae81ff">\.</span>npmrc</code></pre></div></p>
-
 <p><em>On Unix / OSX</em>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">NPM_TOKEN<span style="color:#f92672">=</span>&lt;Put your personal NPM-TOKEN here&gt; npm i &lt;ENTERPRISE-PACKAGE&gt;</code></pre></div></p>
-
 <p><em>On Windows</em>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">set NPM_TOKEN<span style="color:#f92672">=</span>&lt;Put your personal NPM-TOKEN here&gt;
 npm i &lt;ENTERPRISE-PACKAGE&gt;</code></pre></div></p>
-
 <p>This approach is frequently used in automation scenarios such as CI/CD pipelines and projects that are shared (e.g. via version control systems).</p>
-
 <p>It is usually not necessary to persist the token since you will seldomly run <code>npm install</code> that often.</p>
-
 <h2 id="using-the-license-key">Using the License-Key</h2>
-
 <p>The license-key contains information about your subscription which will be checked by enterprise components before they are executed. In order to provide this License-Key to Sakuli you also have to set it as an environment variable. Because the license-key is read on every single test execution it is useful to store it persistently on your system or set it in a script where the actual test is also called.</p>
-
 <p>The name of the environment variable for the license-key is <code>SAKULI_LICENSE_KEY</code>.</p>
-
 <h2 id="more-about-environment-variables">More about Environment Variables</h2>
-
 <blockquote>
 <p>An environment variable is a dynamic-named value that can affect the way running processes will behave on a computer.
 They are part of the environment in which a process runs. For example, a running process can query the value of the TEMP environment variable to discover a suitable location to store temporary files, or the HOME or USERPROFILE variable to find the directory structure owned by the user running the process.</p>
 </blockquote>
-
-<p>- <a href="https://en.wikipedia.org/wiki/Environment_variable" target="_blank">Wikipedia, 08/2019</a></p>
-
+<p>- <!-- raw HTML omitted -->Wikipedia, 08/2019<!-- raw HTML omitted --></p>
 <p>So basically an environment variable is just a simple key-value pair provided to a certain process e.g. <code>VAR_NAME=VALUE</code>. They can be set for each process or system-wide - so that they become accessible for each upcoming process.</p>
-
 <p>The approach for integrating an environment variable depends on the respective operating system.</p>
-
 <h3 id="on-windows">On Windows</h3>
-
 <p>To set up an environment variable on Windows you have to:</p>
-
 <ul>
-<li>Open <em>Start-Menu</em> and type <kbd>env</kbd> into the search mask
-
+<li>Open <em>Start-Menu</em> and type <!-- raw HTML omitted -->env<!-- raw HTML omitted --> into the search mask
 <ul>
 <li>An entry <strong>&lsquo;Edit the system environment variables&rsquo;</strong> should appear (click on it)</li>
-</ul></li>
+</ul>
+</li>
 <li>After the <em>System Properties</em> dialog showed up
-
 <ul>
 <li>Go to the <em>Advanced</em> tab</li>
 <li>Click on the button <em>Environment Variables</em> (at the bottom of the dialog)</li>
-</ul></li>
+</ul>
+</li>
 <li>You should see two tables including <em>Variable</em> and <em>Value</em> columns for <em>User Variables</em> and <em>System variables</em></li>
 </ul>
-
-<p>There you can set, edit or delete environment variables permanently on your system (it is recommended to edit the system variables table if possible). A more detailed guide can be found <a href="https://www.architectryan.com/2018/03/17/add-to-the-path-on-windows-10/" target="_blank">here</a>.</p>
-
-<p>Alternatively you can use <a href="https://www.rapidee.com/en/about" target="_blank">Rapid Environment Editor</a> which is a nice tool for editing environment variables on Windows.</p>
-
+<p>There you can set, edit or delete environment variables permanently on your system (it is recommended to edit the system variables table if possible). A more detailed guide can be found <!-- raw HTML omitted -->here<!-- raw HTML omitted -->.</p>
+<p>Alternatively you can use <!-- raw HTML omitted -->Rapid Environment Editor<!-- raw HTML omitted --> which is a nice tool for editing environment variables on Windows.</p>
 <p>In case of a more restrictive environment - where it is not possible to edit environment variables that easily - you can set them in a batch script:</p>
-
 <p><code>run-sakuli.bat</code>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-batch" data-lang="batch"><span style="color:#66d9ef">SET</span> SAKULI_LICENSE_KEY=&lt;PERSONAL_LICENSE&gt;
 sakuli run .</code></pre></div></p>
-
 <h3 id="on-linux-or-osx">On Linux or OSX</h3>
-
 <p>On Linux or OSX it is usually a file which sets up the environment for certain processes:</p>
-
 <ul>
 <li><code>~/.bashrc</code> on Linux</li>
 <li><code>~/.profile</code> on OSX</li>
 </ul>
-
 <p>These files can be changed with every text editor to add, edit or remove environment variables. An environment variable is defined by:</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export VARIABLE_NAME<span style="color:#f92672">=</span>VALUE</code></pre></div>
-
 <p>A new variable can be added with the command:</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo <span style="color:#e6db74">&#34;export VARIABLE_NAME=VALUE&#34;</span> &gt;&gt; ~/.bashrc  <span style="color:#75715e"># Linux</span>
 echo <span style="color:#e6db74">&#34;export VARIABLE_NAME=VALUE&#34;</span> &gt;&gt; ~/.profile <span style="color:#75715e"># OSX</span></code></pre></div>
 
@@ -1586,6 +1550,8 @@ echo <span style="color:#e6db74">&#34;export VARIABLE_NAME=VALUE&#34;</span> &gt
     <script src="/docs/js/modernizr.custom-3.6.0.js"></script>
     <script src="/docs/js/learn.js"></script>
     <script src="/docs/js/hugo-learn.js"></script>
+    <script src="/docs/js/klaroCookie/config.js"></script>
+    <script src="/docs/js/klaroCookie/klaro.js"></script>
 
     <link href="/docs/mermaid/mermaid.css" rel="stylesheet" />
     <script src="/docs/mermaid/mermaid.js"></script>

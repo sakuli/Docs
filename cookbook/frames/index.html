@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
   <head>
-
+    
+      
+      
+      <script data-name="googleanalytics" data-type="application/javascript" type="text/plain">(function (w, d, s, l, i) {
+                      w[l] = w[l] || []; w[l].push({
+                          'gtm.start':
+                              new Date().getTime(), event: 'gtm.js'
+                      }); var f = d.getElementsByTagName(s)[0],
+                          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                              'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                  })(window, document, 'script', 'dataLayer', 'GTM-TMFSKHB');</script>
+      
+    
+    
+      <script data-type="application/javascript" type="text/plain" data-src="https://app.primeleads.de/api/v1/4uewa4e9rh"
+        data-name="primeLeads"></script>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.56.3" />
+    <meta name="generator" content="Hugo 0.68.3" />
     <meta name="description" content="">
 
 
@@ -755,6 +771,22 @@
       
         <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
       
+      <li>
+        <a class="padding" onclick="klaro.show();return false;">
+          <i class="fas fa-cog fa-fw"></i> Cookie Settings
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../dataprivacy/">
+          <i class="fas fa-user-secret fa-fw"></i> Data Privacy
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../legalnotice/">
+          <i class="fas fa-balance-scale fa-fw"></i> Legal Notice
+        </a>
+      </li>
+      
       </ul>
     </section>
     
@@ -813,11 +845,7 @@
                 
                     <div class="progress">
     <div class="wrapper">
-        <nav id="TableOfContents">
-<ul>
-<li><a href="#how-can-i-handle-frames-or-iframes-in-sakuli">How can I handle frames or iframes in Sakuli?</a></li>
-</ul>
-</nav>
+        <nav id="TableOfContents"></nav>
     </div>
 </div>
 
@@ -838,20 +866,15 @@
 
 
 
-
-
 <h1 id="how-can-i-handle-frames-or-iframes-in-sakuli">How can I handle frames or iframes in Sakuli?</h1>
-
 <p>Since v2.2.0 Sakuli will automatically detect different frames (and iframes) and will search for elements in each frame
 when the element can not be found in default frame. But it is also possible to switch between frames manually by using
 the iframe webelement or its respective index.</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">myIframe</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">_fetch</span>(<span style="color:#a6e22e">_iframe</span>(<span style="color:#e6db74">&#39;frameName&#39;</span>));
-<span style="color:#66d9ef">await</span> <span style="color:#a6e22e">driver</span>.<span style="color:#a6e22e">switchTo</span>().<span style="color:#a6e22e">frame</span>(<span style="color:#a6e22e">myIframe</span>);
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">myIframe</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_fetch</span>(<span style="color:#a6e22e">_iframe</span>(<span style="color:#e6db74">&#39;frameName&#39;</span>));
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">driver</span>.<span style="color:#a6e22e">switchTo</span>().<span style="color:#a6e22e">frame</span>(<span style="color:#a6e22e">myIframe</span>);
 </code></pre></div>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">frameIndex</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-<span style="color:#66d9ef">await</span> <span style="color:#a6e22e">driver</span>.<span style="color:#a6e22e">switchTo</span>().<span style="color:#a6e22e">frame</span>(<span style="color:#a6e22e">frameIndex</span>);
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">driver</span>.<span style="color:#a6e22e">switchTo</span>().<span style="color:#a6e22e">frame</span>(<span style="color:#a6e22e">frameIndex</span>);
 </code></pre></div>
 
 
@@ -1409,6 +1432,8 @@ the iframe webelement or its respective index.</p>
     <script src="/docs/js/modernizr.custom-3.6.0.js"></script>
     <script src="/docs/js/learn.js"></script>
     <script src="/docs/js/hugo-learn.js"></script>
+    <script src="/docs/js/klaroCookie/config.js"></script>
+    <script src="/docs/js/klaroCookie/klaro.js"></script>
 
     <link href="/docs/mermaid/mermaid.css" rel="stylesheet" />
     <script src="/docs/mermaid/mermaid.js"></script>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Writing Tests on </title>
@@ -26,7 +26,7 @@
       <pubDate>Thu, 12 Sep 2019 13:18:18 +0200</pubDate>
       
       <guid>/docs/writing_tests/interact/</guid>
-      <description>Interacting with the environment In addition to screenshot-based test actions, Sakuli is capable of utilizing your keyboard, clipboard and environment variables. All these features are incorporated with the ThenableEnvironment interface.
+      <description>Interacting with the environment In addition to screenshot-based test actions, Sakuli is capable of utilizing your keyboard, clipboard and environment variables. All these features are incorporated with the ThenableEnvironmentinterface.
 Environment variable To get a environment variable you can use getEnv(key) or getEnvMasked(key). Only difference between these two is the log output. getEnv(key) will also output key unlike getEnvMasked(key). const env = new Environment(); const path = await env.getEnv(&amp;#34;PATH&amp;#34;); const homeDir = await env.</description>
     </item>
     
@@ -56,9 +56,9 @@ Open an application To open an application, you enter the path to the applicatio
       <pubDate>Thu, 12 Sep 2019 13:16:37 +0200</pubDate>
       
       <guid>/docs/writing_tests/webtests/</guid>
-      <description>Web tests For DOM based testing most of the functions from Sahi tests can be used (please note that Sakuli only implements the open source APIs).
-The main difference between Sakuli v1 and Sakuli v2 is the usage of Promises in the action API, meaning that you have to await a click for example.
-On the other hand, element selectors remain synchronized functions but will not do the actual DOM fetching anymore.</description>
+      <description>Web tests For DOM based testing most of the functions from Sahi testscan be used (please note that Sakuli only implements the open source APIs).
+The main difference between Sakuli v1 and Sakuli v2 is the usage of Promisesin the action API, meaning that you have to await a click for example.
+On the other hand, element selectors remain synchronized functions but will not do the actual DOM fetching anymore. While an expression like var $e=_link(&#39;Sakuli&#39;) did an actual DOM-access in Sakuli v1.</description>
     </item>
     
   </channel>

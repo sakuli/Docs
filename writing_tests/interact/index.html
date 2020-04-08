@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
   <head>
-
+    
+      
+      
+      <script data-name="googleanalytics" data-type="application/javascript" type="text/plain">(function (w, d, s, l, i) {
+                      w[l] = w[l] || []; w[l].push({
+                          'gtm.start':
+                              new Date().getTime(), event: 'gtm.js'
+                      }); var f = d.getElementsByTagName(s)[0],
+                          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                              'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                  })(window, document, 'script', 'dataLayer', 'GTM-TMFSKHB');</script>
+      
+    
+    
+      <script data-type="application/javascript" type="text/plain" data-src="https://app.primeleads.de/api/v1/4uewa4e9rh"
+        data-name="primeLeads"></script>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.56.3" />
+    <meta name="generator" content="Hugo 0.68.3" />
     <meta name="description" content="">
 
 
@@ -755,6 +771,22 @@
       
         <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
       
+      <li>
+        <a class="padding" onclick="klaro.show();return false;">
+          <i class="fas fa-cog fa-fw"></i> Cookie Settings
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../dataprivacy/">
+          <i class="fas fa-user-secret fa-fw"></i> Data Privacy
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../legalnotice/">
+          <i class="fas fa-balance-scale fa-fw"></i> Legal Notice
+        </a>
+      </li>
+      
       </ul>
     </section>
     
@@ -814,29 +846,28 @@
                     <div class="progress">
     <div class="wrapper">
         <nav id="TableOfContents">
-<ul>
-<li><a href="#interacting-with-the-environment">Interacting with the environment</a>
-<ul>
-<li>
-<ul>
-<li><a href="#environment-variable">Environment variable</a></li>
-<li><a href="#properties">Properties</a></li>
-<li><a href="#getsimilarity-setsimilarity">getSimilarity/setSimilarity</a></li>
-<li><a href="#screenshots">Screenshots</a></li>
-<li><a href="#commands">Commands</a></li>
-<li><a href="#os">OS</a></li>
-</ul></li>
-<li><a href="#keyboard-actions">Keyboard actions</a>
-<ul>
-<li><a href="#key-class">Key Class</a></li>
-<li><a href="#type-paste-vs-keydown-keyup">type/paste vs keyDown/keyUp</a></li>
-<li><a href="#clipboard">Clipboard</a></li>
-<li><a href="#mouse-wheel">Mouse Wheel</a></li>
-<li><a href="#sleep">sleep</a></li>
-</ul></li>
-<li><a href="#secrets">Secrets</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#environment-variable">Environment variable</a></li>
+        <li><a href="#properties">Properties</a></li>
+        <li><a href="#getsimilaritysetsimilarity">getSimilarity/setSimilarity</a></li>
+        <li><a href="#screenshots">Screenshots</a></li>
+        <li><a href="#commands">Commands</a></li>
+        <li><a href="#os">OS</a></li>
+      </ul>
+    </li>
+    <li><a href="#keyboard-actions">Keyboard actions</a>
+      <ul>
+        <li><a href="#key-class">Key Class</a></li>
+        <li><a href="#typepaste-vs-keydownkeyup">type/paste vs keyDown/keyUp</a></li>
+        <li><a href="#clipboard">Clipboard</a></li>
+        <li><a href="#mouse-wheel">Mouse Wheel</a></li>
+        <li><a href="#sleep">sleep</a></li>
+      </ul>
+    </li>
+    <li><a href="#secrets">Secrets</a></li>
+  </ul>
 </nav>
     </div>
 </div>
@@ -858,41 +889,31 @@
 
 
 
-
-
 <h1 id="interacting-with-the-environment">Interacting with the environment</h1>
-
 <p>In addition to screenshot-based test actions, Sakuli is capable of utilizing your keyboard, clipboard and environment variables.
 All these features are incorporated with the
-<a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/thenableenvironment.html" target="_blank">ThenableEnvironment</a>
+<!-- raw HTML omitted -->ThenableEnvironment<!-- raw HTML omitted -->
 interface.</p>
-
 <h3 id="environment-variable">Environment variable</h3>
-
 <p>To get a environment variable you can use <code>getEnv(key)</code> or <code>getEnvMasked(key)</code>. Only difference between these two is the
 log output. <code>getEnv(key)</code> will also output <code>key</code> unlike <code>getEnvMasked(key)</code>.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">env</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Environment</span>();
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">getEnv</span>(<span style="color:#e6db74">&#34;PATH&#34;</span>);
 
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">homeDir</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">getEnvMasked</span>(<span style="color:#e6db74">&#34;HOME&#34;</span>);</code></pre></div>`</p>
-
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">homeDir</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">getEnvMasked</span>(<span style="color:#e6db74">&#34;HOME&#34;</span>);
+</code></pre></div>`</p>
 <h3 id="properties">Properties</h3>
-
 <p>You also might want to read some properties of your <code>sakuli.properties</code>/<code>testsuite.properties</code> file.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typerscript" data-lang="typerscript">const env = new Environment();
+<pre><code class="language-typerscript" data-lang="typerscript">const env = new Environment();
 
 const id = await env.getProperty(&#34;testsuite.id&#34;);
-const browser = await env.getPropertyMasked(&#34;testsuite.id&#34;) </code></pre></div></p>
-
+const browser = await env.getPropertyMasked(&#34;testsuite.id&#34;) </code></pre></p>
 <p>Only difference
 between these <code>getProperty(key)</code> and <code>getPropertyMasked(key)</code> is the log output. <code>getEnv(key)</code> will also output <code>key</code> unlike <code>getEnvMasked(key)</code>.</p>
-
-<h3 id="getsimilarity-setsimilarity">getSimilarity/setSimilarity</h3>
-
+<h3 id="getsimilaritysetsimilarity">getSimilarity/setSimilarity</h3>
 <p>For screenshot-based testing you can configure image-matching similarity in either <code>testsuite.properties</code> or
 <code>sakuli.properties</code> file via <code>sakuli.environment.similarity.default</code>. <code>Environment.setSimilarity(number)</code> allows to
 adjust this value during a testcase for additional flexibility.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">env</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Environment</span>();
 
 <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">setSimilarity</span>(<span style="color:#ae81ff">0.83</span>);   
@@ -900,10 +921,9 @@ adjust this value during a testcase for additional flexibility.</p>
 <span style="color:#75715e">//resets to the similarity set in sakuli.environment.similarity.default
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">resetSimilarity</span>()
 
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">currentSimilarity</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">getSimilarity</span>();</code></pre></div>
-
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">currentSimilarity</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">getSimilarity</span>();
+</code></pre></div>
 <h3 id="screenshots">Screenshots</h3>
-
 <p>You can also take Screenshot during a Sakuli test, which will be saved on testsuite level.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">env</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Environment</span>();
 
@@ -911,14 +931,12 @@ adjust this value during a testcase for additional flexibility.</p>
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">takeScreenshot</span>(<span style="color:#e6db74">&#34;screenshot_during_test.png&#34;</span>);
 
 <span style="color:#75715e">//creates a screenshot with the filename &#34;2020-02-29T23-59-59_screenshot_during_test.png&#34;
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">takeScreenshotWithTimestamp</span>(<span style="color:#e6db74">&#34;screenshot_during_test.png&#34;</span>);</code></pre></div></p>
-
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">takeScreenshotWithTimestamp</span>(<span style="color:#e6db74">&#34;screenshot_during_test.png&#34;</span>);
+</code></pre></div></p>
 <h3 id="commands">Commands</h3>
-
 <p>With the <code>ThenableEnvironment</code> you can also run terminal commands. If the second parameter is set to true, Sakuli throws
 an exception if the command exits with a code other than 0.
-<code>runCommand</code> returns a <a href="https://sakuli.io/apidoc/sakuli-legacy/classes/commandlineresult.html" target="_blank">Command Line Result</a>.</p>
-
+<code>runCommand</code> returns a <!-- raw HTML omitted -->Command Line Result<!-- raw HTML omitted -->.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">env</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Environment</span>();
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fileList</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">runCommand</span>(<span style="color:#e6db74">&#34;ls -al&#34;</span>)
 
@@ -927,27 +945,24 @@ an exception if the command exits with a code other than 0.
 <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">runCommand</span>(<span style="color:#e6db74">&#34;dpkg -i some_package.deb&#34;</span>, <span style="color:#66d9ef">false</span>);
 
 <span style="color:#75715e">//this will throw an exception
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">runCommand</span>(<span style="color:#e6db74">&#34;dpkg -i some_package.deb&#34;</span>, <span style="color:#66d9ef">true</span>);</code></pre></div>
-
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">runCommand</span>(<span style="color:#e6db74">&#34;dpkg -i some_package.deb&#34;</span>, <span style="color:#66d9ef">true</span>);
+</code></pre></div>
 <h3 id="os">OS</h3>
-
 <p>You can use this to identify your operating system
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">env</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Environment</span>();
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">os</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">getOsIdentifier</span>();
 
 <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">isDarwin</span>();
 <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">isLinux</span>();
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">isWindows</span>();</code></pre></div></p>
-
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">isWindows</span>();
+</code></pre></div></p>
 <h2 id="keyboard-actions">Keyboard actions</h2>
-
 <p>The following snippet shows a possible use-case for native keyboard actions.
 When initiating a download in Firefox, a native file download dialog opens.
 To start the download, we need to accept the file dialog, something that is not possible within the capabilities of Selenium.
 With Sakuli you get the opportunity to work around this problem, just like a real user would do.
 We can accept the file dialog by simply pressing the <code>Enter</code> button.
 Use Firefox as a browser for this test to work, as Chrome simply downloads the file without user interaction:</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript">(<span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> {
     <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">testCase</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TestCase</span>(<span style="color:#e6db74">&#34;test&#34;</span>);
     <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://nodejs.org/en/&#34;</span>;
@@ -967,16 +982,14 @@ Use Firefox as a browser for this test to work, as Chrome simply downloads the f
     } <span style="color:#66d9ef">finally</span> {
         <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">saveResult</span>();
     }
-})();</code></pre></div>
-
+})();
+</code></pre></div>
 <p>It is even possible to change the download location dynamically in some environments, by entering a new save path via:</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;/new/path/to/file&#34;</span>);</code></pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;/new/path/to/file&#34;</span>);
+</code></pre></div>
 <h3 id="key-class">Key Class</h3>
-
 <p>Sometimes it is necessary to use control keys to navigate through a application. For such a case you can use the <code>Key</code> class.
-A list of all Keys can be found in our <a href="https://sakuli.io/apidoc/sakuli-legacy/classes/key.html" target="_blank">Legacy API docs</a>.
+A list of all Keys can be found in our <!-- raw HTML omitted -->Legacy API docs<!-- raw HTML omitted -->.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">env</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Environment</span>();
 
 <span style="color:#75715e">// open new tab in a browser
@@ -985,10 +998,9 @@ A list of all Keys can be found in our <a href="https://sakuli.io/apidoc/sakuli-
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;t&#34;</span>, <span style="color:#a6e22e">Key</span>.<span style="color:#a6e22e">CTRL</span>);
 
 <span style="color:#75715e">// open a terminal in Ubuntu using two control keys
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">type</span>(<span style="color:#a6e22e">Key</span>.<span style="color:#a6e22e">T</span>, <span style="color:#a6e22e">Key</span>.<span style="color:#a6e22e">CTRL</span>, <span style="color:#a6e22e">Key</span>.<span style="color:#a6e22e">ALT</span>);</code></pre></div></p>
-
-<h3 id="type-paste-vs-keydown-keyup">type/paste vs keyDown/keyUp</h3>
-
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">type</span>(<span style="color:#a6e22e">Key</span>.<span style="color:#a6e22e">T</span>, <span style="color:#a6e22e">Key</span>.<span style="color:#a6e22e">CTRL</span>, <span style="color:#a6e22e">Key</span>.<span style="color:#a6e22e">ALT</span>);
+</code></pre></div></p>
+<h3 id="typepaste-vs-keydownkeyup">type/paste vs keyDown/keyUp</h3>
 <p>As you might have noticed, there are multiple ways to simulate keyboard input with Sakuli. On the one hand we have
 <code>type(text: string, ...optModifiers: Key[])</code> and <code>paste(text: string)</code> and on the other hand there is <code>keyDown(...keys: Key[])</code>
 with <code>keyUp(...keys: Key[])</code>.
@@ -1009,10 +1021,9 @@ CTRL+T, you can handle it with <code>env.type(Key.T, Key.CTRL)</code>.
 
 <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">keyDown</span>(<span style="color:#a6e22e">Key</span>.<span style="color:#a6e22e">CTRL</span>);
 <span style="color:#75715e">//click links to open in a new Tab or do something else
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">keyUp</span>(<span style="color:#a6e22e">Key</span>.<span style="color:#a6e22e">CTRL</span>);</code></pre></div></p>
-
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">keyUp</span>(<span style="color:#a6e22e">Key</span>.<span style="color:#a6e22e">CTRL</span>);
+</code></pre></div></p>
 <h3 id="clipboard">Clipboard</h3>
-
 <p>You can also utilize the clipboard to paste a text.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">env</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Environment</span>();
 
@@ -1024,19 +1035,17 @@ CTRL+T, you can handle it with <code>env.type(Key.T, Key.CTRL)</code>.
 <span style="color:#75715e">//just presses CTRL+V
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">pasteClipboard</span>()
 
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">setClipboard</span>(<span style="color:#e6db74">&#34;set this string into the clipboard&#34;</span>);</code></pre></div></p>
-
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">setClipboard</span>(<span style="color:#e6db74">&#34;set this string into the clipboard&#34;</span>);
+</code></pre></div></p>
 <h3 id="mouse-wheel">Mouse Wheel</h3>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">env</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Environment</span>();
 <span style="color:#75715e">//scrolls down on a webpage 
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">mouseWheelDown</span>(<span style="color:#ae81ff">10</span>)
 
 <span style="color:#75715e">//scrolls up
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">mouseWheelUp</span>(<span style="color:#ae81ff">5</span>);</code></pre></div>
-
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">mouseWheelUp</span>(<span style="color:#ae81ff">5</span>);
+</code></pre></div>
 <h3 id="sleep">sleep</h3>
-
 <p>Similar to <code>_wait</code> in a Sakuli webtest, you can use <code>sleep(number)</code> or <code>sleepMs(number)</code> to wait on e.g. excel to start.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">env</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Environment</span>();
 
@@ -1044,34 +1053,28 @@ CTRL+T, you can handle it with <code>env.type(Key.T, Key.CTRL)</code>.
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">sleep</span>(<span style="color:#ae81ff">5</span>);
 
 <span style="color:#75715e">//waits 1 second
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">sleepMs</span>(<span style="color:#ae81ff">1000</span>);</code></pre></div></p>
-
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">sleepMs</span>(<span style="color:#ae81ff">1000</span>);
+</code></pre></div></p>
 <h2 id="secrets">Secrets</h2>
-
 <p>Many E2E tests require some kind of login.
 While there is no problem in general, it still requires some mechanism to handle credentials.
 Providing credentials via environment variable is a common practice, but it still is inconvenient when deploying the testcase to another system, since every single environment variable has to be migrated too.</p>
-
 <p>Sakuli comes with a built-in mechanism to deal with sensitive data in testcases.
 It uses a single masterkey, generated by Sakuli itself, to de- or encrypt secrets used in testcases.</p>
-
 <p>Running</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">npx</span> <span style="color:#a6e22e">sakuli</span> <span style="color:#a6e22e">create</span> <span style="color:#a6e22e">masterkey</span></code></pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">npx</span> <span style="color:#a6e22e">sakuli</span> <span style="color:#a6e22e">create</span> <span style="color:#a6e22e">masterkey</span>
+</code></pre></div>
 <p>will generate a new masterkey, which should be exported as an environment variable <code>SAKULI_ENCRYPTION_KEY</code>.</p>
-
 <p>Once the masterkey has been exported, secrets can be encrypted by running:</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">npx</span> <span style="color:#a6e22e">sakuli</span> <span style="color:#a6e22e">encrypt</span> <span style="color:#e6db74">&#34;super secret string&#34;</span></code></pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">npx</span> <span style="color:#a6e22e">sakuli</span> <span style="color:#a6e22e">encrypt</span> <span style="color:#e6db74">&#34;super secret string&#34;</span>
+</code></pre></div>
 <p>These encrypted secrets can now be stored safely inside your testfile. The <code>ThenableEnvironment</code> interface provides methods to decrypt these secrets during test execution.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">typeAndDecrypt</span>(<span style="color:#e6db74">&#34;$ENCRYPTED_SECRET&#34;</span>);
 <span style="color:#75715e">// alternatively, via clipboard
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">pasteAndDecrypt</span>(<span style="color:#e6db74">&#34;$ENCRYPTED_SECRET&#34;</span>);
 
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">secret</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">decryptSecret</span>(<span style="color:#e6db74">&#34;$ENCRYPTED_SECRET&#34;</span>);</code></pre></div>
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">secret</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">decryptSecret</span>(<span style="color:#e6db74">&#34;$ENCRYPTED_SECRET&#34;</span>);
+</code></pre></div>
 
 
 <footer class=" footline" >
@@ -1628,6 +1631,8 @@ It uses a single masterkey, generated by Sakuli itself, to de- or encrypt secret
     <script src="/docs/js/modernizr.custom-3.6.0.js"></script>
     <script src="/docs/js/learn.js"></script>
     <script src="/docs/js/hugo-learn.js"></script>
+    <script src="/docs/js/klaroCookie/config.js"></script>
+    <script src="/docs/js/klaroCookie/klaro.js"></script>
 
     <link href="/docs/mermaid/mermaid.css" rel="stylesheet" />
     <script src="/docs/mermaid/mermaid.js"></script>

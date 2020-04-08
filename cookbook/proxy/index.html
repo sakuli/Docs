@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
   <head>
-
+    
+      
+      
+      <script data-name="googleanalytics" data-type="application/javascript" type="text/plain">(function (w, d, s, l, i) {
+                      w[l] = w[l] || []; w[l].push({
+                          'gtm.start':
+                              new Date().getTime(), event: 'gtm.js'
+                      }); var f = d.getElementsByTagName(s)[0],
+                          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                              'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                  })(window, document, 'script', 'dataLayer', 'GTM-TMFSKHB');</script>
+      
+    
+    
+      <script data-type="application/javascript" type="text/plain" data-src="https://app.primeleads.de/api/v1/4uewa4e9rh"
+        data-name="primeLeads"></script>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.56.3" />
+    <meta name="generator" content="Hugo 0.68.3" />
     <meta name="description" content="">
 
 
@@ -755,6 +771,22 @@
       
         <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
       
+      <li>
+        <a class="padding" onclick="klaro.show();return false;">
+          <i class="fas fa-cog fa-fw"></i> Cookie Settings
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../dataprivacy/">
+          <i class="fas fa-user-secret fa-fw"></i> Data Privacy
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../legalnotice/">
+          <i class="fas fa-balance-scale fa-fw"></i> Legal Notice
+        </a>
+      </li>
+      
       </ul>
     </section>
     
@@ -813,11 +845,7 @@
                 
                     <div class="progress">
     <div class="wrapper">
-        <nav id="TableOfContents">
-<ul>
-<li><a href="#container-behind-proxies">Container behind Proxies</a></li>
-</ul>
-</nav>
+        <nav id="TableOfContents"></nav>
     </div>
 </div>
 
@@ -838,18 +866,12 @@
 
 
 
-
-
 <h1 id="container-behind-proxies">Container behind Proxies</h1>
-
 <p>To configure a proxy within your docker container, set one or both of the following environment variables within your docker run command.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">-e HTTP_PROXY<span style="color:#f92672">=</span>http://server-ip:port/
 -e HTTPS_PROXY<span style="color:#f92672">=</span>http<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>://server-ip:port/ </code></pre></div>
-
 <p>Use a HTTP_PROXY for http target sites and HTTPS_PROXY for https sites, if you switch between secure and insecure sites or just to be sure not to worry about it, you can also define both proxies at the same time, e.g. like this:</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm -p <span style="color:#ae81ff">5901</span>:5901 -p <span style="color:#ae81ff">6901</span>:6901 -e HTTP_PROXY<span style="color:#f92672">=</span>http://server-ip:port/ -e HTTPS_PROXY<span style="color:#f92672">=</span>http<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>://server-ip:port/ -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>yourLicenseKey taconsol/sakuli:2.2.0</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm -p 5901:5901 -p 6901:6901 -e HTTP_PROXY<span style="color:#f92672">=</span>http://server-ip:port/ -e HTTPS_PROXY<span style="color:#f92672">=</span>http<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span>://server-ip:port/ -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>yourLicenseKey taconsol/sakuli:2.2.0</code></pre></div>
 
 
 <footer class=" footline" >
@@ -1406,6 +1428,8 @@
     <script src="/docs/js/modernizr.custom-3.6.0.js"></script>
     <script src="/docs/js/learn.js"></script>
     <script src="/docs/js/hugo-learn.js"></script>
+    <script src="/docs/js/klaroCookie/config.js"></script>
+    <script src="/docs/js/klaroCookie/klaro.js"></script>
 
     <link href="/docs/mermaid/mermaid.css" rel="stylesheet" />
     <script src="/docs/mermaid/mermaid.js"></script>

@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
   <head>
-
+    
+      
+      
+      <script data-name="googleanalytics" data-type="application/javascript" type="text/plain">(function (w, d, s, l, i) {
+                      w[l] = w[l] || []; w[l].push({
+                          'gtm.start':
+                              new Date().getTime(), event: 'gtm.js'
+                      }); var f = d.getElementsByTagName(s)[0],
+                          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                              'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                  })(window, document, 'script', 'dataLayer', 'GTM-TMFSKHB');</script>
+      
+    
+    
+      <script data-type="application/javascript" type="text/plain" data-src="https://app.primeleads.de/api/v1/4uewa4e9rh"
+        data-name="primeLeads"></script>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.56.3" />
+    <meta name="generator" content="Hugo 0.68.3" />
     <meta name="description" content="">
 
 
@@ -755,6 +771,22 @@
       
         <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
       
+      <li>
+        <a class="padding" onclick="klaro.show();return false;">
+          <i class="fas fa-cog fa-fw"></i> Cookie Settings
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../dataprivacy/">
+          <i class="fas fa-user-secret fa-fw"></i> Data Privacy
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../legalnotice/">
+          <i class="fas fa-balance-scale fa-fw"></i> Legal Notice
+        </a>
+      </li>
+      
       </ul>
     </section>
     
@@ -814,18 +846,16 @@
                     <div class="progress">
     <div class="wrapper">
         <nav id="TableOfContents">
-<ul>
-<li><a href="#screenshot-based-testing">Screenshot based Testing</a>
-<ul>
-<li><a href="#how-to-control-the-mouse-in-a-sakuli-test">How to Control the Mouse in a Sakuli Test</a>
-<ul>
-<li><a href="#moving-the-mouse-to-a-screenshot">Moving the mouse to a screenshot</a></li>
-<li><a href="#moving-the-mouse-relative-to-current-position">Moving the mouse relative to current position</a></li>
-<li><a href="#moving-the-mouse-to-an-absolute-position">Moving the Mouse to an Absolute Position</a></li>
-<li><a href="#drag-and-drop">Drag And Drop</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#how-to-control-the-mouse-in-a-sakuli-test">How to Control the Mouse in a Sakuli Test</a>
+      <ul>
+        <li><a href="#moving-the-mouse-to-a-screenshot">Moving the mouse to a screenshot</a></li>
+        <li><a href="#moving-the-mouse-relative-to-current-position">Moving the mouse relative to current position</a></li>
+        <li><a href="#moving-the-mouse-to-an-absolute-position">Moving the Mouse to an Absolute Position</a></li>
+        <li><a href="#drag-and-drop">Drag And Drop</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
     </div>
 </div>
@@ -847,22 +877,15 @@
 
 
 
-
-
 <h1 id="screenshot-based-testing">Screenshot based Testing</h1>
-
 <p>A lot of E2E scenarios exceed the capabilities of browsers and webdrivers. This might include common use-cases like a drag and drop from the host system to a webpage or exporting a report into a spreadsheet or PDF-format. In these cases, your web-based tests can be extended to also validate behavior and invoke interactions outside the browser, all within a single test.</p>
-
 <p>Of course, you can also use Sakulis native testing power on its own, e.g. rich-client testing of SAP, office or proprietary software systems. Sakuli accomplishes its native capabilities by scanning the whole screen (or a dedicated region) on a stand-alone computer or in headless container screens, searching for provided image patterns.</p>
-
 <p>Screenshot based actions are relying on an abstract <code>Region</code> class, which represents an abstract region on the desktop.
 When creating a new instance without parameters, a <code>Region</code> spans over the whole desktop.
 But, it is also possible to create new regions by specifying <code>left</code>, <code>top</code>, <code>width</code> and <code>height</code> parameters.</p>
-
 <p>The following example represents a test which drags a source element to a target region.
 In this demo scenario, both source and target are both located on screen via template image.
 To reproduce this scenario, you need to capture screenshots of the egg and the pan.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript">(<span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> {
     <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">testCase</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TestCase</span>(<span style="color:#e6db74">&#34;native_keyboard_demo&#34;</span>);
     <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://codepen.io/naturalhanglider/full/jQMWoq&#34;</span>;
@@ -883,13 +906,10 @@ To reproduce this scenario, you need to capture screenshots of the egg and the p
     } <span style="color:#66d9ef">finally</span> {
         <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">saveResult</span>();
     }
-})();</code></pre></div>
-
-<!--self built wrapper with a frame and shaddow
-<div style="background-color: #fff; padding: 20px; margin-top:10px; margin-bottom:10px; box-shadow: 0px 0px 5px #383838;">
-</div>
--->
-
+})();
+</code></pre></div>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 
 <div style="background-color: #fff; padding: 20px; box-shadow: 0px 0px 10px #7C7C7B; margin-left: 0%; margin-right: 0%; margin-top: 50px; margin-bottom: 50px">
     <video width="100%" style='margin: 0' controls >
@@ -900,13 +920,11 @@ To reproduce this scenario, you need to capture screenshots of the egg and the p
 </div>
 
 
-
 <p>The <code>dragAndDropTo(...)</code> methods always move straight to the target region.
 In order to follow a more complex path, it is also possible to perform the drag gesture manually.
 Once the source image has been located on the screen, Sakuli moves the mouse to its location, presses and holds the left mouse button.
 Afterwards, it locates the target image, moves the mouse there while still holding the mouse button and releases it, once it reaches the target location.
 To reproduce this scenario, you need to capture screenshots of the egg and the pan.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript">(<span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> {
     <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">testCase</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TestCase</span>(<span style="color:#e6db74">&#34;native_demo&#34;</span>);
     <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://codepen.io/naturalhanglider/full/jQMWoq&#34;</span>;
@@ -933,51 +951,45 @@ To reproduce this scenario, you need to capture screenshots of the egg and the p
     } <span style="color:#66d9ef">finally</span> {
         <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">saveResult</span>();
     }
-})();</code></pre></div>
-
+})();
+</code></pre></div>
 <h2 id="how-to-control-the-mouse-in-a-sakuli-test">How to Control the Mouse in a Sakuli Test</h2>
-
 <p>Sakuli provides two ways to steer mouse movement. Either via coordinates, or via screenshot data. In order to search for
 image data on your screen you have to instantiate a <code>Region</code> spanning the entire display to access it&rsquo;s image content.</p>
-
 <h3 id="moving-the-mouse-to-a-screenshot">Moving the mouse to a screenshot</h3>
-
 <p>To find a screenshot on the screen, you can use <code>find</code> or <code>waitForImage</code>. With <code>waitForImage</code> you can specify a timeout
 in which Sakuli continuously searches for the screenshot. This is useful, when e.g. starting a program like excel.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
 <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;search_this_screenshot.jpg&#34;</span>)
     .<span style="color:#a6e22e">mouseMove</span>();
     
 <span style="color:#75715e">//searches the screen for 5 seconds for the excel homescreen
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">waitForImage</span>(<span style="color:#e6db74">&#34;excel_homescreen.jpg&#34;</span>, <span style="color:#ae81ff">5000</span>)
-    .<span style="color:#a6e22e">mouseMove</span>();</code></pre></div>
-
+    .<span style="color:#a6e22e">mouseMove</span>();
+</code></pre></div>
 <p><code>find</code> and <code>waitForImage</code> will return a <code>Region</code> for matched screenshots, so chaining as follows might not work, if the
 second screenshot is not within the <code>Region</code> of the first one.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
 <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;google_search.png&#34;</span>)
     .<span style="color:#a6e22e">mouseMove</span>()
     .<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;browser_address_bar.jpg&#34;</span>)
-    .<span style="color:#a6e22e">mouseMove</span>();</code></pre></div></p>
-
+    .<span style="color:#a6e22e">mouseMove</span>();
+</code></pre></div></p>
 <p>To get around this problem, you can use <code>left(range)</code>, <code>right(range)</code>, <code>above(range)</code> or <code>below(range)</code>, which returns a
 new <code>Region</code>. <code>left(range)</code> return a <code>Region</code> that is left of the current region&rsquo;s border with a width of <em>range</em>, so it
 does not include the current Region. <code>right</code>, <code>below</code> and <code>above</code> behaves equivalently.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
 <span style="color:#a6e22e">await</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">500</span>, <span style="color:#ae81ff">500</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>).<span style="color:#a6e22e">left</span>(<span style="color:#ae81ff">200</span>)
-<span style="color:#960050;background-color:#1e0010">//this returns a new region with (300/500/200/100)</span></code></pre></div>
-
+<span style="color:#75715e">//this returns a new region with (300/500/200/100)
+</span></code></pre></div>
 <p>You can also manipulate the current <code>Region</code> with <code>setX(number)</code>, <code>setY(number)</code>, <code>setH(number)</code>, <code>setW(number)</code> or
 <code>grow(range)</code>. With <code>grow</code> you can expand the current region with <em>range</em> px in all four directions.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
 <span style="color:#a6e22e">await</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">500</span>, <span style="color:#ae81ff">500</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>).<span style="color:#a6e22e">grow</span>(<span style="color:#ae81ff">100</span>);
-<span style="color:#960050;background-color:#1e0010">//this returns a new region with (400, 400, 300,300)</span></code></pre></div></p>
-
+<span style="color:#75715e">//this returns a new region with (400, 400, 300,300)
+</span></code></pre></div></p>
 <h3 id="moving-the-mouse-relative-to-current-position">Moving the mouse relative to current position</h3>
-
-<p>One way to change a <code>Region</code>&rsquo;s position is to use the <code>move(x, y)</code> method. This allows us to shift a region in <code>x</code> and / or <code>y</code> direction, e.g.
+<p>One way to change a <code>Region</code>'s position is to use the <code>move(x, y)</code> method. This allows us to shift a region in <code>x</code> and / or <code>y</code> direction, e.g.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
 <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;login_mask.png&#34;</span>)
     .<span style="color:#a6e22e">mouseMove</span>()
@@ -993,27 +1005,24 @@ does not include the current Region. <code>right</code>, <code>below</code> and 
 </span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">move</span>(<span style="color:#ae81ff">50</span>,<span style="color:#ae81ff">50</span>)
     .<span style="color:#a6e22e">mouseMove</span>()
     .<span style="color:#a6e22e">click</span>();
-})();</code></pre></div></p>
-
+})();
+</code></pre></div></p>
 <h3 id="moving-the-mouse-to-an-absolute-position">Moving the Mouse to an Absolute Position</h3>
-
 <p>Due to the fact that <code>mouseMove()</code> always moves the mouse to the <strong>center</strong> of a <code>region</code>, we need to instantiate a
 <code>region</code> with a height and width of 1.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
 <span style="color:#a6e22e">await</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>).<span style="color:#a6e22e">mouseMove</span>();
-<span style="color:#960050;background-color:#1e0010">//moves the mouse cursor to (100/200)</span></code></pre></div>
-
+<span style="color:#75715e">//moves the mouse cursor to (100/200)
+</span></code></pre></div>
 <h3 id="drag-and-drop">Drag And Drop</h3>
-
 <p>There are two ways to use drag and drop. Firstly, you can use <code>dragAndDropTo()</code>, which drags from one point to another.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
 <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;drag_mouse_start.png&#34;</span>).<span style="color:#a6e22e">mouseMove</span>().<span style="color:#a6e22e">dragAndDropTo</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">200</span>,<span style="color:#ae81ff">200</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>));
 
 <span style="color:#a6e22e">await</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">300</span>,<span style="color:#ae81ff">300</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>).<span style="color:#a6e22e">mouseMove</span>().<span style="color:#a6e22e">dragAndDropTo</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>));
 
-<span style="color:#a6e22e">await</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>).<span style="color:#a6e22e">mouseMove</span>().<span style="color:#a6e22e">dragAndDropTo</span>(<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;drag_mouse_end.png&#34;</span>));</code></pre></div></p>
-
+<span style="color:#a6e22e">await</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>).<span style="color:#a6e22e">mouseMove</span>().<span style="color:#a6e22e">dragAndDropTo</span>(<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;drag_mouse_end.png&#34;</span>));
+</code></pre></div></p>
 <p>Using <code>mouseDown</code>/<code>mouseUp</code> allows us to drag and drop over multiple locations.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
 <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;drag_mouse_start.png&#34;</span>)
@@ -1023,10 +1032,9 @@ does not include the current Region. <code>right</code>, <code>below</code> and 
     .<span style="color:#a6e22e">mouseMove</span>()
     .<span style="color:#a6e22e">move</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">100</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">100</span>)
     .<span style="color:#a6e22e">mouseMove</span>()
-    .<span style="color:#a6e22e">mouseUp</span>(<span style="color:#a6e22e">MouseButton</span>.<span style="color:#a6e22e">LEFT</span>);</code></pre></div></p>
-
+    .<span style="color:#a6e22e">mouseUp</span>(<span style="color:#a6e22e">MouseButton</span>.<span style="color:#a6e22e">LEFT</span>);
+</code></pre></div></p>
 <p><code>mouseUp</code>/<code>mouseDown</code> can be used with either <code>MouseButton.LEFT</code>, <code>MouseButton.MIDDLE</code> or <code>MouseButton.RIGHT</code>.</p>
-
 <p><code>Region</code> also provides methods to use the keyboards, which also are implemented by <code>Environment</code>. This allows for easy
 chaining, like
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
@@ -1041,7 +1049,8 @@ chaining, like
     .<span style="color:#a6e22e">sleepMs</span>(<span style="color:#ae81ff">1000</span>)
     <span style="color:#75715e">//moves to the first search result
 </span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">move</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">400</span>,<span style="color:#ae81ff">100</span>)
-    .<span style="color:#a6e22e">click</span>();</code></pre></div></p>
+    .<span style="color:#a6e22e">click</span>();
+</code></pre></div></p>
 
 
 <footer class=" footline" >
@@ -1598,6 +1607,8 @@ chaining, like
     <script src="/docs/js/modernizr.custom-3.6.0.js"></script>
     <script src="/docs/js/learn.js"></script>
     <script src="/docs/js/hugo-learn.js"></script>
+    <script src="/docs/js/klaroCookie/config.js"></script>
+    <script src="/docs/js/klaroCookie/klaro.js"></script>
 
     <link href="/docs/mermaid/mermaid.css" rel="stylesheet" />
     <script src="/docs/mermaid/mermaid.js"></script>

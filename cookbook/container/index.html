@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
   <head>
-
+    
+      
+      
+      <script data-name="googleanalytics" data-type="application/javascript" type="text/plain">(function (w, d, s, l, i) {
+                      w[l] = w[l] || []; w[l].push({
+                          'gtm.start':
+                              new Date().getTime(), event: 'gtm.js'
+                      }); var f = d.getElementsByTagName(s)[0],
+                          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                              'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                  })(window, document, 'script', 'dataLayer', 'GTM-TMFSKHB');</script>
+      
+    
+    
+      <script data-type="application/javascript" type="text/plain" data-src="https://app.primeleads.de/api/v1/4uewa4e9rh"
+        data-name="primeLeads"></script>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.56.3" />
+    <meta name="generator" content="Hugo 0.68.3" />
     <meta name="description" content="">
 
 
@@ -755,6 +771,22 @@
       
         <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
       
+      <li>
+        <a class="padding" onclick="klaro.show();return false;">
+          <i class="fas fa-cog fa-fw"></i> Cookie Settings
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../dataprivacy/">
+          <i class="fas fa-user-secret fa-fw"></i> Data Privacy
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../legalnotice/">
+          <i class="fas fa-balance-scale fa-fw"></i> Legal Notice
+        </a>
+      </li>
+      
       </ul>
     </section>
     
@@ -814,16 +846,13 @@
                     <div class="progress">
     <div class="wrapper">
         <nav id="TableOfContents">
-<ul>
-<li><a href="#how-to-run-a-container-with-sakuli-tests">How to run a Container with Sakuli Tests</a>
-<ul>
-<li><a href="#download-the-image">Download the image</a></li>
-<li><a href="#folder-structure-and-necessary-files">Folder structure and necessary files</a></li>
-<li><a href="#run">Run</a></li>
-<li><a href="#watch-the-magic">Watch the magic</a></li>
-<li><a href="#what-s-more">What´s more?</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#download-the-image">Download the image</a></li>
+    <li><a href="#folder-structure-and-necessary-files">Folder structure and necessary files</a></li>
+    <li><a href="#run">Run</a></li>
+    <li><a href="#watch-the-magic">Watch the magic</a></li>
+    <li><a href="#whats-more">What´s more?</a></li>
+  </ul>
 </nav>
     </div>
 </div>
@@ -845,31 +874,20 @@
 
 
 
-
-
 <h1 id="how-to-run-a-container-with-sakuli-tests">How to run a Container with Sakuli Tests</h1>
-
 <blockquote>
 <p>Sakuli Container are only available with an active Sakuli subscription.</p>
 </blockquote>
-
 <p>The following how-to aims to help unexperienced users getting started with Sakuli Containers.
 A Sakuli Container ships with pre-installed Sakuli, Monitoring forwarder and other additional features, it is not necessary to install anything on your docker-host, except for docker.</p>
-
 <h2 id="download-the-image">Download the image</h2>
-
 <p>With your logged-in docker-user (which is authorized to access the repository with an active subscription), you first need to download the Sakuli image:
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull taconsol/sakuli:2.2.0</code></pre></div></p>
-
 <h2 id="folder-structure-and-necessary-files">Folder structure and necessary files</h2>
-
 <p>You will need a proper Sakuli Test setup on your docker-host. Do one of the following to bootstrap this setup:</p>
-
 <p>Either clone the Git Repository
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone git@github.com:sakuli/container_bootstrap.git sakuli-container_bootstrap</code></pre></div></p>
-
 <p>OR</p>
-
 <p>Download the following ZIP
 
 <div style="background-color: #fff; padding: 20px; box-shadow: 0px 0px 10px #7C7C7B; margin-left: 0%; margin-right: 0%; margin-top: 20px; margin-bottom: 20px">
@@ -877,7 +895,6 @@ A Sakuli Container ships with pre-installed Sakuli, Monitoring forwarder and oth
 </div>
 
 </p>
-
 <p>After cloning the repo / unzipping the file, you will have a folder structure like this with the proper files to run a test using a Sakuli container:
 
 <div style="background-color: #fff; padding: 5px; box-shadow: 0px 0px 10px #7C7C7B; margin-left: 0%; margin-right: 0%; margin-top: 20px; margin-bottom: 20px">
@@ -885,20 +902,14 @@ A Sakuli Container ships with pre-installed Sakuli, Monitoring forwarder and oth
 </div>
 
 </p>
-
 <h2 id="run">Run</h2>
-
-<p>Open a terminal and navigate to the folder &ldquo;sakuli-container_bootstrap*&ldquo;.
+<p>Open a terminal and navigate to the folder &ldquo;sakuli-container_bootstrap*&quot;.
 Within this folder, run the following docker command (you will have to insert your active Sakuli License Key):
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/suite -p <span style="color:#ae81ff">5901</span>:5901 -p <span style="color:#ae81ff">6901</span>:6901 -e SAKULI_TEST_SUITE<span style="color:#f92672">=</span>/suite -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>YourLicenseKey taconsol/sakuli:2.2.0</code></pre></div></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/suite -p 5901:5901 -p 6901:6901 -e SAKULI_TEST_SUITE<span style="color:#f92672">=</span>/suite -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>YourLicenseKey taconsol/sakuli:2.2.0</code></pre></div></p>
 <h2 id="watch-the-magic">Watch the magic</h2>
-
 <p>You can use the noVNC feature to have a live-view of what is happening within the Container by opening the following link on your docker-host while the container is running and a test is executed:
-<a href="http://localhost:6901/?password=vncpassword">http://localhost:6901/?password=vncpassword</a></p>
-
-<h2 id="what-s-more">What´s more?</h2>
-
+http://localhost:6901/?password=vncpassword</p>
+<h2 id="whats-more">What´s more?</h2>
 <p>Have a look at our Enterprise documentation about Container, Forwarder etc. to get a more in-depth knowledge on what is happening and on how to customize the execution of Sakuli tests.</p>
 
 
@@ -1456,6 +1467,8 @@ Within this folder, run the following docker command (you will have to insert yo
     <script src="/docs/js/modernizr.custom-3.6.0.js"></script>
     <script src="/docs/js/learn.js"></script>
     <script src="/docs/js/hugo-learn.js"></script>
+    <script src="/docs/js/klaroCookie/config.js"></script>
+    <script src="/docs/js/klaroCookie/klaro.js"></script>
 
     <link href="/docs/mermaid/mermaid.css" rel="stylesheet" />
     <script src="/docs/mermaid/mermaid.js"></script>

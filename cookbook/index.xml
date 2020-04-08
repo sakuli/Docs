@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cookbook on </title>
@@ -16,7 +16,7 @@
       <pubDate>Fri, 20 Mar 2020 13:18:11 +0100</pubDate>
       
       <guid>/docs/cookbook/handling-forms/</guid>
-      <description>Handling forms Filling forms and verifying their functionality is one of the major use cases in E2E-Testing and -Monitoring. Most of the web elements have been abstracted from their technical specification in HTML. An &amp;lt;intput name=&amp;quot;last-name&amp;quot; /&amp;gt; for example is abstracted as a _textbox(&amp;quot;last-name&amp;quot;) accessor. Let&amp;rsquo;s have a look at the most common accessors to interact with forms.
+      <description>Handling forms Filling forms and verifying their functionality is one of the major use cases in E2E-Testing and -Monitoring. Most of the web elements have been abstracted from their technical specification in HTML. An &amp;lt;intput name=&amp;quot;last-name&amp;quot; /&amp;gt;  for example is abstracted as a _textbox(&amp;quot;last-name&amp;quot;) accessor. Let&amp;rsquo;s have a look at the most common accessors to interact with forms.
 Input fields Textarea Filling text into a textarea can easily be achieved by combining the _setValue() action with the _textarea() accessor.</description>
     </item>
     
@@ -36,7 +36,7 @@ Static wait // wait for three seconds await _wait(3000);  Wait for an element to
       <pubDate>Mon, 03 Feb 2020 15:25:42 +0100</pubDate>
       
       <guid>/docs/cookbook/invalid-session-id/</guid>
-      <description> Oh noes! Sakuli crashed with an &amp;ldquo;Invalid session id&amp;rdquo; error! When Sakuli crashes with an &amp;ldquo;Invalid session id&amp;rdquo; error, the webdriver itself crashed or least closed the session the Sakuli test or check is using. Such a behavior mostly occurs, when the provided resources for the Sakuli execution are insufficient. When testing bigger websites, please check if enough SHM space is available.
+      <description>Oh noes! Sakuli crashed with an &amp;ldquo;Invalid session id&amp;rdquo; error! When Sakuli crashes with an &amp;ldquo;Invalid session id&amp;rdquo; error, the webdriver itself crashed or least closed the session the Sakuli test or check is using. Such a behavior mostly occurs, when the provided resources for the Sakuli execution are insufficient. When testing bigger websites, please check if enough SHM space is available.
  Running Sakuli container with &amp;ndash;shm-size Increasing shared memory on openshift  </description>
     </item>
     
@@ -68,7 +68,7 @@ Download the image With your logged-in docker-user (which is authorized to acces
       
       <guid>/docs/cookbook/frames/</guid>
       <description>How can I handle frames or iframes in Sakuli? Since v2.2.0 Sakuli will automatically detect different frames (and iframes) and will search for elements in each frame when the element can not be found in default frame. But it is also possible to switch between frames manually by using the iframe webelement or its respective index.
-const myIframe = await _fetch(_iframe(&amp;#39;frameName&amp;#39;)); await driver.switchTo().frame(myIframe);  const frameIndex = 0; await driver.</description>
+const myIframe = await _fetch(_iframe(&amp;#39;frameName&amp;#39;)); await driver.switchTo().frame(myIframe);  const frameIndex = 0; await driver.switchTo().frame(frameIndex);  </description>
     </item>
     
   </channel>

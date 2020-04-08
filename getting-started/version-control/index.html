@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
   <head>
-
+    
+      
+      
+      <script data-name="googleanalytics" data-type="application/javascript" type="text/plain">(function (w, d, s, l, i) {
+                      w[l] = w[l] || []; w[l].push({
+                          'gtm.start':
+                              new Date().getTime(), event: 'gtm.js'
+                      }); var f = d.getElementsByTagName(s)[0],
+                          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                              'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                  })(window, document, 'script', 'dataLayer', 'GTM-TMFSKHB');</script>
+      
+    
+    
+      <script data-type="application/javascript" type="text/plain" data-src="https://app.primeleads.de/api/v1/4uewa4e9rh"
+        data-name="primeLeads"></script>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.56.3" />
+    <meta name="generator" content="Hugo 0.68.3" />
     <meta name="description" content="">
 
 
@@ -755,6 +771,22 @@
       
         <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
       
+      <li>
+        <a class="padding" onclick="klaro.show();return false;">
+          <i class="fas fa-cog fa-fw"></i> Cookie Settings
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../dataprivacy/">
+          <i class="fas fa-user-secret fa-fw"></i> Data Privacy
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../legalnotice/">
+          <i class="fas fa-balance-scale fa-fw"></i> Legal Notice
+        </a>
+      </li>
+      
       </ul>
     </section>
     
@@ -814,12 +846,9 @@
                     <div class="progress">
     <div class="wrapper">
         <nav id="TableOfContents">
-<ul>
-<li><a href="#version-control-systems">Version control systems</a>
-<ul>
-<li><a href="#git">Git</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#git">Git</a></li>
+  </ul>
 </nav>
     </div>
 </div>
@@ -841,20 +870,13 @@
 
 
 
-
-
 <h1 id="version-control-systems">Version control systems</h1>
-
 <p>We highly recommend using version control systems for your test/check files, configs, etc. This ensures that changes are tracked, eases development processes as well as backup strategies and allows to release versions of tests/checks in relation to a certain version of your system under test. During test/check execution, Sakuli creates various files like logs and error screenshots which should be ignored when using version control. Common version control systems support strategies to ignore files and folders. Here are prepared configurations for you to use with Sakuli.</p>
-
 <h2 id="git">Git</h2>
-
 <p>To ignore files and folders in Git, a <code>.gitignore</code> file is used. The following snippet contains the config for Sakuli.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">#Sakuli 
 *.steps.cache
 **/_logs</code></pre></div>
-
 <p>For more information about <code>.gitingore</code> files, please have a look at the <a href="https://git-scm.com/docs/gitignore">official git documentation</a>.</p>
 
 
@@ -1409,6 +1431,8 @@
     <script src="/docs/js/modernizr.custom-3.6.0.js"></script>
     <script src="/docs/js/learn.js"></script>
     <script src="/docs/js/hugo-learn.js"></script>
+    <script src="/docs/js/klaroCookie/config.js"></script>
+    <script src="/docs/js/klaroCookie/klaro.js"></script>
 
     <link href="/docs/mermaid/mermaid.css" rel="stylesheet" />
     <script src="/docs/mermaid/mermaid.js"></script>

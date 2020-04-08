@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
   <head>
-
+    
+      
+      
+      <script data-name="googleanalytics" data-type="application/javascript" type="text/plain">(function (w, d, s, l, i) {
+                      w[l] = w[l] || []; w[l].push({
+                          'gtm.start':
+                              new Date().getTime(), event: 'gtm.js'
+                      }); var f = d.getElementsByTagName(s)[0],
+                          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                              'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                  })(window, document, 'script', 'dataLayer', 'GTM-TMFSKHB');</script>
+      
+    
+    
+      <script data-type="application/javascript" type="text/plain" data-src="https://app.primeleads.de/api/v1/4uewa4e9rh"
+        data-name="primeLeads"></script>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.56.3" />
+    <meta name="generator" content="Hugo 0.68.3" />
     <meta name="description" content="">
 
 
@@ -755,6 +771,22 @@
       
         <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
       
+      <li>
+        <a class="padding" onclick="klaro.show();return false;">
+          <i class="fas fa-cog fa-fw"></i> Cookie Settings
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../dataprivacy/">
+          <i class="fas fa-user-secret fa-fw"></i> Data Privacy
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../legalnotice/">
+          <i class="fas fa-balance-scale fa-fw"></i> Legal Notice
+        </a>
+      </li>
+      
       </ul>
     </section>
     
@@ -814,16 +846,14 @@
                     <div class="progress">
     <div class="wrapper">
         <nav id="TableOfContents">
-<ul>
-<li><a href="#prometheus-forwarder">Prometheus Forwarder</a>
-<ul>
-<li><a href="#push-gateway">Push gateway</a></li>
-<li><a href="#forwarder-configuration">Forwarder configuration</a>
-<ul>
-<li><a href="#example-configuration">Example configuration</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#push-gateway">Push gateway</a></li>
+    <li><a href="#forwarder-configuration">Forwarder configuration</a>
+      <ul>
+        <li><a href="#example-configuration">Example configuration</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
     </div>
 </div>
@@ -845,18 +875,11 @@
 
 
 
-
-
 <h1 id="prometheus-forwarder">Prometheus Forwarder</h1>
-
 <p><strong>Available from version 2.3.0</strong></p>
-
 <p>Add the forwarder manually as follows:</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm i @sakuli/forwarder-prometheus</code></pre></div>
-
 <p>To register the forwarder in your project, edit your <code>package.json</code> and add the preset to the Sakuli configuration key:</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
     <span style="color:#f92672">&#34;sakuli&#34;</span>: {
         <span style="color:#f92672">&#34;presetProvider&#34;</span>: [
@@ -865,17 +888,11 @@
         ]
     }
 }</code></pre></div>
-
 <p>Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the <a href="/docs/enterprise#using-licences-information">enterprise section</a>.</p>
-
 <h2 id="push-gateway">Push gateway</h2>
-
 <p>It is assumed that a push gateway is available in your monitoring setup. As Sakuli checks are not constantly available like e.g. a Webservice, it is required to use a Prometheus push gateway to provide a scraping endpoint for Prometheus to obtain measurements gathered by Sakuli.</p>
-
 <h2 id="forwarder-configuration">Forwarder configuration</h2>
-
 <p>Configuration is located in <code>sakuli.properties</code> within the root folder of your project or respectively in <code>testsuite.properties</code> in your testsuite folders for testsuite specific configuration:</p>
-
 <table>
 <thead>
 <tr>
@@ -884,26 +901,22 @@
 <th>Effect</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><code>sakuli.forwarder.prometheus.enabled</code></td>
 <td><code>false</code></td>
 <td>Enables forwarding to prometheus push gateway</td>
 </tr>
-
 <tr>
 <td><code>sakuli.forwarder.prometheus.api.host</code></td>
 <td></td>
 <td>Hostname of the prometheus push gateway</td>
 </tr>
-
 <tr>
 <td><code>sakuli.forwarder.prometheus.api.port</code></td>
 <td><code>9091</code></td>
 <td>Port of the prometheus push gateway service</td>
 </tr>
-
 <tr>
 <td><code>sakuli.forwarder.prometheus.api.job</code></td>
 <td></td>
@@ -911,13 +924,11 @@
 </tr>
 </tbody>
 </table>
-
 <h3 id="example-configuration">Example configuration</h3>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-properties" data-lang="properties">sakuli.forwarder.prometheus.enabled=true
+<pre><code class="language-properties" data-lang="properties">sakuli.forwarder.prometheus.enabled=true
 sakuli.forwarder.prometheus.api.host=prom.push.gateway.mydomain.com
 sakuli.forwarder.prometheus.api.port=9091
-sakuli.forwarder.prometheus.api.job=my-app-e2e-monitoring</code></pre></div>
+sakuli.forwarder.prometheus.api.job=my-app-e2e-monitoring</code></pre>
 
 
 <footer class=" footline" >
@@ -1474,6 +1485,8 @@ sakuli.forwarder.prometheus.api.job=my-app-e2e-monitoring</code></pre></div>
     <script src="/docs/js/modernizr.custom-3.6.0.js"></script>
     <script src="/docs/js/learn.js"></script>
     <script src="/docs/js/hugo-learn.js"></script>
+    <script src="/docs/js/klaroCookie/config.js"></script>
+    <script src="/docs/js/klaroCookie/klaro.js"></script>
 
     <link href="/docs/mermaid/mermaid.css" rel="stylesheet" />
     <script src="/docs/mermaid/mermaid.js"></script>

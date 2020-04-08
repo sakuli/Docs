@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
   <head>
-
+    
+      
+      
+      <script data-name="googleanalytics" data-type="application/javascript" type="text/plain">(function (w, d, s, l, i) {
+                      w[l] = w[l] || []; w[l].push({
+                          'gtm.start':
+                              new Date().getTime(), event: 'gtm.js'
+                      }); var f = d.getElementsByTagName(s)[0],
+                          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                              'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                  })(window, document, 'script', 'dataLayer', 'GTM-TMFSKHB');</script>
+      
+    
+    
+      <script data-type="application/javascript" type="text/plain" data-src="https://app.primeleads.de/api/v1/4uewa4e9rh"
+        data-name="primeLeads"></script>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.56.3" />
+    <meta name="generator" content="Hugo 0.68.3" />
     <meta name="description" content="">
 
 
@@ -755,6 +771,22 @@
       
         <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
       
+      <li>
+        <a class="padding" onclick="klaro.show();return false;">
+          <i class="fas fa-cog fa-fw"></i> Cookie Settings
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../dataprivacy/">
+          <i class="fas fa-user-secret fa-fw"></i> Data Privacy
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../legalnotice/">
+          <i class="fas fa-balance-scale fa-fw"></i> Legal Notice
+        </a>
+      </li>
+      
       </ul>
     </section>
     
@@ -814,12 +846,9 @@
                     <div class="progress">
     <div class="wrapper">
         <nav id="TableOfContents">
-<ul>
-<li><a href="#what-you-need">What you need</a>
-<ul>
-<li><a href="#attention">Attention</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#attention">Attention</a></li>
+  </ul>
 </nav>
     </div>
 </div>
@@ -841,21 +870,13 @@
 
 
 
-
-
 <h1 id="what-you-need">What you need</h1>
-
 <p>Sakuli is built and tested against the current LTS version of Node.js.</p>
-
 <p>Up to version <code>2.2.0</code> Sakuli supports node v10.x (<code>lts/dubnium</code>). Starting with version <code>2.3.0</code>, Sakuli also supports v12.x (<code>lts/erbium</code>).
 In order to be able to run Sakuli on your system, we will assume that you have a working node installation.</p>
-
-<p>To install Node on your system, you can either go to the <a href="https://nodejs.org/en/" target="_blank">Node website</a> or you can use tools like <a href="https://github.com/nvm-sh/nvm" target="_blank">Node Version Manager</a> utility to manage various Node versions on a per-user basis. In general, a per-user installation is the preferred way since it runs in an unprivileged mode.</p>
-
+<p>To install Node on your system, you can either go to the <!-- raw HTML omitted -->Node website<!-- raw HTML omitted --> or you can use tools like <!-- raw HTML omitted -->Node Version Manager<!-- raw HTML omitted --> utility to manage various Node versions on a per-user basis. In general, a per-user installation is the preferred way since it runs in an unprivileged mode.</p>
 <h2 id="attention">Attention</h2>
-
 <p>There&rsquo;s an issue regarding Sakuli in combination with node versions &gt;= 12.13.1 on macOS (see <a href="https://github.com/nodejs/help/issues/2398">#2398</a> and <a href="https://github.com/nodejs/node/issues/31623">#31623</a>) which causes Sakuli tests to break when using native actions like <code>env.type(...)</code>.</p>
-
 <p>If you happen to run into this issue, please try downgrading to node v12.13.0 to run your tests.</p>
 
 
@@ -1407,6 +1428,8 @@ In order to be able to run Sakuli on your system, we will assume that you have a
     <script src="/docs/js/modernizr.custom-3.6.0.js"></script>
     <script src="/docs/js/learn.js"></script>
     <script src="/docs/js/hugo-learn.js"></script>
+    <script src="/docs/js/klaroCookie/config.js"></script>
+    <script src="/docs/js/klaroCookie/klaro.js"></script>
 
     <link href="/docs/mermaid/mermaid.css" rel="stylesheet" />
     <script src="/docs/mermaid/mermaid.js"></script>

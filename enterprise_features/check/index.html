@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
   <head>
-
+    
+      
+      
+      <script data-name="googleanalytics" data-type="application/javascript" type="text/plain">(function (w, d, s, l, i) {
+                      w[l] = w[l] || []; w[l].push({
+                          'gtm.start':
+                              new Date().getTime(), event: 'gtm.js'
+                      }); var f = d.getElementsByTagName(s)[0],
+                          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                              'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                  })(window, document, 'script', 'dataLayer', 'GTM-TMFSKHB');</script>
+      
+    
+    
+      <script data-type="application/javascript" type="text/plain" data-src="https://app.primeleads.de/api/v1/4uewa4e9rh"
+        data-name="primeLeads"></script>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.56.3" />
+    <meta name="generator" content="Hugo 0.68.3" />
     <meta name="description" content="">
 
 
@@ -755,6 +771,22 @@
       
         <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
       
+      <li>
+        <a class="padding" onclick="klaro.show();return false;">
+          <i class="fas fa-cog fa-fw"></i> Cookie Settings
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../dataprivacy/">
+          <i class="fas fa-user-secret fa-fw"></i> Data Privacy
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../legalnotice/">
+          <i class="fas fa-balance-scale fa-fw"></i> Legal Notice
+        </a>
+      </li>
+      
       </ul>
     </section>
     
@@ -814,16 +846,14 @@
                     <div class="progress">
     <div class="wrapper">
         <nav id="TableOfContents">
-<ul>
-<li><a href="#checkmk-forwarder">checkmk Forwarder</a>
-<ul>
-<li><a href="#sakuli-client-configuration">Sakuli Client Configuration</a>
-<ul>
-<li><a href="#spool-folder">Spool folder</a></li>
-<li><a href="#forwarder-configuration">Forwarder configuration</a></li>
-</ul></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#sakuli-client-configuration">Sakuli Client Configuration</a>
+      <ul>
+        <li><a href="#spool-folder">Spool folder</a></li>
+        <li><a href="#forwarder-configuration">Forwarder configuration</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
     </div>
 </div>
@@ -845,18 +875,11 @@
 
 
 
-
-
 <h1 id="checkmk-forwarder">checkmk Forwarder</h1>
-
 <p>Add the forwarder using the <a href="/docs/enterprise_features/#assisted-setup">assistant</a> or configure it manually:</p>
-
 <p>Add the forwarder to your project with:</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm i @sakuli/forwarder-checkmk</code></pre></div>
-
 <p>To register the forwarder into your project you have to edit the <code>package.json</code> file and add the preset to the Sakuli configuration key:</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
     <span style="color:#f92672">&#34;sakuli&#34;</span>: {
         <span style="color:#f92672">&#34;presetProvider&#34;</span>: [
@@ -865,21 +888,13 @@
         ]
     }
 }</code></pre></div>
-
 <p>Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the <a href="/docs/enterprise#using-licences-information">enterprise section</a>.</p>
-
 <h2 id="sakuli-client-configuration">Sakuli Client Configuration</h2>
-
 <p>It is assumed that the client is already monitored by checkmk and that an agent is installed and running on it.</p>
-
 <h3 id="spool-folder">Spool folder</h3>
-
 <p>Create a new folder <code>spool</code> in the installation path of the checkmk agent. This is the folder where the results will be written and stored into. Don&rsquo;t forget to grant writing permissions for the folder to the user running Sakuli checks.</p>
-
 <h3 id="forwarder-configuration">Forwarder configuration</h3>
-
 <p>Now you have to set up the properties for the checkmk receiver. In order to do this, edit the <code>sakuli.properties</code> in the folder containing the testsuites:</p>
-
 <table>
 <thead>
 <tr>
@@ -888,56 +903,47 @@
 <th>Effect</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><code>sakuli.forwarder.check_mk.enabled</code></td>
 <td><code>false</code></td>
 <td>Enables writing to the spool file</td>
 </tr>
-
 <tr>
 <td><code>sakuli.forwarder.check_mk.spooldir</code></td>
-<td><code>/var/lib/check_mk_agent/spool</code> (Linux)<br/><code>&lt;CMK_installation_path&gt;\\spool</code> (Windows)</td>
-<td>Path to the spool folder as defined above. On Windows, the backslashes have to be escaped with &lsquo;\&lsquo;. Check_MK is expecting the result files from Sakuli in here</td>
+<td><code>/var/lib/check_mk_agent/spool</code> (Linux)<!-- raw HTML omitted --><code>&lt;CMK_installation_path&gt;\\spool</code> (Windows)</td>
+<td>Path to the spool folder as defined above. On Windows, the backslashes have to be escaped with &lsquo;'. Check_MK is expecting the result files from Sakuli in here</td>
 </tr>
-
 <tr>
 <td><code>sakuli.forwarder.check_mk.freshness</code></td>
 <td><code>600</code></td>
 <td>Defines the maximal age in seconds for which the result is still valid. If the last modification of the result file is older than this property, the result file will be ignored. The Check_MK service will turn into UNKNOWN</td>
 </tr>
-
 <tr>
 <td><code>sakuli.forwarder.check_mk.spoolfile_prefix</code></td>
 <td><code>sakuli_suite_</code></td>
 <td>Defines the result file prefix. It can be used to change the default naming convention for the Check_MK output files</td>
 </tr>
-
 <tr>
 <td><code>sakuli.forwarder.check_mk.service_description</code></td>
 <td><code>${testsuite.id}</code></td>
 <td>Defines the service description which is used within the check result</td>
 </tr>
-
 <tr>
 <td><code>sakuli.forwarder.check_mk.piggyback_hostname</code></td>
 <td><code>local</code></td>
 <td>Defines Hostname for check results, configurable for piggyback results</td>
 </tr>
-
 <tr>
 <td><code>sakuli.forwarder.check_mk.output.details</code></td>
 <td><code>true</code></td>
 <td>Dis- / Enables detailed HTML output</td>
 </tr>
-
 <tr>
 <td><code>sakuli.forwarder.check_mk.section_name</code></td>
 <td><code>local</code></td>
 <td>Name of the reported section (&lt;&lt;&lt;YOUR_SECTION_NAME&gt;&gt;&gt;)</td>
 </tr>
-
 <tr>
 <td><code>sakuli.forwarder.check_mk.url</code></td>
 <td></td>
@@ -945,15 +951,13 @@
 </tr>
 </tbody>
 </table>
-
 <p>An example configuration could look like this:</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-properties" data-lang="properties">sakuli.forwarder.check_mk.enabled=true
+<pre><code class="language-properties" data-lang="properties">sakuli.forwarder.check_mk.enabled=true
 sakuli.forwarder.check_mk.spooldir=/var/lib/check_mk_agent/spool
 sakuli.forwarder.check_mk.freshness=600
 sakuli.forwarder.check_mk.spoolfile_prefix=sakuli_suite_
 sakuli.forwarder.check_mk.service_description=My_Custom_Service
-sakuli.forwarder.check_mk.piggyback_hostname=MyHost</code></pre></div>
+sakuli.forwarder.check_mk.piggyback_hostname=MyHost</code></pre>
 
 
 <footer class=" footline" >
@@ -1510,6 +1514,8 @@ sakuli.forwarder.check_mk.piggyback_hostname=MyHost</code></pre></div>
     <script src="/docs/js/modernizr.custom-3.6.0.js"></script>
     <script src="/docs/js/learn.js"></script>
     <script src="/docs/js/hugo-learn.js"></script>
+    <script src="/docs/js/klaroCookie/config.js"></script>
+    <script src="/docs/js/klaroCookie/klaro.js"></script>
 
     <link href="/docs/mermaid/mermaid.css" rel="stylesheet" />
     <script src="/docs/mermaid/mermaid.js"></script>

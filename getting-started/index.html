@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" class="js csstransforms3d">
   <head>
-
+    
+      
+      
+      <script data-name="googleanalytics" data-type="application/javascript" type="text/plain">(function (w, d, s, l, i) {
+                      w[l] = w[l] || []; w[l].push({
+                          'gtm.start':
+                              new Date().getTime(), event: 'gtm.js'
+                      }); var f = d.getElementsByTagName(s)[0],
+                          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                              'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                  })(window, document, 'script', 'dataLayer', 'GTM-TMFSKHB');</script>
+      
+    
+    
+      <script data-type="application/javascript" type="text/plain" data-src="https://app.primeleads.de/api/v1/4uewa4e9rh"
+        data-name="primeLeads"></script>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.56.3" />
+    <meta name="generator" content="Hugo 0.68.3" />
     <meta name="description" content="">
 
 
@@ -755,6 +771,22 @@
       
         <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
       
+      <li>
+        <a class="padding" onclick="klaro.show();return false;">
+          <i class="fas fa-cog fa-fw"></i> Cookie Settings
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../dataprivacy/">
+          <i class="fas fa-user-secret fa-fw"></i> Data Privacy
+        </a>
+      </li>
+      <li>
+        <a class="padding" href="../legalnotice/">
+          <i class="fas fa-balance-scale fa-fw"></i> Legal Notice
+        </a>
+      </li>
+      
       </ul>
     </section>
     
@@ -808,12 +840,9 @@
                     <div class="progress">
     <div class="wrapper">
         <nav id="TableOfContents">
-<ul>
-<li><a href="#easy-start">Easy Start</a>
-<ul>
-<li><a href="#steps-to-reproduce-easy-start">Steps to reproduce Easy Start</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#steps-to-reproduce-easy-start">Steps to reproduce Easy Start</a></li>
+  </ul>
 </nav>
     </div>
 </div>
@@ -836,12 +865,8 @@
 
 
 
-	
-
-<h1 id="easy-start">Easy Start</h1>
-
+	<h1 id="easy-start">Easy Start</h1>
 <p>The following video shows a quick introduction on how to install and bootstrap <strong>Sakuli</strong> and how to setup and start your first UI-Test on a MAC computer. For a detailed installation procedure, please click the green arrow to the right or navigate through the table of content on the left navigation pane.</p>
-
 
 <div style="background-color: #fff; padding: 20px; box-shadow: 0px 0px 10px #7C7C7B; margin-left: 0%; margin-right: 0%; margin-top: 50px; margin-bottom: 50px">
     <video width="100%" style='margin: 0' controls >
@@ -852,23 +877,14 @@
 </div>
 
 
-
 <h2 id="steps-to-reproduce-easy-start">Steps to reproduce Easy Start</h2>
-
 <p>Prerequisite is a Node v12 (lts/erbium) installation on your Mac.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm init</code></pre></div>
-
 <p>Accept all questions with Enter key.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm i @sakuli/cli</code></pre></div>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm i chromedriver</code></pre></div>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli create project . my-demo</code></pre></div>
-
 <p>Open the file <code>check.js</code>and insert the following Test-Script:</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript">(<span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> {
     <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">testCase</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TestCase</span>();
     <span style="color:#66d9ef">try</span> {
@@ -884,8 +900,8 @@
     } <span style="color:#66d9ef">finally</span> {
         <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">saveResult</span>();
     }
-})();</code></pre></div>
-
+})();
+</code></pre></div>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli run my-demo</code></pre></div>
 
 
@@ -1438,6 +1454,8 @@
     <script src="/docs/js/modernizr.custom-3.6.0.js"></script>
     <script src="/docs/js/learn.js"></script>
     <script src="/docs/js/hugo-learn.js"></script>
+    <script src="/docs/js/klaroCookie/config.js"></script>
+    <script src="/docs/js/klaroCookie/klaro.js"></script>
 
     <link href="/docs/mermaid/mermaid.css" rel="stylesheet" />
     <script src="/docs/mermaid/mermaid.js"></script>
