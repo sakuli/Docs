@@ -253,5 +253,16 @@ The main difference between Sakuli v1 and Sakuli v2 is the usage of Promisesin t
 On the other hand, element selectors remain synchronized functions but will not do the actual DOM fetching anymore. While an expression like var $e=_link(&#39;Sakuli&#39;) did an actual DOM-access in Sakuli v1.</description>
     </item>
     
+    <item>
+      <title>Tutorial</title>
+      <link>/docs/writing_tests/tutorial/</link>
+      <pubDate>Thu, 12 Sep 2019 13:16:37 +0200</pubDate>
+      
+      <guid>/docs/writing_tests/tutorial/</guid>
+      <description>Tutorial This tutorial shows how to set up a Sakuli test using the CLI and how to use a combination of the native and DOM-based features of Sakuli.
+Setting up a Sakuli Test Suite Sakuli will bootstrap a test suite with the following command. A detailed explanation on what files are needed, can be found in anatomy chapter. npx @sakuli/cli create project . --package npm i
+Typescript This step is optional but we recommend using typescript.</description>
+    </item>
+    
   </channel>
 </rss>

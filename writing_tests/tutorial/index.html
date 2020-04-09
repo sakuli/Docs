@@ -54,7 +54,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs/cookbook/waiting/">
+  <body class="" data-url="/docs/writing_tests/tutorial/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -226,7 +226,7 @@
   
     
     <li data-nav-id="/docs/writing_tests/" title="Writing Tests" class="dd-item
-        
+        parent
         
         
         ">
@@ -347,7 +347,7 @@
  
   
     
-      <li data-nav-id="/docs/writing_tests/tutorial/" title="Tutorial" class="dd-item ">
+      <li data-nav-id="/docs/writing_tests/tutorial/" title="Tutorial" class="dd-item active">
         <a href="/docs/writing_tests/tutorial/">
         Tutorial
         <i class="fas fa-check read-icon"></i>
@@ -570,7 +570,7 @@
   
     
     <li data-nav-id="/docs/cookbook/" title="Cookbook" class="dd-item
-        parent
+        
         
         
         ">
@@ -615,7 +615,7 @@
  
   
     
-      <li data-nav-id="/docs/cookbook/waiting/" title="Waiting" class="dd-item active">
+      <li data-nav-id="/docs/cookbook/waiting/" title="Waiting" class="dd-item ">
         <a href="/docs/cookbook/waiting/">
         Waiting
         <i class="fas fa-check read-icon"></i>
@@ -851,7 +851,7 @@
             
           
           
-            <a href='/docs/'></a> > <a href='/docs/cookbook/'>Cookbook</a> > Waiting
+            <a href='/docs/'></a> > <a href='/docs/writing_tests/'>Writing Tests</a> > Tutorial
           
         
           
@@ -866,11 +866,12 @@
     <div class="wrapper">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#static-wait">Static wait</a></li>
-    <li><a href="#wait-for-an-element-to-be-visible">Wait for an element to be visible</a></li>
-    <li><a href="#wait-for-any-condition-to-be-met">Wait for any condition to be met</a></li>
-    <li><a href="#wait-until-page-stabilized">Wait until page stabilized</a></li>
-    <li><a href="#abort-if-page-does-not-stabilize">Abort if page does not stabilize</a></li>
+    <li><a href="#setting-up-a-sakuli-test-suite">Setting up a Sakuli Test Suite</a>
+      <ul>
+        <li><a href="#typescript">Typescript</a></li>
+      </ul>
+    </li>
+    <li><a href="#native-testing-tutorial">Native-testing Tutorial</a></li>
   </ul>
 </nav>
     </div>
@@ -893,42 +894,168 @@
 
 
 
-<h1 id="waiting">Waiting</h1>
-<p>In some cases, it might be required to wait for an animation to finish or for page to load dynamic content to use it in test cases or checks. To achieve this, Sakuli provides various options to wait a certain time or for a specified condition until test execution continues.</p>
-<h2 id="static-wait">Static wait</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// wait for three seconds
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_wait</span>(<span style="color:#ae81ff">3000</span>);
+<h1 id="tutorial">Tutorial</h1>
+<p>This tutorial shows how to set up a Sakuli test using the CLI and how to use a combination of the native and DOM-based
+features of Sakuli.</p>
+<h2 id="setting-up-a-sakuli-test-suite">Setting up a Sakuli Test Suite</h2>
+<p>Sakuli will bootstrap a test suite with the following command. A detailed explanation on what files are needed, can be found
+<a href="anatomy.md">in anatomy chapter</a>.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx @sakuli/cli create project . --package
+npm i</code></pre></div></p>
+<h3 id="typescript">Typescript</h3>
+<p>This step is optional but we recommend using typescript. For example, in case of a missing <code>await</code> typescript will throw
+an error during compilation. But this tutorial will also work if you decide to not use typescript.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli enable-typescript .</code></pre></div>
+<p>For Typescript to find the respective test-files, you need to change the file extension from <code>.js</code> for JavaScript to <code>.ts</code>
+for TypeScript or create a new file. After doing so, it is necessary to update <code>testsuite.suite</code> for Sakuli to find the
+testfile.</p>
+<h2 id="native-testing-tutorial">Native-testing Tutorial</h2>
+<p>For this tutorial we will create a test that opens the <code>10 Step Guide to E2E Monitoring</code> whitepaper only using native interaction
+and download the document. As we only want to use native interaction we can set <code>testsuite.uiOnly=true</code> in the <code>testsuite.properties</code>.</p>
+<p>First we are going to open a chromium browser, navigate to the whitepaper section and download the whitepaper.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript">(<span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tc</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TestCase</span>();
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">env</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Environment</span>();
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">chromium</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Application</span>(<span style="color:#e6db74">&#39;chromium-browser --incognito&#39;</span>);
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
+
+  <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">addImagePaths</span>(<span style="color:#e6db74">&#39;./assets&#39;</span>);
+  <span style="color:#66d9ef">try</span> {
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">setSimilarity</span>(<span style="color:#ae81ff">0.99</span>);
+
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">chromium</span>.<span style="color:#a6e22e">setSleepTime</span>(<span style="color:#ae81ff">3</span>);
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">chromium</span>.<span style="color:#a6e22e">open</span>();
+
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#39;sakuli.io/wp&#39;</span>)
+      .<span style="color:#a6e22e">type</span>(<span style="color:#a6e22e">Key</span>.<span style="color:#a6e22e">ENTER</span>)
+      .<span style="color:#a6e22e">getRegionFromFocusedWindow</span>()
+      .<span style="color:#a6e22e">waitForImage</span>(<span style="color:#e6db74">&#39;open_whitepaper.png&#39;</span>, <span style="color:#ae81ff">3</span>)
+      .<span style="color:#a6e22e">mouseMove</span>()
+      .<span style="color:#a6e22e">click</span>();
+    <span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">endOfStep</span>(<span style="color:#e6db74">&#39;open whitepaper&#39;</span>);
+
+  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">e</span>) {
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">handleException</span>(<span style="color:#a6e22e">e</span>);
+  } <span style="color:#66d9ef">finally</span> {
+    <span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">saveResult</span>();
+  }
+})();
+</code></pre></div></p>
+<p>The following section will describes the details of the test. As a first step we want to open the chromium browser and
+use incognito mode. This can be achieved by opening the application with the respective parameter:
+<code>const chromium = new Application('chromium-browser --incognito');</code></p>
+<p>As we are using multiple screenshot for this testcase, we will add them to a new folder and therefore eliminate cluttering of the
+testcase folder. Hence you need to use <code>tc.addImagePaths(&quot;./assets&quot;)</code> to tell Sakuli to look into this folder. The base
+directory during the Sakuli test is the corresponding testcase folder.</p>
+<p>Next we are setting the similarity level for image recognition. The higher the value you choose, the higher the matching
+score must be. You can also change this within your test to react to different matching-score needs.</p>
+<p>As the operating system needs some time to start the application (in this case the browser), we will set a sleeptime.</p>
+<p>After the chromium browser is opened the focus will be on the url-tab by default - we can just start typing the url we want to navigate to and hit Enter. The next step is to get the region of the desktop and search for the icon of the whitepaper:
+<!-- raw HTML omitted --></p>
+<p>After clicking the icon, the whitepaper PDF will be opened in a new tab. To verify whether the whitepaper was opened
+correctly, we try to find the following screenshot on the screen:
+<!-- raw HTML omitted --></p>
+<p>To do so, we add the following lines to our test:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">setSimilarity</span>(<span style="color:#ae81ff">0.98</span>);
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">waitForImage</span>(<span style="color:#e6db74">&#39;whitepaper.png&#39;</span>, <span style="color:#ae81ff">3</span>);
+<span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">endOfStep</span>(<span style="color:#e6db74">&#39;validate open whitepaper&#39;</span>);
 </code></pre></div>
-<h2 id="wait-for-an-element-to-be-visible">Wait for an element to be visible</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// wait for three seconds until the DIV &#34;MyDiv&#34; is visible
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_wait</span>(<span style="color:#ae81ff">3000</span>, () =&gt; <span style="color:#a6e22e">_isVisible</span>(<span style="color:#a6e22e">_div</span>(<span style="color:#e6db74">&#34;MyDiv&#34;</span>)));
+<p>As a last step we want to print this whitepaper as a pdf (saving it to the file-system). We can do this with the following code:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">type</span>(<span style="color:#a6e22e">Key</span>.<span style="color:#a6e22e">P</span>, <span style="color:#a6e22e">Key</span>.<span style="color:#a6e22e">CTRL</span>)
+  .<span style="color:#a6e22e">getRegionFromFocusedWindow</span>()
+  .<span style="color:#a6e22e">waitForImage</span>(<span style="color:#e6db74">&#34;print_dialog.png&#34;</span>,<span style="color:#ae81ff">2</span>)
+  .<span style="color:#a6e22e">mouseMove</span>()
+  .<span style="color:#a6e22e">click</span>()
+  .<span style="color:#a6e22e">sleep</span>(<span style="color:#ae81ff">1</span>)
+  .<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;sakuli-tutorial&#34;</span>)
+  .<span style="color:#a6e22e">type</span>(<span style="color:#a6e22e">Key</span>.<span style="color:#a6e22e">ENTER</span>);
+<span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">endOfStep</span>(<span style="color:#e6db74">&#34;download whitepaper&#34;</span>);
+</code></pre></div></p>
+<p>With <code>CTRL+P</code> we open the print dialog which could look like this.
+<!-- raw HTML omitted --></p>
+<p>Now we need to move the mouse to the save button and click using this screenshot:
+<!-- raw HTML omitted --></p>
+<p>Afterwards another pop up dialog appears, which allows us to change the name of the pdf-file.
+For this instance we want to name it <code>sakuli-tutorial</code>.
+In the end we need to press enter to save the file.</p>
+<p>The complete Sakuli test should look like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript">(<span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tc</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TestCase</span>();
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">env</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Environment</span>();
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">chromium</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Application</span>(<span style="color:#e6db74">&#39;chromium-browser --incognito&#39;</span>);
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
+
+  <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">addImagePaths</span>(<span style="color:#e6db74">&#39;./assets&#39;</span>);
+  <span style="color:#66d9ef">try</span> {
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">setSimilarity</span>(<span style="color:#ae81ff">0.99</span>);
+
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">chromium</span>.<span style="color:#a6e22e">setSleepTime</span>(<span style="color:#ae81ff">3</span>);
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">chromium</span>.<span style="color:#a6e22e">open</span>();
+
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#39;sakuli.io/wp&#39;</span>)
+      .<span style="color:#a6e22e">type</span>(<span style="color:#a6e22e">Key</span>.<span style="color:#a6e22e">ENTER</span>)
+      .<span style="color:#a6e22e">getRegionFromFocusedWindow</span>()
+      .<span style="color:#a6e22e">waitForImage</span>(<span style="color:#e6db74">&#39;open_whitepaper.png&#39;</span>, <span style="color:#ae81ff">3</span>)
+      .<span style="color:#a6e22e">mouseMove</span>()
+      .<span style="color:#a6e22e">click</span>();
+    <span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">endOfStep</span>(<span style="color:#e6db74">&#39;open whitepaper&#39;</span>);
+
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">setSimilarity</span>(<span style="color:#ae81ff">0.98</span>);
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">waitForImage</span>(<span style="color:#e6db74">&#39;whitepaper.png&#39;</span>, <span style="color:#ae81ff">3</span>);
+    <span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">endOfStep</span>(<span style="color:#e6db74">&#39;validate open whitepaper&#39;</span>);
+
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">type</span>(<span style="color:#a6e22e">Key</span>.<span style="color:#a6e22e">P</span>, <span style="color:#a6e22e">Key</span>.<span style="color:#a6e22e">CTRL</span>)
+      .<span style="color:#a6e22e">getRegionFromFocusedWindow</span>()
+      .<span style="color:#a6e22e">waitForImage</span>(<span style="color:#e6db74">&#34;print_dialog_save.png&#34;</span>,<span style="color:#ae81ff">2</span>)
+      .<span style="color:#a6e22e">mouseMove</span>()
+      .<span style="color:#a6e22e">click</span>()
+      .<span style="color:#a6e22e">sleep</span>(<span style="color:#ae81ff">1</span>)
+      .<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;sakuli-tutorial&#34;</span>)
+      .<span style="color:#a6e22e">type</span>(<span style="color:#a6e22e">Key</span>.<span style="color:#a6e22e">ENTER</span>);
+    <span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">endOfStep</span>(<span style="color:#e6db74">&#34;download whitepaper&#34;</span>);
+
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">chromium</span>.<span style="color:#a6e22e">close</span>();
+  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">e</span>) {
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">handleException</span>(<span style="color:#a6e22e">e</span>);
+  } <span style="color:#66d9ef">finally</span> {
+    <span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">saveResult</span>();
+  }
+})();
 </code></pre></div>
-<h2 id="wait-for-any-condition-to-be-met">Wait for any condition to be met</h2>
-<p>It is possible to pass a boolean function (function returning <code>true</code> or <code>false</code>) as a second optional parameter of the <code>_wait()</code> action. Hence it is not only possible to wait until e.g. an item is visible on the website, but also for any boolean condition required in your use case. The <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/fetchapi.html">Sakuli fetch API</a> is a good point to start but you can also always define your own conditions in your test suite.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// wait at most three seconds until the first list item contains an entry &#34;Sakuli&#34;.
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_wait</span>(<span style="color:#ae81ff">3000</span>, () =&gt; <span style="color:#a6e22e">_areEqual</span>(<span style="color:#a6e22e">_listItem</span>(<span style="color:#ae81ff">0</span>), <span style="color:#a6e22e">_listItem</span>(<span style="color:#e6db74">&#34;Sakuli&#34;</span>)));
-</code></pre></div>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// wait at most three seconds until the textbox is enabled - e.g. after the form has been dynamically loaded.
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_wait</span>(<span style="color:#ae81ff">3000</span>, () =&gt; <span style="color:#a6e22e">_isEnabled</span>(<span style="color:#a6e22e">_textbox</span>(<span style="color:#e6db74">&#39;enabled-input&#39;</span>)));
-</code></pre></div>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// wait at most three seconds until at least 10 products have been loaded.
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_wait</span>(<span style="color:#ae81ff">3000</span>, () =&gt; <span style="color:#a6e22e">_count</span>(<span style="color:#a6e22e">_div</span>(<span style="color:#e6db74">&#34;product&#34;</span>)) <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">10</span>);
-</code></pre></div>
-<h2 id="wait-until-page-stabilized">Wait until page stabilized</h2>
-<p>A very popular use case of the <code>wait()</code> function is to check for a certain element to be visible. Mostly this checks tries to verify that a certain asynchronous change has been finished. In some cases it is hard to identify an element to reliably ensure that such an asynchronous task has been finished. Therefore the <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/actionapi.html">Sakuli action API</a> provides a <code>_pageIsStable()</code> action.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// wait at most two seconds until the dom stabilized and check it in 200ms intervals.
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_pageIsStable</span>();
-</code></pre></div>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// wait at most five seconds until the dom stabilized and check it in 200ms intervals.
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_pageIsStable</span>(<span style="color:#ae81ff">5000</span>);
-</code></pre></div>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// wait at most five seconds until the dom stabilized and check it in 500ms intervals.
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_pageIsStable</span>(<span style="color:#ae81ff">5000</span>, <span style="color:#ae81ff">500</span>);
-</code></pre></div>
-<h2 id="abort-if-page-does-not-stabilize">Abort if page does not stabilize</h2>
-<p>In case the page is not able to stabilize in time, it might be required to abort the test case as e.g. a quality gate for loading the page has not been fulfilled. For such a use case, it is possible to wrap <code>_pageIsStable()</code> into assertions of the <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/assertionapi.html">Sakuli assertion API</a>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Wait for a stable DOM, stop test execution if it does not stabilize within timeout
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_assert</span>(<span style="color:#a6e22e">_pageIsStable</span>());
+<h1 id="combining-dom-and-native-testing">Combining DOM and Native Testing</h1>
+<p>When the <code>testsuite.uiOnly</code> is set to <code>false</code>, you can use both DOM based- and native interaction simultaneously. For our example above we can exchange the steps for opening chromium and navigating to sakuli.io/wp just with <code>_navigateTo(&quot;https://sakuli.io/wp&quot;)</code> .</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript">(<span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tc</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TestCase</span>();
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">env</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Environment</span>();
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
+
+  <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">addImagePaths</span>(<span style="color:#e6db74">&#39;./assets&#39;</span>);
+  <span style="color:#66d9ef">try</span> {
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">setSimilarity</span>(<span style="color:#ae81ff">0.99</span>);
+
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_navigateTo</span>(<span style="color:#e6db74">&#34;https://sakuli.io/wp&#34;</span>);
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_image</span>(<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">_in</span>(<span style="color:#a6e22e">_div</span>(<span style="color:#e6db74">&#34;flexedContainer&#34;</span>))));
+    <span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">endOfStep</span>(<span style="color:#e6db74">&#39;open whitepaper&#39;</span>);
+
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">waitForImage</span>(<span style="color:#e6db74">&#39;whitepaper.png&#39;</span>, <span style="color:#ae81ff">3</span>);
+    <span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">endOfStep</span>(<span style="color:#e6db74">&#39;validate open whitepaper&#39;</span>);
+
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">type</span>(<span style="color:#a6e22e">Key</span>.<span style="color:#a6e22e">P</span>, <span style="color:#a6e22e">Key</span>.<span style="color:#a6e22e">CTRL</span>)
+      .<span style="color:#a6e22e">getRegionFromFocusedWindow</span>()
+      .<span style="color:#a6e22e">waitForImage</span>(<span style="color:#e6db74">&#34;print_dialog.png&#34;</span>,<span style="color:#ae81ff">2</span>)
+      .<span style="color:#a6e22e">mouseMove</span>()
+      .<span style="color:#a6e22e">click</span>()
+      .<span style="color:#a6e22e">sleep</span>(<span style="color:#ae81ff">1</span>)
+      .<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;sakuli-tutorial&#34;</span>)
+      .<span style="color:#a6e22e">type</span>(<span style="color:#a6e22e">Key</span>.<span style="color:#a6e22e">ENTER</span>);
+    <span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">endOfStep</span>(<span style="color:#e6db74">&#34;download whitepaper&#34;</span>);
+
+  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">e</span>) {
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">handleException</span>(<span style="color:#a6e22e">e</span>);
+  } <span style="color:#66d9ef">finally</span> {
+    <span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">saveResult</span>();
+  }
+})();
 </code></pre></div>
 
 
@@ -1067,6 +1194,142 @@
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
                 
                 
 
@@ -1239,142 +1502,6 @@
             
             
                 
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
                     
                 
                 
@@ -1479,10 +1606,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/docs/cookbook/handling-forms/" title="Handling forms"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/docs/writing_tests/webtests/" title="Webtests"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/docs/cookbook/invalid-session-id/" title="Error: Invalid session id" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/docs/configuring_tests/" title="Configuring Tests" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
