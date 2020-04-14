@@ -25,7 +25,34 @@ Sakuli tests can be fine-tuned via various properties.
 | `sakuli.log.folder` | String: `${project.rootDir}`/_logs | Folder for log files  |
 | `sakuli.screenshot.onError` | Boolean: true | Enable / disable screenshots on error |
 | `sakuli.screenshot.dir` | String: `${project.rootDir}`/_logs/_screenshots | Folder for screenshot files (if activated) |
-| `sakuli.screenshot.storage` | String: `hierarchical` | Configures the way Sakuli stores the error screenshots |
+| `sakuli.screenshot.storage` | String: `hierarchical` | Configures the way Sakuli stores the error screenshots|
+
+### sakuli.screenshot.storage
+There are currently two ways of saving error screenshots in `_logs`:
+
+#### flat
+Saves all error screenshots in `_screenshots`, e.g.
+{{< highlight bash >}}
+_logs
+|-- sakuli.log
+|-- _screenshots
+    |-- 2020-01-01T00-00-00_error_testsuiteId_myFirstTestcase.png
+    |-- 2020-01-01T00-00-00_error_testsuiteId_mySecondTestcase.png
+    |-- 2020-01-01T01-01-01_error_testsuiteId_myFirstTestcase.png
+{{< /highlight>}}
+
+#### hierarchical
+Saves the error screenshot in the respective testcase directory, e.g.
+{{< highlight bash >}}
+_logs
+|-- sakuli.log
+|-- _screenshots
+    |-- testsuiteId_myFirstTestcase
+        |-- 2020-01-01T00-00-00_error_testsuiteId_myFirstTestcase.png
+        |-- 2020-01-01T01-01-01_error_testsuiteId_myFirstTestcase.png
+    |-- testsuiteId_mySecondTestcase
+        |-- 2020-01-01T00-00-00_error_testsuiteId_mySecondTestcase.png
+{{< /highlight >}}
 
 ## Chrome properties
 
