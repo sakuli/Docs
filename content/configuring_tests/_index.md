@@ -48,8 +48,8 @@ _logs
 |-- sakuli.log
 |-- _screenshots
     |-- testsuiteId_myFirstTestcase
-        |-- 2020-01-01T00-00-00_error_testsuiteId_myFirstTestcase.png
-        |-- 2020-01-01T01-01-01_error_testsuiteId_myFirstTestcase.png
+    |   |-- 2020-01-01T00-00-00_error_testsuiteId_myFirstTestcase.png
+    |   |-- 2020-01-01T01-01-01_error_testsuiteId_myFirstTestcase.png
     |-- testsuiteId_mySecondTestcase
         |-- 2020-01-01T00-00-00_error_testsuiteId_mySecondTestcase.png
 {{< /highlight >}}
