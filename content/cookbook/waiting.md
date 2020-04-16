@@ -36,7 +36,7 @@ await _wait(3000, () => _isEnabled(_textbox('enabled-input')));
 
 {{<highlight javascript>}}
 // wait at most three seconds until at least 10 products have been loaded.
-await _wait(3000, () => _count(_div("product")) >= 10);
+await _wait(3000, () => _count('_div', 'product') >= 10);
 {{</highlight>}}
 
 ## Wait until page stabilized
