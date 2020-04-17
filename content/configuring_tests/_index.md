@@ -26,6 +26,8 @@ Sakuli tests can be fine-tuned via various properties.
 | `sakuli.screenshot.onError` | Boolean: true | Enable / disable screenshots on error |
 | `sakuli.screenshot.dir` | String: `${project.rootDir}`/_logs/_screenshots | Folder for screenshot files (if activated) |
 | `sakuli.screenshot.storage` | String: `hierarchical` | Configures the way Sakuli stores the error screenshots (Available as tech preview from Version 2.3.1-next.81)|
+| `sakuli.mouse.action.delay` | Number: 200 | Delay between mouse actions e.g. mouse button down, mouse button up, scroll, etc. in ms (Available as tech preview from the 2.3.1-next releases) |
+| `sakuli.mouse.movement.speed` | Number: 1000 | Configures the speed in pixels/second for mouse movement (Available as tech preview from the 2.3.1-next releases) |
 
 ### sakuli.screenshot.storage
 
