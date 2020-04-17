@@ -860,7 +860,11 @@
     <div class="wrapper">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#project-properties">Project properties</a></li>
+    <li><a href="#project-properties">Project properties</a>
+      <ul>
+        <li><a href="#sakuliscreenshotstorage">sakuli.screenshot.storage</a></li>
+      </ul>
+    </li>
     <li><a href="#chrome-properties">Chrome properties</a></li>
     <li><a href="#firefox-properties">Firefox properties</a></li>
     <li><a href="#edge-properties">Edge properties</a></li>
@@ -961,8 +965,34 @@
 <td>String: <code>${project.rootDir}</code>/_logs/_screenshots</td>
 <td>Folder for screenshot files (if activated)</td>
 </tr>
+<tr>
+<td><code>sakuli.screenshot.storage</code></td>
+<td>String: <code>hierarchical</code></td>
+<td>Configures the way Sakuli stores the error screenshots (Available as tech preview from Version 2.3.1-next.81)</td>
+</tr>
 </tbody>
 </table>
+<h3 id="sakuliscreenshotstorage">sakuli.screenshot.storage</h3>
+<p>This feature is currently a tech preview and available from Version 2.3.1-next.81.</p>
+<p>There are currently two ways of saving error screenshots in <code>_logs</code>:</p>
+<h4 id="flat">flat</h4>
+<p>Saves all error screenshots in <code>_screenshots</code>, e.g.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">_logs
+|-- sakuli.log
+|-- _screenshots
+    |-- 2020-01-01T00-00-00_error_testsuiteId_myFirstTestcase.png
+    |-- 2020-01-01T00-00-00_error_testsuiteId_mySecondTestcase.png
+    |-- 2020-01-01T01-01-01_error_testsuiteId_myFirstTestcase.png</code></pre></div></p>
+<h4 id="hierarchical">hierarchical</h4>
+<p>Saves the error screenshot in the respective testcase directory, e.g.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">_logs
+|-- sakuli.log
+|-- _screenshots
+    |-- testsuiteId_myFirstTestcase
+    |   |-- 2020-01-01T00-00-00_error_testsuiteId_myFirstTestcase.png
+    |   |-- 2020-01-01T01-01-01_error_testsuiteId_myFirstTestcase.png
+    |-- testsuiteId_mySecondTestcase
+        |-- 2020-01-01T00-00-00_error_testsuiteId_mySecondTestcase.png</code></pre></div></p>
 <h2 id="chrome-properties">Chrome properties</h2>
 <table>
 <thead>
