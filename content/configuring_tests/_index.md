@@ -25,9 +25,12 @@ Sakuli tests can be fine-tuned via various properties.
 | `sakuli.log.folder` | String: `${project.rootDir}`/_logs | Folder for log files  |
 | `sakuli.screenshot.onError` | Boolean: true | Enable / disable screenshots on error |
 | `sakuli.screenshot.dir` | String: `${project.rootDir}`/_logs/_screenshots | Folder for screenshot files (if activated) |
-| `sakuli.screenshot.storage` | String: `hierarchical` | Configures the way Sakuli stores the error screenshots|
+| `sakuli.screenshot.storage` | String: `hierarchical` | Configures the way Sakuli stores the error screenshots (Available from Version 2.3.1-next.81)|
 
 ### sakuli.screenshot.storage
+
+This feature is available from Version 2.3.1-next.81.
+
 There are currently two ways of saving error screenshots in `_logs`:
 
 #### flat
