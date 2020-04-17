@@ -29,7 +29,7 @@ Sakuli tests can be fine-tuned via various properties.
 
 ### sakuli.screenshot.storage
 
-This feature is currently a tech-preview and available from Version 2.3.1-next.81.
+This feature is currently a tech preview and available from Version 2.3.1-next.81.
 
 There are currently two ways of saving error screenshots in `_logs`:
 
