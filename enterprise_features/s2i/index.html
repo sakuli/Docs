@@ -596,6 +596,25 @@
  
   
     
+      <li data-nav-id="/docs/cookbook/logging/" title="Logging" class="dd-item ">
+        <a href="/docs/cookbook/logging/">
+        Logging
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
       <li data-nav-id="/docs/cookbook/handling-forms/" title="Handling forms" class="dd-item ">
         <a href="/docs/cookbook/handling-forms/">
         Handling forms
@@ -884,6 +903,11 @@
         <li><a href="#increasing-shared-memory-of-sakuli-on-openshift">Increasing shared memory of a Sakuli containers on OpenShift</a></li>
       </ul>
     </li>
+    <li><a href="#troubleshooting">Troubleshooting</a>
+      <ul>
+        <li><a href="#pulling-image-error--">pulling image error : &hellip;</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -1128,7 +1152,18 @@ websites or <code>invalid session id</code> errors due to crashed browsers. In o
           <span style="color:#66d9ef">name</span>: dshm
 </code></pre></div><p>More information concerning shared memory on OpenShift can be found in the
 <a href="https://docs.okd.io/latest/dev_guide/shared_memory.html">OKD Documentation</a>.</p>
-
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="pulling-image-error--">pulling image error : &hellip;</h3>
+<p><strong>Affected OpenShift versions:</strong> 3.10, 3.11</p>
+<p>So far, this error occurred on 3.10 and 3.11 clusters when trying to pull our s2i image from our private Dockerhub repo.
+A workaround to solve this issue was to use <code>reference-policy=local</code> on the sakuli-s2i image stream.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc import-image sakuli-s2i <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --from<span style="color:#f92672">=</span>docker.io/taconsol/sakuli-s2i <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --confirm <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --scheduled<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --all <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --reference-policy<span style="color:#f92672">=</span>local
+</code></pre></div>
 
 <footer class=" footline" >
 	
@@ -1536,6 +1571,22 @@ websites or <code>invalid session id</code> errors due to crashed browsers. In o
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
                     
                         
             

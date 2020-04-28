@@ -5,7 +5,7 @@
     <link>/docs/</link>
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 03 Apr 2020 09:00:42 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 23 Apr 2020 05:05:50 +0100</lastBuildDate>
     
 	<atom:link href="/docs/index.xml" rel="self" type="application/rss+xml" />
     
@@ -150,6 +150,17 @@ Of course, you can also use Sakulis native testing power on its own, e.</descrip
       <description>Setup Setup Your First Test Since v2.2.0 Sakuli provides an easy to use mechanism to initialize testcases and testsuites.
 npx sakuli create project . my-sut This will create all necessary files and folders to start writing your first Sakuli test right away. With this, you can skip the next section and directly start to write your first test
 Setup the Project Manually Since we wanted to keep Sakuli mostly compatible to v1, the file layout looks basically the same for testsuites.</description>
+    </item>
+    
+    <item>
+      <title>Logging</title>
+      <link>/docs/cookbook/logging/</link>
+      <pubDate>Thu, 23 Apr 2020 05:05:50 +0100</pubDate>
+      
+      <guid>/docs/cookbook/logging/</guid>
+      <description>Logging Log Levels There are currently five log levels implemented:
+ Trace Debug Info Warn Error  Logging to sakuli.log The default log level in Sakuli is Info. This means all log levels starting from Info and below are logged to sakuli.log. You can configure the log level via log.level in your testsuite.properties file, e.g. log.level=DEBUG
+Logging is done via the Logger object within a testcase. It provides several methods to log at the respective log level: Logger.</description>
     </item>
     
     <item>
