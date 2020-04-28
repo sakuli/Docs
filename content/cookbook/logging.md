@@ -25,13 +25,13 @@ log.level=DEBUG
 {{< /highlight >}}
 
 
-You can log additional information withing you testcase with:
+Logging is done via the `Logger` object within a testcase. It provides several methods to log at the respective log level:
 {{< highlight typescript >}}
-Logger.logDebug("This will be logged in debug");
+Logger.logDebug("This will be logged on debug level");
 
-Logger.logInfo("This will be logged in info");
+Logger.logInfo("This will be logged on info level");
 
-Logger.logWarning("This will be logged in warn");
+Logger.logWarning("This will be logged on warning level");
 
-Logger.logError("This will be logged in error");
+Logger.logError("This will be logged on error level");
 {{< /highlight >}}
