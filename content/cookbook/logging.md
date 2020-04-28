@@ -18,8 +18,8 @@ There are currently five log levels implemented:
 
 ## Logging to sakuli.log
 
-The default log level in Sakuli is `Info`. This means all log levels below `Info` and `Info` itself is being logged in
-`sakuli.log`. You can configure this by setting `log.level` in your `testsuite.properties` file, e.g.
+The default log level in Sakuli is `Info`. This means all log levels starting from `Info` and below are logged to
+`sakuli.log`. You can configure the log level via `log.level` in your `testsuite.properties` file, e.g.
 {{< highlight bash >}}
 log.level=DEBUG
 {{< /highlight >}}
