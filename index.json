@@ -179,7 +179,7 @@
 	"title": "Frames",
 	"tags": [],
 	"description": "",
-	"content": "how can i handle frames or iframes in sakuli? since v2.2.0 sakuli will automatically detect different frames (and iframes) and will search for elements in each frame when the element can not be found in default frame. but it is also possible to switch between frames manually by using the iframe webelement or its respective index.\nconst myiframe = await _fetch(_iframe(\u0026#39;framename\u0026#39;)); await driver.switchto().frame(myiframe);  const frameindex = 0; await driver.switchto().frame(frameindex);  "
+	"content": "how can i handle frames or iframes in sakuli? since v2.2.0 sakuli will automatically detect different frames (and iframes) and will search for elements in each frame when the element can not be found in default frame. but it is also possible to switch between frames manually by using the iframe webelement or its respective index.\nconst myiframe = await _fetch(_iframe(\u0026#39;framename\u0026#39;)); await driver.switchto().frame(myiframe);  const frameindex = 0; await driver.switchto().frame(frameindex);  please note: depending on the size and number of used inline frames, an automated search might limit the performance of the check or test case. in such cases, we recommend a manual frame switch.\n"
 },
 {
 	"uri": "/docs/enterprise_features/s2i/",
