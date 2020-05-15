@@ -19,3 +19,6 @@ await driver.switchTo().frame(myIframe);
 const frameIndex = 0;
 await driver.switchTo().frame(frameIndex);
 {{</highlight>}}
+
+Please note: Depending on the size and number of used inline frames, an automated search might
+limit the performance of the check or test case. In such cases, we recommend a manual frame switch.
