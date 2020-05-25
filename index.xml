@@ -27,7 +27,7 @@ Sakuli Core Besides node 12 support and adjustments in Sakuli click actions, we&
       
       <guid>/docs/enterprise_features/icinga/</guid>
       <description>Icinga2 Forwarder Add the forwarder using the assistant or configure it manually:
-npm i @sakuli/forwarder-icinga2 To register the forwarder into your project you have to edit the package.json file and add the preset to the Sakuli configuration key:
+npm i @sakuli/forwarder-icinga2 To register the forwarder into your project you have to edit the package.json file and add the preset to the Sakuli configuration key (with our tech preview this is no longer necessary):
 { &amp;#34;sakuli&amp;#34;: { &amp;#34;presetProvider&amp;#34;: [ &amp;#34;@sakuli/legacy&amp;#34;, &amp;#34;@sakuli/forwarder-icinga2&amp;#34; ] } } Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the enterprise section.</description>
     </item>
     
@@ -50,9 +50,8 @@ To install Node on your system, you can either go to the Node websiteor you can 
       <guid>/docs/enterprise_features/prometheus/</guid>
       <description>Prometheus Forwarder Available from version 2.3.0
 Add the forwarder manually as follows:
-npm i @sakuli/forwarder-prometheus To register the forwarder in your project, edit your package.json and add the preset to the Sakuli configuration key:
-{ &amp;#34;sakuli&amp;#34;: { &amp;#34;presetProvider&amp;#34;: [ &amp;#34;@sakuli/legacy&amp;#34;, &amp;#34;@sakuli/forwarder-prometheus&amp;#34; ] } } Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the enterprise section.
-Push gateway It is assumed that a push gateway is available in your monitoring setup.</description>
+npm i @sakuli/forwarder-prometheus To register the forwarder in your project, edit your package.json and add the preset to the Sakuli configuration key (with our tech preview this is no longer necessary):
+{ &amp;#34;sakuli&amp;#34;: { &amp;#34;presetProvider&amp;#34;: [ &amp;#34;@sakuli/legacy&amp;#34;, &amp;#34;@sakuli/forwarder-prometheus&amp;#34; ] } } Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the enterprise section.</description>
     </item>
     
     <item>
@@ -63,8 +62,8 @@ Push gateway It is assumed that a push gateway is available in your monitoring s
       <guid>/docs/enterprise_features/check/</guid>
       <description>checkmk Forwarder Add the forwarder using the assistant or configure it manually:
 Add the forwarder to your project with:
-npm i @sakuli/forwarder-checkmk To register the forwarder into your project you have to edit the package.json file and add the preset to the Sakuli configuration key:
-{ &amp;#34;sakuli&amp;#34;: { &amp;#34;presetProvider&amp;#34;: [ &amp;#34;@sakuli/legacy&amp;#34;, &amp;#34;@sakuli/forwarder-checkmk&amp;#34; ] } } Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the enterprise section.</description>
+npm i @sakuli/forwarder-checkmk To register the forwarder into your project you have to edit the package.json file and add the preset to the Sakuli configuration key (with our tech preview this is no longer necessary):
+{ &amp;#34;sakuli&amp;#34;: { &amp;#34;presetProvider&amp;#34;: [ &amp;#34;@sakuli/legacy&amp;#34;, &amp;#34;@sakuli/forwarder-checkmk&amp;#34; ] } } Installation of any enterprise feature requires a proper setup of your license information.</description>
     </item>
     
     <item>
@@ -96,8 +95,8 @@ npm init This interactive prompt will ask you for some metadata regarding your p
       
       <guid>/docs/enterprise_features/omd/</guid>
       <description>OMD / Gearman Forwarder Add the forwarder using the assistant or configure it manually:
-npm i @sakuli/forwarder-gearman To register the forwarder into your project you have to edit the package.json file and add the preset to the Sakuli configuration key:
-{ &amp;#34;sakuli&amp;#34;: { &amp;#34;presetProvider&amp;#34;: [ &amp;#34;@sakuli/legacy&amp;#34;, &amp;#34;@sakuli/forwarder-gearman&amp;#34; ] } } Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the enterprise section.</description>
+npm i @sakuli/forwarder-gearman To register the forwarder into your project you have to edit the package.json file and add the preset to the Sakuli configuration key (with our tech preview this is no longer necessary):
+{ &amp;#34;sakuli&amp;#34;: { &amp;#34;presetProvider&amp;#34;: [ &amp;#34;@sakuli/legacy&amp;#34;, &amp;#34;@sakuli/forwarder-gearman&amp;#34; ] } } Installation of any enterprise feature requires a proper setup of your license information.</description>
     </item>
     
     <item>
