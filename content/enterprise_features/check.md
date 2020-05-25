@@ -14,7 +14,8 @@ Add the forwarder to your project with:
 npm i @sakuli/forwarder-checkmk
 {{</highlight>}}
 
-To register the forwarder into your project you have to edit the `package.json` file and add the preset to the Sakuli configuration key:
+To register the forwarder into your project you have to edit the `package.json` file and add the preset to the Sakuli configuration key
+(with our tech preview this is no longer necessary):
 
 {{<highlight json>}}
 {
