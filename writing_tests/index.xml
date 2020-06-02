@@ -72,5 +72,15 @@ Setting up a Sakuli Test Suite Sakuli will bootstrap a test suite with the follo
 Typescript This step is optional but we recommend using typescript.</description>
     </item>
     
+    <item>
+      <title>Migration from Sakuli 1</title>
+      <link>/docs/writing_tests/migration-sakuli-1/</link>
+      <pubDate>Wed, 20 May 2020 08:56:58 +0200</pubDate>
+      
+      <guid>/docs/writing_tests/migration-sakuli-1/</guid>
+      <description>How to Migrate from Sakuli 1 With Sakuli v2+ we changed a lot under the hood and completely replaced the technology-stack. This resulted in a more flexible and future-ready architecture while preserving a maximum of backward compatibility. Nearly all functions and classes from Sakuli v1 are available in Sakuli v2+. They are provided by the @sakuli/legacy package.
+Async / Await You might have wondered where the await keyword came from when you saw the Sakuli v2+ code.</description>
+    </item>
+    
   </channel>
 </rss>
