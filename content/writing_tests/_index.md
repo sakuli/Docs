@@ -6,4 +6,4 @@ weight: 2
 ---
 
 # Writing Tests
-Learn how to write Tests with Sakuli 2. A good point to start from is to learn about the [anatomy]({{< ref "anatomy.md" >}}) of Sakuli 2 projects. 
+Learn how to create fully-fledged Sakuli tests from start to finish.
