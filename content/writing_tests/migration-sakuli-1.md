@@ -47,8 +47,7 @@ _navigateTo("https://sakuli.io")
     .then(_ => _highlight(_code("npm init")))
     .then(_ => testCase.endOfStep("Find npm init code sample"))
     .catch(e => testCase.handleException(e))
-    .then(_ => testCase.saveResult())
-    .then(done);
+    .then(_ => testCase.saveResult());
 
 {{< / highlight >}}
 
