@@ -1,7 +1,7 @@
 ---
 title : "Migration from Sakuli 1"
 date :  2020-05-20T08:56:58+02:00
-weight : 10
+weight : 8
 ---
 
 
