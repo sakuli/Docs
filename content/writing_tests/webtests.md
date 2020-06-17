@@ -35,7 +35,7 @@ The accessor adds a static <a href="https://seleniumhq.github.io/selenium/docs/a
 
 a query object consists of a locator, an identifier and a list of relations, we will eventually get an entire query object. The locator basically is a CSS element selector which you would expect from the accessor name - so `_div` for example adds `By.css('div')`, `_textbox` adds `By.css('input[type="text"], input:not([type])')` and so on.
 
-### Sahi Accessors by HTML-Tag
+### Accessors by HTML-Tag
 
 | HTML-Tag | Accessor Function |
 |:---|:---|
