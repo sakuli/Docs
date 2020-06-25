@@ -904,7 +904,11 @@
     <div class="wrapper">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#accessor-api">Accessor API</a></li>
+    <li><a href="#accessor-api">Accessor API</a>
+      <ul>
+        <li><a href="#accessors-by-html-tag-or-attributes">Accessors by HTML-Tag or attributes</a></li>
+      </ul>
+    </li>
     <li><a href="#elementqueries">ElementQueries</a>
       <ul>
         <li><a href="#identifier">Identifier</a></li>
@@ -962,6 +966,383 @@
 </code></pre></div>
 <p>The accessor adds a static <!-- raw HTML omitted -->Locator<!-- raw HTML omitted --> to the returned query. Since</p>
 <p>a query object consists of a locator, an identifier and a list of relations, we will eventually get an entire query object. The locator basically is a CSS element selector which you would expect from the accessor name - so <code>_div</code> for example adds <code>By.css('div')</code>, <code>_textbox</code> adds <code>By.css('input[type=&quot;text&quot;], input:not([type])')</code> and so on.</p>
+<h3 id="accessors-by-html-tag-or-attributes">Accessors by HTML-Tag or attributes</h3>
+<table>
+<thead>
+<tr>
+<th align="left">HTML-Tag</th>
+<th align="left">Accessor Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_a.asp"><code>&lt;a&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_link">_link</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/TAGs/tag_area.asp"><code>&lt;area&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_area">_area</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/TAGs/tag_article.asp"><code>&lt;article&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_article">_article</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/TAGs/tag_aside.asp"><code>&lt;aside&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_aside">_aside</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/TAGs/tag_blockquote.asp"><code>&lt;blockquote&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_blockquote">_blockquote</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/TAGs/tag_b.asp"><code>&lt;b&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_bold">_bold</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/TAGs/tag_button.asp"><code>&lt;button&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_button">_button</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/tags/att_button_type.asp"><code>&lt;button type=&quot;</code><strong><code>reset</code></strong><code>&quot;&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_reset">_reset</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/tags/att_button_type.asp"><code>&lt;button type=&quot;</code><strong><code>submit</code></strong><code>&quot;&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_submit">_submit</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/TAGs/tag_canvas.asp"><code>&lt;canvas&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_canvas">_canvas</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/TAGs/tag_code.asp"><code>&lt;code&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_code">_code</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/TAGs/tag_dd.asp"><code>&lt;dd&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_ddesc">_dDesc</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/TAGs/tag_details.asp"><code>&lt;details&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_details">_details</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/TAGs/tag_div.asp"><code>&lt;div&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_div">_div</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/TAGs/tag_dl.asp"><code>&lt;dl&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_dlist">_dList</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/TAGs/tag_dt.asp"><code>&lt;dt&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_dterm">_dTerm</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_em.asp"><code>&lt;em&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_emphasis">_emphasis</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_embed.asp"><code>&lt;embed&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_embed">_embed</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/tags/tag_fieldset.asp"><code>&lt;fieldset&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_fieldset">_fieldset</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/tags/tag_figcaption.asp"><code>&lt;figcaption&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_figcaption">_figcaption</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_figure.asp"><code>&lt;figure&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_figure">_figure</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_font.asp"><code>&lt;font&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_font">_font</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_footer.asp"><code>&lt;footer&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_footer">_footer</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_frame.asp"><code>&lt;frame&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_frame">_frame</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_header.asp"><code>&lt;header&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_header">_header</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_hr.asp"><code>&lt;hr&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_hr">_hr</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_hn.asp"><code>&lt;h1&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_heading1">_heading1</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_hn.asp"><code>&lt;h2&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_heading2">_heading2</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_hn.asp"><code>&lt;h3&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_heading3">_heading3</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_hn.asp"><code>&lt;h4&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_heading4">_heading4</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_hn.asp"><code>&lt;h5&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_heading5">_heading5</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_hn.asp"><code>&lt;h6&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_heading6">_heading6</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_i.asp"><code>&lt;i&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_italic">_italic</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_iframe.asp"><code>&lt;iframe&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_iframe">_iframe</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_iframe.asp"><code>&lt;iframe&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_rte">_rte</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_img.asp"><code>&lt;img&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_image">_image</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/html/html_form_input_types.asp"><code>&lt;input type=&quot;</code><strong><code>checkbox</code></strong><code>&quot;/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_checkbox">_checkbox</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/html/html_form_input_types.asp"><code>&lt;input type=&quot;</code><strong><code>date</code></strong><code>&quot;/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_datebox">_datebox</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/html/html_form_input_types.asp"><code>&lt;input type=&quot;</code><strong><code>datetime</code></strong><code>&quot;/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_datetimebox">_datetimebox</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/html/html_form_input_types.asp"><code>&lt;input type=&quot;</code><strong><code>datetime-local</code></strong><code>&quot;/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_datetimelocalbox">_datetimelocalbox</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/html/html_form_input_types.asp"><code>&lt;input type=&quot;</code><strong><code>email</code></strong><code>&quot;/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_emailbox">_emailbox</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/html/html_form_input_types.asp"><code>&lt;input type=&quot;</code><strong><code>file</code></strong><code>&quot;/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_file">_file</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/html/html_form_input_types.asp"><code>&lt;input type=&quot;</code><strong><code>hidden</code></strong><code>&quot;/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_hidden">_hidden</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/html/html_form_input_types.asp"><code>&lt;input type=&quot;</code><strong><code>image</code></strong><code>&quot;/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_imagesubmitbutton">_imageSubmitButton</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/html/html_form_input_types.asp"><code>&lt;input type=&quot;</code><strong><code>month</code></strong><code>&quot;/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_monthbox">_monthbox</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/html/html_form_input_types.asp"><code>&lt;input type=&quot;</code><strong><code>number</code></strong><code>&quot;/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_numberbox">_numberbox</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/html/html_form_input_types.asp"><code>&lt;input type=&quot;</code><strong><code>password</code></strong><code>&quot;/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_password">_password</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/html/html_form_input_types.asp"><code>&lt;input type=&quot;</code><strong><code>radio</code></strong><code>&quot;/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_radio">_radio</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/html/html_form_input_types.asp"><code>&lt;input type</code><strong><code>range</code></strong><code>&quot;/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_rangebox">_rangebox</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/html/html_form_input_types.asp"><code>&lt;input type=&quot;</code><strong><code>search</code></strong><code>&quot;/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_searchbox">_searchbox</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/html/html_form_input_types.asp"><code>&lt;input type=&quot;</code><strong><code>tel</code></strong><code>&quot;/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_telephonebox">_telephonebox</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/html/html_form_input_types.asp"><code>&lt;input type=&quot;</code><strong><code>text</code></strong><code>&quot;/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_textbox">_textbox</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/html/html_form_input_types.asp"><code>&lt;input type=&quot;</code><strong><code>time</code></strong><code>&quot;/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_timebox">_timebox</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/html/html_form_input_types.asp"><code>&lt;input type=&quot;</code><strong><code>url</code></strong><code>&quot;/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_urlbox">_urlbox</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/html/html_form_input_types.asp"><code>&lt;input type=&quot;</code><strong><code>week</code></strong><code>&quot;/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_weekbox">_weekbox</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_label.asp"><code>&lt;label&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_label">_label</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_main.asp"><code>&lt;main&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_main">_main</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_map.asp"><code>&lt;map&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_map">_map</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_mark.asp"><code>&lt;mark&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_mark">_mark</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_nav.asp"><code>&lt;nav&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_nav">_nav</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_object.asp"><code>&lt;object&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_object">_object</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_p.asp"><code>&lt;p&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_paragraph">_paragraph</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_pre.asp"><code>&lt;pre&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_performatted">_performatted</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_section.asp"><code>&lt;section&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_section">_section</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_select.asp"><code>&lt;select&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_option">_option</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_select.asp"><code>&lt;select&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_select">_select</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_span.asp"><code>&lt;span&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_span">_span</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_strong.asp"><code>&lt;strong&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_strong">_strong</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_summary.asp"><code>&lt;summary&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_summary">_summary</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/graphics/svg_ellipse.asp"><code>&lt;ellipse/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_ellipse">_svg_ellipse</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/graphics/svg_circle.asp"><code>&lt;circle/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_circle">_svg_circle</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/graphics/svg_line.asp"><code>&lt;line/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_line">_svg_line</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/graphics/svg_path.asp"><code>&lt;path/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_path">_svg_path</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/graphics/svg_polygon.asp"><code>&lt;polygon/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_polygon">_svg_polygon</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/graphics/svg_polyline.asp"><code>&lt;polyline/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_polyline">_svg_polyline</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/graphics/svg_rect.asp"><code>&lt;rect/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_rect">_svg_rect</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/graphics/svg_text.asp"><code>&lt;text&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_text">_svg_text</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/graphics/svg_reference.asp"><code>&lt;tspan&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_tspan">_svg_tspan</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_table.asp"><code>&lt;table&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_table">_table</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/TAGs/tag_td.asp"><code>&lt;td&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_cell">_cell</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/tags/tag_textarea.asp"><code>&lt;textarea type=&quot;text&quot;/&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_textarea">_textarea</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_time.asp"><code>&lt;time&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_time">_time</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_th.asp"><code>&lt;th&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_tableheader">_tableHeader</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_tr.asp"><code>&lt;tr&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_row">_row</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_ul.asp"><code>&lt;ul&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_list">_list</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/tags/tag_li.asp"><code>&lt;li&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_listitem">_listItem</a></td>
+</tr>
+<tr>
+<td align="left"><a href="http://www.w3schools.com/TAGs/tag_video.asp"><code>&lt;video&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_video">_video</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">HTML-Attribute</th>
+<th align="left">Accessor Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/html/html_classes.asp"><code>&lt;[HTML - tag] class='[</code><strong><code>class name</code></strong><code>]'&gt;&lt;/[HTML - tag]&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_byclassname">_byClassName</a></td>
+</tr>
+<tr>
+<td align="left"><a href="https://www.w3schools.com/html/html_id.asp"><code>&lt;[HTML - tag] id='[</code><strong><code>id name</code></strong><code>]'&gt;&lt;/[HTML - tag]&gt;</code></a></td>
+<td align="left"><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/accessorapi.html#_byid">_byID</a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="elementqueries">ElementQueries</h2>
 <p>Since Sakuli encapsulates the creation (through accessors) and the application (e.g. through actions) of a <a href="/apidoc/sakuli-legacy/interfaces/sahielementquery.html">SahiElementQuery</a>, a user will rarely get in touch with these objects directly. Nevertheless, it is good to understand how Sakuli works with queries. Let us consider this example:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_button</span>(<span style="color:#e6db74">&#39;Sign In&#39;</span>));
