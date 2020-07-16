@@ -57,6 +57,10 @@ Sakuli ships a pre-built version of OpenCV. Nonetheless, the installation still 
 
 ### Windows
 
+**Note:**
+We recommend using __PowerShell__ during the installation.
+When using the standard terminal CMD, the installation process might lead to failures due to different behaviour.
+
 In order to install and run Sakuli on Windows you need two additional tools: <a href="https://www.python.org/downloads/windows/" target="_blank">Python 2</a> and the <a href="https://www.microsoft.com/en-us/download/details.aspx?id=48159" target="_blank">Windows Build Tools</a>.
 
 To avoid eventual installation problems for Windows users we recommend to first install Python 2 on your system separately by downloading the required version from the official web page. Afterwards you can install the Windows Build Tools manually or via NPM using:
