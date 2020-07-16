@@ -94,10 +94,10 @@ Let us write a simple test using the Sakuli.io homepage as test subject. This te
 (async () => {
     const testCase = new TestCase();
     try {
-        await _navigateTo("https://sakuli.io");                  // 1
+        await _navigateTo("https://sakuli.io/docs");                  // 1
         testCase.endOfStep("Open Landing Page", 5, 10);          // 2
-        await _click(_link("Getting started"));                  // 3
-        await _click(_link("Initialization"));
+        await _click(_link(/Getting Started/));                  // 3
+        await _click(_link(/Initialization/));
         testCase.endOfStep("Navigate to Initialization Section", 3, 5);
         await _highlight(_code("npm init"));                     // 4
         testCase.endOfStep("Find npm init code sample");
@@ -110,10 +110,30 @@ Let us write a simple test using the Sakuli.io homepage as test subject. This te
 
 {{< /highlight >}}
 
-1. Since we are dealing with a web test, the first thing we want to do is to `_navigateTo` our target page. Instead of manually setting up the correct WebDriver instance, we just have to provide a target URL. Sakuli will take care of the rest for us. `await` indicates that we are patiently waiting for our page to load before we continue with our next testing step.
-2. Once our initial page load has been completed, it is of our great interest to know how long it took to render. When it comes to runtime, Sakuli does not only measure the execution time of testcases, but also allows to split a single testcase into several logical steps. This way it becomes possible to accurately measure the runtime of certain processes like e.g. *login*, *shopping cart*, *checkout* and so on. By calling `testCase.endOfStep("Open Landing Page", 5, 10);`, we are ending our first step, the initial page load. Additionally, it is also possible to specify `warning` and `critical` thresholds for each step. Whenever a step exceeds one of these values, the result will change from `OK` to `WARNING` or `CRITICAL`.
-3. With Sakuli it becomes very easy to interact with web elements. In our current example, we want to `_click` a `_link` which is identified by some given text. Once again, we do not have to take care of many details, as Sakuli will do most of the heavy lifting for us. We are just passing the link text to Sakuli, which will search for our desired element using multiple identifiers. This way we do not have to worry about using an ID, a CSS selector or something else to identify our element. As we have already seen in our first test action, `await` will wait until the test action has been completed.
-4. In some cases, it is really helpful to visually verify test execution. Sakuli comes with a built-in `_highlight` function, which will highlight an element with a bright red border. Although being useful, `_highlight` should be used carefully since it will increase the overall testing runtime.
+1. Since we are dealing with a web test, the first thing we want to do is to `_navigateTo` our target page.
+Instead of manually setting up the correct WebDriver instance, we just have to provide a target URL. Sakuli will take
+care of the rest for us. `await` indicates that we are patiently waiting for our page to load before we continue with
+our next testing step.
+
+2. Once our initial page load has been completed, it is of our great interest to know how long it took to render.
+When it comes to runtime, Sakuli does not only measure the execution time of testcases,but also allows to split a single
+testcase into several logical steps. This way it becomes possible to accurately measure the runtime of certain processes
+like e.g. *login*, *shopping cart*, *checkout* and so on. By calling `testCase.endOfStep("Open Landing Page", 5, 10);`,
+we are ending our first step, the initial page load. Additionally, it is also possible to specify `warning` and
+`critical` thresholds for each step. Whenever a step exceeds one of these values, the result will change from `OK`
+to `WARNING` or `CRITICAL`.
+
+3. With Sakuli it becomes very easy to interact with web elements. In our current example, we want to `_click` a `_link`
+which is identified by some given text. Once again, we do not have to take care of many details, as Sakuli will do most
+of the heavy lifting for us. We are just passing the link text to Sakuli, which will search for our desired element
+using multiple identifiers. Due to the implementation of the website (additional whitespaces for both link texts) we are
+using a regular expression instead of a simple string.This way we do not have to worry about using an ID, a CSS selector or
+something else to identify our element. As we have already seen in our first test action, `await` will wait until the
+test action has been completed.
+
+4. In some cases, it is really helpful to visually verify test execution. Sakuli comes with a built-in `_highlight`
+function, which will highlight an element with a bright red border. Although being useful, `_highlight` should be used
+carefully since it will increase the overall testing runtime.
 
 ## Execute your first test
 
