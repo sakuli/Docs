@@ -986,10 +986,10 @@ echo &gt; my-testcase/testcase.js</code></pre></div>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript">(<span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> {
     <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">testCase</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TestCase</span>();
     <span style="color:#66d9ef">try</span> {
-        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_navigateTo</span>(<span style="color:#e6db74">&#34;https://sakuli.io&#34;</span>);                  <span style="color:#75715e">// 1
+        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_navigateTo</span>(<span style="color:#e6db74">&#34;https://sakuli.io/docs&#34;</span>);                  <span style="color:#75715e">// 1
 </span><span style="color:#75715e"></span>        <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">endOfStep</span>(<span style="color:#e6db74">&#34;Open Landing Page&#34;</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">10</span>);          <span style="color:#75715e">// 2
-</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_link</span>(<span style="color:#e6db74">&#34;Getting started&#34;</span>));                  <span style="color:#75715e">// 3
-</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_link</span>(<span style="color:#e6db74">&#34;Initialization&#34;</span>));
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_link</span>(<span style="color:#e6db74">/Getting Started/</span>));                  <span style="color:#75715e">// 3
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_link</span>(<span style="color:#e6db74">/Initialization/</span>));
         <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">endOfStep</span>(<span style="color:#e6db74">&#34;Navigate to Initialization Section&#34;</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>);
         <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_highlight</span>(<span style="color:#a6e22e">_code</span>(<span style="color:#e6db74">&#34;npm init&#34;</span>));                     <span style="color:#75715e">// 4
 </span><span style="color:#75715e"></span>        <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">endOfStep</span>(<span style="color:#e6db74">&#34;Find npm init code sample&#34;</span>);
@@ -1001,10 +1001,35 @@ echo &gt; my-testcase/testcase.js</code></pre></div>
 })();
 </code></pre></div>
 <ol>
-<li>Since we are dealing with a web test, the first thing we want to do is to <code>_navigateTo</code> our target page. Instead of manually setting up the correct WebDriver instance, we just have to provide a target URL. Sakuli will take care of the rest for us. <code>await</code> indicates that we are patiently waiting for our page to load before we continue with our next testing step.</li>
-<li>Once our initial page load has been completed, it is of our great interest to know how long it took to render. When it comes to runtime, Sakuli does not only measure the execution time of testcases, but also allows to split a single testcase into several logical steps. This way it becomes possible to accurately measure the runtime of certain processes like e.g. <em>login</em>, <em>shopping cart</em>, <em>checkout</em> and so on. By calling <code>testCase.endOfStep(&quot;Open Landing Page&quot;, 5, 10);</code>, we are ending our first step, the initial page load. Additionally, it is also possible to specify <code>warning</code> and <code>critical</code> thresholds for each step. Whenever a step exceeds one of these values, the result will change from <code>OK</code> to <code>WARNING</code> or <code>CRITICAL</code>.</li>
-<li>With Sakuli it becomes very easy to interact with web elements. In our current example, we want to <code>_click</code> a <code>_link</code> which is identified by some given text. Once again, we do not have to take care of many details, as Sakuli will do most of the heavy lifting for us. We are just passing the link text to Sakuli, which will search for our desired element using multiple identifiers. This way we do not have to worry about using an ID, a CSS selector or something else to identify our element. As we have already seen in our first test action, <code>await</code> will wait until the test action has been completed.</li>
-<li>In some cases, it is really helpful to visually verify test execution. Sakuli comes with a built-in <code>_highlight</code> function, which will highlight an element with a bright red border. Although being useful, <code>_highlight</code> should be used carefully since it will increase the overall testing runtime.</li>
+<li>
+<p>Since we are dealing with a web test, the first thing we want to do is to <code>_navigateTo</code> our target page.
+Instead of manually setting up the correct WebDriver instance, we just have to provide a target URL. Sakuli will take
+care of the rest for us. <code>await</code> indicates that we are patiently waiting for our page to load before we continue with
+our next testing step.</p>
+</li>
+<li>
+<p>Once our initial page load has been completed, it is of our great interest to know how long it took to render.
+When it comes to runtime, Sakuli does not only measure the execution time of testcases,but also allows to split a single
+testcase into several logical steps. This way it becomes possible to accurately measure the runtime of certain processes
+like e.g. <em>login</em>, <em>shopping cart</em>, <em>checkout</em> and so on. By calling <code>testCase.endOfStep(&quot;Open Landing Page&quot;, 5, 10);</code>,
+we are ending our first step, the initial page load. Additionally, it is also possible to specify <code>warning</code> and
+<code>critical</code> thresholds for each step. Whenever a step exceeds one of these values, the result will change from <code>OK</code>
+to <code>WARNING</code> or <code>CRITICAL</code>.</p>
+</li>
+<li>
+<p>With Sakuli it becomes very easy to interact with web elements. In our current example, we want to <code>_click</code> a <code>_link</code>
+which is identified by some given text. Once again, we do not have to take care of many details, as Sakuli will do most
+of the heavy lifting for us. We are just passing the link text to Sakuli, which will search for our desired element
+using multiple identifiers. Due to the implementation of the website (additional whitespaces for both link texts) we are
+using a regular expression instead of a simple string.This way we do not have to worry about using an ID, a CSS selector or
+something else to identify our element. As we have already seen in our first test action, <code>await</code> will wait until the
+test action has been completed.</p>
+</li>
+<li>
+<p>In some cases, it is really helpful to visually verify test execution. Sakuli comes with a built-in <code>_highlight</code>
+function, which will highlight an element with a bright red border. Although being useful, <code>_highlight</code> should be used
+carefully since it will increase the overall testing runtime.</p>
+</li>
 </ol>
 <h2 id="execute-your-first-test">Execute your first test</h2>
 <p>Since Sakuli 2 is built with Node, there are at least two different ways to execute a Sakuli test. We will take a look at each one of them.
