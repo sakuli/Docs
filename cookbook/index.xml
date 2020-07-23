@@ -11,6 +11,17 @@
     
     
     <item>
+      <title>Tabs</title>
+      <link>/docs/cookbook/tabs/</link>
+      <pubDate>Mon, 20 Jul 2020 12:41:40 +0100</pubDate>
+      
+      <guid>/docs/cookbook/tabs/</guid>
+      <description>How can I handle tabs in Sakuli? Switch focus to another tab The simplest way to switch the tab is based on the position of the tab. This snippet, for example, will switch to the second tab of the browser. let handles = await driver.getAllWindowHandles(); await driver.switchTo().window(handles[1]); 
+To switch back to the first tab, we can use: await driver.switchTo().window(handles[0]); 
+Closing a tab You can close the currently focused tab with: await driver.</description>
+    </item>
+    
+    <item>
       <title>Logging</title>
       <link>/docs/cookbook/logging/</link>
       <pubDate>Thu, 23 Apr 2020 05:05:50 +0100</pubDate>

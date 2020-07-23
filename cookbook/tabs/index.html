@@ -54,7 +54,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs/getting-started/firsttest/">
+  <body class="" data-url="/docs/cookbook/tabs/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -97,7 +97,7 @@
   
     
     <li data-nav-id="/docs/getting-started/" title="Getting Started" class="dd-item
-        parent
+        
         
         
         ">
@@ -180,7 +180,7 @@
  
   
     
-      <li data-nav-id="/docs/getting-started/firsttest/" title="First Setup" class="dd-item active">
+      <li data-nav-id="/docs/getting-started/firsttest/" title="First Setup" class="dd-item ">
         <a href="/docs/getting-started/firsttest/">
         First Setup
         <i class="fas fa-check read-icon"></i>
@@ -589,7 +589,7 @@
   
     
     <li data-nav-id="/docs/cookbook/" title="Cookbook" class="dd-item
-        
+        parent
         
         
         ">
@@ -615,7 +615,7 @@
  
   
     
-      <li data-nav-id="/docs/cookbook/tabs/" title="Tabs" class="dd-item ">
+      <li data-nav-id="/docs/cookbook/tabs/" title="Tabs" class="dd-item active">
         <a href="/docs/cookbook/tabs/">
         Tabs
         <i class="fas fa-check read-icon"></i>
@@ -908,7 +908,7 @@
             
           
           
-            <a href='/docs/'></a> > <a href='/docs/getting-started/'>Getting Started</a> > First Setup
+            <a href='/docs/'></a> > <a href='/docs/cookbook/'>Cookbook</a> > Tabs
           
         
           
@@ -923,15 +923,11 @@
     <div class="wrapper">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#setup-your-first-test">Setup Your First Test</a>
+    <li>
       <ul>
-        <li><a href="#setup-the-project-manually">Setup the Project Manually</a></li>
-      </ul>
-    </li>
-    <li><a href="#write-your-first-test">Write your first test</a></li>
-    <li><a href="#execute-your-first-test">Execute your first test</a>
-      <ul>
-        <li><a href="#npx">npx</a></li>
+        <li><a href="#switch-focus-to-another-tab">Switch focus to another tab</a></li>
+        <li><a href="#closing-a-tab">Closing a tab</a></li>
+        <li><a href="#example">Example</a></li>
       </ul>
     </li>
   </ul>
@@ -956,112 +952,49 @@
 
 
 
-<h1 id="setup">Setup</h1>
-<h2 id="setup-your-first-test">Setup Your First Test</h2>
-<p>Since v2.2.0 Sakuli provides an easy to use mechanism to initialize testcases and testsuites.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli create project . my-sut</code></pre></div>
-<p>This will create all necessary files and folders to start writing your first Sakuli test right away. With this, you can skip the next section and directly start to <a href="#write-your-first-test">write your first test</a></p>
-<h3 id="setup-the-project-manually">Setup the Project Manually</h3>
-<p>Since we wanted to keep Sakuli mostly compatible to v1, the file layout looks basically the same for testsuites.</p>
-<p>Each testsuite is located in its own particular folder. Generally, a testsuite represents the system you want to test. Therefore, you need to create that folder in your project root (where the package.json file is located):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir my-sut</code></pre></div>
-<p>To describe the testsuite and its testcases, two additional files are needed: <code>testsuite.properties</code> and <code>testsuite.suite</code>. These files are required for backwards compatibility (they might not be necessary in the future but will at least be supported). These files should be added to the <code>my-sut</code> folder:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd my-sut
-echo &gt; testsuite.suite
-echo &gt; testsuite.properties</code></pre></div>
-<p>We can add the following contents to <code>testsuite.properties</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo testsuite.id<span style="color:#f92672">=</span>my-sut &gt; testsuite.properties</code></pre></div>
-<p>This is the minimum configuration for using Sakuli. The <code>.properties</code> file adds some metadata needed by the Sakuli-Runtime and can be changed to configure other things like forwarders or the default browser for the execution.</p>
-<p>The <code>testsuite.suite</code> file tells Sakuli which testcases are running. The format is:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&lt;FOLDER-NAME&gt;/&lt;FILE-NAME&gt;.js &lt;START_URL&gt;</code></pre></div>
-<p>The actual testcase file must be placed inside a folder (this is due to the format forced by Sahi in Sakuli v1). The start-url also needs to be added but has no effect in v2+.</p>
-<p>With this in mind, we can add a testcase file:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir my-testcase
-echo &gt; my-testcase/testcase.js</code></pre></div>
-<p>And add the following information to the <code>testsuite.suite</code> file:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo my-testcase/testcase.js https://sakuli.io &gt; testsuite.suite</code></pre></div>
-<p>After the setup you can add the actual test code to <code>my-testcase/testcase.js</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript">(<span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> {  <span style="color:#75715e">// 1
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">testCase</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TestCase</span>(); <span style="color:#75715e">// 2
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">try</span> {
-        <span style="color:#75715e">// actual testcode goes here
-</span><span style="color:#75715e"></span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">e</span>) {
-        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">handleException</span>(<span style="color:#a6e22e">e</span>); <span style="color:#75715e">// 3
-</span><span style="color:#75715e"></span>    } <span style="color:#66d9ef">finally</span> {
-        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">saveResult</span>(); <span style="color:#75715e">// 4
-</span><span style="color:#75715e"></span>    }
-})(); <span style="color:#75715e">// 5
-</span></code></pre></div>
-<p>Let us examine this piece of code:</p>
-<ol>
-<li>The whole test is wrapped in an async immediate invoked function. It allows us to use the async/await syntax of ES6. Since Sakuli makes heavy use of async operations, it makes your code more readable.</li>
-<li>To provide Sakuli information about our actual testcase, we create a TestCase object, which handles the execution of a testcase.</li>
-<li>If any error occurs during testing, it will be redirected to the TestCase object. It triggers Sakuli&rsquo;s internal error handling e.g. taking a screenshot of the actual failed test execution.</li>
-<li>Regardless of a failed or passed test execution, Sakuli saves all results. This is more like a legacy artifact and will be removed in the future.</li>
-<li>The <code>()</code> at the end of this line will invoke the defined function. Since v2.2.0 Sakuli is able to detect this invocation without explicitly chaining the call of <code>done</code> function like in previous versions (it is still possible to add <code>.then(done)</code>)</li>
-</ol>
-<h2 id="write-your-first-test">Write your first test</h2>
-<p>Let us write a simple test using the Sakuli.io homepage as test subject. This test will verify if our &ldquo;Getting Started&rdquo; guide that you are reading at this very moment is still accessible.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript">(<span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> {
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">testCase</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TestCase</span>();
-    <span style="color:#66d9ef">try</span> {
-        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_navigateTo</span>(<span style="color:#e6db74">&#34;https://sakuli.io/docs&#34;</span>);                  <span style="color:#75715e">// 1
-</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">endOfStep</span>(<span style="color:#e6db74">&#34;Open Landing Page&#34;</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">10</span>);          <span style="color:#75715e">// 2
-</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_link</span>(<span style="color:#e6db74">/Getting Started/</span>));                  <span style="color:#75715e">// 3
-</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_link</span>(<span style="color:#e6db74">/Initialization/</span>));
-        <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">endOfStep</span>(<span style="color:#e6db74">&#34;Navigate to Initialization Section&#34;</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>);
-        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_highlight</span>(<span style="color:#a6e22e">_code</span>(<span style="color:#e6db74">&#34;npm init&#34;</span>));                     <span style="color:#75715e">// 4
-</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">endOfStep</span>(<span style="color:#e6db74">&#34;Find npm init code sample&#34;</span>);
-    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">e</span>) {
-        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">handleException</span>(<span style="color:#a6e22e">e</span>);
-    } <span style="color:#66d9ef">finally</span> {
-        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">saveResult</span>();
-    }
+<h1 id="how-can-i-handle-tabs-in-sakuli">How can I handle tabs in Sakuli?</h1>
+<h3 id="switch-focus-to-another-tab">Switch focus to another tab</h3>
+<p>The simplest way to switch the tab is based on the position of the tab. This snippet, for example, will switch to the second tab of the browser.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">handles</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">driver</span>.<span style="color:#a6e22e">getAllWindowHandles</span>();
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">driver</span>.<span style="color:#a6e22e">switchTo</span>().window(<span style="color:#a6e22e">handles</span>[<span style="color:#ae81ff">1</span>]);
+</code></pre></div></p>
+<p>To switch back to the first tab, we can use:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">driver</span>.<span style="color:#a6e22e">switchTo</span>().window(<span style="color:#a6e22e">handles</span>[<span style="color:#ae81ff">0</span>]);
+</code></pre></div></p>
+<h3 id="closing-a-tab">Closing a tab</h3>
+<p>You can close the <strong>currently focused</strong> tab with:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">driver</span>.<span style="color:#a6e22e">close</span>()
+</code></pre></div></p>
+<p><strong>Note</strong>: if there is only one tab open and <code>driver.close()</code> is used, the browser will be closed. This would severely affect the functionality of Sakuli.</p>
+<h3 id="example">Example</h3>
+<p>The following snippet shows how to work with tabs. First, a link is clicked which opens a new tab.
+Then a code box is highlighted, the tab is closed again and the focus switches back to the original tab.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">(<span style="color:#a6e22e">async</span> () =&gt; {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tc</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TestCase</span>(<span style="color:#e6db74">&#34;Demonstration on how to handle tabs&#34;</span>);
+  <span style="color:#66d9ef">try</span>{
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_navigateTo</span>(<span style="color:#e6db74">&#34;https://sakuli.io&#34;</span>);
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_link</span>(<span style="color:#e6db74">&#34;Docs&#34;</span>));
+
+    <span style="color:#75715e">//switch focus to the opened tab
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">handles</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">driver</span>.<span style="color:#a6e22e">getAllWindowHandles</span>();
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">driver</span>.<span style="color:#a6e22e">switchTo</span>().window(<span style="color:#a6e22e">handles</span>[<span style="color:#ae81ff">1</span>]);
+
+    <span style="color:#75715e">//do some stuff on the new tab
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_highlight</span>(<span style="color:#a6e22e">_code</span>(<span style="color:#e6db74">&#34;npm init&#34;</span>))
+
+    <span style="color:#75715e">//close the tab and switch back to the first tab
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">driver</span>.<span style="color:#a6e22e">close</span>()
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">driver</span>.<span style="color:#a6e22e">switchTo</span>().window(<span style="color:#a6e22e">handles</span>[<span style="color:#ae81ff">0</span>]);
+
+    <span style="color:#75715e">//the focus is back to sakuli.io
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_highlight</span>(<span style="color:#a6e22e">_link</span>(<span style="color:#e6db74">&#34;Features&#34;</span>));
+  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">e</span>) {
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">handleException</span>(<span style="color:#a6e22e">e</span>);
+  } <span style="color:#66d9ef">finally</span> {
+    <span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">saveResult</span>();
+  }
 })();
 </code></pre></div>
-<ol>
-<li>
-<p>Since we are dealing with a web test, the first thing we want to do is to <code>_navigateTo</code> our target page.
-Instead of manually setting up the correct WebDriver instance, we just have to provide a target URL. Sakuli will take
-care of the rest for us. <code>await</code> indicates that we are patiently waiting for our page to load before we continue with
-our next testing step.</p>
-</li>
-<li>
-<p>Once our initial page load has been completed, it is of our great interest to know how long it took to render.
-When it comes to runtime, Sakuli does not only measure the execution time of testcases,but also allows to split a single
-testcase into several logical steps. This way it becomes possible to accurately measure the runtime of certain processes
-like e.g. <em>login</em>, <em>shopping cart</em>, <em>checkout</em> and so on. By calling <code>testCase.endOfStep(&quot;Open Landing Page&quot;, 5, 10);</code>,
-we are ending our first step, the initial page load. Additionally, it is also possible to specify <code>warning</code> and
-<code>critical</code> thresholds for each step. Whenever a step exceeds one of these values, the result will change from <code>OK</code>
-to <code>WARNING</code> or <code>CRITICAL</code>.</p>
-</li>
-<li>
-<p>With Sakuli it becomes very easy to interact with web elements. In our current example, we want to <code>_click</code> a <code>_link</code>
-which is identified by some given text. Once again, we do not have to take care of many details, as Sakuli will do most
-of the heavy lifting for us. We are just passing the link text to Sakuli, which will search for our desired element
-using multiple identifiers. Due to the implementation of the website (additional whitespaces for both link texts) we are
-using a regular expression instead of a simple string.This way we do not have to worry about using an ID, a CSS selector or
-something else to identify our element. As we have already seen in our first test action, <code>await</code> will wait until the
-test action has been completed.</p>
-</li>
-<li>
-<p>In some cases, it is really helpful to visually verify test execution. Sakuli comes with a built-in <code>_highlight</code>
-function, which will highlight an element with a bright red border. Although being useful, <code>_highlight</code> should be used
-carefully since it will increase the overall testing runtime.</p>
-</li>
-</ol>
-<h2 id="execute-your-first-test">Execute your first test</h2>
-<p>Since Sakuli 2 is built with Node, there are at least two different ways to execute a Sakuli test. We will take a look at each one of them.
-Organizing tests as NPM projects makes it easier for you to distribute testcode.
-Everything required to execute the test is described in a project config, so tests should be ready to use after running <code>npm install</code> inside a project. 👍</p>
-<h3 id="npx">npx</h3>
-<p>Because of the way we have set up and configured our project in this guide, Sakuli is only available to this particular project. <!-- raw HTML omitted -->npx<!-- raw HTML omitted --> is a really handy tool, which allows us to execute our Sakuli CLI directly from the command line, even though we did not add it to the system <code>PATH</code>.</p>
-<p>In order to run our first test, we just have to execute <code>npx sakuli run my-sut</code> inside our project folder (e.g. <code>/tmp/sakuli_starter</code> on *nix).
-By default, Sakuli will pick up the browser configured in the <code>testsuite.properties</code> file, but with npx it is possible to change the browser on the fly:</p>
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli run my-sut --browser chrome</code></pre></div>
-This command will execute our test in Chrome.</p>
-<p>Regardless of the browser choice, as long as our site did not slow down, you should see a successful test result, similar to the image on the right.
-The advantage of running your tests with <code>npx</code> is the flexibility to easily customize your test runs without having to edit files.</p>
 
 
 <footer class=" footline" >
@@ -1100,20 +1033,6 @@ The advantage of running your tests with <code>npx</code> is the flexibility to 
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
                         
                         
                     
@@ -1124,9 +1043,6 @@ The advantage of running your tests with <code>npx</code> is the flexibility to 
                     
                     
 
-                    
-            
-        
                     
                         
             
@@ -1165,7 +1081,6 @@ The advantage of running your tests with <code>npx</code> is the flexibility to 
             
                 
                     
-                    
                 
                 
 
@@ -1182,8 +1097,21 @@ The advantage of running your tests with <code>npx</code> is the flexibility to 
             
                 
                     
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
                         
-                        
+            
+            
+                
                     
                 
                 
@@ -1476,6 +1404,7 @@ The advantage of running your tests with <code>npx</code> is the flexibility to 
             
                 
                     
+                    
                 
                 
 
@@ -1488,6 +1417,7 @@ The advantage of running your tests with <code>npx</code> is the flexibility to 
             
             
                 
+                    
                     
                 
                 
@@ -1504,6 +1434,9 @@ The advantage of running your tests with <code>npx</code> is the flexibility to 
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1656,10 +1589,10 @@ The advantage of running your tests with <code>npx</code> is the flexibility to 
 	 
 	 
 		
-			<a class="nav nav-prev" href="/docs/getting-started/installation/" title="Installation"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/docs/cookbook/" title="Cookbook"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/docs/getting-started/version-control/" title="Version control systems" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/docs/cookbook/logging/" title="Logging" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

@@ -5,7 +5,7 @@
     <link>/docs/</link>
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 20 May 2020 08:56:58 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jul 2020 12:41:40 +0100</lastBuildDate>
     
 	<atom:link href="/docs/index.xml" rel="self" type="application/rss+xml" />
     
@@ -149,6 +149,17 @@ Of course, you can also use Sakulis native testing power on its own, e.</descrip
       <description>Setup Setup Your First Test Since v2.2.0 Sakuli provides an easy to use mechanism to initialize testcases and testsuites.
 npx sakuli create project . my-sut This will create all necessary files and folders to start writing your first Sakuli test right away. With this, you can skip the next section and directly start to write your first test
 Setup the Project Manually Since we wanted to keep Sakuli mostly compatible to v1, the file layout looks basically the same for testsuites.</description>
+    </item>
+    
+    <item>
+      <title>Tabs</title>
+      <link>/docs/cookbook/tabs/</link>
+      <pubDate>Mon, 20 Jul 2020 12:41:40 +0100</pubDate>
+      
+      <guid>/docs/cookbook/tabs/</guid>
+      <description>How can I handle tabs in Sakuli? Switch focus to another tab The simplest way to switch the tab is based on the position of the tab. This snippet, for example, will switch to the second tab of the browser. let handles = await driver.getAllWindowHandles(); await driver.switchTo().window(handles[1]); 
+To switch back to the first tab, we can use: await driver.switchTo().window(handles[0]); 
+Closing a tab You can close the currently focused tab with: await driver.</description>
     </item>
     
     <item>
