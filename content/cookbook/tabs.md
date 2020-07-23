@@ -6,7 +6,7 @@ weight = 5
 
 # How can I handle tabs in Sakuli?
 
-The simplest way to switch the tab is based on the position of the tab.
+The simplest way to switch the tab is based on the position of the tab. This snippet for example, will switch to the second tab of the browser.
 {{<highlight javascript>}}
 let handles = await driver.getAllWindowHandles();
 await driver.switchTo().window(handles[1]);
