@@ -23,4 +23,4 @@ await driver.close();
 await driver.switchTo().window(handles[0]]);
 {{</highlight>}}
 
-**Note**: if there is only one tab open and `driver.close()` is used, the browser will be closed.
+**Note**: if there is only one tab open and `driver.close()` is used, the browser will be closed. This would severely affect the functionality of Sakuli.
