@@ -133,7 +133,7 @@ The Sakuli container provides a mechanism to clone a git repository at the conta
 docker run -e GIT_URL=<REPOSITORY URL> -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> taconsol/sakuli:2.3.0
 {{</highlight>}}
 
-`GIT_URL` specifies the URL of the cloned repository.
+`GIT_URL` specifies the URL of the cloned repository. It is going to be cloned to `/headless/git-repository`.
 
 ### 4.2 Specify the location of our test project inside the container
 
