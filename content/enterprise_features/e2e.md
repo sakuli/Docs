@@ -130,10 +130,10 @@ docker run -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> name-of-my-image
 
 The Sakuli container provides a mechanism to clone a git repository at the container start:
 {{<highlight bash>}}
-docker run -e GIT_URL=<REPOSITORY URL> -e GIT_DIR=<DIRECTORY WHERE REPOSITORY IS CLONED> -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> taconsol/sakuli:2.3.0
+docker run -e GIT_URL=<REPOSITORY URL> -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> taconsol/sakuli:2.3.0
 {{</highlight>}}
 
-`GIT_URL` specifies the URL of the cloned repository and `GIT_DIR` where it is cloned to.
+`GIT_URL` specifies the URL of the cloned repository.
 
 ### 4.2 Specify the location of our test project inside the container
 
@@ -318,7 +318,6 @@ By default, a Firefox test uses a new, blank profile for each test run. In order
 | NPM_TOKEN               |                      | NPM token to access npmjs.com registry              |
 | SAKULI_TRUSTED_CERT_DIR |                      | Directory containing custom certificates for import |
 | GIT_URL                 |                      | URL of git repository                               |
-| GIT_DIR                 | /headless/git-repository| Directory where the git repository is cloned     |
 
 ## 8 Summary
 
