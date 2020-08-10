@@ -1019,6 +1019,7 @@ so to run a custom test we have to:</p>
 <ul>
 <li>Bind mounts</li>
 <li>Extending a base image</li>
+<li>Clone a git repository</li>
 </ul>
 <h4 id="411-bind-mounts">4.1.1 Bind Mounts</h4>
 <p>When running a Docker container it is possible to mount a file or directory on the Docker host into a container.
@@ -1050,6 +1051,15 @@ ADD ./testsuite-a <span style="color:#ae81ff">\$</span>HOME/sakuli_testsuite</co
 <blockquote>
 <p>When working with added files and folders inside a container, one has to ensure correct file permissions for added files.</p>
 </blockquote>
+<h4 id="413-clone-a-git-repository">4.1.3 Clone a git repository</h4>
+<blockquote>
+<p>Currently only available in our tech preview</p>
+</blockquote>
+<p>The Sakuli container provides a mechanism to clone a git repository at the container start and executing the sakuli project
+within it:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -e GIT_URL<span style="color:#f92672">=</span>&lt;REPOSITORY URL&gt; <span style="color:#f92672">[</span>-e GIT_CONTEXT_DIR<span style="color:#f92672">=</span>&lt;RELATIVE PATH TO TESTSUITE &gt;<span style="color:#f92672">]</span> -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;YOUR SAKULI LICENSE KEY&gt; taconsol/sakuli:2.3.0</code></pre></div></p>
+<p><code>GIT_URL</code> specifies the URL of the cloned repository.</p>
+<p><code>GIT_CONTEXT_DIR</code> is only necessary if the sakuli project is not located in the root directory of the cloned repository.</p>
 <h3 id="42-specify-the-location-of-our-test-project-inside-the-container">4.2 Specify the location of our test project inside the container</h3>
 <p>Now that our test files are available inside the container, we need to find a way to configure where our project is located.</p>
 <p>This can easily be done by setting the <code>SAKULI_TEST_SUITE</code> environment variable to the respective path:</p>
@@ -1203,6 +1213,16 @@ Things like untrusted certificates cause Sakuli tests to fail, since no connecti
 <td>SAKULI_TRUSTED_CERT_DIR</td>
 <td></td>
 <td>Directory containing custom certificates for import</td>
+</tr>
+<tr>
+<td>GIT_URL</td>
+<td></td>
+<td>URL of git repository</td>
+</tr>
+<tr>
+<td>GIT_CONTEXT_DIR</td>
+<td>.</td>
+<td>Path to Sakuli testsuite within the git repository</td>
 </tr>
 </tbody>
 </table>
