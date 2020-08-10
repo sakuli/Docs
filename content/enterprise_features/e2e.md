@@ -136,7 +136,9 @@ within it:
 docker run -e GIT_URL=<REPOSITORY URL> [-e GIT_CONTEXT_DIR=<RELATIVE PATH TO TESTSUITE >] -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> taconsol/sakuli:2.3.0
 {{</highlight>}}
 
-`GIT_URL` specifies the URL of the cloned repository. 
+`GIT_URL` specifies the URL of the cloned repository. To access a private repository you have to check if your git service provides the possibility to authenticate via URL parameters. 
+This is the case with [GitHub](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token), [Gitlab](https://docs.gitlab.com/ee/user/project/deploy_tokens/#git-clone-a-repository) and [Bitbucket](https://confluence.atlassian.com/bitbucketserver/personal-access-tokens-939515499.html?_ga=2.213635799.231132925.1597055610-1046501904.1597055610).
+To authenticate with a token on GitHub, you can use: `https://<token>@github.com/<username>/<repository.git>`.
 
 `GIT_CONTEXT_DIR` is only necessary if the sakuli project is not located in the root directory of the cloned repository.
 
