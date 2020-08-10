@@ -128,6 +128,8 @@ docker run -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> name-of-my-image
 
 #### 4.1.3 Clone a git repository
 
+> Currently only available in our tech preview
+
 The Sakuli container provides a mechanism to clone a git repository at the container start and executing the sakuli project
 within it:
 {{<highlight bash>}}
