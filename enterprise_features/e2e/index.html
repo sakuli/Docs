@@ -1058,7 +1058,9 @@ ADD ./testsuite-a <span style="color:#ae81ff">\$</span>HOME/sakuli_testsuite</co
 <p>The Sakuli container provides a mechanism to clone a git repository at the container start and executing the sakuli project
 within it:
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -e GIT_URL<span style="color:#f92672">=</span>&lt;REPOSITORY URL&gt; <span style="color:#f92672">[</span>-e GIT_CONTEXT_DIR<span style="color:#f92672">=</span>&lt;RELATIVE PATH TO TESTSUITE &gt;<span style="color:#f92672">]</span> -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;YOUR SAKULI LICENSE KEY&gt; taconsol/sakuli:2.3.0</code></pre></div></p>
-<p><code>GIT_URL</code> specifies the URL of the cloned repository.</p>
+<p><code>GIT_URL</code> specifies the URL of the repository to be cloned. To access a private repository, please ensure, your git service provides the possibility to authenticate via URL parameters.
+This is possible with common git services like <a href="https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token">GitHub</a>, <a href="https://docs.gitlab.com/ee/user/project/deploy_tokens/#git-clone-a-repository">Gitlab</a> and <a href="https://confluence.atlassian.com/bitbucketserver/personal-access-tokens-939515499.html?_ga=2.213635799.231132925.1597055610-1046501904.1597055610">Bitbucket</a>.
+To authenticate with a token on GitHub, use: <code>https://&lt;token&gt;@github.com/&lt;username&gt;/&lt;repository.git&gt;</code>.</p>
 <p><code>GIT_CONTEXT_DIR</code> is only necessary if the sakuli project is not located in the root directory of the cloned repository.</p>
 <h3 id="42-specify-the-location-of-our-test-project-inside-the-container">4.2 Specify the location of our test project inside the container</h3>
 <p>Now that our test files are available inside the container, we need to find a way to configure where our project is located.</p>
