@@ -8,7 +8,12 @@ weight : 8
 
 ## Prerequisites
 
-Add secrets for docker login and sakuli-license-key:
+To setup a dashboard container on your OpenShift cluster,
+you have to import the images from `taconsol/sakuli-dashboard`.
+In order to authenticate to docker.io during build,
+you have to create a docker registry secret with your
+`<docker-username>`
+and `<docker-password>`.
 
 {{<highlight bash>}}
 oc create secret docker-registry dockerhub-sakuli-secret \
@@ -18,18 +23,34 @@ oc create secret docker-registry dockerhub-sakuli-secret \
  --docker-email=unused
 {{</highlight>}}
 
+Another secret for the sakuli-license-key is required,
+so that the dashboard container can start.
 {{<highlight bash>}}
 oc create secret generic sakuli-license-key \
- --from-literal="SAKULI_LICENSE_KEY=<sakuli-license-key>"
+ --from-literal="SAKULI_LICENSE_KEY=${SAKULI_LICENSE_KEY}"
 {{</highlight>}}
 
-After adding secrets, run:
+_**Note**: To handle any kind of credentials securely in the shell,
+you should make sure that they never end up in the shell-history,
+that most interactive shells maintain.  
+The bash for example has a file, `.bash_history`,
+where commands typed into the prompt are written to.
+The file is located in the users home-directory.
+If the `HISTCONTROL` variable is set tho `'ignoreboth'`,
+you can prevent a command from being written to the history
+by prepending it with a whitespace.  
+Of course, such a configuration should be checked regularily._
+
+After adding both secrets,
+link them to your builder service account,
+to make them available during the build.
 
 {{<highlight bash>}}
 oc secrets link builder dockerhub-sakuli-secret
 {{</highlight>}}
 
-Import image:
+
+Now you can import the image:
 
 {{<highlight bash>}}
 oc import-image sakuli-dashboard \
@@ -150,18 +171,20 @@ objects:
       name: ${SERVICE_NAME}
     data:
       ACTION_CONFIG: >-
-        Action configuration
+        <action configuration>
       CLUSTER_CONFIG: >-
-        Cluster Configuration
+        <cluster Configuration>
       DASHBOARD_CONFIG: >-
-        Dashboard configuration
+        <dashboard configuration>
       CRONJOB_CONFIG: >-
-        Cronjob configuration
+        <cronjob configuration>
 parameters:
   - name: SERVICE_NAME
     description: Service name for dashboard
     value: sakuli-dashboard
 {{</highlight>}}
+
+The placeholders `<action configuration>`, `<cluster Configuration>`, `<dashboard configuration>` and `<cronjob configuration>` have to be replaced with valid configurations.
 
 After configuring the template, run:
 
@@ -170,7 +193,7 @@ oc process -f <filename> | oc create -f -
 {{</highlight>}}
 Whereas `<filename>` is the name of a file containing the template above.
 
-Expose the service to make the dashboard available to users outside of your cluster:
+Expose the service to make the dashboard available to clients outside of your cluster:
 
 {{<highlight bash>}}
 oc expose svc/sakuli-dashboard
