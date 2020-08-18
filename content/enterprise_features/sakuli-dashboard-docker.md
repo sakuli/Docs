@@ -39,6 +39,9 @@ Parameters:
 
 ## Docker-Compose
 
+To start the dashboard via `docker-compose`, you can use the following `docker-compose.yml` template to configure the
+dashboard.  
+
 {{< highlight yaml >}}
 version: "3"
 services:
@@ -53,4 +56,9 @@ services:
             - CLUSTER_CONFIG=${CLUSTER_CONFIG}
             - CRONJOB_CONFIG=${CRONJOB_CONFIG}
             - SAKULI_LICENSE_KEY=${SAKULI_LICENSE_KEY}
+{{</ highlight >}}
+
+After creating the `docker-compose.yml` configuration file, you can start the dashboard with:
+{{< highlight bash >}}
+docker-compose up
 {{</ highlight >}}
