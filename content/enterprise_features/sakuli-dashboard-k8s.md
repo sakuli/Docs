@@ -8,7 +8,7 @@ weight : 7
 
 Once you obtained a Sakuli Enterprise license your docker-user will be granted access to the private Sakuli dashboard image.
 
-## Setup
+## Prerequisites
 To setup the Sakuli dashboard on your Kubernetes cluster, it is required to import the image from 
 `taconsol/sakuli-dashboard`. To achieve this, you have to create a docker-registry secret with your `<docker-username>` and
 `<docker-password>` and add it to your service account to authenticate on docker.io during build.
@@ -20,35 +20,28 @@ kubectl create secret docker-registry dockerhub-sakuli-secret \
  --docker-password=<docker-password> \
  --docker-email=unused
  
- kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "dockerhub-sakuli-secret"}]}'
- {{</highlight>}}
- 
- If you decide to use the [template](#dashboard-template) to configure your deployment you also need to create a secret containing your 
- Sakuli license key in order to be able to start the Sakuli dashboard. Otherwise you can skip this part.
- 
- {{<highlight bash>}}
-kubectl create secret generic sakuli-license-key \
- --from-literal="SAKULI_LICENSE_KEY=${SAKULI_LICENSE_KEY}"
- {{</highlight>}}
+kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "dockerhub-sakuli-secret"}]}'
+{{</highlight>}}
  
 Now it is possible to import the image from the secured registry.
 
 You can start your Sakuli dashboard using two different approaches:
-
-1. Start the Sakuli dashboard via CLI with [kubectl](#kubectl).
-2. Start the Sakuli dashboard using a ready to use [template](#dashboard-template).
+- Start the Sakuli dashboard via CLI with [kubectl](#kubectl).
+- Start the Sakuli dashboard using a ready to use [template](#dashboard-template).
  
 ### Starting the Sakuli dashboard with kubectl {#kubectl}
 
 First you have to create your deployment based on the Sakuli dashboard image you want to use and expose your service.
+The Sakuli dashboard provides a `latest` tag, which is a tech-preview.
+For a stable version, specify the exact version to ensure consistency.
 
 {{<highlight bash>}}
-kubectl create deployment sakuli-dashbaord --image=taconsol/sakuli-dashboard
+kubectl create deployment sakuli-dashbaord --image=taconsol/sakuli-dashboard:<IMAGE_TAG>
 
 kubectl expose deployment sakuli-dashboard --type=LoadBalancer --port=8080
 {{</highlight>}}
 
-The --type=LoadBalancer flag is important to make your service available outside your cluster.
+The `--type=LoadBalancer` flag is important to make your service available outside your cluster.
 
 Now you have to add your Sakuli dashboard configurations such as the dashboard, action, cluster and cronjob configs and your 
 Sakuli license key to the environment of your deployment.
@@ -64,9 +57,17 @@ kubectl set env deployment/sakuli-dashboard --overwrite \
 
 ### Starting the Sakuli dashboard with a template {#dashboard-template}
 
+An XL Sakuli license key is required to start the Sakuli dashboard. You can add your license key with a secret, which is
+then referenced to the deployment in the template.
+ 
+{{<highlight bash>}}
+kubectl create secret generic sakuli-license-key \
+ --from-literal="SAKULI_LICENSE_KEY=${SAKULI_LICENSE_KEY}"
+{{</highlight>}}
+
 The following config template is ready to use to configure and deploy your Sakuli dashboard.
-Just copy and save the dashboard template bellow as `dashboard-template.yml`. Furthermore add your dashboard, action, 
-cluster and cronjob configurations listed under ConfigMap.
+Just copy and save the dashboard template bellow as `dashboard-template.yml`. Furthermore, add your dashboard, action, 
+cluster and cronjob configurations listed under ConfigMap as well as the image tag.
 
 {{<highlight yaml>}}
 apiVersion: apps/v1
@@ -87,7 +88,8 @@ spec:
     spec:
       containers:
         - name: sakuli-dashboard
-          image: taconsol/sakuli-dashboard
+          # Specify the Sakuli dashboard version you want to use
+          image: taconsol/sakuli-dashboard:${IMAGE_TAG}
           imagePullPolicy: Always
           env:
             - name: ACTION_CONFIG

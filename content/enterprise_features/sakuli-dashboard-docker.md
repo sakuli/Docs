@@ -6,6 +6,11 @@ weight : 6
 
 # Sakuli Dashboard with Docker
 
+Once you obtained a Sakuli Enterprise license your docker-user will be granted access to the private Sakuli dashboard image.
+
+The Sakuli dashboard provides a `latest` tag, which is a tech-preview.
+For a stable version, specify the exact version to ensure consistency.
+
 ## Docker
 
 ### 1 Obtaining the image
@@ -15,8 +20,6 @@ The registered docker-hub user will then be able to pull the private image:
 {{<highlight bash>}}
 docker pull taconsol/sakuli-dashboard:<IMAGE_TAG>
 {{</highlight>}}
-
-The dashboard provides a `latest` tag, which is a tech-preview.
 
 ### 2 Running the Sakuli dashboard
 
@@ -28,7 +31,7 @@ docker run --rm \
  -e CLUSTER_CONFIG="${CLUSTER_CONFIG}" \
  -e CRONJOB_CONFIG="${CRONJOB_CONFIG}" \
  -e SAKULI_LICENSE_KEY="${SAKULI_LICENSE_KEY}" \
- taconsol/sakuli-dashboard
+ taconsol/sakuli-dashboard:<IMAGE_TAG>
 {{</ highlight >}}
 
 Parameters:
@@ -47,7 +50,7 @@ version: "3"
 services:
     sakuli:
         container_name: sakuli-dashboard
-        image: taconsol/sakuli-dashboard
+        image: taconsol/sakuli-dashboard:<IMAGE_TAG>
         ports:
             - 8080:8080
         environment:

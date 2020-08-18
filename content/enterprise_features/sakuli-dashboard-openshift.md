@@ -6,6 +6,8 @@ weight : 8
 
 # Sakuli Dashboard on Openshift
 
+Once you obtained a Sakuli Enterprise license your docker-user will be granted access to the private Sakuli dashboard image.
+
 ## Prerequisites
 
 To setup a dashboard container on your OpenShift cluster,
@@ -23,30 +25,10 @@ oc create secret docker-registry dockerhub-sakuli-secret \
  --docker-email=unused
 {{</highlight>}}
 
-Another secret for the sakuli-license-key is required,
-so that the dashboard container can start.
-{{<highlight bash>}}
-oc create secret generic sakuli-license-key \
- --from-literal="SAKULI_LICENSE_KEY=${SAKULI_LICENSE_KEY}"
-{{</highlight>}}
-
-_**Note**: To handle any kind of credentials securely in the shell,
-you should make sure that they never end up in the shell-history,
-that most interactive shells maintain.  
-The bash for example has a file, `.bash_history`,
-where commands typed into the prompt are written to.
-The file is located in the users home-directory.
-If the `HISTCONTROL` variable is set tho `'ignoreboth'`,
-you can prevent a command from being written to the history
-by prepending it with a whitespace.  
-Of course, such a configuration should be checked regularily._
-
-After adding both secrets,
-link them to your builder service account,
-to make them available during the build.
+Enable access to the secret from the default service account:
 
 {{<highlight bash>}}
-oc secrets link builder dockerhub-sakuli-secret
+oc secrets link default dockerhub-sakuli-secret --for=pull
 {{</highlight>}}
 
 
@@ -56,23 +38,32 @@ Now you can import the image:
 oc import-image sakuli-dashboard \
  --from=docker.io/taconsol/sakuli-dashboard \
  --confirm \
+ --scheduled=true \
  --all=true
 {{</highlight>}}
 
-When using OpenShift v3.10 or v3.11, add the --reference-policy=local flag:
+When using OpenShift v3.10 or v3.11, add the `--reference-policy=local` flag:
 
 {{<highlight bash>}}
 oc import-image sakuli-dashboard \
  --from=docker.io/taconsol/sakuli-dashboard \
  --confirm \
+ --scheduled=true \
  --all \
  --reference-policy=local
 {{</highlight>}}
 
+*Note: The `oc import-image` statement is configured to not only import all available sakuli-dashboard images but also to
+check for updates automatically.*
 
-## To start the sakuli-dashboard with oc:
+You can start your Sakuli dashboard using two different approaches:
+- Start the Sakuli dashboard via CLI with [oc](#oc).
+- Start the Sakuli dashboard using a ready to use [template](#dashboard-template).
 
-Create the application:
+## Starting the Sakuli dashboard with oc {#oc}
+
+To create the application with the openshift client, you can use the `new-app` command. You can add environment variables
+via the `-e` parameter.
 
 {{<highlight bash>}}
 oc new-app sakuli-dashboard \ 
@@ -83,16 +74,27 @@ oc new-app sakuli-dashboard \
  -e SAKULI_LICENSE_KEY="${SAKULI_LICENSE_KEY}"
 {{</highlight>}}
 
-Expose the service:
+Now you need to expose your service, to make it available outside your cluster.
 
 {{<highlight bash>}}
 oc expose svc/sakuli-dashboard
 {{</highlight>}}
 
 
-## To start the sakuli-dashboard with a template:
+## Starting the Sakuli dashboard with a template {#dashboard-template}
 
-Use a template, for example:
+An XL Sakuli license key is required to start the Sakuli dashboard. You can add your license key with a secret, which is
+then referenced to the deployment in the template.
+
+{{<highlight bash>}}
+oc create secret generic sakuli-license-key \
+ --from-literal="SAKULI_LICENSE_KEY=${SAKULI_LICENSE_KEY}"
+{{</highlight>}}
+
+
+The following config template is ready to use to configure and deploy your Sakuli dashboard.
+Just copy and save the dashboard template bellow as `dashboard-template.yml`. Furthermore, add your dashboard, action, 
+cluster and cronjob configurations listed under ConfigMap as well as the image tag.
 
 {{<highlight yml>}}
 apiVersion: v1
@@ -117,8 +119,8 @@ objects:
         spec:
           containers:
             - name: ${SERVICE_NAME}
-              #change the address to your openshift registry and namespace
-              image: 172.30.1.1:5000/myproject/sakuli-dashboard
+              #change the address to your openshift registry, your namespace and the image tag you want to use
+              image: ${OPENSHIFT_REGISTRY_ADDRESS}/${NAMESPACE}/sakuli-dashboard:${IMAGE_TAG}
               imagePullPolicy: Always
               ports:
                 - containerPort: 8080
@@ -183,8 +185,6 @@ parameters:
     description: Service name for dashboard
     value: sakuli-dashboard
 {{</highlight>}}
-
-The placeholders `<action configuration>`, `<cluster Configuration>`, `<dashboard configuration>` and `<cronjob configuration>` have to be replaced with valid configurations.
 
 After configuring the template, run:
 
