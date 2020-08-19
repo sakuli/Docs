@@ -6,7 +6,7 @@ weight : 7
 
 # Sakuli Dashboard on Kubernetes
 
-Once you obtained a Sakuli Enterprise license your docker-user will be granted access to the private Sakuli dashboard image.
+**Attention:** Only Sakuli Enterprise users will be eligible to access the private Sakuli Dashboard Docker images.
 
 ## Prerequisites
 To setup the Sakuli dashboard on your Kubernetes cluster, it is required to import the image from 
