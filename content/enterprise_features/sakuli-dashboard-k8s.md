@@ -56,7 +56,7 @@ kubectl set env deployment/sakuli-dashboard --overwrite \
  SAKULI_LICENSE_KEY="${SAKULI_LICENSE_KEY}"
 {{</highlight>}}
 
-Set up Sakuli Dashboard using a Template {#k8s-dashboard-template}
+### Set up Sakuli Dashboard using a Template {#k8s-dashboard-template}
 
 The Sakuli Dashboard Kubernetes template references the Sakuli license key via a secret.
 So before applying the template, please add your license key secret first.
