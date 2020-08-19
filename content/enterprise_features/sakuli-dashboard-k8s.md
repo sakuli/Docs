@@ -29,7 +29,7 @@ You can start your Sakuli Dashboard using two different approaches:
  
 ### Set up the Sakuli Dashboard manually {#k8s-cli}
 
-First you have to create your deployment based on the Sakuli dashboard image you want to use and expose your service.
+As a first step, create a deployment based on the Sakuli Dashboard image and expose the service.
 The Sakuli dashboard provides a `latest` tag, which is a tech-preview.
 For a stable version, specify the exact version to ensure consistency.
 
