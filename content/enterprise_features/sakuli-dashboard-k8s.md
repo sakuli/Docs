@@ -66,8 +66,8 @@ kubectl create secret generic sakuli-license-key \
  --from-literal="SAKULI_LICENSE_KEY=${SAKULI_LICENSE_KEY}"
 {{</highlight>}}
 
-The following config template is ready to use to configure and deploy your Sakuli dashboard.
-Just copy and save the dashboard template bellow as `dashboard-template.yml`. Furthermore, add your dashboard, action, 
+The following ready-to-use template will configure a Sakuli Dashboard and deploy it to your cluster
+Just copy and save the dashboard template below as `dashboard-template.yml`. Furthermore, add your dashboard, action, 
 cluster and cronjob configurations listed under ConfigMap as well as the image tag.
 
 {{<highlight yaml>}}
