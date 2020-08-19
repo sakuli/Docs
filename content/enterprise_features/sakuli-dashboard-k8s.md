@@ -27,7 +27,7 @@ You can start your Sakuli Dashboard using two different approaches:
 - Set up the Sakuli Dashboard manually via [CLI](#k8s-cli).
 - Set up the Sakuli Dashboard using a ready to use [template](#k8s-dashboard-template).
  
-### Starting the Sakuli dashboard with kubectl {#kubectl}
+### Set up the Sakuli Dashboard manually {#k8s-cli}
 
 First you have to create your deployment based on the Sakuli dashboard image you want to use and expose your service.
 The Sakuli dashboard provides a `latest` tag, which is a tech-preview.
