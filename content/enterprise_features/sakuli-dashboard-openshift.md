@@ -10,12 +10,7 @@ weight : 8
 
 ## Prerequisites
 
-To setup a dashboard container on your OpenShift cluster,
-you have to import the images from `taconsol/sakuli-dashboard`.
-In order to authenticate to docker.io during build,
-you have to create a docker registry secret with your
-`<docker-username>`
-and `<docker-password>`.
+A Sakuli Dashboard setup on your OpenShift cluster requires you to import the Sakuli Dashboard image from Docker Hub. In order to do so, please configure a secret storing your `<docker-username>` and `<docker-password>` and add it to your service account for authentication.
 
 {{<highlight bash>}}
 oc create secret docker-registry dockerhub-sakuli-secret \
@@ -56,14 +51,13 @@ oc import-image sakuli-dashboard \
 *Note: The `oc import-image` statement is configured to not only import all available sakuli-dashboard images but also to
 check for updates automatically.*
 
-You can start your Sakuli dashboard using two different approaches:
-- Start the Sakuli dashboard via CLI with [oc](#oc).
-- Start the Sakuli dashboard using a ready to use [template](#dashboard-template).
+You can start your Sakuli Dashboard using two different approaches:
+- Set up the Sakuli Dashboard manually via [CLI](#oc-cli).
+- Set up the Sakuli Dashboard using a ready to use [template](#oc-dashboard-template).
 
-## Starting the Sakuli dashboard with oc {#oc}
+## Set up the Sakuli Dashboard manually via CLI {#oc-cli}
 
-To create the application with the openshift client, you can use the `new-app` command. You can add environment variables
-via the `-e` parameter.
+An easy way to set up a Sakuli Dashboard is by using `oc new-app`. Required environment variables can be passed along via the `-e` parameter.
 
 {{<highlight bash>}}
 oc new-app sakuli-dashboard \ 
@@ -74,7 +68,7 @@ oc new-app sakuli-dashboard \
  -e SAKULI_LICENSE_KEY="${SAKULI_LICENSE_KEY}"
 {{</highlight>}}
 
-Now you need to expose your service, to make it available outside your cluster.
+Once completed, the service has to be exposed to make available from outside the cluster.
 
 {{<highlight bash>}}
 oc expose svc/sakuli-dashboard
