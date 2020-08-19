@@ -44,7 +44,7 @@ kubectl expose deployment sakuli-dashboard --type=LoadBalancer --port=8080
 
 The `--type=LoadBalancer` flag is important to make your service available outside your cluster.
 
-Now you have to add your Sakuli dashboard configurations such as the dashboard, action, cluster and cronjob configs and your 
+Now add your Sakuli dashboard configurations such as the dashboard, action, cluster and cronjob configs and your 
 Sakuli license key to the environment of your deployment.
 
 {{<highlight bash>}}
