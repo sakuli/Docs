@@ -9,9 +9,7 @@ weight : 7
 **Attention:** Only Sakuli Enterprise users will be eligible to access the private Sakuli Dashboard Docker images.
 
 ## Prerequisites
-To setup the Sakuli dashboard on your Kubernetes cluster, it is required to import the image from 
-`taconsol/sakuli-dashboard`. To achieve this, you have to create a docker-registry secret with your `<docker-username>` and
-`<docker-password>` and add it to your service account to authenticate on docker.io during build.
+A Sakuli Dashboard setup on your Kubernetes cluster requires you to import the Sakuli Dashboard image from Docker Hub. In order to do so, please configure a secret storing your `<docker-username>` and `<docker-password>` and add it to your service account for authentication.
 
 {{<highlight bash>}}
 kubectl create secret docker-registry dockerhub-sakuli-secret \
