@@ -58,8 +58,8 @@ kubectl set env deployment/sakuli-dashboard --overwrite \
 
 Set up Sakuli Dashboard using a Template {#k8s-dashboard-template}
 
-An XL Sakuli license key is required to start the Sakuli dashboard. You can add your license key with a secret, which is
-then referenced to the deployment in the template.
+The Sakuli Dashboard Kubernetes template references the Sakuli license key via a secret.
+So before applying the template, please add your license key secret first.
  
 {{<highlight bash>}}
 kubectl create secret generic sakuli-license-key \
