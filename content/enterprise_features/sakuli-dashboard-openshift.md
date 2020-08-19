@@ -81,7 +81,7 @@ oc expose svc/sakuli-dashboard
 {{</highlight>}}
 
 
-## Starting the Sakuli dashboard with a template {#dashboard-template}
+## Set up the Sakuli Dashboard using a ready to use template {#oc-dashboard-template}
 
 An XL Sakuli license key is required to start the Sakuli dashboard. You can add your license key with a secret, which is
 then referenced to the deployment in the template.
