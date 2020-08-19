@@ -23,9 +23,9 @@ kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "dockerh
  
 Now it is possible to import the image from the secured registry.
 
-You can start your Sakuli dashboard using two different approaches:
-- Start the Sakuli dashboard via CLI with [kubectl](#kubectl).
-- Start the Sakuli dashboard using a ready to use [template](#dashboard-template).
+You can start your Sakuli Dashboard using two different approaches:
+- Set up the Sakuli Dashboard manually via [CLI](#k8s-cli).
+- Set up the Sakuli Dashboard using a ready to use [template](#k8s-dashboard-template).
  
 ### Starting the Sakuli dashboard with kubectl {#kubectl}
 
