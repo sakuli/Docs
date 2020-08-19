@@ -18,7 +18,7 @@ Tech-previews of upcoming stable releases are available via the `latest` tag.
 
 ### 1 Obtaining the image
 
-The registered docker-hub user will then be able to pull the private image:
+Sakuli Dashboard images are available to your licensed Docker user via Docker Hub.
 
 {{<highlight bash>}}
 docker pull taconsol/sakuli-dashboard:<IMAGE_TAG>
