@@ -30,8 +30,11 @@ You can start your Sakuli Dashboard using two different approaches:
 ### Set up the Sakuli Dashboard manually {#k8s-cli}
 
 As a first step, create a deployment based on the Sakuli Dashboard image and expose the service.
-The Sakuli dashboard provides a `latest` tag, which is a tech-preview.
-For a stable version, specify the exact version to ensure consistency.
+Sakuli Dashboard releases are versioned following the [semantic versioning scheme](https://semver.org/).
+Images for stable releases are tagged accordingly.
+Tech-previews of upcoming stable releases are available via the `latest` tag.
+
+**Attention:** It is highly discouraged to run tech-previews in production as there is no guarantee of stability
 
 {{<highlight bash>}}
 kubectl create deployment sakuli-dashbaord --image=taconsol/sakuli-dashboard:<IMAGE_TAG>
