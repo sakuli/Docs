@@ -6,7 +6,7 @@ weight : 6
 
 # Sakuli Dashboard with Docker
 
-Once you obtained a Sakuli Enterprise license your docker-user will be granted access to the private Sakuli dashboard image.
+**Attention:** Only Sakuli Enterprise users will be eligible to access the private Sakuli Dashboard Docker images.
 
 The Sakuli dashboard provides a `latest` tag, which is a tech-preview.
 For a stable version, specify the exact version to ensure consistency.
