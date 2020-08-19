@@ -83,8 +83,8 @@ oc expose svc/sakuli-dashboard
 
 ## Set up the Sakuli Dashboard using a ready to use template {#oc-dashboard-template}
 
-An XL Sakuli license key is required to start the Sakuli dashboard. You can add your license key with a secret, which is
-then referenced to the deployment in the template.
+The Sakuli Dashboard OpenShift template references the Sakuli license key via a secret.
+So before applying the template, please add your license key secret first.
 
 {{<highlight bash>}}
 oc create secret generic sakuli-license-key \
