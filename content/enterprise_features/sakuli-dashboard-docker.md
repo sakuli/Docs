@@ -8,8 +8,11 @@ weight : 6
 
 **Attention:** Only Sakuli Enterprise users will be eligible to access the private Sakuli Dashboard Docker images.
 
-The Sakuli dashboard provides a `latest` tag, which is a tech-preview.
-For a stable version, specify the exact version to ensure consistency.
+Sakuli Dashboard releases are versioned following the [semantic versioning scheme](https://semver.org/).
+Images for stable releases are tagged accordingly.
+Tech-previews of upcoming stable releases are available via the `latest` tag.
+
+**Attention:** It is highly discouraged to run tech-previews in production as there is no guarantee of stability
 
 ## Docker
 
