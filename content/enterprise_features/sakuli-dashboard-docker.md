@@ -45,8 +45,7 @@ Parameters:
 
 ## Docker-Compose
 
-To start the dashboard via `docker-compose`, you can use the following `docker-compose.yml` template to configure the
-dashboard.  
+The following template allows you to run a dashboard using `docker-compose`:
 
 {{< highlight yaml >}}
 version: "3"
