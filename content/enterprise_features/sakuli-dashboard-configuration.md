@@ -19,14 +19,19 @@ Sakuli dashboard.
 | [CLUSTER_CONFIG](#cluster_config)      | configures the cluster access (cluster address, access token, etc.)               |
 | [CRONJOB_CONFIG](#cronjob_config)      | configures a cronjob to schedule a specific action                                |
  
-Here you can see a Sakuli Dashboard with an exemplary configuration and detailed information below.
+Here you can see a Sakuli Dashboard with an exemplary configuration and information about the different sections below.
  
-{{<image "/images/dashboard-column.png""Showing the folder structure in a Editor">}} 
+{{<image "/images/sakuli-dashboard.png""The Sakuli-Dashboard explained">}} 
+
+1. When hovering over the info button you can see the configurable tool tip.
+2. This section represents the dashboards title.
+3. It is possible to choose between a row or column layout of the displays.
+4. You can display content in two different languages.
  
 ### DASHBOARD_CONFIG {#dashboard_config}
 
 With the `DASHBOARD_CONFIG` you can define the order and description of the display and what you want to embed within the iFrames.
-Here is an example `DASHBOARD_CONFIG` for the Sakuli dashboard. 
+Here is a sample `DASHBOARD_CONFIG` for the Sakuli dashboard. 
 
 {{<highlight javascript>}}
 {
