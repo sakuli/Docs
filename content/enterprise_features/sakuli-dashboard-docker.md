@@ -63,7 +63,7 @@ services:
             - SAKULI_LICENSE_KEY=${SAKULI_LICENSE_KEY}
 {{</ highlight >}}
 
-After creating the `docker-compose.yml` configuration file, you can start the dashboard with:
+After creating the `<filename>.yml` configuration file, you can start the dashboard with:
 {{< highlight bash >}}
-docker-compose up
+docker-compose up -f /path/to/file/<filename>.yml
 {{</ highlight >}}

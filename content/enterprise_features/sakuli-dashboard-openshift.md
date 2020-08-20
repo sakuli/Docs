@@ -88,7 +88,7 @@ oc create secret generic sakuli-license-key \
 
 The following ready-to-use template will configure a Sakuli Dashboard and deploy it to your cluster
 Just copy and save the dashboard template below as `dashboard-template.yml`. Furthermore, add your dashboard, action, 
-cluster and cronjob configurations listed under ConfigMap as well as the image tag.
+cluster and cronjob configurations listed under ConfigMap as well as the containers image configuration.
 
 {{<highlight yml>}}
 apiVersion: v1
