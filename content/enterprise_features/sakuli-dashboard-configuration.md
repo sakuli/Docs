@@ -77,10 +77,88 @@ property. The content can be displayed in german or english using the appropriat
 
 ### ACTION_CONFIG {#action_config}
 
+With the `ACTION_CONFIG` you can configure the actions that can be triggered by users and coronjobs.
+Here is a sample `ACTION_CONFIG` for the Sakuli dashboard. 
+
+{{<highlight javascript>}}
+{
+   "actions":[
+      {
+         "actionIdentifier":"your_action_id_123",    //1
+         "action": {                                 //2
+            "metadata": {
+              "labels": {
+                "app": "sakuli"
+              },
+              "name":"sakuli"
+            },
+            "spec": {
+              "containers": [
+                {
+                  "name": "sakuli",
+                  "image": "taconsol/sakuli:latest",
+                  "env": [
+                    {
+                      "name": "VNC_VIEW_ONLY",
+                      "value": "true"
+                    },
+                    {
+                      "name": "SAKULI_ENCRYPTION_KEY",
+                      "valueFrom": {
+                        "secretKeyRef": {
+                          "name": "sakuli-encryption-key",
+                          "key": "key"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ],
+              "restartPolicy": "Never"
+            }
+         }
+      }
+   ]
+}
+{{</highlight>}}
+
+1. Action identifier that is referenced inside `DASHBOARD_CONFIG`.
+2. Kubernetes-template for setting up a pod that performs the action.
+
 ### CLUSTER_CONFIG {#cluster_config}
 
+With the `CLUSTER_CONFIG` you can enable the access to an existing cluster where you plan to execute your actions.
+{{<highlight javascript>}}
+{
+   "cluster":{                                              //1
+      "name":"sakuli/examplecluster-com:443/developer",     //2           
+      "server":"http://examplecluster.com:443"              //3
+   },
+   "user":{                                                 //4
+      "name":"developer",         
+      "token":"<login-token>"     
+   },
+   "namespace":"sakuli"                                     //5
+}
+{{</highlight>}}
+
+1. Cluster for hosting dashboard.
+2. Name of Cluster: `<namespace>/<cluster-address>:<port>/<user>`
+  Whereas in `<cluster-address>` every dot is replaced by a dash.
+3. Cluster address and port number.
+4. User to log onto cluster
+5. Namespace of action
+
 ### CRONJOB_CONFIG {#cronjob_config}
+{{<highlight javascript>}}
+{
+    "schedule": "*/20 * * * *",
+    "actionIdentifier": "your_action_id_123"
+}
+{{</highlight>}}
 
-
-
-
+Schedule the action previously described in the [DASHBOARD_CONFIG](#dashboard_config) and [ACTION_CONFIG](#action_config).
+The `actionIdentifier` has to be set accordingly.
+The scheduling determined by the `schedule` property
+has to be specified according to the time format
+that is used by the [GNU crontab format](https://www.gnu.org/software/mcron/manual/html_node/Crontab-file.html) 
