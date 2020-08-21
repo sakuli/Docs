@@ -25,8 +25,9 @@ Here you can see a Sakuli Dashboard with an exemplary configuration and informat
 
 1. When hovering over the info button you can see the configurable tool tip.
 2. This section represents the dashboards title.
-3. It is possible to choose between a row or column layout of the displays.
-4. You can display content in two different languages.
+3. You can display content in two different languages.
+4. It is possible to choose between a row or column layout of the displays.
+
  
 ### DASHBOARD_CONFIG {#dashboard_config}
 
