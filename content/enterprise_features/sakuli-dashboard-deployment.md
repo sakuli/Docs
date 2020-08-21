@@ -8,6 +8,10 @@ weight : 6
 
 **Attention:** Only Sakuli Enterprise users will be eligible to access the private Sakuli Dashboard Docker images.
 
+You will come across configurations such as the `DASHBOARD_CONFIG`, the `ACTION_CONFIG`, the `CLUSTER_CONFIG` and
+the `CRONJOB_CONFIG` which configure your Sakuli Dashboard. 
+For further information about how to properly configure the dashboard check out the [Sakuli Dashboard Configuration](/enterprise_features/sakuli-dashboard-configuration) documentation.
+
 - Deploy the Sakuli Dashboard with [Docker](#deployment-with-docker)
 - Deploy the Sakuli Dashboard with [Docker-Compose](#deployment-with-docker-compose)
 - Deploy the Sakuli Dashboard with [Kubernetes](#deployment-with-k8s)
