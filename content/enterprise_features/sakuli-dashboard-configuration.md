@@ -78,7 +78,7 @@ property. The content can be displayed in german or english using the appropriat
 
 ### ACTION_CONFIG {#action_config}
 
-With the `ACTION_CONFIG` you can configure the actions that can be triggered by users and coronjobs.
+With the `ACTION_CONFIG` you can configure the actions that can be triggered by users and cronjobs.
 Here is a sample `ACTION_CONFIG` for the Sakuli dashboard. 
 
 {{<highlight javascript>}}
@@ -124,7 +124,8 @@ Here is a sample `ACTION_CONFIG` for the Sakuli dashboard.
 {{</highlight>}}
 
 1. Action identifier that is referenced inside `DASHBOARD_CONFIG`.
-2. Kubernetes-template for setting up a pod that performs the action.
+2. Applies the Kubernetes/Openshift template on the cluster. In this case, the action represents a Kubernetes pod template
+to start a Sakuli check.
 
 ### CLUSTER_CONFIG {#cluster_config}
 
@@ -145,7 +146,7 @@ With the `CLUSTER_CONFIG` you can enable the access to an existing cluster where
 
 1. Cluster for hosting dashboard.
 2. Name of Cluster: `<namespace>/<cluster-address>:<port>/<user>`
-  Whereas in `<cluster-address>` every dot is replaced by a dash.
+  Whereas in `<cluster-address>` every dot of the URL is replaced by a dash.
 3. Cluster address and port number.
 4. User to log onto cluster
 5. Namespace of action
