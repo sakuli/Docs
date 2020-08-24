@@ -8,16 +8,16 @@ weight : 8
 
 This section contains information on how to properly configure the Sakuli dashboard.
 
-The Sakuli dashboard is configurable via environmental variables which are formatted as JSON.
+The Sakuli dashboard is configurable via environmental variables containing JSON.
 Check out the different sections to get an example template and detailed information about how to set up your 
 Sakuli dashboard.
 
-| Environment variable                   | Description                                                                       |
-|----------------------------------------|-----------------------------------------------------------------------------------|
-| [DASHBOARD_CONFIG](#dashboard_config)  | configures the displays (ordering, url, actions, etc.) shown in the dashboard     |
-| [ACTION_CONFIG](#action_config)        | available actions to perform on the cluster and corresponding display updates     |
-| [CLUSTER_CONFIG](#cluster_config)      | configures the cluster access (cluster address, access token, etc.)               |
-| [CRONJOB_CONFIG](#cronjob_config)      | configures a cronjob to schedule a specific action                                |
+| Environment variable                   | Description                                                                                  |
+|----------------------------------------|----------------------------------------------------------------------------------------------|
+| [DASHBOARD_CONFIG](#dashboard_config)  | configures the displays (ordering, url, actions, etc.) shown in the dashboard                |
+| [ACTION_CONFIG](#action_config)        | (optional) available actions to perform on the cluster and corresponding display updates     |
+| [CLUSTER_CONFIG](#cluster_config)      | (optional) configures the cluster access (cluster address, access token, etc.)               |
+| [CRONJOB_CONFIG](#cronjob_config)      | (optional) configures a cronjob to schedule a specific action                                |
  
 Here you can see a Sakuli Dashboard with an exemplary configuration and information about the different sections below.
  
@@ -76,9 +76,9 @@ property. The content can be displayed in german or english using the appropriat
 3. The Sakuli dashboard embeds the `url` in an iFrame. 
 4. The `actionIdentifier` property is optional and references to an action defined within the [ACTION_CONFIG](#action_config).
 
-### ACTION_CONFIG {#action_config}
+### ACTION_CONFIG (optional) {#action_config}
 
-With the `ACTION_CONFIG` you can configure the actions that can be triggered by users and cronjobs.
+With the `ACTION_CONFIG` you can configure actions that can be triggered by users and cronjobs.
 Here is a sample `ACTION_CONFIG` for the Sakuli dashboard. 
 
 {{<highlight javascript>}}
@@ -127,7 +127,9 @@ Here is a sample `ACTION_CONFIG` for the Sakuli dashboard.
 2. Applies the Kubernetes/Openshift template on the cluster. In this case, the action represents a Kubernetes pod template
 to start a Sakuli check.
 
-### CLUSTER_CONFIG {#cluster_config}
+**Important information**: In order to apply the actions to a cluster, a valid [CLUSTER_CONFIG](#cluster_config) must be provided.
+
+### CLUSTER_CONFIG (optional) {#cluster_config}
 
 With the `CLUSTER_CONFIG` you can enable the access to an existing cluster where you plan to execute your actions.
 {{<highlight javascript>}}
@@ -151,7 +153,10 @@ With the `CLUSTER_CONFIG` you can enable the access to an existing cluster where
 4. User to log onto cluster
 5. Namespace of action
 
-### CRONJOB_CONFIG {#cronjob_config}
+**Important information**: A valid [CLUSTER_CONFIG](#cluster_config) is required, as soon as you want to apply actions using 
+[ACTION_CONFIG](#action_config), [DASHBOARD_CONFIG](#dashboard_config) and/or [CRONJOB_CONFIG](#cronjob_config) to a cluster.
+
+### CRONJOB_CONFIG (optional) {#cronjob_config}
 {{<highlight javascript>}}
 {
     "schedule": "*/20 * * * *",
@@ -164,3 +169,5 @@ The `actionIdentifier` has to be set accordingly.
 The scheduling determined by the `schedule` property
 has to be specified according to the time format
 that is used by the [GNU crontab format](https://www.gnu.org/software/mcron/manual/html_node/Crontab-file.html) 
+
+**Important information**: In order to apply scheduled actions to a cluster, a valid [CLUSTER_CONFIG](#cluster_config) must be provided.
