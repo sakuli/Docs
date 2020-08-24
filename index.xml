@@ -264,6 +264,16 @@ Open an application To open an application, you enter the path to the applicatio
     </item>
     
     <item>
+      <title>Sakuli Dashboard Deplyoment</title>
+      <link>/docs/enterprise_features/sakuli-dashboard-deployment/</link>
+      <pubDate>Thu, 12 Sep 2019 14:16:46 +0200</pubDate>
+      
+      <guid>/docs/enterprise_features/sakuli-dashboard-deployment/</guid>
+      <description>Sakuli Dashboard Deployment Attention: Only Sakuli Enterprise users will be eligible to access the private Sakuli Dashboard Docker images.
+ Deploy the Sakuli Dashboard with Docker Deploy the Sakuli Dashboard with Docker-Compose Deploy the Sakuli Dashboard with Kubernetes Deploy the Sakuli Dashboard with Openshift  Sakuli Dashboard with Docker Sakuli Dashboard releases are versioned following the semantic versioning scheme. Images for stable releases are tagged accordingly. Tech-previews of upcoming stable releases are available via the latest tag.</description>
+    </item>
+    
+    <item>
       <title>Webtests</title>
       <link>/docs/writing_tests/webtests/</link>
       <pubDate>Thu, 12 Sep 2019 13:16:37 +0200</pubDate>
