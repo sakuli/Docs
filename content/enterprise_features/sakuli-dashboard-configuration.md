@@ -72,7 +72,7 @@ Here is a sample `DASHBOARD_CONFIG` for the Sakuli dashboard.
 1. The `index` defines the order for the displays on the Sakuli dashboard. 
 2. Separated by language, the optional `messages` property specifies the title of a display using the `description` property and tool tip using the `infoText`
 property. The content can be displayed in German or English.
-3. The Sakuli dashboard embeds the `url` in an iFrame. 
+3. The `url` property embeds the corresponding website in the iFrame of the display. 
 4. The `actionIdentifier` property is optional and references to an action defined within the [ACTION_CONFIG](#action_config).
 
 ### ACTION_CONFIG {#action_config}
@@ -126,7 +126,8 @@ The `ACTION_CONFIG` configures the actions triggered by users or cronjobs.
 
 ### CLUSTER_CONFIG {#cluster_config}
 
-With the `CLUSTER_CONFIG` you can enable the access to an existing cluster where you plan to execute your actions.
+The `CLUSTER_CONFIG` is required to connect to an existing cluster where you want to execute your actions.
+
 {{<highlight javascript>}}
 {
    "cluster":{                                              //1
@@ -142,8 +143,7 @@ With the `CLUSTER_CONFIG` you can enable the access to an existing cluster where
 {{</highlight>}}
 
 1. Cluster to execute actions on.
-2. Name of Cluster: `<namespace>/<cluster-address>:<port>/<user>`
-  Whereas in `<cluster-address>` every dot of the URL is replaced by a dash.
+2. Cluster name.
 3. Cluster address and port number.
 4. User to log onto cluster
 5. Namespace to execute actions in.

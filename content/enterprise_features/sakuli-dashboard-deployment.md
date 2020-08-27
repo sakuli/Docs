@@ -33,9 +33,10 @@ For further information about how to properly configure the dashboard check out 
 
 #### 1 Obtaining the image
 
-Sakuli Dashboard images are available to your licensed Docker user via Docker Hub.
-
+Sakuli Dashboard images are available to your licensed Docker user via Docker Hub. You need to login to your account before pulling the image.
 {{<highlight bash>}}
+docker login -u <docker-username>
+
 docker pull taconsol/sakuli-dashboard:<IMAGE_TAG>
 {{</highlight>}}
 
