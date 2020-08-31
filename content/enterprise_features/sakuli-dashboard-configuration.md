@@ -124,7 +124,7 @@ The `ACTION_CONFIG` configures the actions triggered by users or cronjobs.
 1. Action identifier that is referenced inside `DASHBOARD_CONFIG` or `CRONJOB_CONFIG`.
 2. Kubernetes/Openshift pod template to be applied on the cluster. Currently only Pod configurations are supported.
 
-**Important information**: In order to apply the actions to a cluster, a valid [CLUSTER_CONFIG](#cluster_config) must be provided.
+**Important information**: In order to apply actions to a cluster, a valid [CLUSTER_CONFIG](#cluster_config) must be provided.
 
 ### CLUSTER_CONFIG (optional) {#cluster_config}
 
