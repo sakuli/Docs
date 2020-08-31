@@ -167,4 +167,4 @@ The scheduling determined by the `schedule` property
 has to be specified according to the time format
 that is used by the [GNU crontab format](https://www.gnu.org/software/mcron/manual/html_node/Crontab-file.html) 
 
-**Important information**: In order to apply scheduled actions to a cluster, a valid [CLUSTER_CONFIG](#cluster_config) must be provided.
+**Important information**: In order to apply scheduled actions to a cluster, a valid [ACTION_CONFIG](#action_config) and [CLUSTER_CONFIG](#cluster_config) must be provided.
