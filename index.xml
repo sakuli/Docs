@@ -264,13 +264,13 @@ Open an application To open an application, you enter the path to the applicatio
     </item>
     
     <item>
-      <title>Sakuli Dashboard Deplyoment</title>
+      <title>Sakuli Dashboard</title>
       <link>/docs/enterprise_features/sakuli-dashboard-deployment/</link>
       <pubDate>Thu, 12 Sep 2019 14:16:46 +0200</pubDate>
       
       <guid>/docs/enterprise_features/sakuli-dashboard-deployment/</guid>
-      <description>Sakuli Dashboard Deployment Attention: Only Sakuli Enterprise users will be eligible to access the private Sakuli Dashboard Docker images.
- Deploy the Sakuli Dashboard with Docker Deploy the Sakuli Dashboard with Docker-Compose Deploy the Sakuli Dashboard with Kubernetes Deploy the Sakuli Dashboard with Openshift  Sakuli Dashboard with Docker Sakuli Dashboard releases are versioned following the semantic versioning scheme. Images for stable releases are tagged accordingly. Tech-previews of upcoming stable releases are available via the latest tag.</description>
+      <description>Sakuli Dashboard The Sakuli Dashboard streamlines your e2e application monitoring with Sakuli. It helps you start your Sakuli test automatically with a cronjob to monitor your application continuously or trigger it manually with a button. While watching a live video feed of your Sakuli check, you can track the monitoring metrics of your application by embedding your monitoring graphs into the Sakuli Dashboard.
+How to get the Sakuli Dashboard Attention: Only Sakuli Enterprise users will be eligible to access the private Sakuli Dashboard Docker images.</description>
     </item>
     
     <item>
@@ -303,6 +303,17 @@ Typescript This step is optional but we recommend using typescript.</description
       <guid>/docs/writing_tests/migration-sakuli-1/</guid>
       <description>How to Migrate from Sakuli 1 With Sakuli v2+ we changed a lot under the hood and completely replaced the technology-stack. This resulted in a more flexible and future-ready architecture while preserving a maximum of backward compatibility. Nearly all functions and classes from Sakuli v1 are available in Sakuli v2+. They are provided by the @sakuli/legacy package.
 Async / Await You might have wondered where the await keyword came from when you saw the Sakuli v2+ code.</description>
+    </item>
+    
+    <item>
+      <title>Sakuli Dashboard Configuration</title>
+      <link>/docs/enterprise_features/sakuli-dashboard-configuration/</link>
+      <pubDate>Thu, 12 Sep 2019 14:16:46 +0200</pubDate>
+      
+      <guid>/docs/enterprise_features/sakuli-dashboard-configuration/</guid>
+      <description>Sakuli Dashboard Configuration This section contains information on how to configure the Sakuli dashboard.
+The Sakuli dashboard is configurable via environmental variables containing JSON documents. Check out the different sections to get example templates and detailed information about how to set up your Sakuli dashboard.
+   Environment variable Description     DASHBOARD_CONFIG Configures the displays (ordering, url, action buttons, etc.) shown in the dashboard   ACTION_CONFIG Available actions to perform on the cluster and corresponding display updates   CLUSTER_CONFIG Configures the cluster access (cluster address, access token, etc.</description>
     </item>
     
   </channel>

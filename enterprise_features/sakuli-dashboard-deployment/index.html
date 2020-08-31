@@ -557,9 +557,28 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/sakuli-dashboard-deployment/" title="Sakuli Dashboard Deplyoment" class="dd-item active">
+      <li data-nav-id="/docs/enterprise_features/sakuli-dashboard-deployment/" title="Sakuli Dashboard" class="dd-item active">
         <a href="/docs/enterprise_features/sakuli-dashboard-deployment/">
-        Sakuli Dashboard Deplyoment
+        Sakuli Dashboard
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/docs/enterprise_features/sakuli-dashboard-configuration/" title="Sakuli Dashboard Configuration" class="dd-item ">
+        <a href="/docs/enterprise_features/sakuli-dashboard-configuration/">
+        Sakuli Dashboard Configuration
         <i class="fas fa-check read-icon"></i>
         </a>
     </li>
@@ -927,7 +946,7 @@
             
           
           
-            <a href='/docs/'></a> > <a href='/docs/enterprise_features/'>Enterprise Features</a> > Sakuli Dashboard Deplyoment
+            <a href='/docs/'></a> > <a href='/docs/enterprise_features/'>Enterprise Features</a> > Sakuli Dashboard
           
         
           
@@ -942,25 +961,12 @@
     <div class="wrapper">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#deployment-with-docker">Sakuli Dashboard with Docker</a>
+    <li><a href="#how-to-get-the-sakuli-dashboard">How to get the Sakuli Dashboard</a>
       <ul>
-        <li><a href="#1-obtaining-the-image">1 Obtaining the image</a></li>
-        <li><a href="#2-running-the-sakuli-dashboard">2 Running the Sakuli dashboard</a></li>
-      </ul>
-    </li>
-    <li><a href="#deployment-with-docker-compose">Sakuli Dashboard with Docker-Compose</a></li>
-    <li><a href="#deployment-with-k8s">Sakuli Dashboard on Kubernetes</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#k8s-cli">Set up the Sakuli Dashboard manually</a></li>
-        <li><a href="#k8s-dashboard-template">Set up Sakuli Dashboard using a Template</a></li>
-      </ul>
-    </li>
-    <li><a href="#deployment-with-openshift">Sakuli Dashboard on Openshift</a>
-      <ul>
-        <li><a href="#prerequisites-1">Prerequisites</a></li>
-        <li><a href="#oc-cli">Set up the Sakuli Dashboard manually via CLI</a></li>
-        <li><a href="#oc-dashboard-template">Set up the Sakuli Dashboard using a ready to use template</a></li>
+        <li><a href="#deployment-with-docker">Sakuli Dashboard with Docker</a></li>
+        <li><a href="#deployment-with-docker-compose">Sakuli Dashboard with Docker-Compose</a></li>
+        <li><a href="#deployment-with-k8s">Sakuli Dashboard on Kubernetes</a></li>
+        <li><a href="#deployment-with-openshift">Sakuli Dashboard on Openshift</a></li>
       </ul>
     </li>
   </ul>
@@ -985,23 +991,35 @@
 
 
 
-<h1 id="sakuli-dashboard-deployment">Sakuli Dashboard Deployment</h1>
-<p><strong>Attention:</strong> Only Sakuli Enterprise users will be eligible to access the private Sakuli Dashboard Docker images.</p>
+<h1 id="sakuli-dashboard">Sakuli Dashboard</h1>
+<p>The Sakuli Dashboard streamlines your e2e application monitoring with Sakuli. It helps you start your Sakuli test
+automatically with a cronjob to monitor your application continuously or trigger it manually with a button.
+While watching a live video feed of your Sakuli check, you can track the monitoring metrics of your application by
+embedding your monitoring graphs into the Sakuli Dashboard.</p>
+<h2 id="how-to-get-the-sakuli-dashboard">How to get the Sakuli Dashboard</h2>
+<p><strong>Attention:</strong> Only Sakuli Enterprise users will be eligible to access the private Sakuli Dashboard Docker images.
+Sakuli Dashboard releases are versioned following the <a href="https://semver.org/">semantic versioning scheme</a>.
+Images for stable releases are tagged accordingly.
+Tech-previews of upcoming stable releases are available via the <code>latest</code> tag.<br>
+It is <em>highly</em> discouraged to run tech-previews in production as there is no guarantee of stability.</p>
 <ul>
 <li>Deploy the Sakuli Dashboard with <a href="#deployment-with-docker">Docker</a></li>
 <li>Deploy the Sakuli Dashboard with <a href="#deployment-with-docker-compose">Docker-Compose</a></li>
 <li>Deploy the Sakuli Dashboard with <a href="#deployment-with-k8s">Kubernetes</a></li>
 <li>Deploy the Sakuli Dashboard with <a href="#deployment-with-openshift">Openshift</a></li>
 </ul>
-<h2 id="deployment-with-docker">Sakuli Dashboard with Docker</h2>
-<p>Sakuli Dashboard releases are versioned following the <a href="https://semver.org/">semantic versioning scheme</a>.
-Images for stable releases are tagged accordingly.
-Tech-previews of upcoming stable releases are available via the <code>latest</code> tag.</p>
-<p><strong>Attention:</strong> It is highly discouraged to run tech-previews in production as there is no guarantee of stability</p>
-<h3 id="1-obtaining-the-image">1 Obtaining the image</h3>
-<p>Sakuli Dashboard images are available to your licensed Docker user via Docker Hub.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull taconsol/sakuli-dashboard:&lt;IMAGE_TAG&gt;</code></pre></div>
-<h3 id="2-running-the-sakuli-dashboard">2 Running the Sakuli dashboard</h3>
+<blockquote>
+<p>You will come across configurations such as the <code>DASHBOARD_CONFIG</code>, the <code>ACTION_CONFIG</code>, the <code>CLUSTER_CONFIG</code> and
+the <code>CRONJOB_CONFIG</code> which configure your Sakuli Dashboard.
+For further information about how to properly configure the dashboard check out the <a href="/enterprise_features/sakuli-dashboard-configuration">Sakuli Dashboard Configuration</a> documentation.</p>
+</blockquote>
+<h3 id="deployment-with-docker">Sakuli Dashboard with Docker</h3>
+<h4 id="1-obtaining-the-image">1 Obtaining the image</h4>
+<p>Sakuli Dashboard images are available to your licensed Docker user via Docker Hub. You need to login to your account before pulling the image.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker login -u &lt;docker-username&gt;
+
+docker pull taconsol/sakuli-dashboard:&lt;IMAGE_TAG&gt;</code></pre></div></p>
+<h4 id="2-running-the-sakuli-dashboard">2 Running the Sakuli Dashboard</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span> -p 8080:8080 <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span> -e DASHBOARD_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>DASHBOARD_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
@@ -1016,7 +1034,7 @@ Tech-previews of upcoming stable releases are available via the <code>latest</co
 <li><strong>-p</strong>: Port forwarding to access the dashboard container on port 8080</li>
 <li><strong>-e</strong>: Environment variable flags which are used to provide the <code>SAKULI_LICENSE_KEY</code> and configure the dashboard</li>
 </ul>
-<h2 id="deployment-with-docker-compose">Sakuli Dashboard with Docker-Compose</h2>
+<h3 id="deployment-with-docker-compose">Sakuli Dashboard with Docker-Compose</h3>
 <p>The following template allows you to run a dashboard using <code>docker-compose</code>:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">version</span>: <span style="color:#e6db74">&#34;3&#34;</span>
 <span style="color:#66d9ef">services</span>:
@@ -1033,8 +1051,8 @@ Tech-previews of upcoming stable releases are available via the <code>latest</co
             - SAKULI_LICENSE_KEY=${SAKULI_LICENSE_KEY}</code></pre></div>
 <p>After creating the <code>&lt;filename&gt;.yml</code> configuration file, you can start the dashboard with:
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker-compose up -f /path/to/file/&lt;filename&gt;.yml</code></pre></div></p>
-<h2 id="deployment-with-k8s">Sakuli Dashboard on Kubernetes</h2>
-<h3 id="prerequisites">Prerequisites</h3>
+<h3 id="deployment-with-k8s">Sakuli Dashboard on Kubernetes</h3>
+<h4 id="prerequisites">Prerequisites</h4>
 <p>A Sakuli Dashboard setup on your Kubernetes cluster requires you to import the Sakuli Dashboard image from Docker Hub. In order to do so, please configure a secret storing your <code>&lt;docker-username&gt;</code> and <code>&lt;docker-password&gt;</code> and add it to your service account for authentication.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create secret docker-registry dockerhub-sakuli-secret <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span> --docker-server<span style="color:#f92672">=</span>docker.io <span style="color:#ae81ff">\
@@ -1048,17 +1066,13 @@ kubectl patch serviceaccount default -p <span style="color:#e6db74">&#39;{&#34;i
 <li>Set up the Sakuli Dashboard manually via <a href="#k8s-cli">CLI</a>.</li>
 <li>Set up the Sakuli Dashboard using a ready to use <a href="#k8s-dashboard-template">template</a>.</li>
 </ul>
-<h3 id="k8s-cli">Set up the Sakuli Dashboard manually</h3>
-<p>As a first step, create a deployment based on the Sakuli Dashboard image and expose the service.
-Sakuli Dashboard releases are versioned following the <a href="https://semver.org/">semantic versioning scheme</a>.
-Images for stable releases are tagged accordingly.
-Tech-previews of upcoming stable releases are available via the <code>latest</code> tag.</p>
-<p><strong>Attention:</strong> It is highly discouraged to run tech-previews in production as there is no guarantee of stability</p>
+<h4 id="k8s-cli">Set up the Sakuli Dashboard manually</h4>
+<p>As a first step, create a deployment based on the Sakuli Dashboard image and expose the service.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create deployment sakuli-dashbaord --image<span style="color:#f92672">=</span>taconsol/sakuli-dashboard:&lt;IMAGE_TAG&gt;
 
 kubectl expose deployment sakuli-dashboard --type<span style="color:#f92672">=</span>LoadBalancer --port<span style="color:#f92672">=</span><span style="color:#ae81ff">8080</span></code></pre></div>
 <p>The <code>--type=LoadBalancer</code> flag is important to make your service available outside your cluster.</p>
-<p>Now add your Sakuli dashboard configurations such as the dashboard, action, cluster and cronjob configs and your
+<p>Now add your Sakuli Dashboard configurations such as the dashboard, action, cluster and cronjob configs and your
 Sakuli license key to the environment of your deployment.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl set env deployment/sakuli-dashboard --overwrite <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span> DASHBOARD_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>DASHBOARD_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
@@ -1066,7 +1080,7 @@ Sakuli license key to the environment of your deployment.</p>
 </span><span style="color:#ae81ff"></span> CLUSTER_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>CLUSTER_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span> CRONJOB_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>CRONJOB_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span> SAKULI_LICENSE_KEY<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>SAKULI_LICENSE_KEY<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span></code></pre></div>
-<h3 id="k8s-dashboard-template">Set up Sakuli Dashboard using a Template</h3>
+<h4 id="k8s-dashboard-template">Set up Sakuli Dashboard using a Template</h4>
 <p>The Sakuli Dashboard Kubernetes template references the Sakuli license key via a secret.
 So before applying the template, please add your license key secret first.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create secret generic sakuli-license-key <span style="color:#ae81ff">\
@@ -1092,7 +1106,7 @@ cluster and cronjob configurations listed under ConfigMap as well as the image t
     <span style="color:#66d9ef">spec</span>:
       <span style="color:#66d9ef">containers</span>:
         - <span style="color:#66d9ef">name</span>: sakuli-dashboard
-          <span style="color:#75715e"># Specify the Sakuli dashboard version you want to use</span>
+          <span style="color:#75715e"># Specify the Sakuli Dashboard version you want to use</span>
           <span style="color:#66d9ef">image</span>: taconsol/sakuli-dashboard:${IMAGE_TAG}
           <span style="color:#66d9ef">imagePullPolicy</span>: Always
           <span style="color:#66d9ef">env</span>:
@@ -1150,9 +1164,10 @@ cluster and cronjob configurations listed under ConfigMap as well as the image t
 </span><span style="color:#e6db74">    Cronjob configuration</span></code></pre></div>
 <p>To create the deployment in your Kubernetes cluster, just use the following command.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl apply -f dashboard-template.yml</code></pre></div>
-<h2 id="deployment-with-openshift">Sakuli Dashboard on Openshift</h2>
-<h3 id="prerequisites-1">Prerequisites</h3>
-<p>A Sakuli Dashboard setup on your OpenShift cluster requires you to import the Sakuli Dashboard image from Docker Hub. In order to do so, please configure a secret storing your <code>&lt;docker-username&gt;</code> and <code>&lt;docker-password&gt;</code> and add it to your service account for authentication.</p>
+<h3 id="deployment-with-openshift">Sakuli Dashboard on Openshift</h3>
+<h4 id="prerequisites-1">Prerequisites</h4>
+<p>A Sakuli Dashboard setup on your OpenShift cluster requires you to import the Sakuli Dashboard image from Docker Hub.
+In order to do so, please configure a secret storing your <code>&lt;docker-username&gt;</code> and <code>&lt;docker-password&gt;</code> and add it to your service account for authentication.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc create secret docker-registry dockerhub-sakuli-secret <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span> --docker-server<span style="color:#f92672">=</span>docker.io <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span> --docker-username<span style="color:#f92672">=</span>&lt;docker-username&gt; <span style="color:#ae81ff">\
@@ -1180,7 +1195,7 @@ check for updates automatically.</em></p>
 <li>Set up the Sakuli Dashboard manually via <a href="#oc-cli">CLI</a>.</li>
 <li>Set up the Sakuli Dashboard using a ready to use <a href="#oc-dashboard-template">template</a>.</li>
 </ul>
-<h3 id="oc-cli">Set up the Sakuli Dashboard manually via CLI</h3>
+<h4 id="oc-cli">Set up the Sakuli Dashboard manually via CLI</h4>
 <p>An easy way to set up a Sakuli Dashboard is by using <code>oc new-app</code>. Required environment variables can be passed along via the <code>-e</code> parameter.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc new-app sakuli-dashboard <span style="color:#ae81ff">\ </span>
  -e DASHBOARD_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>DASHBOARD_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>  <span style="color:#ae81ff">\
@@ -1190,7 +1205,7 @@ check for updates automatically.</em></p>
 </span><span style="color:#ae81ff"></span> -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>SAKULI_LICENSE_KEY<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span></code></pre></div>
 <p>Once completed, the service has to be exposed to make available from outside the cluster.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc expose svc/sakuli-dashboard</code></pre></div>
-<h3 id="oc-dashboard-template">Set up the Sakuli Dashboard using a ready to use template</h3>
+<h4 id="oc-dashboard-template">Set up the Sakuli Dashboard using a ready to use template</h4>
 <p>The Sakuli Dashboard OpenShift template references the Sakuli license key via a secret.
 So before applying the template, please add your license key secret first.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc create secret generic sakuli-license-key <span style="color:#ae81ff">\
@@ -1696,9 +1711,6 @@ Whereas <code>&lt;filename&gt;</code> is the name of a file containing the templ
             
         
                     
-            
-        
-                    
                         
             
             
@@ -1706,6 +1718,25 @@ Whereas <code>&lt;filename&gt;</code> is the name of a file containing the templ
                     
                         
                         
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
@@ -1906,7 +1937,7 @@ Whereas <code>&lt;filename&gt;</code> is the name of a file containing the templ
 			<a class="nav nav-prev" href="/docs/enterprise_features/s2i/" title="S2I Image"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/docs/cli/" title="CLI" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/docs/enterprise_features/sakuli-dashboard-configuration/" title="Sakuli Dashboard Configuration" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
