@@ -12,12 +12,12 @@ The Sakuli dashboard is configurable via environmental variables containing JSON
 Check out the different sections to get example templates and detailed information about how to set up your 
 Sakuli dashboard.
 
-| Environment variable                   | Description                                                                       |
-|----------------------------------------|-----------------------------------------------------------------------------------|
-| [DASHBOARD_CONFIG](#dashboard_config)  | Configures the displays (ordering, url, action buttons, etc.) shown in the dashboard     |
-| [ACTION_CONFIG](#action_config)        | Available actions to perform on the cluster and corresponding display updates     |
-| [CLUSTER_CONFIG](#cluster_config)      | Configures the cluster access (cluster address, access token, etc.)               |
-| [CRONJOB_CONFIG](#cronjob_config)      | Configures a cronjob to schedule a specific action                                |
+| Environment variable                   | Description                                                                                  |
+|----------------------------------------|----------------------------------------------------------------------------------------------|
+| [DASHBOARD_CONFIG](#dashboard_config)  | Configures the displays (ordering, url, action buttons, etc.) shown in the dashboard         |
+| [ACTION_CONFIG](#action_config)        | (optional) Available actions to perform on the cluster and corresponding display updates     |
+| [CLUSTER_CONFIG](#cluster_config)      | (optional) Configures the cluster access (cluster address, access token, etc.)               |
+| [CRONJOB_CONFIG](#cronjob_config)      | (optional) Configures a cronjob to schedule a specific action                                |
  
 The following picture shows a Sakuli Dashboard with an exemplary configuration and information about the different sections below.
  
@@ -75,7 +75,7 @@ property. The content can be displayed in German or English.
 3. The `url` property embeds the corresponding website in the iFrame of the display. 
 4. The `actionIdentifier` property is optional and references to an action defined within the [ACTION_CONFIG](#action_config).
 
-### ACTION_CONFIG {#action_config}
+### ACTION_CONFIG (optional) {#action_config}
 
 The `ACTION_CONFIG` configures the actions triggered by users or cronjobs.
 
@@ -124,7 +124,9 @@ The `ACTION_CONFIG` configures the actions triggered by users or cronjobs.
 1. Action identifier that is referenced inside `DASHBOARD_CONFIG` or `CRONJOB_CONFIG`.
 2. Kubernetes/Openshift pod template to be applied on the cluster. Currently only Pod configurations are supported.
 
-### CLUSTER_CONFIG {#cluster_config}
+**Important information**: In order to apply actions to a cluster, a valid [CLUSTER_CONFIG](#cluster_config) must be provided.
+
+### CLUSTER_CONFIG (optional) {#cluster_config}
 
 The `CLUSTER_CONFIG` is required to connect to an existing cluster where you want to execute your actions.
 
@@ -148,7 +150,10 @@ The `CLUSTER_CONFIG` is required to connect to an existing cluster where you wan
 4. User to log onto cluster
 5. Namespace to execute actions in.
 
-### CRONJOB_CONFIG {#cronjob_config}
+**Important information**: A valid [CLUSTER_CONFIG](#cluster_config) is required, as soon as you want to apply actions using 
+[ACTION_CONFIG](#action_config) and/or [CRONJOB_CONFIG](#cronjob_config) to a cluster.
+
+### CRONJOB_CONFIG (optional) {#cronjob_config}
 {{<highlight javascript>}}
 {
     "schedule": "*/20 * * * *",
@@ -161,3 +166,5 @@ The `actionIdentifier` has to be set accordingly.
 The scheduling determined by the `schedule` property
 has to be specified according to the time format
 that is used by the [GNU crontab format](https://www.gnu.org/software/mcron/manual/html_node/Crontab-file.html) 
+
+**Important information**: In order to apply scheduled actions to a cluster, a valid [ACTION_CONFIG](#action_config) and [CLUSTER_CONFIG](#cluster_config) must be provided.
