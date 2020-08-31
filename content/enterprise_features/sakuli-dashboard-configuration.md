@@ -151,7 +151,7 @@ The `CLUSTER_CONFIG` is required to connect to an existing cluster where you wan
 5. Namespace to execute actions in.
 
 **Important information**: A valid [CLUSTER_CONFIG](#cluster_config) is required, as soon as you want to apply actions using 
-[ACTION_CONFIG](#action_config), [DASHBOARD_CONFIG](#dashboard_config) and/or [CRONJOB_CONFIG](#cronjob_config) to a cluster.
+[ACTION_CONFIG](#action_config) and/or [CRONJOB_CONFIG](#cronjob_config) to a cluster.
 
 ### CRONJOB_CONFIG (optional) {#cronjob_config}
 {{<highlight javascript>}}
