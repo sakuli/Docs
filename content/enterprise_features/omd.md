@@ -12,21 +12,6 @@ Add the forwarder using the [assistant](/docs/enterprise_features/#assisted-setu
 npm i @sakuli/forwarder-gearman
 {{</highlight>}}
 
-To register the forwarder into your project you have to edit the `package.json` file and add the preset to the Sakuli configuration key
-(with our tech preview this is no longer necessary):
-
-{{<highlight json>}}
-{
-    "sakuli": {
-        "presetProvider": [
-            "@sakuli/legacy",
-            "@sakuli/forwarder-gearman"
-        ]
-    }
-}
-{{</highlight>}}
-
-
 Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the [enterprise section](/docs/enterprise#using-licences-information).
 
 
