@@ -235,7 +235,7 @@
 	"title": "Change notes",
 	"tags": [],
 	"description": "",
-	"content": "change notes -v2.3.0 "
+	"content": "change notes -v2.3.0 -v2.4.0 "
 },
 {
 	"uri": "/docs/writing_tests/tutorial/",
