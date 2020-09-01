@@ -95,7 +95,7 @@ How to get the Sakuli Dashboard Attention: Only Sakuli Enterprise users will be 
       <guid>/docs/enterprise_features/sakuli-dashboard-configuration/</guid>
       <description>Sakuli Dashboard Configuration This section contains information on how to configure the Sakuli dashboard.
 The Sakuli dashboard is configurable via environmental variables containing JSON documents. Check out the different sections to get example templates and detailed information about how to set up your Sakuli dashboard.
-   Environment variable Description     DASHBOARD_CONFIG Configures the displays (ordering, url, action buttons, etc.) shown in the dashboard   ACTION_CONFIG Available actions to perform on the cluster and corresponding display updates   CLUSTER_CONFIG Configures the cluster access (cluster address, access token, etc.</description>
+   Environment variable Description     DASHBOARD_CONFIG Configures the displays (ordering, url, action buttons, etc.) shown in the dashboard   ACTION_CONFIG (optional) Available actions to perform on the cluster and corresponding display updates   CLUSTER_CONFIG (optional) Configures the cluster access (cluster address, access token, etc.</description>
     </item>
     
   </channel>

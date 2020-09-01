@@ -54,7 +54,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs/getting-started/installation/">
+  <body class="" data-url="/docs/change_notes/2.4.0/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -97,7 +97,7 @@
   
     
     <li data-nav-id="/docs/getting-started/" title="Getting Started" class="dd-item
-        parent
+        
         
         
         ">
@@ -161,7 +161,7 @@
  
   
     
-      <li data-nav-id="/docs/getting-started/installation/" title="Installation" class="dd-item active">
+      <li data-nav-id="/docs/getting-started/installation/" title="Installation" class="dd-item ">
         <a href="/docs/getting-started/installation/">
         Installation
         <i class="fas fa-check read-icon"></i>
@@ -813,7 +813,7 @@
   
     
     <li data-nav-id="/docs/change_notes/" title="Change notes" class="dd-item
-        
+        parent
         
         
         ">
@@ -839,7 +839,7 @@
  
   
     
-      <li data-nav-id="/docs/change_notes/2.4.0/" title="V2.4.0" class="dd-item ">
+      <li data-nav-id="/docs/change_notes/2.4.0/" title="V2.4.0" class="dd-item active">
         <a href="/docs/change_notes/2.4.0/">
         V2.4.0
         <i class="fas fa-check read-icon"></i>
@@ -965,7 +965,7 @@
             
           
           
-            <a href='/docs/'></a> > <a href='/docs/getting-started/'>Getting Started</a> > Installation
+            <a href='/docs/'></a> > <a href='/docs/change_notes/'>Change notes</a> > V2.4.0
           
         
           
@@ -980,15 +980,26 @@
     <div class="wrapper">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#webdriver-installation">WebDriver Installation</a></li>
-    <li><a href="#sakuli-installation">Sakuli Installation</a>
+    <li><a href="#sakuli-core">Sakuli Core</a>
       <ul>
-        <li><a href="#3rd-party-dependencies">3rd-party dependencies</a></li>
-        <li><a href="#windows">Windows</a></li>
-        <li><a href="#macos">macOS</a></li>
-        <li><a href="#linux">Linux</a></li>
-        <li><a href="#sakuli-installation-1">Sakuli Installation</a></li>
-        <li><a href="#reference">Reference</a></li>
+        <li><a href="#preset-autodiscovery">Preset Autodiscovery</a></li>
+        <li><a href="#scroll-behaviour">Scroll Behaviour</a></li>
+        <li><a href="#configurable-screenshot-folder-structure">Configurable Screenshot Folder Structure</a></li>
+        <li><a href="#testcase-boilerplate">Testcase Boilerplate</a></li>
+        <li><a href="#native-highlight">Native Highlight</a></li>
+        <li><a href="#retrieve-active-window-region">Retrieve Active Window Region</a></li>
+        <li><a href="#configurable-mouse-speed">Configurable Mouse Speed</a></li>
+      </ul>
+    </li>
+    <li><a href="#enterprise-packages">Enterprise packages</a>
+      <ul>
+        <li><a href="#forwarder-configuration">Forwarder Configuration</a></li>
+        <li><a href="#prometheus-forwarder-error-state">Prometheus Forwarder Error State</a></li>
+      </ul>
+    </li>
+    <li><a href="#sakuli-container">Sakuli Container</a>
+      <ul>
+        <li><a href="#git-support">Git Support</a></li>
       </ul>
     </li>
   </ul>
@@ -1013,70 +1024,47 @@
 
 
 
-<h1 id="installation-process">Installation Process</h1>
-<p>The following steps are required to set up Sakuli to work with multiple browsers.
-Once the initial setup is done, we will dive right into our first test.</p>
-<h2 id="webdriver-installation">WebDriver Installation</h2>
-<p>Sakuli utilizes the <!-- raw HTML omitted -->WebDriver protocol<!-- raw HTML omitted --> to remote control browsers during test execution.
-In addition to the browser itself, you need to install the corresponding WebDriver as well.
-Several wrapper packages can be found on <!-- raw HTML omitted -->npmjs.com<!-- raw HTML omitted -->, which allow the installation of the required binaries via <code>npm</code>.</p>
-<p>Since some users encountered issues with geckodriver on Firefox, we recommend using chromedriver for now. We are working on fixes and workarounds for geckodriver.</p>
-<p>Therefore, Chrome is the preferred browser for running Sakuli tests at the moment. A suitable WebDriver can be installed via:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm i chromedriver</code></pre></div>
-<p>or</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yarn add chromedriver</code></pre></div>
-<p>There are also WebDriver packages for <!-- raw HTML omitted -->IE<!-- raw HTML omitted --> and <!-- raw HTML omitted -->Edge<!-- raw HTML omitted -->.
-macOS already ships a WebDriver for Safari, so there is no need to install an additional package.</p>
-<p>Attention: Be careful to install the correct version of a WebDriver package according to the installed browser version. To install e.g. ChromeDriver for Chrome 73 you have to install:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm i chromedriver@73.0.0</code></pre></div>
-<p>Sakuli is not limited to work with only a single browser.
-When installing multiple WebDriver packages, you can easily switch between different browsers.</p>
-<p>Regarding Windows Users: You will have to manually add the respective WebDriver location to your system <code>PATH</code>, otherwise Sakuli will not be able to find and use it. Once you installed a WebDriver package via NPM, you will be prompted with its installation path, so you can easily add it to your <code>%PATH%</code> variable.</p>
-<p>Sample path:
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">%USERPROFILE%<span style="color:#ae81ff">\\</span>AppData<span style="color:#ae81ff">\\</span>Roaming<span style="color:#ae81ff">\\</span>npm<span style="color:#ae81ff">\\</span>node_modules<span style="color:#ae81ff">\\</span>chromedriver<span style="color:#ae81ff">\\</span>lib<span style="color:#ae81ff">\\</span>chromedriver<span style="color:#ae81ff">\\</span></code></pre></div></p>
-<h2 id="sakuli-installation">Sakuli Installation</h2>
-<h3 id="3rd-party-dependencies">3rd-party dependencies</h3>
-<p>One of Sakuli&rsquo;s core components, <!-- raw HTML omitted -->nut.js<!-- raw HTML omitted -->, requires OpenCV.
-Sakuli ships a pre-built version of OpenCV. Nonetheless, the installation still requires some 3rd-party dependencies.</p>
-<h3 id="windows">Windows</h3>
-<p><strong>Note:</strong>
-We recommend using <strong>PowerShell</strong> during the installation.
-When using the standard terminal CMD, the installation process might lead to failures due to different behaviour.</p>
-<p>In order to install and run Sakuli on Windows you need two additional tools: <!-- raw HTML omitted -->Python 2<!-- raw HTML omitted --> and the <!-- raw HTML omitted -->Windows Build Tools<!-- raw HTML omitted -->.</p>
-<p>To avoid eventual installation problems for Windows users we recommend to first install Python 2 on your system separately by downloading the required version from the official web page. Afterwards you can install the Windows Build Tools manually or via NPM using:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm install --global windows-build-tools</code></pre></div>
-<p>or</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yarn global add windows-build-tools</code></pre></div>
-<p>In case of errors while installing the Windows Build Tools package via <code>npm</code>, please make sure that the PowerShell is available on your system <code>PATH</code>. Additionally, you should install the Windows Build Tools by using the PowerShell in administrative mode.
-See <!-- raw HTML omitted -->this issue<!-- raw HTML omitted -->.</p>
-<h3 id="macos">macOS</h3>
-<p>On macOS, Xcode command line tools are required.
-You can install them by running:
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">xcode-select --install</code></pre></div></p>
-<h3 id="linux">Linux</h3>
-<p>Depending on your distribution, Linux setups may differ.</p>
-<p>In general, Sakuli requires:</p>
-<ul>
-<li>Python 2</li>
-<li>g++</li>
-<li>make</li>
-<li>libXtst</li>
-<li>libPng</li>
-</ul>
-<p>Installation on *buntu:
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt-get install build-essential python libxtst-dev libpng++-dev</code></pre></div></p>
-<p>The installation process is an open issue and will be improved in the near future, so using Sakuli will become even more enjoyable!</p>
-<h3 id="sakuli-installation-1">Sakuli Installation</h3>
-<p>We will now install Sakuli in our newly created project by running:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm i @sakuli/cli</code></pre></div>
-<p>or</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yarn add @sakuli/cli</code></pre></div>
-<p>This will install Sakuli and its required dependencies.</p>
-<h3 id="reference">Reference</h3>
-<ul>
-<li><!-- raw HTML omitted -->opencv4nodejs<!-- raw HTML omitted --></li>
-<li><!-- raw HTML omitted -->robotjs<!-- raw HTML omitted --></li>
-</ul>
+<h1 id="v240">V2.4.0</h1>
+<p>Sakuli V2.4.0 brings new features but also a lot of improvements and bug fixes for enhanced user experience.
+Let&rsquo;s have a look at the major changes for this release.</p>
+<h2 id="sakuli-core">Sakuli Core</h2>
+<p>Besides our brand-new preset autodiscovery a lot of improvements went into this release.
+Enhanced scroll behaviour, new config options and improvements for native interactions are just some of them.
+A detailed list of all applied enhancement and fixes can be found in the
+<a href="https://github.com/sakuli/sakuli/blob/develop/CHANGELOG.md">CHANGELOG.md</a>.</p>
+<h3 id="preset-autodiscovery">Preset Autodiscovery</h3>
+<p>In Sakuli 2.4.0 we got rid of tedious manual configuration of presets.
+Instead of listing desired presets in a dedicated <code>&quot;sakuli&quot;</code> section in your <code>package.json</code> file, it is now sufficient to <code>npm install</code> your desired presets.
+Sakuli will automatically detect and enable installed presets for you, no more configuration required!</p>
+<h3 id="scroll-behaviour">Scroll Behaviour</h3>
+<p>For every interaction with webelements (clicking, highlighting, etc.), Sakuli makes sure the respective element is scrolled into the browser&rsquo;s viewport.
+In 2.4.0 we enhanced this mechanism to stabilize test cases and behave even more like a real user.
+<strong>Attention:</strong> Please note that this new behaviour might lead to a slight increase in test runtime.</p>
+<h3 id="configurable-screenshot-folder-structure">Configurable Screenshot Folder Structure</h3>
+<p>In Sakuli 2.x we changed the default folder structure of error screenshots so they are stored in per-testcase subfolders.
+2.4.0 adds a property to re-enable Sakuli 1.x storage layout using a single folder.</p>
+<h3 id="testcase-boilerplate">Testcase Boilerplate</h3>
+<p>New projects bootstrapped via <code>sakuli create project ...</code> now come with a default testcase boilerplate to get you started even faster.</p>
+<h3 id="native-highlight">Native Highlight</h3>
+<p>From 2.4.0 on, it is possible to highlight regions detected via image matching like <code>screen.find(&quot;image.png).highlight()</code>.</p>
+<h3 id="retrieve-active-window-region">Retrieve Active Window Region</h3>
+<p>In some cases it can be beneficial to limit search input to the current window.
+Sakuli is now able to properly detect the active window region for further image recognition requests, using <code>environment.getRegionFromFocusedWinow()</code>.</p>
+<h3 id="configurable-mouse-speed">Configurable Mouse Speed</h3>
+<p>Native mouse movement used to increase overall execution time of testcases due to it&rsquo;s rather slow default speed.
+Sakuli 2.4.0 makes mouse speed configurable, so it&rsquo;s possible to save some time here!</p>
+<h2 id="enterprise-packages">Enterprise packages</h2>
+<h3 id="forwarder-configuration">Forwarder Configuration</h3>
+<p>In line with preset autodiscovery we changed the validation mechanism of forwarder properties.
+Property validation now only processes enabled presets to avoid errors with auto discovery.</p>
+<h3 id="prometheus-forwarder-error-state">Prometheus Forwarder Error State</h3>
+<p>Due to a bug previous versions of Sakuli&rsquo;s Prometheus forwarder did not properly update error states.
+This messes up reported results and therefor has been fixed in 2.4.0.</p>
+<h2 id="sakuli-container">Sakuli Container</h2>
+<h3 id="git-support">Git Support</h3>
+<p>Sakuli Containers now support Git repositories.
+It is now possible to automatically clone a repository on container start, which makes Sakuli containers even more flexible.
+Simply pass your repo URL via environment variable to have you repo&rsquo;s content availble at runtime.</p>
 
 
 <footer class=" footline" >
@@ -1115,20 +1103,6 @@ You can install them by running:
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
                         
                         
                     
@@ -1139,125 +1113,6 @@ You can install them by running:
                     
                     
 
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
                     
                         
             
@@ -1354,38 +1209,6 @@ You can install them by running:
                     
                     
 
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
                     
                         
             
@@ -1675,6 +1498,22 @@ You can install them by running:
                     
 
                     
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
                         
             
             
@@ -1695,6 +1534,155 @@ You can install them by running:
             
             
                 
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1719,10 +1707,10 @@ You can install them by running:
 	 
 	 
 		
-			<a class="nav nav-prev" href="/docs/getting-started/initialization/" title="Initialization"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/docs/change_notes/" title="Change notes"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/docs/getting-started/firsttest/" title="First Setup" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/docs/change_notes/2.3.0/" title="V2.3.0" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

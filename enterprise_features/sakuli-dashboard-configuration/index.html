@@ -839,6 +839,25 @@
  
   
     
+      <li data-nav-id="/docs/change_notes/2.4.0/" title="V2.4.0" class="dd-item ">
+        <a href="/docs/change_notes/2.4.0/">
+        V2.4.0
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
       <li data-nav-id="/docs/change_notes/2.3.0/" title="V2.3.0" class="dd-item ">
         <a href="/docs/change_notes/2.3.0/">
         V2.3.0
@@ -964,9 +983,9 @@
     <li>
       <ul>
         <li><a href="#dashboard_config">DASHBOARD_CONFIG</a></li>
-        <li><a href="#action_config">ACTION_CONFIG</a></li>
-        <li><a href="#cluster_config">CLUSTER_CONFIG</a></li>
-        <li><a href="#cronjob_config">CRONJOB_CONFIG</a></li>
+        <li><a href="#action_config">ACTION_CONFIG (optional)</a></li>
+        <li><a href="#cluster_config">CLUSTER_CONFIG (optional)</a></li>
+        <li><a href="#cronjob_config">CRONJOB_CONFIG (optional)</a></li>
       </ul>
     </li>
   </ul>
@@ -1010,15 +1029,15 @@ Sakuli dashboard.</p>
 </tr>
 <tr>
 <td><a href="#action_config">ACTION_CONFIG</a></td>
-<td>Available actions to perform on the cluster and corresponding display updates</td>
+<td>(optional) Available actions to perform on the cluster and corresponding display updates</td>
 </tr>
 <tr>
 <td><a href="#cluster_config">CLUSTER_CONFIG</a></td>
-<td>Configures the cluster access (cluster address, access token, etc.)</td>
+<td>(optional) Configures the cluster access (cluster address, access token, etc.)</td>
 </tr>
 <tr>
 <td><a href="#cronjob_config">CRONJOB_CONFIG</a></td>
-<td>Configures a cronjob to schedule a specific action</td>
+<td>(optional) Configures a cronjob to schedule a specific action</td>
 </tr>
 </tbody>
 </table>
@@ -1077,7 +1096,7 @@ property. The content can be displayed in German or English.</li>
 <li>The <code>url</code> property embeds the corresponding website in the iFrame of the display.</li>
 <li>The <code>actionIdentifier</code> property is optional and references to an action defined within the <a href="#action_config">ACTION_CONFIG</a>.</li>
 </ol>
-<h3 id="action_config">ACTION_CONFIG</h3>
+<h3 id="action_config">ACTION_CONFIG (optional)</h3>
 <p>The <code>ACTION_CONFIG</code> configures the actions triggered by users or cronjobs.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
    <span style="color:#e6db74">&#34;actions&#34;</span><span style="color:#f92672">:</span>[
@@ -1123,7 +1142,8 @@ property. The content can be displayed in German or English.</li>
 <li>Action identifier that is referenced inside <code>DASHBOARD_CONFIG</code> or <code>CRONJOB_CONFIG</code>.</li>
 <li>Kubernetes/Openshift pod template to be applied on the cluster. Currently only Pod configurations are supported.</li>
 </ol>
-<h3 id="cluster_config">CLUSTER_CONFIG</h3>
+<p><strong>Important information</strong>: In order to apply actions to a cluster, a valid <a href="#cluster_config">CLUSTER_CONFIG</a> must be provided.</p>
+<h3 id="cluster_config">CLUSTER_CONFIG (optional)</h3>
 <p>The <code>CLUSTER_CONFIG</code> is required to connect to an existing cluster where you want to execute your actions.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
    <span style="color:#e6db74">&#34;cluster&#34;</span><span style="color:#f92672">:</span>{                                              <span style="color:#75715e">//1
@@ -1144,7 +1164,9 @@ property. The content can be displayed in German or English.</li>
 <li>User to log onto cluster</li>
 <li>Namespace to execute actions in.</li>
 </ol>
-<h3 id="cronjob_config">CRONJOB_CONFIG</h3>
+<p><strong>Important information</strong>: A valid <a href="#cluster_config">CLUSTER_CONFIG</a> is required, as soon as you want to apply actions using
+<a href="#action_config">ACTION_CONFIG</a> and/or <a href="#cronjob_config">CRONJOB_CONFIG</a> to a cluster.</p>
+<h3 id="cronjob_config">CRONJOB_CONFIG (optional)</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
     <span style="color:#e6db74">&#34;schedule&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;*/20 * * * *&#34;</span>,
     <span style="color:#e6db74">&#34;actionIdentifier&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;your_action_id_123&#34;</span>
@@ -1155,6 +1177,7 @@ The <code>actionIdentifier</code> has to be set accordingly.
 The scheduling determined by the <code>schedule</code> property
 has to be specified according to the time format
 that is used by the <a href="https://www.gnu.org/software/mcron/manual/html_node/Crontab-file.html">GNU crontab format</a></p>
+<p><strong>Important information</strong>: In order to apply scheduled actions to a cluster, a valid <a href="#action_config">ACTION_CONFIG</a> and <a href="#cluster_config">CLUSTER_CONFIG</a> must be provided.</p>
 
 
 <footer class=" footline" >
@@ -1755,6 +1778,22 @@ that is used by the <a href="https://www.gnu.org/software/mcron/manual/html_node
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
                     
                         
             

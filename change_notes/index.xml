@@ -11,6 +11,16 @@
     
     
     <item>
+      <title>V2.4.0</title>
+      <link>/docs/change_notes/2.4.0/</link>
+      <pubDate>Sun, 30 Aug 2020 10:28:41 +0100</pubDate>
+      
+      <guid>/docs/change_notes/2.4.0/</guid>
+      <description>V2.4.0 Sakuli V2.4.0 brings new features but also a lot of improvements and bug fixes for enhanced user experience. Let&amp;rsquo;s have a look at the major changes for this release.
+Sakuli Core Besides our brand-new preset autodiscovery a lot of improvements went into this release. Enhanced scroll behaviour, new config options and improvements for native interactions are just some of them. A detailed list of all applied enhancement and fixes can be found in the CHANGELOG.</description>
+    </item>
+    
+    <item>
       <title>V2.3.0</title>
       <link>/docs/change_notes/2.3.0/</link>
       <pubDate>Tue, 17 Mar 2020 10:28:41 +0100</pubDate>
