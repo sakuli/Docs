@@ -14,21 +14,6 @@ Add the forwarder manually as follows:
 npm i @sakuli/forwarder-prometheus
 {{</highlight>}}
 
-To register the forwarder in your project, edit your `package.json` and add the preset to the Sakuli configuration key
-(with our tech preview this is no longer necessary):
-
-{{<highlight json>}}
-{
-    "sakuli": {
-        "presetProvider": [
-            "@sakuli/legacy",
-            "@sakuli/forwarder-prometheus"
-        ]
-    }
-}
-{{</highlight>}}
-
-
 Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the [enterprise section](/docs/enterprise#using-licences-information).
 
 

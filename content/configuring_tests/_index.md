@@ -25,13 +25,13 @@ Sakuli tests can be fine-tuned via various properties.
 | `sakuli.log.folder` | String: `${project.rootDir}`/_logs | Folder for log files  |
 | `sakuli.screenshot.onError` | Boolean: true | Enable / disable screenshots on error |
 | `sakuli.screenshot.dir` | String: `${project.rootDir}`/_logs/_screenshots | Folder for screenshot files (if activated) |
-| `sakuli.screenshot.storage` | String: `hierarchical` | Configures the way Sakuli stores the error screenshots (Available as tech preview from Version 2.3.1-next.81)|
-| `sakuli.mouse.action.delay` | Number: 10 | Delay between mouse actions e.g. mouse button down, mouse button up, scroll, etc. in ms (Available as tech preview from the 2.3.1-next releases) |
-| `sakuli.mouse.movement.speed` | Number: 3000 | Configures the speed in pixels/second for mouse movement (Available as tech preview from the 2.3.1-next releases) |
+| `sakuli.screenshot.storage` | String: `hierarchical` | Configures the way Sakuli stores the error screenshots **(Available from v2.4.0)**|
+| `sakuli.mouse.action.delay` | Number: 10 | Delay between mouse actions e.g. mouse button down, mouse button up, scroll, etc. in ms **(Available from v2.4.0)** |
+| `sakuli.mouse.movement.speed` | Number: 3000 | Configures the speed in pixels/second for mouse movement **(Available from v2.4.0)** |
 
 ### sakuli.screenshot.storage
 
-This feature is currently a tech preview and available from Version 2.3.1-next.81.
+**Available from v2.4.0**
 
 There are currently two ways of saving error screenshots in `_logs`:
 
