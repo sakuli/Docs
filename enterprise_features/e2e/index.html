@@ -1109,9 +1109,7 @@ ADD ./testsuite-a <span style="color:#ae81ff">\$</span>HOME/sakuli_testsuite</co
 <p>When working with added files and folders inside a container, one has to ensure correct file permissions for added files.</p>
 </blockquote>
 <h4 id="413-clone-a-git-repository">4.1.3 Clone a git repository</h4>
-<blockquote>
-<p>Currently only available in our tech preview</p>
-</blockquote>
+<p><strong>Available from v2.4.0</strong></p>
 <p>The Sakuli container provides a mechanism to clone a git repository at the container start and executing the sakuli project
 within it:
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -e GIT_URL<span style="color:#f92672">=</span>&lt;REPOSITORY URL&gt; <span style="color:#f92672">[</span>-e GIT_CONTEXT_DIR<span style="color:#f92672">=</span>&lt;RELATIVE PATH TO TESTSUITE &gt;<span style="color:#f92672">]</span> -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;YOUR SAKULI LICENSE KEY&gt; taconsol/sakuli:2.3.0</code></pre></div></p>

@@ -1008,16 +1008,6 @@
 <h1 id="icinga2-forwarder">Icinga2 Forwarder</h1>
 <p>Add the forwarder using the <a href="/docs/enterprise_features/#assisted-setup">assistant</a> or configure it manually:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm i @sakuli/forwarder-icinga2</code></pre></div>
-<p>To register the forwarder into your project you have to edit the <code>package.json</code> file and add the preset to the Sakuli configuration key
-(with our tech preview this is no longer necessary):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-    <span style="color:#f92672">&#34;sakuli&#34;</span>: {
-        <span style="color:#f92672">&#34;presetProvider&#34;</span>: [
-            <span style="color:#e6db74">&#34;@sakuli/legacy&#34;</span>,
-            <span style="color:#e6db74">&#34;@sakuli/forwarder-icinga2&#34;</span>
-        ]
-    }
-}</code></pre></div>
 <p>Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the <a href="/docs/enterprise#using-licences-information">enterprise section</a>.</p>
 <h2 id="enable-the-icinga2-api">Enable the Icinga2 API</h2>
 <p>All steps required to enable the Icinga2 API are described in the <!-- raw HTML omitted -->REST API documentation<!-- raw HTML omitted -->.</p>
