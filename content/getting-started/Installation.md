@@ -41,9 +41,20 @@ npm i chromedriver@73.0.0
 Sakuli is not limited to work with only a single browser.
 When installing multiple WebDriver packages, you can easily switch between different browsers.
 
-Regarding Windows Users: You will have to manually add the respective WebDriver location to your system `PATH`, otherwise Sakuli will not be able to find and use it. Once you installed a WebDriver package via NPM, you will be prompted with its installation path, so you can easily add it to your `%PATH%` variable.
+### On Windows
+You will have to manually add the respective WebDriver location to your systems `PATH` variable, otherwise Sakuli will not be able to find and use it. Therefore, we recommend a global driver installation on Windows.
+  
+{{< highlight bash >}}
+npm i -g chromedriver
+{{< /highlight >}}
+or
+{{< highlight bash >}}
+yarn global add chromedriver
+{{< /highlight >}}
+  
+Once you installed a WebDriver package via npm, you will be prompted with its installation path, so you can easily add it to your `%PATH%` variable.
 
-Sample path:
+**Sample path:**
 {{< highlight bash >}}
 %USERPROFILE%\\AppData\\Roaming\\npm\\node_modules\\chromedriver\\lib\\chromedriver\\
 {{< /highlight >}}
