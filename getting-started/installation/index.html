@@ -980,7 +980,11 @@
     <div class="wrapper">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#webdriver-installation">WebDriver Installation</a></li>
+    <li><a href="#webdriver-installation">WebDriver Installation</a>
+      <ul>
+        <li><a href="#on-windows">On Windows</a></li>
+      </ul>
+    </li>
     <li><a href="#sakuli-installation">Sakuli Installation</a>
       <ul>
         <li><a href="#3rd-party-dependencies">3rd-party dependencies</a></li>
@@ -1031,8 +1035,13 @@ macOS already ships a WebDriver for Safari, so there is no need to install an ad
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm i chromedriver@73.0.0</code></pre></div>
 <p>Sakuli is not limited to work with only a single browser.
 When installing multiple WebDriver packages, you can easily switch between different browsers.</p>
-<p>Regarding Windows Users: You will have to manually add the respective WebDriver location to your system <code>PATH</code>, otherwise Sakuli will not be able to find and use it. Once you installed a WebDriver package via NPM, you will be prompted with its installation path, so you can easily add it to your <code>%PATH%</code> variable.</p>
-<p>Sample path:
+<h3 id="on-windows">On Windows</h3>
+<p>You will have to manually add the respective WebDriver location to your systems <code>PATH</code> variable, otherwise Sakuli will not be able to find and use it. Therefore, we recommend a global driver installation on Windows.</p>
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm i -g chromedriver</code></pre></div>
+or
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yarn global add chromedriver</code></pre></div></p>
+<p>Once you installed a WebDriver package via npm, you will be prompted with its installation path, so you can easily add it to your <code>%PATH%</code> variable.</p>
+<p><strong>Sample path:</strong>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">%USERPROFILE%<span style="color:#ae81ff">\\</span>AppData<span style="color:#ae81ff">\\</span>Roaming<span style="color:#ae81ff">\\</span>npm<span style="color:#ae81ff">\\</span>node_modules<span style="color:#ae81ff">\\</span>chromedriver<span style="color:#ae81ff">\\</span>lib<span style="color:#ae81ff">\\</span>chromedriver<span style="color:#ae81ff">\\</span></code></pre></div></p>
 <h2 id="sakuli-installation">Sakuli Installation</h2>
 <h3 id="3rd-party-dependencies">3rd-party dependencies</h3>
