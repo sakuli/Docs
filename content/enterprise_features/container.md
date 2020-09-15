@@ -21,8 +21,8 @@ The registered docker-hub user will then be able to pull the private image:
 docker pull taconsol/sakuli:<IMAGE_TAG>
 {{</highlight>}}
 
-Sakuli test containers do not provide a `latest` tag.
-You will always have to specify the exact version of Sakuli you intend to use in your containerized tests.
+Tech previews of Sakuli containers are published as `latest`.
+We highly recommend specifying the exact version of Sakuli for productive tests/checks.
 
 Containers are tagged according to Sakuli versions, so in order to use Sakuli v2.1.2 in a test, one would pull the following image:
 
@@ -30,16 +30,22 @@ Containers are tagged according to Sakuli versions, so in order to use Sakuli v2
 docker pull taconsol/sakuli:2.1.2
 {{</highlight>}}
 
-> Sakuli does not support a latest tag. When running a containerized test one always has to specify the exact version to use to ensure consistency. You can find a list of available tags on <a href="https://cloud.docker.com/u/taconsol/repository/docker/taconsol/sakuli" target="_blank" rel="noopener">Dockerhub</a>
+You can find a list of available tags on <a href="https://cloud.docker.com/u/taconsol/repository/docker/taconsol/sakuli" target="_blank" rel="noopener">Dockerhub</a>
 
 ## 2 Running Sakuli Test Containers {#running-sakuli-test-containers}
 
 Containerized Sakuli tests require a valid Sakuli license token which has to be provided via the `SAKULI_LICENSE_KEY` [environment variable](/docs/enterprise_features/#using-the-license-key).
 
-Docker allows to pass environment variable along other parameters when starting a new container:
+Docker allows to pass environment variables along other parameters when starting a new container:
 
 {{<highlight bash>}}
-docker run --rm -p 5901:5901 -p 6901:6901 -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> [--shm-size=2G] taconsol/sakuli:2.1.2
+docker run \
+    --rm \
+    -p 5901:5901 \
+    -p 6901:6901 \
+    -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> \
+    [--shm-size=2G] \
+    taconsol/sakuli:2.1.2
 {{</highlight>}}
 
 Parameters:
@@ -55,20 +61,20 @@ Parameters:
 
 In general, the structure of a containerized Sakuli test does not differ from any other Sakuli test.
 No changes are required when executing a test inside a container.
-The only configuration we have to provide, is information about how and which tests should be executed.
+The only configuration we have to provide, is information about how and which suite should be executed.
 
 ## 4 Configuring a Containerized Test
 
-The default behaviour of a Sakuli Test Container is to run `npm test` to execute tests,
+The default behaviour of a Sakuli Test Container is to run `npm test` to execute a test suite,
 so to run a custom test we have to:
 
-1. Provide the test project to the container (as shown in 4.2.X)
-2. Specify the location of our test project inside the container
-3. Configure what to execute on `npm test`
+1. Provide the test project to the container
+2. Specify the location of the test suite inside the container
+3. Configure what to execute on `npm test` within the test suite or project
 
 ### 4.1 Provide the test project to the container
 
-There are two common ways to provide files to a container:
+There are various ways to provide test sources to a container:
 
 - Bind mounts
 - Extending a base image
@@ -77,48 +83,62 @@ There are two common ways to provide files to a container:
 #### 4.1.1 Bind Mounts
 
 When running a Docker container it is possible to mount a file or directory on the Docker host into a container.
-This mechanism can be used to provide a Sakuli test to a test container:
+This mechanism can be used to provide a Sakuli projects to a Sakuli container:
 
 {{<highlight bash>}}
-docker run -v /path/to/test/project/on/host:/sakuli_test -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> taconsol/sakuli:2.1.2
+docker run \ 
+    -v /path/to/test/project/on/host:/sakuli_project \
+    -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> \
+    taconsol/sakuli:2.1.2 /bin/bash
 {{</highlight>}}
 
-By adding the **-v** parameter we're mounting the root folder of our Sakuli test at `/path/to/test/project/on/host` (where the `package.json` file is located) on our host machine at `/sakuli_test` inside our test container.
-Inside the test container we can now run a Sakuli test via `sakuli run /sakuli_test/test_suite_folder`.
+By adding the **-v** parameter we're mounting the root folder of a Sakuli project at `/path/to/test/project/on/host` on our host machine to `/sakuli_project` inside the container.
+We are now able to execute a test suite inside the container via `sakuli run /sakuli_project/test_suite_folder`.
 
 Bind mounts are easy to use and very useful during development.
 
 For further information, please refer to the <a href="https://docs.docker.com/storage/bind-mounts/" target="_blank" rel="noopener">Docker documentation on bind mounts</a>
 
+Instead of starting the test suite manually via `/bin/bash`, you could use the default entry point of the container.
+To be able to do so, you have to specify the environment variable `SAKULI_TEST_SUITE` containing the path of the test suite to execute *inside* the container. 
+
+{{<highlight bash>}}
+docker run \
+    -v /path/to/test/project/on/host:/sakuli_project \
+    -e SAKULI_TEST_SUITE=/sakuli_project/test_suite_folder \
+    -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> \
+    taconsol/sakuli:2.1.2
+{{</highlight>}}
+
 
 #### 4.1.2 Extending a Base Image
 
-Once we finished our test case and are ready to put it to work, bind mounts might become a bit cumbersome.
-Now that the test is done and wont change frequently, it would be feasible to build an explicit Docker image for our test.
+Once you have a test suite which should be put into work. Binding mounts might become cumbersome and makes it hard
+to reproduce certain state of the test project, suite or case. To ensure a reproducible environment, it would be feasible to
+build an explicit Docker image for test execution.
 
 We can do so by creating our own Dockerfile next to our project directory:
 
 - <i class="fas fa-folder"></i> **/folder/containing/Dockerfile/and/project** 
 - <i class="far fa-file"></i> **Dockerfile** 
-- <i class="fas fa-folder"></i> **testsuite-a** 
+- <i class="fas fa-folder"></i> **testsuite-a**     
 - <i class="far fa-file"></i> **package.json** 
 - <i class="far fa-file"></i> **...**
 
 {{<highlight bash>}}
 FROM taconsol/sakuli:2.1.2
 
-ADD ./testsuite-a \$HOME/sakuli_testsuite
+ADD . \$HOME/sakuli_project
+ENV SAKULI_TEST_SUITE \$HOME/sakuli_project/testsuite-a
 {{</highlight>}}
 
-Using this Dockerfile we can now build our own test image by running
+Using this Dockerfile, we can now build our own test image by running the following command where the dockerfile is located:
 
 {{<highlight bash>}}
 docker build -t name-of-my-image .
 {{</highlight>}}
 
-inside the folder where our Dockerfile is located.
-
-We can now run our newly built image via:
+We can now run the newly built image via:
 
 {{<highlight bash>}}
 docker run -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> name-of-my-image
@@ -130,38 +150,19 @@ docker run -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> name-of-my-image
 
 **Available from v2.4.0**
 
-The Sakuli container provides a mechanism to clone a git repository at the container start and executing the sakuli project
-within it:
+The Sakuli container provides a mechanism to clone a git repository containing a sakuli project at container start
+and subsequently executing a testsuite within it:
 {{<highlight bash>}}
-docker run -e GIT_URL=<REPOSITORY URL> [-e GIT_CONTEXT_DIR=<RELATIVE PATH TO TESTSUITE >] -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> taconsol/sakuli:2.3.0
+docker run -e GIT_URL=<REPOSITORY URL> -e GIT_CONTEXT_DIR=<RELATIVE PATH TO TESTSUITE> -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> taconsol/sakuli:2.4.0
 {{</highlight>}}
 
 `GIT_URL` specifies the URL of the repository to be cloned. To access a private repository, please ensure, your git service provides the possibility to authenticate via URL parameters. 
 This is possible with common git services like [GitHub](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token), [Gitlab](https://docs.gitlab.com/ee/user/project/deploy_tokens/#git-clone-a-repository) and [Bitbucket](https://confluence.atlassian.com/bitbucketserver/personal-access-tokens-939515499.html?_ga=2.213635799.231132925.1597055610-1046501904.1597055610).
 To authenticate with a token on GitHub, use: `https://<token>@github.com/<username>/<repository.git>`.
 
-`GIT_CONTEXT_DIR` is only necessary if the sakuli project is not located in the root directory of the cloned repository.
+`GIT_CONTEXT_DIR` is necessary to specify the path to the sakuli test suite inside the cloned repository.
 
-### 4.2 Specify the location of our test project inside the container
-
-Now that our test files are available inside the container, we need to find a way to configure where our project is located.
-
-This can easily be done by setting the `SAKULI_TEST_SUITE` environment variable to the respective path:
-
-{{<highlight bash>}}
-docker run -v /path/to/test/folder:/sakuli_test -e SAKULI_TEST_SUITE=/sakuli_test -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> taconsol/sakuli:2.1.2
-{{</highlight>}}
-
-When building new images, this setting can also be added to the Dockerfile:
-
-{{<highlight bash>}}
-FROM taconsol/sakuli:2.1.2
-
-ADD ./testsuite-a $HOME/sakuli_testsuite
-ENV SAKULI_TEST_SUITE=$HOME/sakuli_testsuite
-{{</highlight>}}
-
-### 4.3 Configure what to execute on `npm test`
+### 4.2 Configure command on `npm test`
 
 The main configuration file of a npm project is its `package.json` file.
 Within this file it's possible to configure <a href="https://docs.npmjs.com/misc/scripts" target="_blank" rel="noopener">npm-scripts</a>, a handy way to execute scripts inside an npm project.
@@ -178,7 +179,7 @@ An empty project initialised via `npm init` already contains one script: `npm te
 
 `npm test` is the default way of executing tests in an npm project, so Sakuli tests should be executed this way, too!
 
-Since Sakuli is available in our project, we can run our test by simply calling `sakuli run ...` on `npm test`.
+Since Sakuli is available in the container, we can run our test by simply calling `sakuli run ...` on `npm test`.
 Our test suites are located within the same folder as our `package.json`, so a test suite can be run via:
 
 {{<highlight js>}}
@@ -189,11 +190,26 @@ Our test suites are located within the same folder as our `package.json`, so a t
 ...
 {{</highlight>}}
 
-#### 4.3.1 Troubleshooting
+Reusing the package.json on project level comes with one limitation: You have only one "test" script available. If you
+decide to put multiple test suites into one project, we recommend putting a package.json on suite level as well.
+
+{{<highlight js>}}
+{
+  "name": "test-suite",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "sakuli run ."
+  }
+}
+{{</highlight>}}
+
+> Please notice that this is just suitable if you plan to execute the suite in the container. 
+
+#### 4.2.1 Troubleshooting
 
 This topic covers possible errors when running containerized Sakuli tests.
 
-#### 4.3.1.1 Error: Invalid ELF header
+#### 4.2.1.1 Error: Invalid ELF header
 
 Some parts of Sakuli are platform-dependent, so the `node_modules` folder of a Sakuli project contains platform specific libs.
 Sakuli containers are running a Linux base image, so when mounting a project which has been developed on a non Linux machine, e.g. macOS, the `node_modules` folder will contain libs specific to macOS.
