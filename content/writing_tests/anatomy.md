@@ -29,6 +29,33 @@ The minimum setup for a Sakuli project looks like this:
 
 This file layout also represents the logical structure of Sakuli, which consists of a *testsuite* with one or more *testcase(s)*. Sakuli's `run` command takes the path to a testsuite folder and runs all testcases defined in `testsuite.suite` of the given folder. 
 
+### _logs
+
+The `_logs` folder will be automatically created, when Sakuli starts the first execution.
+To change the path of the created `_logs` folder, you can use `sakuli.log.folder`
+See [Configuring Tests](/configuring_tests) for further information.
+    
+#### _screenshots
+
+Sakuli saves all error screenshots in this folder which is configurabale withe these properties:
+- `sakuli.screenshot.onError`
+- `sakuli.screenshot.dir`
+- `sakuli.screenshot.storage`
+
+See [Configuring Tests](/configuring_tests) for further information.
+
+
+#### sakuli.log
+
+Sakuli logs all information about the test execution in this file. 
+To configure the log level, you can use `log.level`. 
+
+### .steps.cache file
+
+The `.steps.cache` file will be created after the first successful execution. It contains the step names in a test case
+(defined with `testcase.endOfStep()`). With the correct steps cache file, Sakuli can omit the last step `Finished Step UNNAMED with state Ok.`
+
+
 ### testsuite.suite
 
 This file is a relic from Sahi where you define testcases and their respective start-urls. It has a simple format:
