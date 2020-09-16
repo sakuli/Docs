@@ -5,7 +5,8 @@ weight : 5
 ---
 # S2I Image
 
-Sakuli enterprise comes with ready-to-use <a href="https://github.com/openshift/source-to-image" target="_blank">source to image (S2I)</a> containers for RedHat OpenShift. Using this builder container, it is easily possible to create deployable Sakuli images
+Sakuli enterprise comes with ready-to-use <a href="https://github.com/openshift/source-to-image" target="_blank">source to image (S2I)</a>
+containers for RedHat OpenShift. Using this builder container, it is easily possible to create deployable Sakuli images
 shipped with a test suite straight from your code repository.
 
 ## Setup
@@ -33,8 +34,8 @@ oc import-image sakuli-s2i \
     --scheduled=true \
     --all=true
 {{</highlight>}}
-*Note: The `oc import-image` statement is configured to not only import all available Sakuli S2I images but also to
-check for updates automatically.*
+> Note: The `oc import-image` statement is configured to not only import all available Sakuli S2I images but also to
+check for updates automatically.
 ## Adding Custom Certificates
 
 The following requirements have to be met to add custom certificates to a Sakuli S2I build:
@@ -118,7 +119,11 @@ spec:
 
 #### Firefox
 
-By default, a Firefox test uses a new, blank profile for each test run. In order to pick up the added certificates, a Firefox profile containing the appropriate certificate database has to be specified via `selenium.firefox.profile=/path/to/profile/folder` in `testsuite.properties`. In order to make this process easier, a dedicated Firefox profile for use with certificates is located at `/headless/firefox-certificates` to be used, instead of the generated profiles in `/headless/.mozilla/firefox/long_random_id.default`.
+By default, a Firefox test uses a new, blank profile for each test suite execution. In order to pick up the added certificates,
+a Firefox profile containing the appropriate certificate database has to be specified via
+`selenium.firefox.profile=/path/to/profile/folder` in `testsuite.properties`. In order to make this process easier, a
+dedicated Firefox profile for use with certificates is located at `/headless/firefox-certificates` to be used, instead
+of the generated profiles in `/headless/.mozilla/firefox/long_random_id.default`.
 
 **Attention:** If this property is not set, added certificates will have no effect.
 
