@@ -24,7 +24,7 @@ docker pull taconsol/sakuli:<IMAGE_TAG>
 Tech previews of Sakuli containers are published as `latest`.
 We highly recommend specifying the exact version of Sakuli for productive tests/checks.
 
-Containers are tagged according to Sakuli versions, so in order to use Sakuli v2.1.2 in a test, one would pull the following image:
+Containers are tagged according to Sakuli versions, so in order to use Sakuli v2.4.0-1 in a test, one would pull the following image:
 
 {{<highlight bash>}}
 docker pull taconsol/sakuli:2.1.2
@@ -45,7 +45,7 @@ docker run \
     -p 6901:6901 \
     -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> \
     [--shm-size=2G] \
-    taconsol/sakuli:2.1.2
+    taconsol/sakuli:2.4.0-1
 {{</highlight>}}
 
 Parameters:
@@ -89,7 +89,7 @@ This mechanism can be used to provide a Sakuli projects to a Sakuli container:
 docker run \ 
     -v /path/to/test/project/on/host:/sakuli_project \
     -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> \
-    taconsol/sakuli:2.1.2 /bin/bash
+    taconsol/sakuli:2.4.0-1 /bin/bash
 {{</highlight>}}
 
 By adding the **-v** parameter we're mounting the root folder of a Sakuli project at `/path/to/test/project/on/host` on our host machine to `/sakuli_project` inside the container.
@@ -107,7 +107,7 @@ docker run \
     -v /path/to/test/project/on/host:/sakuli_project \
     -e SAKULI_TEST_SUITE=/sakuli_project/test_suite_folder \
     -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> \
-    taconsol/sakuli:2.1.2
+    taconsol/sakuli:2.4.0-1
 {{</highlight>}}
 
 
@@ -126,7 +126,7 @@ We can do so by creating our own Dockerfile next to our project directory:
 - <i class="far fa-file"></i> **...**
 
 {{<highlight bash>}}
-FROM taconsol/sakuli:2.1.2
+FROM taconsol/sakuli:2.4.0-1
 
 ADD . \$HOME/sakuli_project
 ENV SAKULI_TEST_SUITE \$HOME/sakuli_project/testsuite-a
@@ -153,7 +153,7 @@ docker run -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> name-of-my-image
 The Sakuli container provides a mechanism to clone a git repository containing a sakuli project at container start
 and subsequently executing a testsuite within it:
 {{<highlight bash>}}
-docker run -e GIT_URL=<REPOSITORY URL> -e GIT_CONTEXT_DIR=<RELATIVE PATH TO TESTSUITE> -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> taconsol/sakuli:2.4.0
+docker run -e GIT_URL=<REPOSITORY URL> -e GIT_CONTEXT_DIR=<RELATIVE PATH TO TESTSUITE> -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> taconsol/sakuli:2.4.0-1
 {{</highlight>}}
 
 `GIT_URL` specifies the URL of the repository to be cloned. To access a private repository, please ensure, your git service provides the possibility to authenticate via URL parameters. 
@@ -177,10 +177,10 @@ An empty project initialised via `npm init` already contains one script: `npm te
 ...
 {{</highlight>}}
 
-`npm test` is the default way of executing tests in an npm project, so Sakuli tests should be executed this way, too!
+`npm test` is the default way of executing tests in a npm project, so Sakuli tests should be executed this way, too!
 
 Since Sakuli is available in the container, we can run our test by simply calling `sakuli run ...` on `npm test`.
-Our test suites are located within the same folder as our `package.json`, so a test suite can be run via:
+As your test suites are located within the same folder as our `package.json`, so a test suite can be run via:
 
 {{<highlight js>}}
 ...
@@ -209,19 +209,7 @@ decide to put multiple test suites into one project, we recommend putting a pack
 
 This topic covers possible errors when running containerized Sakuli tests.
 
-#### 4.2.1.1 Error: Invalid ELF header
-
-Some parts of Sakuli are platform-dependent, so the `node_modules` folder of a Sakuli project contains platform specific libs.
-Sakuli containers are running a Linux base image, so when mounting a project which has been developed on a non Linux machine, e.g. macOS, the `node_modules` folder will contain libs specific to macOS.
-
-Trying to run such a test inside a Sakuli container will therefore fail with an error message similar to this:
-
-{{<highlight bash>}}
-UnhandledPromiseRejectionWarning: Error: /test/node_modules/robotjs-node10/build/Release/robotjs.node: invalid ELF header
-{{</highlight>}}
-
-A simple way to resolve the dependency problem is to delete the `node_modules` folder.
-If your test project does not require libraries other than Sakuli, the correct libraries globally installed in Sakuli containers will be used.
+#### 4.2.1.1 Additional dependencies
 
 In case your test project requires additional dependencies, it's possible to run `npm install` before executing the Sakuli test.
 
@@ -240,22 +228,22 @@ Sakuli test containers allow to configure specific details of their runtime envi
 ### 5.1 VNC Access
 
 Sakuli containers provide access to running containers via VNC on ports 5901 and 6901.
-By specifying port forwardings (**-p**) it is possible to configure which ports will be used to connect to a running container on the host system.
+By specifying port forwarding (**-p**) it is possible to configure which ports will be used to connect to a running container on the host system.
 
 {{<highlight bash>}}
-docker run --rm -p 5901:5901 -p 6901:6901 -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> taconsol/sakuli:2.1.2
+docker run --rm -p 5901:5901 -p 6901:6901 -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> taconsol/sakuli:2.4.0-1
 {{</highlight>}}
 
 The example above forwards container ports 5901 and 6901 to the same ports on the host system.
 
 {{<highlight bash>}}
-docker run --rm -p 5000:5901 -p 6000:6901 -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> taconsol/sakuli:2.1.2
+docker run --rm -p 5000:5901 -p 6000:6901 -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> taconsol/sakuli:2.4.0-1
 {{</highlight>}}
 
 In this example container port 5901 is forwarded to port 5000 on the host system, port 6901 is forwarded to port 6000 on the host system.
 `localhost:5000` would be used to connect to the container via VNC client, on `localhost:6000` a webVNC view is available in the browser.
 
-> The default password to access a container via VNC is `vncpassword`. It is **highly** recommended to change this password in production environments. See section [**#5.2**](#5-2-configuring-vnc-access) for details
+> The default password to access a container via VNC is `vncpassword`. It is **highly** recommended changing this password in production environments. See section [**#5.2**](#5-2-configuring-vnc-access) for details.
 
 ### 5.2 Configuring VNC Access
 
@@ -274,7 +262,7 @@ VNC_VIEW_ONLY, default: false // Run in view only mode, no keyboard / mouse inte
 For example, the password for VNC could be set like this:
 
 {{<highlight bash>}}
-~\$ docker run -p 5901:5901 -p 6901:6901 -e VNC_PW=my-new-password taconsol/sakuli:2.1.2
+~\$ docker run -p 5901:5901 -p 6901:6901 -e VNC_PW=my-new-password taconsol/sakuli:2.4.0-1
 {{</highlight>}}
 
 ### 5.3 Container User
@@ -282,27 +270,21 @@ For example, the password for VNC could be set like this:
 Per default all container processes will be executed with user id 1000.
 
 - Using root (user id 0):
-
-      Add the \-\-user flag to your docker run command:
-
-      {{<highlight bash>}}
-
-  ~\$ docker run -it -p 5901:5901 -p 6901:6901 --user 0 taconsol/sakuli:2.1.2
+  Add the \-\-user flag to your docker run command:
+  {{<highlight bash>}}
+  ~\$ docker run -it -p 5901:5901 -p 6901:6901 --user 0 taconsol/sakuli:2.4.0-1
   {{</highlight>}}
 
 - Using user and group id of host system
-
-      Add the \-\-user flag to your docker run command:
-
-      {{<highlight bash>}}
-
-  ~$ docker run -it -p 5901:5901 -p 6901:6901 --user $(id -u):\$(id -g) taconsol/sakuli:2.1.2
+  Add the \-\-user flag to your docker run command:
+  {{<highlight bash>}}
+  ~$ docker run -it -p 5901:5901 -p 6901:6901 --user $(id -u):\$(id -g) taconsol/sakuli:2.4.0-1
   {{</highlight>}}
 
 ## 6 Custom Certificates
 
 Internal infrastructure often uses custom certificates with own root CAs etc.
-Things like untrusted certificates cause Sakuli tests to fail, since no connection to an seemingly insecure host will be established (`InsecureCertificateError`).
+Things like untrusted certificates cause Sakuli tests to fail, since no connection to a seemingly insecure host will be established (`InsecureCertificateError`).
 
 Unfortunately, browsers use their own certificate store, which requires some additional work to add custom certificates.
 
@@ -313,43 +295,38 @@ In order to add custom certificates to a Sakuli container, one has to provide tw
 - A directory containing certificates for import (_.crt, _.cer, \*.pem)
 - An environment variable called `SAKULI_TRUSTED_CERT_DIR` which holds the path to the directory where certificates for import are located inside the container
 
-If the environment variable has been set, a startup script will pick up all certificates contained in the given folder and import each of them to all available browser certificate stores within `$HOME`, supporting both `cert8.db` databases for older browser versions as well as `cert9.db` files for recent browser versions.
+If the environment variable has been set, a startup script will pick up all certificates contained in the given folder
+and import each of them to all available browser certificate stores within `$HOME`, supporting both `cert8.db` databases
+for older browser versions as well as `cert9.db` files for recent browser versions.
 
 
 #### 6.2 Sample
 
 {{<highlight bash>}}
-~$ docker run -v /path/to/certificates/:/certificate_import -e SAKULI_TRUSTED_CERT_DIR=/certificate_import/ taconsol/sakuli:2.2.0
+~$ docker run -v /path/to/certificates/:/certificate_import -e SAKULI_TRUSTED_CERT_DIR=/certificate_import/ taconsol/sakuli:2.4.0-1
 {{</highlight>}}
 
 #### 6.3 Firefox
 
-By default, a Firefox test uses a new, blank profile for each test run. In order to pick up the added certificates, a Firefox profile containing the appropriate certificate database has to be specified via `selenium.firefox.profile=/path/to/profile/folder` in `testsuite.properties`. In order to make this process easier, a dedicated Firefox profile for use with certificates is located at `/headless/firefox-certificates` to be used, instead of the generated profiles in `/headless/.mozilla/firefox/long_random_id.default`.
+By default, a Firefox test uses a new, blank profile for each test suite execution. In order to pick up the added certificates,
+a Firefox profile containing the appropriate certificate database has to be specified via
+`selenium.firefox.profile=/path/to/profile/folder` in `testsuite.properties`. In order to make this process easier, a
+dedicated Firefox profile for use with certificates is located at `/headless/firefox-certificates` to be used, instead
+of the generated profiles in `/headless/.mozilla/firefox/long_random_id.default`.
 
 **Attention:** If this property is not set, added certificates will have no effect.
 
 ## 7 Overview Environment Variables
 
-| Environment Variable    | Default Value        | Description                                         |
-| ----------------------- | -------------------- | --------------------------------------------------- |
-| SAKULI_TEST_SUITE       | \$HOME/demo_testcase | Path to Sakuli testsuite to be executed             |
-| SAKULI_LICENSE_KEY      |                      | Sakuli license to use the container                 |
-| VNC_COL_DEPTH           | 24                   | Color depth of container monitor                    |
-| VNC_RESOLUTION          | 1280x1024            | Screen resolution of container                      |
-| VNC_PW                  | vncpassword          | Password to access NoVNC/VNC connection             |
-| VNC_VIEW_ONLY           | false                | Enable/Disable view-only mode                       |
-| NPM_TOKEN               |                      | NPM token to access npmjs.com registry              |
-| SAKULI_TRUSTED_CERT_DIR |                      | Directory containing custom certificates for import |
-| GIT_URL                 |                      | URL of git repository                               |
-| GIT_CONTEXT_DIR         | .                    | Path to Sakuli testsuite within the git repository  |
-
-## 8 Summary
-
-Once we have
-
-- added our test to the container (via [bind mount](#4-1-1-bind-mounts) or [our own image](#extending-a-base-image))
-- configured where our test project is located (via [**SAKULI_TEST_SUITE environment variable**](#7-overview-environment-variables))
-- set up our [**test script**](#4-3-configure-what-to-execute-on-npm-test)
-- (optional) configured the container runtime environment
-
-our test will run automatically after the container started.
+| Environment Variable    | Default Value | Description                                         |
+| ----------------------- | --------------| --------------------------------------------------- |
+| SAKULI_TEST_SUITE       |               | Path to Sakuli testsuite to be executed             |
+| SAKULI_LICENSE_KEY      |               | Sakuli license to use the container                 |
+| VNC_COL_DEPTH           | 24            | Color depth of container monitor                    |
+| VNC_RESOLUTION          | 1280x1024     | Screen resolution of container                      |
+| VNC_PW                  | vncpassword   | Password to access NoVNC/VNC connection             |
+| VNC_VIEW_ONLY           | false         | Enable/Disable view-only mode                       |
+| NPM_TOKEN               |               | NPM token to access npmjs.com registry              |
+| SAKULI_TRUSTED_CERT_DIR |               | Directory containing custom certificates for import |
+| GIT_URL                 |               | URL of git repository                               |
+| GIT_CONTEXT_DIR         |               | Path to Sakuli testsuite within the git repository  |
