@@ -92,7 +92,7 @@ With this command Sakuli takes over this task.
 
 ## sakuli run
 {{<highlight bash>}}
-npx sakuli run <path>
+npx sakuli run <path> [ options ]
 
 
 Runs a Sakuli Suite
@@ -100,4 +100,8 @@ Runs a Sakuli Suite
 
 Positionals:
   path                  path to Sakuli suite                                        [required]
+Options:
+  browser=''            Browser which is started by the WebDriver
+  ui-only=''            Configures whether the testsuite runs in ui-only mode
+  reuseBrowser=''       Configures whether the browser is reused after each testcase (Available as tech preview)
 {{</highlight>}}
