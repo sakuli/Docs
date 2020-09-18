@@ -32,29 +32,29 @@ This file layout also represents the logical structure of Sakuli, which consists
 
 ### _logs
 
-The `_logs` folder will be automatically created, when Sakuli starts the first execution.
-To change the path of the created `_logs` folder, you can use `sakuli.log.folder`
-See [Configuring Tests](/configuring_tests) for further information.
+The folder '_logs' is created automatically when Sakuli starts the first execution.
+To change the path of the created folder '_logs' you can use 'sakuli.log.folder'.
+See [Configuring Tests](/configuring_tests) for more information.
     
 #### _screenshots
 
-Sakuli saves all error screenshots in this folder which is configurabale withe these properties:
+Sakuli stores all error screenshots in this folder, which can be configured with these properties:
 - `sakuli.screenshot.onError`
 - `sakuli.screenshot.dir`
 - `sakuli.screenshot.storage`
 
-See [Configuring Tests](/configuring_tests) for further information.
-
+See [Configuring Tests](/configuring_tests) for more information.
 
 #### sakuli.log
 
 Sakuli logs all information about the test execution in this file. 
-To configure the log level, you can use `log.level`. 
+To configure the log level you can use 'log.level'. 
 
 ### .steps.cache file
 
-The `.steps.cache` file will be created after the first successful execution. It contains the step names in a test case
-(defined with `testcase.endOfStep()`). With the correct steps cache file, Sakuli can omit the last step `Finished Step UNNAMED with state Ok.`
+The file 'steps.cache' is created after the first successful execution. It contains the step names of a test case
+(defined with `testcase.endOfStep()`). With the correct `.steps.cache` file Sakuli can omit the last step `Finished step UNNAMED with state Ok.`.
+
 
 
 ### testsuite.suite
