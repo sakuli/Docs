@@ -21,9 +21,10 @@ The minimum setup for a Sakuli project looks like this:
      - <i class="fas fa-folder"></i> **testcase** *Home of the testcase*
          - <i class="far fa-file"></i> **.check.js.steps.cache** *An automatically generated cache file*
          - <i class="far fa-file"></i> **testcase.js** *The actual testcase*
-     - <i class="far fa-file"></i> **package.json** *All dependencies and setups for Node.js*
+     - <i class="far fa-file"></i> **package.json** *Defines test script for container usage*
      - <i class="far fa-file"></i> **testsuite.suite** *Defines which testcases belong to the testsuite*
      - <i class="far fa-file"></i> **testsuite.properties** *Configuration for the testsuite (overrides configuration from '../sakuli.properties')*
+  - <i class="far fa-file"></i> **package.json** *All dependencies and setups for Node.js*
   - <i class="far fa-file"></i> **sakuli.properties** *(optional: Configuration for all  testsuites)*
 
 
