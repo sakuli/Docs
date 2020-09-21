@@ -349,9 +349,9 @@ spec:
      --reference-policy=local
  ```
 
-### sakuli.properties does not work
+### Limitation concerning sakuli.properties
 
 Instead of defining a Sakuli test suite in TESTSUITE_CONTEXT_DIR, you can specify your Sakuli project.
-This will create an S2I container containing the desired 'sakuli.properties' file. Since a Sakuli project is used
-as the context, a `package.json` on the project level is needed with a test script that starts the desired test-suite,
+This will create an S2I container containing the 'sakuli.properties' file included in the cloned project. Since a Sakuli project is used
+as the context, a `package.json` on the project level is required with a test script that starts the desired test-suite,
 e.g. `sakuli run my-test-suite`.
