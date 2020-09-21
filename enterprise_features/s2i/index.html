@@ -519,8 +519,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/e2e/" title="Container" class="dd-item ">
-        <a href="/docs/enterprise_features/e2e/">
+      <li data-nav-id="/docs/enterprise_features/container/" title="Container" class="dd-item ">
+        <a href="/docs/enterprise_features/container/">
         Container
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -1026,7 +1026,8 @@
 
 
 <h1 id="s2i-image">S2I Image</h1>
-<p>Sakuli enterprise comes with ready-to-use <!-- raw HTML omitted -->source to image (S2I)<!-- raw HTML omitted --> containers for RedHat OpenShift. Using this builder container, it is easily possible to create deployable Sakuli images
+<p>Sakuli enterprise comes with ready-to-use <!-- raw HTML omitted -->source to image (S2I)<!-- raw HTML omitted -->
+containers for RedHat OpenShift. Using this builder container, it is easily possible to create deployable Sakuli images
 shipped with a test suite straight from your code repository.</p>
 <h2 id="setup">Setup</h2>
 <p>To setup the source to image builds on your OpenShift cluster, it is required to import the images from
@@ -1041,13 +1042,15 @@ Once you obtained a Sakuli Enterprise license your Docker user will be granted a
 
 oc secrets link builder dockerhub-sakuli-secret</code></pre></div>
 <p>After you&rsquo;ve created and linked the secret, you can import the images from the secured registry.</p>
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc import-image sakuli-s2i <span style="color:#ae81ff">\
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc import-image sakuli-s2i <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    --from<span style="color:#f92672">=</span>docker.io/taconsol/sakuli-s2i <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    --confirm <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    --scheduled<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    --all<span style="color:#f92672">=</span>true</code></pre></div>
-<em>Note: The <code>oc import-image</code> statement is configured to not only import all available Sakuli S2I images but also to
-check for updates automatically.</em></p>
+<blockquote>
+<p>Note: The <code>oc import-image</code> statement is configured to not only import all available Sakuli S2I images but also to
+check for updates automatically.</p>
+</blockquote>
 <h2 id="adding-custom-certificates">Adding Custom Certificates</h2>
 <p>The following requirements have to be met to add custom certificates to a Sakuli S2I build:</p>
 <ul>
@@ -1109,7 +1112,11 @@ By mounting this volume in our test container we&rsquo;re able to provide the cu
     secret:
         secretName: custom-certs</code></pre></div>
 <h4 id="firefox">Firefox</h4>
-<p>By default, a Firefox test uses a new, blank profile for each test run. In order to pick up the added certificates, a Firefox profile containing the appropriate certificate database has to be specified via <code>selenium.firefox.profile=/path/to/profile/folder</code> in <code>testsuite.properties</code>. In order to make this process easier, a dedicated Firefox profile for use with certificates is located at <code>/headless/firefox-certificates</code> to be used, instead of the generated profiles in <code>/headless/.mozilla/firefox/long_random_id.default</code>.</p>
+<p>By default, a Firefox test uses a new, blank profile for each test suite execution. In order to pick up the added certificates,
+a Firefox profile containing the appropriate certificate database has to be specified via
+<code>selenium.firefox.profile=/path/to/profile/folder</code> in <code>testsuite.properties</code>. In order to make this process easier, a
+dedicated Firefox profile for use with certificates is located at <code>/headless/firefox-certificates</code> to be used, instead
+of the generated profiles in <code>/headless/.mozilla/firefox/long_random_id.default</code>.</p>
 <p><strong>Attention:</strong> If this property is not set, added certificates will have no effect.</p>
 <h2 id="create-s2i-build">Creating an S2I build</h2>
 <p>The following build-config template is ready to use to create Sakuli S2I builds for various repositories and test suites.
@@ -1903,7 +1910,7 @@ A workaround to solve this issue was to use <code>reference-policy=local</code> 
 	 
 	 
 		
-			<a class="nav nav-prev" href="/docs/enterprise_features/e2e/" title="Container"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/docs/enterprise_features/container/" title="Container"> <i class="fa fa-chevron-left"></i></a>
 		
 		
 			<a class="nav nav-next" href="/docs/enterprise_features/sakuli-dashboard-deployment/" title="Sakuli Dashboard" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>

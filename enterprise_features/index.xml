@@ -61,13 +61,13 @@ It takes a few steps to set up the monitoring system in order to process Sakuli&
     
     <item>
       <title>Container</title>
-      <link>/docs/enterprise_features/e2e/</link>
+      <link>/docs/enterprise_features/container/</link>
       <pubDate>Thu, 12 Sep 2019 14:16:13 +0200</pubDate>
       
-      <guid>/docs/enterprise_features/e2e/</guid>
+      <guid>/docs/enterprise_features/container/</guid>
       <description>Pre-configured Container Once you obtained a Sakuli Enterprise license your docker-user will be granted access to the private Sakuli test container image. This image is ready to go and ships with already installed:
  Sakuli Icinga2 / checkmk / OMD / Prometheus Forwarder VNC / noVNC Chrome / Firefox (incl. webdriver)  1 Obtaining the Image The registered docker-hub user will then be able to pull the private image:
-docker pull taconsol/sakuli:&amp;lt;IMAGE_TAG&amp;gt; Sakuli test containers do not provide a latest tag.</description>
+docker pull taconsol/sakuli:&amp;lt;IMAGE_TAG&amp;gt; Tech previews of Sakuli containers are published as latest.</description>
     </item>
     
     <item>

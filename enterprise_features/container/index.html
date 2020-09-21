@@ -54,7 +54,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs/enterprise_features/e2e/">
+  <body class="" data-url="/docs/enterprise_features/container/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -519,8 +519,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/e2e/" title="Container" class="dd-item active">
-        <a href="/docs/enterprise_features/e2e/">
+      <li data-nav-id="/docs/enterprise_features/container/" title="Container" class="dd-item active">
+        <a href="/docs/enterprise_features/container/">
         Container
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -986,8 +986,7 @@
     <li><a href="#4-configuring-a-containerized-test">4 Configuring a Containerized Test</a>
       <ul>
         <li><a href="#41-provide-the-test-project-to-the-container">4.1 Provide the test project to the container</a></li>
-        <li><a href="#42-specify-the-location-of-our-test-project-inside-the-container">4.2 Specify the location of our test project inside the container</a></li>
-        <li><a href="#43-configure-what-to-execute-on-npm-test">4.3 Configure what to execute on <code>npm test</code></a></li>
+        <li><a href="#42-configure-command-on-npm-test">4.2 Configure command on <code>npm test</code></a></li>
       </ul>
     </li>
     <li><a href="#5-viewing--configuring-test-execution">5 Viewing / Configuring Test Execution</a>
@@ -1003,7 +1002,6 @@
       </ul>
     </li>
     <li><a href="#7-overview-environment-variables">7 Overview Environment Variables</a></li>
-    <li><a href="#8-summary">8 Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -1038,17 +1036,21 @@ This image is ready to go and ships with already installed:</p>
 <h2 id="1-obtaining-the-image">1 Obtaining the Image</h2>
 <p>The registered docker-hub user will then be able to pull the private image:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull taconsol/sakuli:&lt;IMAGE_TAG&gt;</code></pre></div>
-<p>Sakuli test containers do not provide a <code>latest</code> tag.
-You will always have to specify the exact version of Sakuli you intend to use in your containerized tests.</p>
-<p>Containers are tagged according to Sakuli versions, so in order to use Sakuli v2.1.2 in a test, one would pull the following image:</p>
+<p>Tech previews of Sakuli containers are published as <code>latest</code>.
+We highly recommend specifying the exact version of Sakuli for productive tests/checks.</p>
+<p>Containers are tagged according to Sakuli versions, so in order to use Sakuli v2.4.0-1 in a test, one would pull the following image:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull taconsol/sakuli:2.1.2</code></pre></div>
-<blockquote>
-<p>Sakuli does not support a latest tag. When running a containerized test one always has to specify the exact version to use to ensure consistency. You can find a list of available tags on <!-- raw HTML omitted -->Dockerhub<!-- raw HTML omitted --></p>
-</blockquote>
+<p>You can find a list of available tags on <!-- raw HTML omitted -->Dockerhub<!-- raw HTML omitted --></p>
 <h2 id="running-sakuli-test-containers">2 Running Sakuli Test Containers</h2>
 <p>Containerized Sakuli tests require a valid Sakuli license token which has to be provided via the <code>SAKULI_LICENSE_KEY</code> <a href="/docs/enterprise_features/#using-the-license-key">environment variable</a>.</p>
-<p>Docker allows to pass environment variable along other parameters when starting a new container:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm -p 5901:5901 -p 6901:6901 -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;YOUR SAKULI LICENSE KEY&gt; <span style="color:#f92672">[</span>--shm-size<span style="color:#f92672">=</span>2G<span style="color:#f92672">]</span> taconsol/sakuli:2.1.2</code></pre></div>
+<p>Docker allows to pass environment variables along other parameters when starting a new container:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --rm <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -p 5901:5901 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -p 6901:6901 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;YOUR SAKULI LICENSE KEY&gt; <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    <span style="color:#f92672">[</span>--shm-size<span style="color:#f92672">=</span>2G<span style="color:#f92672">]</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    taconsol/sakuli:2.4.0-1</code></pre></div>
 <p>Parameters:</p>
 <ul>
 <li><strong>--rm</strong>: The test container will be removed after execution, not just stopped</li>
@@ -1062,17 +1064,17 @@ You will always have to specify the exact version of Sakuli you intend to use in
 <h2 id="3-anatomy-of-a-containerized-sakuli-test">3 Anatomy of a Containerized Sakuli Test</h2>
 <p>In general, the structure of a containerized Sakuli test does not differ from any other Sakuli test.
 No changes are required when executing a test inside a container.
-The only configuration we have to provide, is information about how and which tests should be executed.</p>
+The only configuration we have to provide, is information about how and which suite should be executed.</p>
 <h2 id="4-configuring-a-containerized-test">4 Configuring a Containerized Test</h2>
-<p>The default behaviour of a Sakuli Test Container is to run <code>npm test</code> to execute tests,
+<p>The default behaviour of a Sakuli Test Container is to run <code>npm test</code> to execute a test suite,
 so to run a custom test we have to:</p>
 <ol>
-<li>Provide the test project to the container (as shown in 4.2.X)</li>
-<li>Specify the location of our test project inside the container</li>
-<li>Configure what to execute on <code>npm test</code></li>
+<li>Provide the test project to the container</li>
+<li>Specify the location of the test suite inside the container</li>
+<li>Configure what to execute on <code>npm test</code> within the test suite or project</li>
 </ol>
 <h3 id="41-provide-the-test-project-to-the-container">4.1 Provide the test project to the container</h3>
-<p>There are two common ways to provide files to a container:</p>
+<p>There are various ways to provide test sources to a container:</p>
 <ul>
 <li>Bind mounts</li>
 <li>Extending a base image</li>
@@ -1080,15 +1082,26 @@ so to run a custom test we have to:</p>
 </ul>
 <h4 id="411-bind-mounts">4.1.1 Bind Mounts</h4>
 <p>When running a Docker container it is possible to mount a file or directory on the Docker host into a container.
-This mechanism can be used to provide a Sakuli test to a test container:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -v /path/to/test/project/on/host:/sakuli_test -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;YOUR SAKULI LICENSE KEY&gt; taconsol/sakuli:2.1.2</code></pre></div>
-<p>By adding the <strong>-v</strong> parameter we&rsquo;re mounting the root folder of our Sakuli test at <code>/path/to/test/project/on/host</code> (where the <code>package.json</code> file is located) on our host machine at <code>/sakuli_test</code> inside our test container.
-Inside the test container we can now run a Sakuli test via <code>sakuli run /sakuli_test/test_suite_folder</code>.</p>
+This mechanism can be used to provide a Sakuli projects to a Sakuli container:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run <span style="color:#ae81ff">\ </span>
+    -v /path/to/test/project/on/host:/sakuli_project <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;YOUR SAKULI LICENSE KEY&gt; <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    taconsol/sakuli:2.4.0-1 /bin/bash</code></pre></div>
+<p>By adding the <strong>-v</strong> parameter we&rsquo;re mounting the root folder of a Sakuli project at <code>/path/to/test/project/on/host</code> on our host machine to <code>/sakuli_project</code> inside the container.
+We are now able to execute a test suite inside the container via <code>sakuli run /sakuli_project/test_suite_folder</code>.</p>
 <p>Bind mounts are easy to use and very useful during development.</p>
 <p>For further information, please refer to the <!-- raw HTML omitted -->Docker documentation on bind mounts<!-- raw HTML omitted --></p>
+<p>Instead of starting the test suite manually via <code>/bin/bash</code>, you could use the default entry point of the container.
+To be able to do so, you have to specify the environment variable <code>SAKULI_TEST_SUITE</code> containing the path of the test suite to execute <em>inside</em> the container.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -v /path/to/test/project/on/host:/sakuli_project <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -e SAKULI_TEST_SUITE<span style="color:#f92672">=</span>/sakuli_project/test_suite_folder <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;YOUR SAKULI LICENSE KEY&gt; <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    taconsol/sakuli:2.4.0-1</code></pre></div>
 <h4 id="412-extending-a-base-image">4.1.2 Extending a Base Image</h4>
-<p>Once we finished our test case and are ready to put it to work, bind mounts might become a bit cumbersome.
-Now that the test is done and wont change frequently, it would be feasible to build an explicit Docker image for our test.</p>
+<p>Once you have a test suite which should be put into work. Binding mounts might become cumbersome and makes it hard
+to reproduce certain state of the test project, suite or case. To ensure a reproducible environment, it would be feasible to
+build an explicit Docker image for test execution.</p>
 <p>We can do so by creating our own Dockerfile next to our project directory:</p>
 <ul>
 <li><!-- raw HTML omitted --><!-- raw HTML omitted --> <strong>/folder/containing/Dockerfile/and/project</strong></li>
@@ -1097,36 +1110,27 @@ Now that the test is done and wont change frequently, it would be feasible to bu
 <li><!-- raw HTML omitted --><!-- raw HTML omitted --> <strong>package.json</strong></li>
 <li><!-- raw HTML omitted --><!-- raw HTML omitted --> <strong>&hellip;</strong></li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">FROM taconsol/sakuli:2.1.2
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">FROM taconsol/sakuli:2.4.0-1
 
-ADD ./testsuite-a <span style="color:#ae81ff">\$</span>HOME/sakuli_testsuite</code></pre></div>
-<p>Using this Dockerfile we can now build our own test image by running</p>
+ADD . <span style="color:#ae81ff">\$</span>HOME/sakuli_project
+ENV SAKULI_TEST_SUITE <span style="color:#ae81ff">\$</span>HOME/sakuli_project/testsuite-a</code></pre></div>
+<p>Using this Dockerfile, we can now build our own test image by running the following command where the dockerfile is located:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker build -t name-of-my-image .</code></pre></div>
-<p>inside the folder where our Dockerfile is located.</p>
-<p>We can now run our newly built image via:</p>
+<p>We can now run the newly built image via:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;YOUR SAKULI LICENSE KEY&gt; name-of-my-image</code></pre></div>
 <blockquote>
 <p>When working with added files and folders inside a container, one has to ensure correct file permissions for added files.</p>
 </blockquote>
 <h4 id="413-clone-a-git-repository">4.1.3 Clone a git repository</h4>
 <p><strong>Available from v2.4.0</strong></p>
-<p>The Sakuli container provides a mechanism to clone a git repository at the container start and executing the sakuli project
-within it:
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -e GIT_URL<span style="color:#f92672">=</span>&lt;REPOSITORY URL&gt; <span style="color:#f92672">[</span>-e GIT_CONTEXT_DIR<span style="color:#f92672">=</span>&lt;RELATIVE PATH TO TESTSUITE &gt;<span style="color:#f92672">]</span> -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;YOUR SAKULI LICENSE KEY&gt; taconsol/sakuli:2.3.0</code></pre></div></p>
+<p>The Sakuli container provides a mechanism to clone a git repository containing a sakuli project at container start
+and subsequently executing a testsuite within it:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -e GIT_URL<span style="color:#f92672">=</span>&lt;REPOSITORY URL&gt; -e GIT_CONTEXT_DIR<span style="color:#f92672">=</span>&lt;RELATIVE PATH TO TESTSUITE&gt; -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;YOUR SAKULI LICENSE KEY&gt; taconsol/sakuli:2.4.0-1</code></pre></div></p>
 <p><code>GIT_URL</code> specifies the URL of the repository to be cloned. To access a private repository, please ensure, your git service provides the possibility to authenticate via URL parameters.
 This is possible with common git services like <a href="https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token">GitHub</a>, <a href="https://docs.gitlab.com/ee/user/project/deploy_tokens/#git-clone-a-repository">Gitlab</a> and <a href="https://confluence.atlassian.com/bitbucketserver/personal-access-tokens-939515499.html?_ga=2.213635799.231132925.1597055610-1046501904.1597055610">Bitbucket</a>.
 To authenticate with a token on GitHub, use: <code>https://&lt;token&gt;@github.com/&lt;username&gt;/&lt;repository.git&gt;</code>.</p>
-<p><code>GIT_CONTEXT_DIR</code> is only necessary if the sakuli project is not located in the root directory of the cloned repository.</p>
-<h3 id="42-specify-the-location-of-our-test-project-inside-the-container">4.2 Specify the location of our test project inside the container</h3>
-<p>Now that our test files are available inside the container, we need to find a way to configure where our project is located.</p>
-<p>This can easily be done by setting the <code>SAKULI_TEST_SUITE</code> environment variable to the respective path:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -v /path/to/test/folder:/sakuli_test -e SAKULI_TEST_SUITE<span style="color:#f92672">=</span>/sakuli_test -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;YOUR SAKULI LICENSE KEY&gt; taconsol/sakuli:2.1.2</code></pre></div>
-<p>When building new images, this setting can also be added to the Dockerfile:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">FROM taconsol/sakuli:2.1.2
-
-ADD ./testsuite-a $HOME/sakuli_testsuite
-ENV SAKULI_TEST_SUITE<span style="color:#f92672">=</span>$HOME/sakuli_testsuite</code></pre></div>
-<h3 id="43-configure-what-to-execute-on-npm-test">4.3 Configure what to execute on <code>npm test</code></h3>
+<p><code>GIT_CONTEXT_DIR</code> is necessary to specify the path to the sakuli test suite inside the cloned repository.</p>
+<h3 id="42-configure-command-on-npm-test">4.2 Configure command on <code>npm test</code></h3>
 <p>The main configuration file of a npm project is its <code>package.json</code> file.
 Within this file it&rsquo;s possible to configure <!-- raw HTML omitted -->npm-scripts<!-- raw HTML omitted -->, a handy way to execute scripts inside an npm project.</p>
 <p>An empty project initialised via <code>npm init</code> already contains one script: <code>npm test</code></p>
@@ -1136,24 +1140,31 @@ Within this file it&rsquo;s possible to configure <!-- raw HTML omitted -->npm-s
 },
 ...
 </code></pre></div>
-<p><code>npm test</code> is the default way of executing tests in an npm project, so Sakuli tests should be executed this way, too!</p>
-<p>Since Sakuli is available in our project, we can run our test by simply calling <code>sakuli run ...</code> on <code>npm test</code>.
-Our test suites are located within the same folder as our <code>package.json</code>, so a test suite can be run via:</p>
+<p><code>npm test</code> is the default way of executing tests in a npm project, so Sakuli tests should be executed this way, too!</p>
+<p>Since Sakuli is available in the container, we can run our test by simply calling <code>sakuli run ...</code> on <code>npm test</code>.
+As your test suites are located within the same folder as our <code>package.json</code>, so a test suite can be run via:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">...
 <span style="color:#e6db74">&#34;scripts&#34;</span><span style="color:#f92672">:</span> {
 <span style="color:#e6db74">&#34;test&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;sakuli run /path/to/your/test/suite&#34;</span>
 },
 ...
 </code></pre></div>
-<h4 id="431-troubleshooting">4.3.1 Troubleshooting</h4>
+<p>Reusing the package.json on project level comes with one limitation: You have only one &ldquo;test&rdquo; script available. If you
+decide to put multiple test suites into one project, we recommend putting a package.json on suite level as well.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">{
+  <span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;test-suite&#34;</span>,
+  <span style="color:#e6db74">&#34;version&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;1.0.0&#34;</span>,
+  <span style="color:#e6db74">&#34;scripts&#34;</span><span style="color:#f92672">:</span> {
+    <span style="color:#e6db74">&#34;test&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;sakuli run .&#34;</span>
+  }
+}
+</code></pre></div>
+<blockquote>
+<p>Please notice that this is just suitable if you plan to execute the suite in the container.</p>
+</blockquote>
+<h4 id="421-troubleshooting">4.2.1 Troubleshooting</h4>
 <p>This topic covers possible errors when running containerized Sakuli tests.</p>
-<h4 id="4311-error-invalid-elf-header">4.3.1.1 Error: Invalid ELF header</h4>
-<p>Some parts of Sakuli are platform-dependent, so the <code>node_modules</code> folder of a Sakuli project contains platform specific libs.
-Sakuli containers are running a Linux base image, so when mounting a project which has been developed on a non Linux machine, e.g. macOS, the <code>node_modules</code> folder will contain libs specific to macOS.</p>
-<p>Trying to run such a test inside a Sakuli container will therefore fail with an error message similar to this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">UnhandledPromiseRejectionWarning: Error: /test/node_modules/robotjs-node10/build/Release/robotjs.node: invalid ELF header</code></pre></div>
-<p>A simple way to resolve the dependency problem is to delete the <code>node_modules</code> folder.
-If your test project does not require libraries other than Sakuli, the correct libraries globally installed in Sakuli containers will be used.</p>
+<h4 id="4211-additional-dependencies">4.2.1.1 Additional dependencies</h4>
 <p>In case your test project requires additional dependencies, it&rsquo;s possible to run <code>npm install</code> before executing the Sakuli test.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">...
 <span style="color:#e6db74">&#34;scripts&#34;</span><span style="color:#f92672">:</span> {
@@ -1165,14 +1176,14 @@ If your test project does not require libraries other than Sakuli, the correct l
 <p>Sakuli test containers allow to configure specific details of their runtime environment.</p>
 <h3 id="51-vnc-access">5.1 VNC Access</h3>
 <p>Sakuli containers provide access to running containers via VNC on ports 5901 and 6901.
-By specifying port forwardings (<strong>-p</strong>) it is possible to configure which ports will be used to connect to a running container on the host system.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm -p 5901:5901 -p 6901:6901 -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;YOUR SAKULI LICENSE KEY&gt; taconsol/sakuli:2.1.2</code></pre></div>
+By specifying port forwarding (<strong>-p</strong>) it is possible to configure which ports will be used to connect to a running container on the host system.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm -p 5901:5901 -p 6901:6901 -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;YOUR SAKULI LICENSE KEY&gt; taconsol/sakuli:2.4.0-1</code></pre></div>
 <p>The example above forwards container ports 5901 and 6901 to the same ports on the host system.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm -p 5000:5901 -p 6000:6901 -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;YOUR SAKULI LICENSE KEY&gt; taconsol/sakuli:2.1.2</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm -p 5000:5901 -p 6000:6901 -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;YOUR SAKULI LICENSE KEY&gt; taconsol/sakuli:2.4.0-1</code></pre></div>
 <p>In this example container port 5901 is forwarded to port 5000 on the host system, port 6901 is forwarded to port 6000 on the host system.
 <code>localhost:5000</code> would be used to connect to the container via VNC client, on <code>localhost:6000</code> a webVNC view is available in the browser.</p>
 <blockquote>
-<p>The default password to access a container via VNC is <code>vncpassword</code>. It is <strong>highly** recommended to change this password in production environments. See section </strong>#5.2**<a href="#5-2-configuring-vnc-access"></a> for details</p>
+<p>The default password to access a container via VNC is <code>vncpassword</code>. It is <strong>highly** recommended changing this password in production environments. See section </strong>#5.2**<a href="#5-2-configuring-vnc-access"></a> for details.</p>
 </blockquote>
 <h3 id="52-configuring-vnc-access">5.2 Configuring VNC Access</h3>
 <p>The following VNC environment variables can be overwritten at the docker run phase to customize your desktop environment inside the container:</p>
@@ -1184,30 +1195,26 @@ VNC_PW, default: vncpassword // VNC password
 
 VNC_VIEW_ONLY, default: false // Run in view only mode, no keyboard / mouse interaction possible</code></pre></div>
 <p>For example, the password for VNC could be set like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">~<span style="color:#ae81ff">\$</span> docker run -p 5901:5901 -p 6901:6901 -e VNC_PW<span style="color:#f92672">=</span>my-new-password taconsol/sakuli:2.1.2</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">~<span style="color:#ae81ff">\$</span> docker run -p 5901:5901 -p 6901:6901 -e VNC_PW<span style="color:#f92672">=</span>my-new-password taconsol/sakuli:2.4.0-1</code></pre></div>
 <h3 id="53-container-user">5.3 Container User</h3>
 <p>Per default all container processes will be executed with user id 1000.</p>
 <ul>
 <li>
-<p>Using root (user id 0):</p>
-<pre><code>Add the \-\-user flag to your docker run command:
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  ~<span style="color:#ae81ff">\$</span> docker run -it -p 5901:5901 -p 6901:6901 --user <span style="color:#ae81ff">0</span> taconsol/sakuli:2.1.2
-  </code></pre></div>
-</code></pre>
+<p>Using root (user id 0):
+Add the --user flag to your docker run command:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  ~<span style="color:#ae81ff">\$</span> docker run -it -p 5901:5901 -p 6901:6901 --user <span style="color:#ae81ff">0</span> taconsol/sakuli:2.4.0-1
+  </code></pre></div></p>
 </li>
 <li>
-<p>Using user and group id of host system</p>
-<pre><code>Add the \-\-user flag to your docker run command:
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  ~$ docker run -it -p 5901:5901 -p 6901:6901 --user <span style="color:#66d9ef">$(</span>id -u<span style="color:#66d9ef">)</span>:<span style="color:#ae81ff">\$</span><span style="color:#f92672">(</span>id -g<span style="color:#f92672">)</span> taconsol/sakuli:2.1.2
-  </code></pre></div>
-</code></pre>
+<p>Using user and group id of host system
+Add the --user flag to your docker run command:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  ~$ docker run -it -p 5901:5901 -p 6901:6901 --user <span style="color:#66d9ef">$(</span>id -u<span style="color:#66d9ef">)</span>:<span style="color:#ae81ff">\$</span><span style="color:#f92672">(</span>id -g<span style="color:#f92672">)</span> taconsol/sakuli:2.4.0-1
+  </code></pre></div></p>
 </li>
 </ul>
 <h2 id="6-custom-certificates">6 Custom Certificates</h2>
 <p>Internal infrastructure often uses custom certificates with own root CAs etc.
-Things like untrusted certificates cause Sakuli tests to fail, since no connection to an seemingly insecure host will be established (<code>InsecureCertificateError</code>).</p>
+Things like untrusted certificates cause Sakuli tests to fail, since no connection to a seemingly insecure host will be established (<code>InsecureCertificateError</code>).</p>
 <p>Unfortunately, browsers use their own certificate store, which requires some additional work to add custom certificates.</p>
 <h4 id="61-adding-custom-certificates">6.1 Adding Custom Certificates</h4>
 <p>In order to add custom certificates to a Sakuli container, one has to provide two things:</p>
@@ -1215,11 +1222,17 @@ Things like untrusted certificates cause Sakuli tests to fail, since no connecti
 <li>A directory containing certificates for import (_.crt, _.cer, *.pem)</li>
 <li>An environment variable called <code>SAKULI_TRUSTED_CERT_DIR</code> which holds the path to the directory where certificates for import are located inside the container</li>
 </ul>
-<p>If the environment variable has been set, a startup script will pick up all certificates contained in the given folder and import each of them to all available browser certificate stores within <code>$HOME</code>, supporting both <code>cert8.db</code> databases for older browser versions as well as <code>cert9.db</code> files for recent browser versions.</p>
+<p>If the environment variable has been set, a startup script will pick up all certificates contained in the given folder
+and import each of them to all available browser certificate stores within <code>$HOME</code>, supporting both <code>cert8.db</code> databases
+for older browser versions as well as <code>cert9.db</code> files for recent browser versions.</p>
 <h4 id="62-sample">6.2 Sample</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">~$ docker run -v /path/to/certificates/:/certificate_import -e SAKULI_TRUSTED_CERT_DIR<span style="color:#f92672">=</span>/certificate_import/ taconsol/sakuli:2.2.0</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">~$ docker run -v /path/to/certificates/:/certificate_import -e SAKULI_TRUSTED_CERT_DIR<span style="color:#f92672">=</span>/certificate_import/ taconsol/sakuli:2.4.0-1</code></pre></div>
 <h4 id="63-firefox">6.3 Firefox</h4>
-<p>By default, a Firefox test uses a new, blank profile for each test run. In order to pick up the added certificates, a Firefox profile containing the appropriate certificate database has to be specified via <code>selenium.firefox.profile=/path/to/profile/folder</code> in <code>testsuite.properties</code>. In order to make this process easier, a dedicated Firefox profile for use with certificates is located at <code>/headless/firefox-certificates</code> to be used, instead of the generated profiles in <code>/headless/.mozilla/firefox/long_random_id.default</code>.</p>
+<p>By default, a Firefox test uses a new, blank profile for each test suite execution. In order to pick up the added certificates,
+a Firefox profile containing the appropriate certificate database has to be specified via
+<code>selenium.firefox.profile=/path/to/profile/folder</code> in <code>testsuite.properties</code>. In order to make this process easier, a
+dedicated Firefox profile for use with certificates is located at <code>/headless/firefox-certificates</code> to be used, instead
+of the generated profiles in <code>/headless/.mozilla/firefox/long_random_id.default</code>.</p>
 <p><strong>Attention:</strong> If this property is not set, added certificates will have no effect.</p>
 <h2 id="7-overview-environment-variables">7 Overview Environment Variables</h2>
 <table>
@@ -1233,7 +1246,7 @@ Things like untrusted certificates cause Sakuli tests to fail, since no connecti
 <tbody>
 <tr>
 <td>SAKULI_TEST_SUITE</td>
-<td>$HOME/demo_testcase</td>
+<td></td>
 <td>Path to Sakuli testsuite to be executed</td>
 </tr>
 <tr>
@@ -1278,20 +1291,11 @@ Things like untrusted certificates cause Sakuli tests to fail, since no connecti
 </tr>
 <tr>
 <td>GIT_CONTEXT_DIR</td>
-<td>.</td>
+<td></td>
 <td>Path to Sakuli testsuite within the git repository</td>
 </tr>
 </tbody>
 </table>
-<h2 id="8-summary">8 Summary</h2>
-<p>Once we have</p>
-<ul>
-<li>added our test to the container (via <a href="#4-1-1-bind-mounts">bind mount</a> or <a href="#extending-a-base-image">our own image</a>)</li>
-<li>configured where our test project is located (via <a href="#7-overview-environment-variables"><strong>SAKULI_TEST_SUITE environment variable</strong></a>)</li>
-<li>set up our <a href="#4-3-configure-what-to-execute-on-npm-test"><strong>test script</strong></a></li>
-<li>(optional) configured the container runtime environment</li>
-</ul>
-<p>our test will run automatically after the container started.</p>
 
 
 <footer class=" footline" >
