@@ -14,16 +14,48 @@ This guide assumes that you have finished the "Getting started" tutorial or that
 The minimum setup for a Sakuli project looks like this:
 
 - <i class="fas fa-folder"></i> **your-sakuli-project** *Home folder of the project*
-  - <i class="far fa-file"></i> **package.json** *All dependencies and setups for Node.js*
-  - <i class="far fa-file"></i> **sakuli.properties** *(optional: Configuration for all testsuites)*
   - <i class="fas fa-folder"></i> **testsuite-a** *Home folder of a testsuite*
+     - <i class="fas fa-folder"></i> **_logs** *An automatically generated folder for error screenshots and sakuli.log*
+         - <i class="fas fa-folder"></i> **_screenshots** *Folder for error screenshots*
+         - <i class="far fa-file"></i> **sakuli.log** *Logs of Sakuli execution*
+     - <i class="fas fa-folder"></i> **testcase** *Home of the testcase*
+         - <i class="far fa-file"></i> **.check.js.steps.cache** *An automatically generated cache file*
+         - <i class="far fa-file"></i> **testcase.js** *The actual testcase*
+     - <i class="far fa-file"></i> **package.json** *(optional) Defines test script for container usage*
      - <i class="far fa-file"></i> **testsuite.suite** *Defines which testcases belong to the testsuite*
      - <i class="far fa-file"></i> **testsuite.properties** *Configuration for the testsuite (overrides configuration from '../sakuli.properties')*
-     - <i class="fas fa-folder"></i> **testcase** *Home of the testcase*
-         - <i class="far fa-file"></i> **testcase.js** *The actual testcase*
+  - <i class="far fa-file"></i> **package.json** *All dependencies and setups for Node.js*
+  - <i class="far fa-file"></i> **sakuli.properties** *(optional) Configuration for all  testsuites*
 
 
 This file layout also represents the logical structure of Sakuli, which consists of a *testsuite* with one or more *testcase(s)*. Sakuli's `run` command takes the path to a testsuite folder and runs all testcases defined in `testsuite.suite` of the given folder. 
+
+### _logs
+
+The folder `_logs` is created automatically when Sakuli starts the first execution of a test suite.
+To change the path of the created folder `_logs` you can use `sakuli.log.folder`.
+See [Configuring Tests](/configuring_tests) for more information.
+    
+#### _screenshots
+
+Sakuli stores all error screenshots in this folder, which can be configured with these properties:
+- `sakuli.screenshot.onError`
+- `sakuli.screenshot.dir`
+- `sakuli.screenshot.storage`
+
+See [Configuring Tests](/configuring_tests) for more information.
+
+#### sakuli.log
+
+Sakuli logs all information about the test execution in this file. 
+To configure the log level, set `log.level` property in `sakuli.properties` or `testsuite.properties` accordingly. 
+
+### .steps.cache file
+
+The file 'steps.cache' is created after the first successful execution. It contains the step names of a test case
+(defined with `testcase.endOfStep()`). With the correct `.steps.cache` file Sakuli can omit the last step `Finished step UNNAMED with state Ok.`.
+
+
 
 ### testsuite.suite
 
