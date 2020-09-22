@@ -982,6 +982,8 @@
   <ul>
     <li><a href="#setup-and-configuration">Setup and configuration</a>
       <ul>
+        <li><a href="#_logs">_logs</a></li>
+        <li><a href="#stepscache-file">.steps.cache file</a></li>
         <li><a href="#testsuitesuite">testsuite.suite</a></li>
         <li><a href="#properties-files">Properties Files</a></li>
       </ul>
@@ -1016,25 +1018,51 @@
 <h2 id="setup-and-configuration">Setup and configuration</h2>
 <p>The minimum setup for a Sakuli project looks like this:</p>
 <ul>
-<li><!-- raw HTML omitted --><!-- raw HTML omitted --> <strong>your-sakuli-project</strong> <em>Home folder of the project</em>
+<li><i class="fas fa-folder"></i> <strong>your-sakuli-project</strong> <em>Home folder of the project</em>
 <ul>
-<li><!-- raw HTML omitted --><!-- raw HTML omitted --> <strong>package.json</strong> <em>All dependencies and setups for Node.js</em></li>
-<li><!-- raw HTML omitted --><!-- raw HTML omitted --> <strong>sakuli.properties</strong> <em>(optional: Configuration for all testsuites)</em></li>
-<li><!-- raw HTML omitted --><!-- raw HTML omitted --> <strong>testsuite-a</strong> <em>Home folder of a testsuite</em>
+<li><i class="fas fa-folder"></i> <strong>testsuite-a</strong> <em>Home folder of a testsuite</em>
 <ul>
-<li><!-- raw HTML omitted --><!-- raw HTML omitted --> <strong>testsuite.suite</strong> <em>Defines which testcases belong to the testsuite</em></li>
-<li><!-- raw HTML omitted --><!-- raw HTML omitted --> <strong>testsuite.properties</strong> <em>Configuration for the testsuite (overrides configuration from &lsquo;../sakuli.properties&rsquo;)</em></li>
-<li><!-- raw HTML omitted --><!-- raw HTML omitted --> <strong>testcase</strong> <em>Home of the testcase</em>
+<li><i class="fas fa-folder"></i> <strong>_logs</strong> <em>An automatically generated folder for error screenshots and sakuli.log</em>
 <ul>
-<li><!-- raw HTML omitted --><!-- raw HTML omitted --> <strong>testcase.js</strong> <em>The actual testcase</em></li>
+<li><i class="fas fa-folder"></i> <strong>_screenshots</strong> <em>Folder for error screenshots</em></li>
+<li><i class="far fa-file"></i> <strong>sakuli.log</strong> <em>Logs of Sakuli execution</em></li>
 </ul>
 </li>
+<li><i class="fas fa-folder"></i> <strong>testcase</strong> <em>Home of the testcase</em>
+<ul>
+<li><i class="far fa-file"></i> <strong>.check.js.steps.cache</strong> <em>An automatically generated cache file</em></li>
+<li><i class="far fa-file"></i> <strong>testcase.js</strong> <em>The actual testcase</em></li>
 </ul>
 </li>
+<li><i class="far fa-file"></i> <strong>package.json</strong> <em>(optional) Defines test script for container usage</em></li>
+<li><i class="far fa-file"></i> <strong>testsuite.suite</strong> <em>Defines which testcases belong to the testsuite</em></li>
+<li><i class="far fa-file"></i> <strong>testsuite.properties</strong> <em>Configuration for the testsuite (overrides configuration from &lsquo;../sakuli.properties&rsquo;)</em></li>
+</ul>
+</li>
+<li><i class="far fa-file"></i> <strong>package.json</strong> <em>All dependencies and setups for Node.js</em></li>
+<li><i class="far fa-file"></i> <strong>sakuli.properties</strong> <em>(optional) Configuration for all  testsuites</em></li>
 </ul>
 </li>
 </ul>
 <p>This file layout also represents the logical structure of Sakuli, which consists of a <em>testsuite</em> with one or more <em>testcase(s)</em>. Sakuli&rsquo;s <code>run</code> command takes the path to a testsuite folder and runs all testcases defined in <code>testsuite.suite</code> of the given folder.</p>
+<h3 id="_logs">_logs</h3>
+<p>The folder <code>_logs</code> is created automatically when Sakuli starts the first execution of a test suite.
+To change the path of the created folder <code>_logs</code> you can use <code>sakuli.log.folder</code>.
+See <a href="/configuring_tests">Configuring Tests</a> for more information.</p>
+<h4 id="_screenshots">_screenshots</h4>
+<p>Sakuli stores all error screenshots in this folder, which can be configured with these properties:</p>
+<ul>
+<li><code>sakuli.screenshot.onError</code></li>
+<li><code>sakuli.screenshot.dir</code></li>
+<li><code>sakuli.screenshot.storage</code></li>
+</ul>
+<p>See <a href="/configuring_tests">Configuring Tests</a> for more information.</p>
+<h4 id="sakulilog">sakuli.log</h4>
+<p>Sakuli logs all information about the test execution in this file.
+To configure the log level, set <code>log.level</code> property in <code>sakuli.properties</code> or <code>testsuite.properties</code> accordingly.</p>
+<h3 id="stepscache-file">.steps.cache file</h3>
+<p>The file &lsquo;steps.cache&rsquo; is created after the first successful execution. It contains the step names of a test case
+(defined with <code>testcase.endOfStep()</code>). With the correct <code>.steps.cache</code> file Sakuli can omit the last step <code>Finished step UNNAMED with state Ok.</code>.</p>
 <h3 id="testsuitesuite">testsuite.suite</h3>
 <p>This file is a relic from Sahi where you define testcases and their respective start-urls. It has a simple format:</p>
 <pre><code>&lt;CASE-PATH&gt;/&lt;CASE-FILE&gt; &lt;START-URL&gt;

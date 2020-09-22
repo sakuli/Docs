@@ -18,7 +18,7 @@
       <guid>/docs/getting-started/prerequisites/</guid>
       <description>What you need Sakuli is built and tested against the current LTS version of Node.js.
 Up to version 2.2.0 Sakuli supports node v10.x (lts/dubnium). Starting with version 2.3.0, Sakuli also supports v12.x (lts/erbium). In order to be able to run Sakuli on your system, we will assume that you have a working node installation.
-To install Node on your system, you can either go to the Node websiteor you can use tools like Node Version Managerutility to manage various Node versions on a per-user basis.</description>
+To install Node on your system, you can either go to the Node website or you can use tools like Node Version Manager utility to manage various Node versions on a per-user basis.</description>
     </item>
     
     <item>
@@ -40,7 +40,7 @@ npm init This interactive prompt will ask you for some metadata regarding your p
       
       <guid>/docs/getting-started/installation/</guid>
       <description>Installation Process The following steps are required to set up Sakuli to work with multiple browsers. Once the initial setup is done, we will dive right into our first test.
-WebDriver Installation Sakuli utilizes the WebDriver protocolto remote control browsers during test execution. In addition to the browser itself, you need to install the corresponding WebDriver as well. Several wrapper packages can be found on npmjs.com, which allow the installation of the required binaries via npm.</description>
+WebDriver Installation Sakuli utilizes the WebDriver protocol to remote control browsers during test execution. In addition to the browser itself, you need to install the corresponding WebDriver as well. Several wrapper packages can be found on npmjs.com, which allow the installation of the required binaries via npm.</description>
     </item>
     
     <item>

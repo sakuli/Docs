@@ -50,7 +50,7 @@ Create a Icinga2 service Create a check_command which will only be executed if I
       <guid>/docs/getting-started/prerequisites/</guid>
       <description>What you need Sakuli is built and tested against the current LTS version of Node.js.
 Up to version 2.2.0 Sakuli supports node v10.x (lts/dubnium). Starting with version 2.3.0, Sakuli also supports v12.x (lts/erbium). In order to be able to run Sakuli on your system, we will assume that you have a working node installation.
-To install Node on your system, you can either go to the Node websiteor you can use tools like Node Version Managerutility to manage various Node versions on a per-user basis.</description>
+To install Node on your system, you can either go to the Node website or you can use tools like Node Version Manager utility to manage various Node versions on a per-user basis.</description>
     </item>
     
     <item>
@@ -118,7 +118,7 @@ It takes a few steps to set up the monitoring system in order to process Sakuli&
       <pubDate>Thu, 12 Sep 2019 13:18:18 +0200</pubDate>
       
       <guid>/docs/writing_tests/interact/</guid>
-      <description>Interacting with the environment In addition to screenshot-based test actions, Sakuli is capable of utilizing your keyboard, clipboard and environment variables. All these features are incorporated with the ThenableEnvironmentinterface.
+      <description>Interacting with the environment In addition to screenshot-based test actions, Sakuli is capable of utilizing your keyboard, clipboard and environment variables. All these features are incorporated with the ThenableEnvironment interface.
 Environment variable To get a environment variable you can use getEnv(key) or getEnvMasked(key). Only difference between these two is the log output. getEnv(key) will also output key unlike getEnvMasked(key). const env = new Environment(); const path = await env.getEnv(&amp;#34;PATH&amp;#34;); const homeDir = await env.</description>
     </item>
     
@@ -129,7 +129,7 @@ Environment variable To get a environment variable you can use getEnv(key) or ge
       
       <guid>/docs/getting-started/installation/</guid>
       <description>Installation Process The following steps are required to set up Sakuli to work with multiple browsers. Once the initial setup is done, we will dive right into our first test.
-WebDriver Installation Sakuli utilizes the WebDriver protocolto remote control browsers during test execution. In addition to the browser itself, you need to install the corresponding WebDriver as well. Several wrapper packages can be found on npmjs.com, which allow the installation of the required binaries via npm.</description>
+WebDriver Installation Sakuli utilizes the WebDriver protocol to remote control browsers during test execution. In addition to the browser itself, you need to install the corresponding WebDriver as well. Several wrapper packages can be found on npmjs.com, which allow the installation of the required binaries via npm.</description>
     </item>
     
     <item>
@@ -262,7 +262,7 @@ const myIframe = await _fetch(_iframe(&amp;#39;frameName&amp;#39;)); await drive
       <pubDate>Thu, 12 Sep 2019 14:16:13 +0200</pubDate>
       
       <guid>/docs/enterprise_features/s2i/</guid>
-      <description>S2I Image Sakuli enterprise comes with ready-to-use source to image (S2I)containers for RedHat OpenShift. Using this builder container, it is easily possible to create deployable Sakuli images shipped with a test suite straight from your code repository.
+      <description>S2I Image Sakuli enterprise comes with ready-to-use source to image (S2I) containers for RedHat OpenShift. Using this builder container, it is easily possible to create deployable Sakuli images shipped with a test suite straight from your code repository.
 Setup To setup the source to image builds on your OpenShift cluster, it is required to import the images from taconsol/sakuli-s2i. To achieve this, you have to create a docker-registry secret with your &amp;lt;docker-username&amp;gt; and &amp;lt;docker-password&amp;gt; and link it to your builder service account to authenticate on docker.</description>
     </item>
     
@@ -292,9 +292,9 @@ How to get the Sakuli Dashboard Attention: Only Sakuli Enterprise users will be 
       <pubDate>Thu, 12 Sep 2019 13:16:37 +0200</pubDate>
       
       <guid>/docs/writing_tests/webtests/</guid>
-      <description>Web tests For DOM based testing most of the functions from Sahi testscan be used (please note that Sakuli only implements the open source APIs).
-The main difference between Sakuli v1 and Sakuli v2 is the usage of Promisesin the action API, meaning that you have to await a click for example.
-On the other hand, element selectors remain synchronized functions but will not do the actual DOM fetching anymore. While an expression like var $e=_link(&#39;Sakuli&#39;) did an actual DOM-access in Sakuli v1.</description>
+      <description>Web tests For DOM based testing most of the functions from Sahi tests can be used (please note that Sakuli only implements the open source APIs).
+The main difference between Sakuli v1 and Sakuli v2 is the usage of Promises in the action API, meaning that you have to await a click for example.
+On the other hand, element selectors remain synchronized functions but will not do the actual DOM fetching anymore.</description>
     </item>
     
     <item>

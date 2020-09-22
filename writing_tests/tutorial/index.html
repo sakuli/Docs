@@ -1065,10 +1065,10 @@ directory during the Sakuli test is the corresponding testcase folder.</p>
 score must be. You can also change this within your test to react to different matching-score needs.</p>
 <p>As the operating system needs some time to start the application (in this case the browser), we will set a sleeptime.</p>
 <p>After the chromium browser is opened the focus will be on the url-tab by default - we can just start typing the url we want to navigate to and hit Enter. The next step is to get the region of the desktop and search for the icon of the whitepaper:
-<!-- raw HTML omitted --></p>
+<img src="/images/tutorial/open_whitepaper.png" /></p>
 <p>After clicking the icon, the whitepaper PDF will be opened in a new tab. To verify whether the whitepaper was opened
 correctly, we try to find the following screenshot on the screen:
-<!-- raw HTML omitted --></p>
+<img src="/images/tutorial/whitepaper.png" /></p>
 <p>To do so, we add the following lines to our test:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">setSimilarity</span>(<span style="color:#ae81ff">0.98</span>);
 <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">waitForImage</span>(<span style="color:#e6db74">&#39;whitepaper.png&#39;</span>, <span style="color:#ae81ff">3</span>);
@@ -1086,9 +1086,9 @@ correctly, we try to find the following screenshot on the screen:
 <span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">endOfStep</span>(<span style="color:#e6db74">&#34;download whitepaper&#34;</span>);
 </code></pre></div></p>
 <p>With <code>CTRL+P</code> we open the print dialog which could look like this.
-<!-- raw HTML omitted --></p>
+<img src="/images/tutorial/print_dialog.png" /></p>
 <p>Now we need to move the mouse to the save button and click using this screenshot:
-<!-- raw HTML omitted --></p>
+<img src="/images/tutorial/print_dialog_save.png" /></p>
 <p>Afterwards another pop up dialog appears, which allows us to change the name of the pdf-file.
 For this instance we want to name it <code>sakuli-tutorial</code>.
 In the end we need to press enter to save the file.</p>

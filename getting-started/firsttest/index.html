@@ -1112,7 +1112,7 @@ carefully since it will increase the overall testing runtime.</p>
 Organizing tests as NPM projects makes it easier for you to distribute testcode.
 Everything required to execute the test is described in a project config, so tests should be ready to use after running <code>npm install</code> inside a project. 👍</p>
 <h3 id="npx">npx</h3>
-<p>Because of the way we have set up and configured our project in this guide, Sakuli is only available to this particular project. <!-- raw HTML omitted -->npx<!-- raw HTML omitted --> is a really handy tool, which allows us to execute our Sakuli CLI directly from the command line, even though we did not add it to the system <code>PATH</code>.</p>
+<p>Because of the way we have set up and configured our project in this guide, Sakuli is only available to this particular project. <a href="https://www.npmjs.com/package/npx" target="_blank">npx</a> is a really handy tool, which allows us to execute our Sakuli CLI directly from the command line, even though we did not add it to the system <code>PATH</code>.</p>
 <p>In order to run our first test, we just have to execute <code>npx sakuli run my-sut</code> inside our project folder (e.g. <code>/tmp/sakuli_starter</code> on *nix).
 By default, Sakuli will pick up the browser configured in the <code>testsuite.properties</code> file, but with npx it is possible to change the browser on the fly:</p>
 <p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli run my-sut --browser chrome</code></pre></div>

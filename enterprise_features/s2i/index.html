@@ -1026,7 +1026,7 @@
 
 
 <h1 id="s2i-image">S2I Image</h1>
-<p>Sakuli enterprise comes with ready-to-use <!-- raw HTML omitted -->source to image (S2I)<!-- raw HTML omitted -->
+<p>Sakuli enterprise comes with ready-to-use <a href="https://github.com/openshift/source-to-image" target="_blank">source to image (S2I)</a>
 containers for RedHat OpenShift. Using this builder container, it is easily possible to create deployable Sakuli images
 shipped with a test suite straight from your code repository.</p>
 <h2 id="setup">Setup</h2>
@@ -1132,7 +1132,68 @@ cluster, just use the following command and replace the placeholder with actual 
 <p>The provided template comes with a lot of optional parameter to customize your build process. The following table
 contains all available parameters. Additional parameters are specified in the same way as seen in the
 <a href="#create-s2i-build">Creating an S2I build</a> section.</p>
-<!-- raw HTML omitted -->
+<table>
+    <tr>
+        <th>Parameter</th>
+        <th>Optional</th>
+        <th>Description</th>
+        <th>Default value</th>
+    </tr>
+    <tr>
+        <td>SAKULI_LICENSE_KEY</td>
+        <td>NO</td>
+        <td>Sakuli2 License key.</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>TESTSUITE_REPOSITORY_URL</td>
+        <td>NO</td>
+        <td>Git source URL containing the test suite.</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>TESTSUITE_REPOSITORY_REF</td>
+        <td>YES</td>
+        <td>Git branch/tag reference.</td>
+        <td>master</td>
+    </tr>
+    <tr>
+        <td>IMAGE</td>
+        <td>YES</td>
+        <td>Name for the target image to be build.</td>
+        <td>sakuli-s2i-testsuite</td>
+    </tr>
+    <tr>
+        <td>IMAGE_TAG</td>
+        <td>YES</td>
+        <td>Tag to push build images to.</td>
+        <td>latest</td>
+    </tr>
+    <tr>
+        <td>TESTSUITE_CONTEXT_DIR</td>
+        <td>YES</td>
+        <td>Source folder where the test suite is located.</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>TESTSUITE_REPOSITORY_SECRET</td>
+        <td>YES</td>
+        <td>Secret to access the testsuite repository.</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>BUILDER_IMAGE</td>
+        <td>YES</td>
+        <td>Name of the builder image.</td>
+        <td>sakuli-s2i</td>
+    </tr>
+    <tr>
+        <td>BUILDER_IMAGE_TAG</td>
+        <td>YES</td>
+        <td>Tag of the builder image to use.</td>
+        <td>latest</td>
+    </tr>
+</table>
 <h2 id="s2i-template">S2I build template</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">apiVersion</span>: v1
 <span style="color:#66d9ef">kind</span>: Template

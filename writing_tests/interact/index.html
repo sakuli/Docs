@@ -1025,7 +1025,7 @@
 <h1 id="interacting-with-the-environment">Interacting with the environment</h1>
 <p>In addition to screenshot-based test actions, Sakuli is capable of utilizing your keyboard, clipboard and environment variables.
 All these features are incorporated with the
-<!-- raw HTML omitted -->ThenableEnvironment<!-- raw HTML omitted -->
+<a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/thenableenvironment.html" target="_blank">ThenableEnvironment</a>
 interface.</p>
 <h3 id="environment-variable">Environment variable</h3>
 <p>To get a environment variable you can use <code>getEnv(key)</code> or <code>getEnvMasked(key)</code>. Only difference between these two is the
@@ -1069,7 +1069,7 @@ adjust this value during a testcase for additional flexibility.</p>
 <h3 id="commands">Commands</h3>
 <p>With the <code>ThenableEnvironment</code> you can also run terminal commands. If the second parameter is set to true, Sakuli throws
 an exception if the command exits with a code other than 0.
-<code>runCommand</code> returns a <!-- raw HTML omitted -->Command Line Result<!-- raw HTML omitted -->.</p>
+<code>runCommand</code> returns a <a href="https://sakuli.io/apidoc/sakuli-legacy/classes/commandlineresult.html" target="_blank">Command Line Result</a>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">env</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Environment</span>();
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">fileList</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">runCommand</span>(<span style="color:#e6db74">&#34;ls -al&#34;</span>)
 
@@ -1122,7 +1122,7 @@ Use Firefox as a browser for this test to work, as Chrome simply downloads the f
 </code></pre></div>
 <h3 id="key-class">Key Class</h3>
 <p>Sometimes it is necessary to use control keys to navigate through a application. For such a case you can use the <code>Key</code> class.
-A list of all Keys can be found in our <!-- raw HTML omitted -->Legacy API docs<!-- raw HTML omitted -->.
+A list of all Keys can be found in our <a href="https://sakuli.io/apidoc/sakuli-legacy/classes/key.html" target="_blank">Legacy API docs</a>.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">env</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Environment</span>();
 
 <span style="color:#75715e">// open new tab in a browser
