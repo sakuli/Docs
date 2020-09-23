@@ -330,3 +330,4 @@ of the generated profiles in `/headless/.mozilla/firefox/long_random_id.default`
 | SAKULI_TRUSTED_CERT_DIR |               | Directory containing custom certificates for import |
 | GIT_URL                 |               | URL of git repository                               |
 | GIT_CONTEXT_DIR         |               | Path to Sakuli testsuite within the git repository  |
+| DEBUG                   | false         | Enables debug mode for container startup            |
