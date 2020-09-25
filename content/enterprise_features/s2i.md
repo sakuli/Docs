@@ -336,6 +336,10 @@ spec:
  More information concerning shared memory on OpenShift can be found in the
  [OKD Documentation](https://docs.okd.io/latest/dev_guide/shared_memory.html).
  
+## Creating S2I builds with remote desktop protocol (RDP) support
+In case RDP support is required, please use `sakuli-s2i-remote-connection` as builder image. More information about RDP
+support in containers can be found in [remote-connection-container]({{< relref "./container.md/#remote-connection-container" >}}).
+ 
 ## Troubleshooting
  
 ### pulling image error : ...

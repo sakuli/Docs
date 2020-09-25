@@ -316,7 +316,87 @@ of the generated profiles in `/headless/.mozilla/firefox/long_random_id.default`
 
 **Attention:** If this property is not set, added certificates will have no effect.
 
-## 7 Overview Environment Variables
+## 7 Remote desktop protocol (RDP) connections {#remote-connection-container}
+There are use cases that cannot be covered with the standard Linux based Sakuli container e.g. testing software that is
+only available for Microsoft Windows or automating processes in SAP. If you still want to leverage the flexibility and
+scalability of a container based Sakuli execution, we provide the `sakuli-remote-connection` container. This image
+ships with a [remmina](https://remmina.org/) installation to connect to a remote Windows machine using RDP.
+
+### 7.1 RDP example
+
+Sakuli check:
+{{<highlight typescript>}}
+(async () => {
+    const remmina = new Application(`remmina --connect <path/to/remmina/config.rdp>`);
+    try {
+        await remmina.open();
+        await env.sleep(2); //wait for remmina to open
+        await env.type(Key.TAB)
+            .type(Key.TAB)
+            .type(Key.ENTER); //accept certificate
+        await env.paste("<Username>")
+            .type(Key.TAB)
+            .pasteAndDecrypt("<encryptedPassword>")
+            .type(Key.TAB)
+            .paste("<Windows IP or Hostname>")
+            .type(Key.TAB)
+            .type(Key.TAB)
+            .type(Key.ENTER); //login to windows host
+            
+        // perform actions on host  
+    } catch (e) {
+        await testCase.handleException(e);
+    } finally {
+        await testCase.saveResult();
+    }
+})();
+{{</highlight>}}
+
+Sample `config.rdp`:
+{{<highlight typescript>}}
+screen mode id:i:2
+session bpp:i:64
+compression:i:1
+keyboardhook:i:2
+displayconnectionbar:i:1
+disable wallpaper:i:1
+disable full window drag:i:1
+allow desktop composition:i:0
+allow font smoothing:i:0
+disable menu anims:i:1
+disable themes:i:0
+disable cursor setting:i:0
+bitmapcachepersistenable:i:1
+full address:s:35.158.200.121
+audiomode:i:2
+microphone:i:0
+redirectprinters:i:0
+redirectsmartcard:i:0
+redirectcomports:i:0
+redirectsmartcards:i:0
+redirectclipboard:i:1
+redirectposdevices:i:0
+autoreconnection enabled:i:1
+authentication level:i:0
+prompt for credentials:i:1
+negotiate security layer:i:1
+remoteapplicationmode:i:0
+alternate shell:s:
+shell working directory:s:
+gatewayhostname:s:
+gatewayusagemethod:i:4
+gatewaycredentialssource:i:4
+gatewayprofileusagemethod:i:0
+precommand:s:
+promptcredentialonce:i:1
+drivestoredirect:s:
+{{</highlight>}}
+
+To execute test actions on the RDP host, we recommend to use keyboard shortcuts instead of image recognition 
+to increase stability. In case you want to use Sakuli browser interaction in your check, it is required to install a 
+Selenium Server on the Windows host and configure Sakuli to connect the browser functionality with the Selenium Server.  
+
+## 8 Overview Environment Variables
 
 | Environment Variable    | Default Value | Description                                         |
 | ----------------------- | --------------| --------------------------------------------------- |
