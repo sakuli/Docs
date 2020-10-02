@@ -243,7 +243,7 @@ docker run --rm -p 5000:5901 -p 6000:6901 -e SAKULI_LICENSE_KEY=<YOUR SAKULI LIC
 In this example container port 5901 is forwarded to port 5000 on the host system, port 6901 is forwarded to port 6000 on the host system.
 `localhost:5000` would be used to connect to the container via VNC client, on `localhost:6000` a webVNC view is available in the browser.
 
-> The default password to access a container via VNC is `vncpassword`. It is **highly** recommended changing this password in production environments. See section [**#5.2**](#5-2-configuring-vnc-access) for details.
+> The default password to access a container via VNC is `vncpassword`. It is **highly** recommended changing this password in production environments. See section [#5.2](#5-2-configuring-vnc-access) for details.
 
 ### 5.2 Configuring VNC Access
 
