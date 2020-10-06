@@ -344,6 +344,8 @@ Sakuli check:
             .type(Key.ENTER); //login to windows host
             
         // perform actions on host  
+        
+        await remmina.close();
     } catch (e) {
         await testCase.handleException(e);
     } finally {
