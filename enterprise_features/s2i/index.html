@@ -998,6 +998,7 @@
         <li><a href="#increasing-shared-memory-of-sakuli-on-openshift">Increasing shared memory of a Sakuli containers on OpenShift</a></li>
       </ul>
     </li>
+    <li><a href="#creating-s2i-builds-with-remote-desktop-protocol-rdp-support">Creating S2I builds with remote desktop protocol (RDP) support</a></li>
     <li><a href="#troubleshooting">Troubleshooting</a>
       <ul>
         <li><a href="#pulling-image-error--">pulling image error : &hellip;</a></li>
@@ -1316,6 +1317,9 @@ websites or <code>invalid session id</code> errors due to crashed browsers. In o
           <span style="color:#66d9ef">name</span>: dshm
 </code></pre></div><p>More information concerning shared memory on OpenShift can be found in the
 <a href="https://docs.okd.io/latest/dev_guide/shared_memory.html">OKD Documentation</a>.</p>
+<h2 id="creating-s2i-builds-with-remote-desktop-protocol-rdp-support">Creating S2I builds with remote desktop protocol (RDP) support</h2>
+<p>In case RDP support is required, please use <code>sakuli-s2i-remote-connection</code> as builder image. More information about RDP
+support in containers can be found in <a href="/docs/enterprise_features/container/#remote-connection-container">remote-connection-container</a>.</p>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="pulling-image-error--">pulling image error : &hellip;</h3>
 <p><strong>Affected OpenShift versions:</strong> 3.10, 3.11</p>
