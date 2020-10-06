@@ -324,6 +324,9 @@ ships with a [remmina](https://remmina.org/) installation to connect to a remote
 
 ### 7.1 RDP example
 
+To start remmina with a prepared configuration, please ensure to mount the required config file into the container using
+a volume or to create a base image with the configuration installed.  
+
 Sakuli check:
 {{<highlight typescript>}}
 (async () => {
