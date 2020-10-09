@@ -11,24 +11,24 @@ Sakuli tests can be fine-tuned via various properties.
 
 ## Project properties
 
-| Property            | Type: Default     | Comment / Example                                            |
-| ------------------- | ----------------- | ------------------------------------------------------------ |
-| `testsuite.id`      | String*: /        | Name of the suite shown in the output and used by the forwarder |
-| `testsuite.name`    | String*: `${testsuite.id}`        | Descriptive name for the current test suite |
-| `testsuite.browser` | String: firefox | Browser which is started by the WebDriver (it can be overridden by the `--browser` command line argument) |
-| `testsuite.reuseBrowser` | Boolean: true | Configures whether the browser is reused after each testcase (it can be overridden by the `--reuseBrowser` command line argument) **(Available as tech preview)** |
-| `testsuite.warningTime` | Number: 0       | The warning runtime threshold (seconds) for suite execution. If the warning time is exceeded, the test suite will get the state 'WARNING' |
-| `testsuite.criticalTime` | Number: 0 | The critical runtime threshold (seconds) for suite execution. If the critical time is exceeded, the test suite will get the state 'CRITICAL' |
-| `testsuite.uiOnly` | Boolean: false | Configure whether a testsuite should run in ui-only mode or not. If true, no browser will be started. (it can be overridden by the `--ui-only` command line argument) |
-| `sakuli.environment.similarity.default` | Number: 0.99 | Configures the minimum requires similarity for image based matching. Values in range 0 <= x <= 1 |
-| `sakuli.typeDelay` | Number: 300 | Specifies the amount of time in ms to wait between keypresses |
-| `sakuli.encryption.key` | String: / | Master key for en- and decryption |
-| `sakuli.log.folder` | String: `${project.rootDir}`/_logs | Folder for log files  |
-| `sakuli.screenshot.onError` | Boolean: true | Enable / disable screenshots on error |
-| `sakuli.screenshot.dir` | String: `${project.rootDir}`/_logs/_screenshots | Folder for screenshot files (if activated) |
-| `sakuli.screenshot.storage` | String: `hierarchical` | Configures the way Sakuli stores the error screenshots **(Available from v2.4.0)**|
-| `sakuli.mouse.action.delay` | Number: 10 | Delay between mouse actions e.g. mouse button down, mouse button up, scroll, etc. in ms **(Available from v2.4.0)** |
-| `sakuli.mouse.movement.speed` | Number: 3000 | Configures the speed in pixels/second for mouse movement **(Available from v2.4.0)** |
+| Property                                | Type: Default                                   | Comment / Example                                                                                                                                                     |
+| --------------------------------------- | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `testsuite.id`                          | String*: /                                      | Name of the suite shown in the output and used by the forwarder                                                                                                       |
+| `testsuite.name`                        | String*: `${testsuite.id}`                      | Descriptive name for the current test suite                                                                                                                           |
+| `testsuite.browser`                     | String: firefox                                 | Browser which is started by the WebDriver (it can be overridden by the `--browser` command line argument)                                                             |
+| `testsuite.reuseBrowser`                | Boolean: true                                   | Configures whether the browser is reused after each testcase (it can be overridden by the `--reuseBrowser` command line argument) **(Available as tech preview)**     |
+| `testsuite.warningTime`                 | Number: 0                                       | The warning runtime threshold (seconds) for suite execution. If the warning time is exceeded, the test suite will get the state 'WARNING'                             |
+| `testsuite.criticalTime`                | Number: 0                                       | The critical runtime threshold (seconds) for suite execution. If the critical time is exceeded, the test suite will get the state 'CRITICAL'                          |
+| `testsuite.uiOnly`                      | Boolean: false                                  | Configure whether a testsuite should run in ui-only mode or not. If true, no browser will be started. (it can be overridden by the `--ui-only` command line argument) |
+| `sakuli.environment.similarity.default` | Number: 0.99                                    | Configures the minimum requires similarity for image based matching. Values in range 0 <= x <= 1                                                                      |
+| `sakuli.typeDelay`                      | Number: 300                                     | Specifies the amount of time in ms to wait between keypresses                                                                                                         |
+| `sakuli.encryption.key`                 | String: /                                       | Master key for en- and decryption                                                                                                                                     |
+| `sakuli.log.folder`                     | String: `${project.rootDir}`/_logs              | Folder for log files                                                                                                                                                  |
+| `sakuli.screenshot.onError`             | Boolean: true                                   | Enable / disable screenshots on error                                                                                                                                 |
+| `sakuli.screenshot.dir`                 | String: `${project.rootDir}`/_logs/_screenshots | Folder for screenshot files (if activated)                                                                                                                            |
+| `sakuli.screenshot.storage`             | String: `hierarchical`                          | Configures the way Sakuli stores the error screenshots **(Available from v2.4.0)**                                                                                    |
+| `sakuli.mouse.action.delay`             | Number: 10                                      | Delay between mouse actions e.g. mouse button down, mouse button up, scroll, etc. in ms **(Available from v2.4.0)**                                                   |
+| `sakuli.mouse.movement.speed`           | Number: 3000                                    | Configures the speed in pixels/second for mouse movement **(Available from v2.4.0)**                                                                                  |
 
 ### sakuli.screenshot.storage
 
