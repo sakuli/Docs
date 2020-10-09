@@ -82,11 +82,11 @@ score must be. You can also change this within your test to react to different m
 As the operating system needs some time to start the application (in this case the browser), we will set a sleeptime.
 
 After the chromium browser is opened the focus will be on the url-tab by default - we can just start typing the url we want to navigate to and hit Enter. The next step is to get the region of the desktop and search for the icon of the whitepaper:
-<img src="/images/tutorial/open_whitepaper.png" />
+![open whitepaper](/images/tutorial/open_whitepaper.png)
 
 After clicking the icon, the whitepaper PDF will be opened in a new tab. To verify whether the whitepaper was opened
 correctly, we try to find the following screenshot on the screen:
-<img src="/images/tutorial/whitepaper.png" />
+![whitepaper](/images/tutorial/whitepaper.png)
 
 To do so, we add the following lines to our test:
 
@@ -110,10 +110,10 @@ tc.endOfStep("download whitepaper");
 {{< /highlight >}}
 
 With `CTRL+P` we open the print dialog which could look like this.
-<img src="/images/tutorial/print_dialog.png" />
+![print_dialog](/images/tutorial/print_dialog.png)
 
 Now we need to move the mouse to the save button and click using this screenshot:
-<img src="/images/tutorial/print_dialog_save.png" />
+![print_dialog_save](/images/tutorial/print_dialog_save.png)
 
 Afterwards another pop up dialog appears, which allows us to change the name of the pdf-file.
 For this instance we want to name it `sakuli-tutorial`.
