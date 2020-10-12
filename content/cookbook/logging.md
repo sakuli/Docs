@@ -41,8 +41,8 @@ Logger.logError("This will be logged on error level");
 
 | config | Description |
 | ------ | ----------- |
-| log.mode=logfile
-| log.mode=ci
+| log.mode=logfile | (default) Log messages are written into log file
+| log.mode=ci      | Log messages are written to stdout and log file for downwards compatibility
 
 *In case you want to set the log mode via environment variables, please use `LOG_MODE` with the appropriate value.
 Log modes set via environment variables are overwriting log mode configurations from property files.*
@@ -55,6 +55,9 @@ LOG_MODE=logFile
 
 The log mode `logFile` is default. With this setting, Sakuli puts its log output into a log file under consideration 
 of the given log configuration. The standard console output instead shows an overview of the test execution.   
+
+![print_dialog](/images/console_default_output.png)
+![print_dialog](/images/logfile_cat.png)
 
 ### Log mode 'ci'
 ```
