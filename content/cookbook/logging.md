@@ -6,15 +6,17 @@ weight = 5
 
 # Logging
 
-## Log Levels
+## Log levels
 
 There are currently five log levels implemented:
 
-- Trace
-- Debug
-- Info
-- Warn
-- Error
+| Log level | Description                                                                                                                                 |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| Trace     | Highly increased verbosity. Provides deep insights into code execution.                                                                     |
+| Debug     | Increased verbosity. Logs additional technical details about the test execution.                                                            |
+| Info      | Information about test execution.                                                                                                           |
+| Warn      | Something strange happened. The test execution is not critically disturbed and user interaction is not necessarily required in first place. |
+| Error     | The test errored. Test execution will be terminated as soon as possible. User interaction is required.                                      |
 
 ## Logging to sakuli.log
 
