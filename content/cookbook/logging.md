@@ -56,8 +56,10 @@ LOG_MODE=logFile
 The log mode `logFile` is default. With this setting, Sakuli puts its log output into a log file under consideration 
 of the given log configuration. The standard console output instead shows an overview of the test execution.   
 
-![print_dialog](/images/console_default_output.png)
-![print_dialog](/images/logfile_cat.png)
+
+| Console output                                      | Logfile output                           | 
+| --------------------------------------------------- | ---------------------------------------- |
+| ![print_dialog](/images/console_default_output.png) | ![print_dialog](/images/logfile_cat.png) |
 
 ### Log mode 'ci'
 ```
@@ -68,3 +70,8 @@ LOG_MODE=ci
 As Sakuli is often used within CI/CD environments in the stage of E2E Tests, working with log files e.g. inside a
 container or in a build system is not convenient. Therefore, Sakuli comes with the option to redirect the log output to
 the standard output. This mode suppresses the standard overview display of the test execution.
+
+
+| Console output                                 | Logfile output                              | 
+| ---------------------------------------------- | ------------------------------------------- |
+| ![print_dialog](/images/console_ci_output.png) | ![print_dialog](/images/logfile_ci_cat.png) |
