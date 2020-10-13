@@ -40,7 +40,7 @@ Log modes set via environment variables are overwriting log mode configurations 
 | ------------------------ | ------------------ |
 | `log.mode=logFile`       | `log.mode=logFile` |
 
-The log mode `logFile` is default. With this setting, Sakuli puts its log output into a log file under consideration 
+The default log mode is `logFile`. With this setting, Sakuli puts its log output into a log file under consideration 
 of the given log configuration. The standard console output instead shows an overview of the test execution.   
 
 
