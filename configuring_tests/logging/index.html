@@ -54,7 +54,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs/configuring_tests/">
+  <body class="" data-url="/docs/configuring_tests/logging/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -394,7 +394,7 @@
     
     <li data-nav-id="/docs/configuring_tests/" title="Configuring Tests" class="dd-item
         parent
-        active
+        
         
         ">
       <a href="/docs/configuring_tests/">
@@ -438,7 +438,7 @@
  
   
     
-      <li data-nav-id="/docs/configuring_tests/logging/" title="Logging" class="dd-item ">
+      <li data-nav-id="/docs/configuring_tests/logging/" title="Logging" class="dd-item active">
         <a href="/docs/configuring_tests/logging/">
         Logging
         <i class="fas fa-check read-icon"></i>
@@ -1009,7 +1009,13 @@
             
           
           
-            <a href='/docs/'></a> > Configuring Tests
+            
+            
+          
+          
+            <a href='/docs/'></a> > <a href='/docs/configuring_tests/'>Configuring Tests</a> > Logging
+          
+        
           
         
           
@@ -1020,7 +1026,17 @@
                 
                     <div class="progress">
     <div class="wrapper">
-        <nav id="TableOfContents"></nav>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#log-levels">Log levels</a></li>
+    <li><a href="#log-modes">Log modes</a>
+      <ul>
+        <li><a href="#log-mode-logfile">Log mode &lsquo;logFile&rsquo;</a></li>
+        <li><a href="#log-mode-ci">Log mode &lsquo;ci&rsquo;</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -1041,16 +1057,133 @@
 
 
 
-
-	<h1 id="learn-how-to-configure-sakuli">Learn how to configure Sakuli!</h1>
-
-
-
+<h1 id="logging">Logging</h1>
+<h2 id="log-levels">Log levels</h2>
+<p>The default log level in Sakuli is <code>Info</code>. This means all log levels starting from <code>Info</code> and below are logged to
+<code>sakuli.log</code>. You can configure the log level via <code>log.level</code> in your <code>testsuite.properties</code> file, e.g.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">log.level<span style="color:#f92672">=</span>DEBUG</code></pre></div></p>
+<p>There are currently five log levels implemented:</p>
+<table>
+<thead>
+<tr>
+<th>Log level</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trace</td>
+<td>Highly increased verbosity. Provides deep insights into code execution.</td>
+</tr>
+<tr>
+<td>Debug</td>
+<td>Increased verbosity. Logs additional technical details about the test execution.</td>
+</tr>
+<tr>
+<td>Info</td>
+<td>Information about test execution.</td>
+</tr>
+<tr>
+<td>Warn</td>
+<td>Something strange happened. The test execution is not critically disturbed and user interaction is not necessarily required in first place.</td>
+</tr>
+<tr>
+<td>Error</td>
+<td>The test errored. Test execution will be terminated as soon as possible. User interaction is required.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="log-modes">Log modes</h2>
+<p><em>Available as tech preview in the <code>@next</code> releases.</em></p>
+<table>
+<thead>
+<tr>
+<th>config</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>log.mode=logfile</td>
+<td>(default) Log messages are written into log file</td>
+</tr>
+<tr>
+<td>log.mode=ci</td>
+<td>Log messages are written to stdout and log file for downwards compatibility</td>
+</tr>
+</tbody>
+</table>
+<p><em>In case you want to set the log mode via environment variables, please use <code>LOG_MODE</code> with the appropriate value.
+Log modes set via environment variables are overwriting log mode configurations from property files.</em></p>
+<h3 id="log-mode-logfile">Log mode &lsquo;logFile&rsquo;</h3>
+<table>
+<thead>
+<tr>
+<th>sakuli.properties config</th>
+<th>environment config</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>log.mode=logFile</code></td>
+<td><code>log.mode=logFile</code></td>
+</tr>
+</tbody>
+</table>
+<p>The default log mode is <code>logFile</code>. With this setting, Sakuli puts its log output into a log file under consideration
+of the given log configuration. The standard console output instead shows an overview of the test execution.</p>
+<table>
+<thead>
+<tr>
+<th>Console output</th>
+<th>Logfile output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="/images/console_default_output.png" alt="print_dialog"></td>
+<td><img src="/images/logfile_cat.png" alt="print_dialog"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="log-mode-ci">Log mode &lsquo;ci&rsquo;</h3>
+<table>
+<thead>
+<tr>
+<th>sakuli.properties config</th>
+<th>environment config</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>log.mode=ci</code></td>
+<td><code>log.mode=ci</code></td>
+</tr>
+</tbody>
+</table>
+<p>As Sakuli is often used within CI/CD environments in the stage of E2E Tests, working with log files e.g. inside a
+container or in a build system is not convenient. Therefore, Sakuli comes with the option to redirect the log output to
+the standard output. This mode suppresses the standard overview display of the test execution.</p>
+<table>
+<thead>
+<tr>
+<th>Console output</th>
+<th>Logfile output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="/images/console_ci_output.png" alt="print_dialog"></td>
+<td><img src="/images/logfile_ci_cat.png" alt="print_dialog"></td>
+</tr>
+</tbody>
+</table>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -1343,6 +1476,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1361,6 +1495,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1718,10 +1855,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/docs/writing_tests/migration-sakuli-1/" title="Migration from Sakuli 1"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/docs/configuring_tests/sakuli-properties/" title="Sakuli properties"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/docs/configuring_tests/sakuli-properties/" title="Sakuli properties" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/docs/enterprise_features/" title="Enterprise Features" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1753,3 +1890,4 @@
 
   </body>
 </html>
+

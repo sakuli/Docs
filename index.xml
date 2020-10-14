@@ -21,6 +21,15 @@ Sakuli Core Besides our brand-new preset autodiscovery a lot of improvements wen
     </item>
     
     <item>
+      <title>Sakuli properties</title>
+      <link>/docs/configuring_tests/sakuli-properties/</link>
+      <pubDate>Thu, 23 Apr 2020 05:05:50 +0100</pubDate>
+      
+      <guid>/docs/configuring_tests/sakuli-properties/</guid>
+      <description>Sakuli Properties Project properties    Property Type: Default Comment / Example     testsuite.id String*: / Name of the suite shown in the output and used by the forwarder   testsuite.name String*: ${testsuite.id} Descriptive name for the current test suite   testsuite.browser String: firefox Browser which is started by the WebDriver (it can be overridden by the --browser command line argument)   testsuite.reuseBrowser Boolean: true Configures whether the browser is reused after each testcase (it can be overridden by the --reuseBrowser command line argument) (Available as tech preview)   testsuite.</description>
+    </item>
+    
+    <item>
       <title>V2.3.0</title>
       <link>/docs/change_notes/2.3.0/</link>
       <pubDate>Tue, 17 Mar 2020 10:28:41 +0100</pubDate>
@@ -51,6 +60,17 @@ Create a Icinga2 service Create a check_command which will only be executed if I
       <description>What you need Sakuli is built and tested against the current LTS version of Node.js.
 Up to version 2.2.0 Sakuli supports node v10.x (lts/dubnium). Starting with version 2.3.0, Sakuli also supports v12.x (lts/erbium). In order to be able to run Sakuli on your system, we will assume that you have a working node installation.
 To install Node on your system, you can either go to the Node website or you can use tools like Node Version Manager utility to manage various Node versions on a per-user basis.</description>
+    </item>
+    
+    <item>
+      <title>Logging</title>
+      <link>/docs/configuring_tests/logging/</link>
+      <pubDate>Thu, 23 Apr 2020 05:05:50 +0100</pubDate>
+      
+      <guid>/docs/configuring_tests/logging/</guid>
+      <description>Logging Log levels The default log level in Sakuli is Info. This means all log levels starting from Info and below are logged to sakuli.log. You can configure the log level via log.level in your testsuite.properties file, e.g. log.level=DEBUG
+There are currently five log levels implemented:
+   Log level Description     Trace Highly increased verbosity. Provides deep insights into code execution.   Debug Increased verbosity.</description>
     </item>
     
     <item>
@@ -181,9 +201,7 @@ Closing a tab You can close the currently focused tab with: await driver.</descr
       <pubDate>Thu, 23 Apr 2020 05:05:50 +0100</pubDate>
       
       <guid>/docs/cookbook/logging/</guid>
-      <description>Logging Log Levels There are currently five log levels implemented:
- Trace Debug Info Warn Error  Logging to sakuli.log The default log level in Sakuli is Info. This means all log levels starting from Info and below are logged to sakuli.log. You can configure the log level via log.level in your testsuite.properties file, e.g. log.level=DEBUG
-Logging is done via the Logger object within a testcase. It provides several methods to log at the respective log level: Logger.</description>
+      <description>Logging Logging is done via the Logger object within a testcase. It provides several methods to log at the respective log level: Logger.logDebug(&amp;#34;This will be logged on debug level&amp;#34;); Logger.logInfo(&amp;#34;This will be logged on info level&amp;#34;); Logger.logWarning(&amp;#34;This will be logged on warning level&amp;#34;); Logger.logError(&amp;#34;This will be logged on error level&amp;#34;);</description>
     </item>
     
     <item>

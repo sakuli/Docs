@@ -27,9 +27,7 @@ Closing a tab You can close the currently focused tab with: await driver.</descr
       <pubDate>Thu, 23 Apr 2020 05:05:50 +0100</pubDate>
       
       <guid>/docs/cookbook/logging/</guid>
-      <description>Logging Log Levels There are currently five log levels implemented:
- Trace Debug Info Warn Error  Logging to sakuli.log The default log level in Sakuli is Info. This means all log levels starting from Info and below are logged to sakuli.log. You can configure the log level via log.level in your testsuite.properties file, e.g. log.level=DEBUG
-Logging is done via the Logger object within a testcase. It provides several methods to log at the respective log level: Logger.</description>
+      <description>Logging Logging is done via the Logger object within a testcase. It provides several methods to log at the respective log level: Logger.logDebug(&amp;#34;This will be logged on debug level&amp;#34;); Logger.logInfo(&amp;#34;This will be logged on info level&amp;#34;); Logger.logWarning(&amp;#34;This will be logged on warning level&amp;#34;); Logger.logError(&amp;#34;This will be logged on error level&amp;#34;);</description>
     </item>
     
     <item>

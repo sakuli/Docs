@@ -10,5 +10,25 @@
 	<atom:link href="/docs/configuring_tests/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>Sakuli properties</title>
+      <link>/docs/configuring_tests/sakuli-properties/</link>
+      <pubDate>Thu, 23 Apr 2020 05:05:50 +0100</pubDate>
+      
+      <guid>/docs/configuring_tests/sakuli-properties/</guid>
+      <description>Sakuli Properties Project properties    Property Type: Default Comment / Example     testsuite.id String*: / Name of the suite shown in the output and used by the forwarder   testsuite.name String*: ${testsuite.id} Descriptive name for the current test suite   testsuite.browser String: firefox Browser which is started by the WebDriver (it can be overridden by the --browser command line argument)   testsuite.reuseBrowser Boolean: true Configures whether the browser is reused after each testcase (it can be overridden by the --reuseBrowser command line argument) (Available as tech preview)   testsuite.</description>
+    </item>
+    
+    <item>
+      <title>Logging</title>
+      <link>/docs/configuring_tests/logging/</link>
+      <pubDate>Thu, 23 Apr 2020 05:05:50 +0100</pubDate>
+      
+      <guid>/docs/configuring_tests/logging/</guid>
+      <description>Logging Log levels The default log level in Sakuli is Info. This means all log levels starting from Info and below are logged to sakuli.log. You can configure the log level via log.level in your testsuite.properties file, e.g. log.level=DEBUG
+There are currently five log levels implemented:
+   Log level Description     Trace Highly increased verbosity. Provides deep insights into code execution.   Debug Increased verbosity.</description>
+    </item>
+    
   </channel>
 </rss>

@@ -8,6 +8,11 @@
   </url>
   
   <url>
+    <loc>/docs/configuring_tests/sakuli-properties/</loc>
+    <lastmod>2020-04-23T05:05:50+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/docs/change_notes/2.3.0/</loc>
     <lastmod>2020-03-17T10:28:41+01:00</lastmod>
   </url>
@@ -25,6 +30,11 @@
   <url>
     <loc>/docs/getting-started/</loc>
     <lastmod>2019-09-10T15:21:15+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/docs/configuring_tests/logging/</loc>
+    <lastmod>2020-04-23T05:05:50+01:00</lastmod>
   </url>
   
   <url>

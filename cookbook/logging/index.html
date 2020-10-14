@@ -405,6 +405,54 @@
       </a>
       
       
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/docs/configuring_tests/sakuli-properties/" title="Sakuli properties" class="dd-item ">
+        <a href="/docs/configuring_tests/sakuli-properties/">
+        Sakuli properties
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/docs/configuring_tests/logging/" title="Logging" class="dd-item ">
+        <a href="/docs/configuring_tests/logging/">
+        Logging
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
     </li>
   
  
@@ -978,12 +1026,7 @@
                 
                     <div class="progress">
     <div class="wrapper">
-        <nav id="TableOfContents">
-  <ul>
-    <li><a href="#log-levels">Log Levels</a></li>
-    <li><a href="#logging-to-sakulilog">Logging to sakuli.log</a></li>
-  </ul>
-</nav>
+        <nav id="TableOfContents"></nav>
     </div>
 </div>
 
@@ -1005,19 +1048,6 @@
 
 
 <h1 id="logging">Logging</h1>
-<h2 id="log-levels">Log Levels</h2>
-<p>There are currently five log levels implemented:</p>
-<ul>
-<li>Trace</li>
-<li>Debug</li>
-<li>Info</li>
-<li>Warn</li>
-<li>Error</li>
-</ul>
-<h2 id="logging-to-sakulilog">Logging to sakuli.log</h2>
-<p>The default log level in Sakuli is <code>Info</code>. This means all log levels starting from <code>Info</code> and below are logged to
-<code>sakuli.log</code>. You can configure the log level via <code>log.level</code> in your <code>testsuite.properties</code> file, e.g.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">log.level<span style="color:#f92672">=</span>DEBUG</code></pre></div></p>
 <p>Logging is done via the <code>Logger</code> object within a testcase. It provides several methods to log at the respective log level:
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">Logger</span>.<span style="color:#a6e22e">logDebug</span>(<span style="color:#e6db74">&#34;This will be logged on debug level&#34;</span>);
 
@@ -1299,6 +1329,38 @@
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
                     
             
         
