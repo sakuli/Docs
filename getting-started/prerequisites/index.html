@@ -1052,9 +1052,30 @@
 
 
 <h1 id="what-you-need">What you need</h1>
-<p>Sakuli is built and tested against the current LTS version of Node.js.</p>
-<p>Up to version <code>2.2.0</code> Sakuli supports node v10.x (<code>lts/dubnium</code>). Starting with version <code>2.3.0</code>, Sakuli also supports v12.x (<code>lts/erbium</code>).
-In order to be able to run Sakuli on your system, we will assume that you have a working node installation.</p>
+<p>Sakuli is built and tested against the <a href="https://nodejs.org/en/about/releases/">current LTS version of Node.js</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Sakuli Version</th>
+<th>Node.js Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&gt;= 2.2.0</code></td>
+<td>v10.x (<code>lts/dubnium</code>)</td>
+</tr>
+<tr>
+<td><code>&gt;= 2.3.0</code></td>
+<td>v12.x (<code>lts/erbium</code>)</td>
+</tr>
+<tr>
+<td><code>&gt;= 2.5.0</code></td>
+<td>v14.x (<code>lts/fermium</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>In order to be able to run Sakuli on your system, we will assume that you have a working node installation.</p>
 <p>To install Node on your system, you can either go to the <a href="https://nodejs.org/en/" target="_blank">Node website</a> or you can use tools like <a href="https://github.com/nvm-sh/nvm" target="_blank">Node Version Manager</a> utility to manage various Node versions on a per-user basis. In general, a per-user installation is the preferred way since it runs in an unprivileged mode.</p>
 <h2 id="attention">Attention</h2>
 <p>There&rsquo;s an issue regarding Sakuli in combination with node versions &gt;= 12.13.1 on macOS (see <a href="https://github.com/nodejs/help/issues/2398">#2398</a> and <a href="https://github.com/nodejs/node/issues/31623">#31623</a>) which causes Sakuli tests to break when using native actions like <code>env.type(...)</code>.</p>

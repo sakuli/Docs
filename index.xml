@@ -58,7 +58,7 @@ Create a Icinga2 service Create a check_command which will only be executed if I
       
       <guid>/docs/getting-started/prerequisites/</guid>
       <description>What you need Sakuli is built and tested against the current LTS version of Node.js.
-Up to version 2.2.0 Sakuli supports node v10.x (lts/dubnium). Starting with version 2.3.0, Sakuli also supports v12.x (lts/erbium). In order to be able to run Sakuli on your system, we will assume that you have a working node installation.
+   Sakuli Version Node.js Version     &amp;gt;= 2.2.0 v10.x (lts/dubnium)   &amp;gt;= 2.3.0 v12.x (lts/erbium)   &amp;gt;= 2.5.0 v14.x (lts/fermium)    In order to be able to run Sakuli on your system, we will assume that you have a working node installation.
 To install Node on your system, you can either go to the Node website or you can use tools like Node Version Manager utility to manage various Node versions on a per-user basis.</description>
     </item>
     
