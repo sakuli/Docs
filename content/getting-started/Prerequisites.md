@@ -6,7 +6,8 @@ weight : 1
 
 # What you need
 
-Sakuli only supports the current LTS release of Node (LTS/Fermium).
+Sakuli only supports the active LTS release of Node.
+For information on what version this currently covers see the <a href="https://github.com/nodejs/Release#release-schedule" target="_blank">Node.js Release Schedule</a>.
 
 In order to be able to run Sakuli on your system, we will assume that you have a working node installation.
 
