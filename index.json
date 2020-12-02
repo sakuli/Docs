@@ -32,7 +32,7 @@
 	"title": "Prerequisites",
 	"tags": [],
 	"description": "",
-	"content": "what you need sakuli is built and tested against the current lts version of node.js.\n   sakuli version node.js version     \u0026gt;= 2.2.0 v10.x (lts/dubnium)   \u0026gt;= 2.3.0 v12.x (lts/erbium)   \u0026gt;= 2.5.0 v14.x (lts/fermium)    in order to be able to run sakuli on your system, we will assume that you have a working node installation.\nto install node on your system, you can either go to the node website or you can use tools like node version manager utility to manage various node versions on a per-user basis. in general, a per-user installation is the preferred way since it runs in an unprivileged mode.\nattention there\u0026rsquo;s an issue regarding sakuli in combination with node versions \u0026gt;= 12.13.1 on macos (see #2398 and #31623) which causes sakuli tests to break when using native actions like env.type(...).\nif you happen to run into this issue, please try downgrading to node v12.13.0 to run your tests.\n"
+	"content": "what you need sakuli only supports the active lts release of node. for information on what version this currently covers see the node.js release schedule.\nin order to be able to run sakuli on your system, we will assume that you have a working node installation.\nto install node on your system, you can either go to the node website or you can use tools like node version manager utility to manage various node versions on a per-user basis. in general, a per-user installation is the preferred way since it runs in an unprivileged mode.\n"
 },
 {
 	"uri": "/docs/getting-started/",
