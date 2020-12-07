@@ -221,6 +221,11 @@ In case your test project requires additional dependencies, it's possible to run
 ...
 {{</highlight>}}
 
+With the tech preview of our Docker container you can now enable the package installation via the environment variable
+`INSTALL_PACKAGES`. This will install all packages defined in your `package.json` at the container startup.
+
+> **Note:** The Sakuli version installed inside the container will be overwritten by the version defined in the `package.json`
+
 ## 5 Viewing / Configuring Test Execution
 
 Sakuli test containers allow to configure specific details of their runtime environment.
@@ -416,3 +421,4 @@ Selenium Server on the Windows host and configure Sakuli to connect the browser 
 | GIT_URL                 |               | URL of git repository                               |
 | GIT_CONTEXT_DIR         |               | Path to Sakuli testsuite within the git repository  |
 | DEBUG                   | false         | Enables debug mode for container startup            |
+| INSTALL_PACKAGES        | false         | Installs packages defined in the `package.json` at container startup (available in tech preview) |
