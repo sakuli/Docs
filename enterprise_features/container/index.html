@@ -1225,6 +1225,12 @@ decide to put multiple test suites into one project, we recommend putting a pack
 },
 ...
 </code></pre></div>
+<p>On the <code>latest</code> tag (<strong>tech preview</strong>), the Container supports package installation, configurable via the environment variable
+<code>INSTALL_PACKAGES=true</code>. This will install all packages defined in your <code>package.json</code> at container startup.</p>
+<blockquote>
+<p><strong>Note:</strong> Package versions installed inside the container will be overwritten by the version defined in the <code>package.json</code>.<br>
+This might cause unexpected behavior, if overwriting e.g. Sakuli itself <code>(@sakuli/cli)</code> or forwarders.</p>
+</blockquote>
 <h2 id="5-viewing--configuring-test-execution">5 Viewing / Configuring Test Execution</h2>
 <p>Sakuli test containers allow to configure specific details of their runtime environment.</p>
 <h3 id="51-vnc-access">5.1 VNC Access</h3>
@@ -1428,6 +1434,11 @@ Selenium Server on the Windows host and configure Sakuli to connect the browser 
 <td>DEBUG</td>
 <td>false</td>
 <td>Enables debug mode for container startup</td>
+</tr>
+<tr>
+<td>INSTALL_PACKAGES</td>
+<td>false</td>
+<td>Installs packages defined in the <code>package.json</code> at container startup (available on <code>latest</code> tag as tech preview)</td>
 </tr>
 </tbody>
 </table>
