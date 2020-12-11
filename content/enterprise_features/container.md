@@ -221,6 +221,12 @@ In case your test project requires additional dependencies, it's possible to run
 ...
 {{</highlight>}}
 
+On the `latest` tag (**tech preview**), the Container supports package installation, configurable via the environment variable
+`INSTALL_PACKAGES=true`. This will install all packages defined in your `package.json` at container startup.
+
+> **Note:** Package versions installed inside the container will be overwritten by the version defined in the `package.json`.  
+> This might cause unexpected behavior, if overwriting e.g. Sakuli itself `(@sakuli/cli)` or forwarders.
+
 ## 5 Viewing / Configuring Test Execution
 
 Sakuli test containers allow to configure specific details of their runtime environment.
@@ -403,16 +409,17 @@ Selenium Server on the Windows host and configure Sakuli to connect the browser 
 
 ## 8 Overview Environment Variables
 
-| Environment Variable    | Default Value | Description                                         |
-| ----------------------- | --------------| --------------------------------------------------- |
-| SAKULI_TEST_SUITE       |               | Path to Sakuli testsuite to be executed             |
-| SAKULI_LICENSE_KEY      |               | Sakuli license to use the container                 |
-| VNC_COL_DEPTH           | 24            | Color depth of container monitor                    |
-| VNC_RESOLUTION          | 1280x1024     | Screen resolution of container                      |
-| VNC_PW                  | vncpassword   | Password to access NoVNC/VNC connection             |
-| VNC_VIEW_ONLY           | false         | Enable/Disable view-only mode                       |
-| NPM_TOKEN               |               | NPM token to access npmjs.com registry              |
-| SAKULI_TRUSTED_CERT_DIR |               | Directory containing custom certificates for import |
-| GIT_URL                 |               | URL of git repository                               |
-| GIT_CONTEXT_DIR         |               | Path to Sakuli testsuite within the git repository  |
-| DEBUG                   | false         | Enables debug mode for container startup            |
+| Environment Variable    | Default Value | Description                                                                                                      |
+| ----------------------- | --------------| ---------------------------------------------------------------------------------------------------------------- |
+| SAKULI_TEST_SUITE       |               | Path to Sakuli testsuite to be executed                                                                          |
+| SAKULI_LICENSE_KEY      |               | Sakuli license to use the container                                                                              |
+| VNC_COL_DEPTH           | 24            | Color depth of container monitor                                                                                 |
+| VNC_RESOLUTION          | 1280x1024     | Screen resolution of container                                                                                   |
+| VNC_PW                  | vncpassword   | Password to access NoVNC/VNC connection                                                                          |
+| VNC_VIEW_ONLY           | false         | Enable/Disable view-only mode                                                                                    |
+| NPM_TOKEN               |               | NPM token to access npmjs.com registry                                                                           |
+| SAKULI_TRUSTED_CERT_DIR |               | Directory containing custom certificates for import                                                              |
+| GIT_URL                 |               | URL of git repository                                                                                            |
+| GIT_CONTEXT_DIR         |               | Path to Sakuli testsuite within the git repository                                                               |
+| DEBUG                   | false         | Enables debug mode for container startup                                                                         |
+| INSTALL_PACKAGES        | false         | Installs packages defined in the `package.json` at container startup (available on `latest` tag as tech preview) |
