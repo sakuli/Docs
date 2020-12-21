@@ -11,10 +11,11 @@ weight : 10
 With optical character recognition (OCR) it is possible to convert screen content into text. In combination with Sakuli, 
 OCR it is also possible to automate software based on the text shown on screen.
 
-## OCR in Enterprise containers
-- everything setup
-- tesseract pre-installed
-- just use ocr functionality in check/test
+## OCR in enterprise containers
+
+Sakuli enterprise containers ship with a complete setup to use the OCR features of Sakuli. OCR features can be used
+without any further set up. Please have a look at the 
+[enterprise containers documentation](/docs/enterprise_features/container) for more information about container usage.
 
 ## Installing Sakuli OCR
 
