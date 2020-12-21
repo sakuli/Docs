@@ -176,7 +176,7 @@ textarea:focus, input[type="email"]:focus, input[type="number"]:focus, input[typ
     background-color: #5b5b5b;
     position: fixed;
     top: 0;
-    width: 300px;
+    width: 315px;
     bottom: 0;
     left: 0;
     font-weight: 400;
@@ -1144,7 +1144,7 @@ pre .copy-to-clipboard:hover {
 
 /* API DOCS added by myself */
 #apiHead {
-    font-weight: bold; 
+    font-weight: bold;
     font-family: "Novacento Sans Wide", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
     color: white;
     padding-left: 2rem;
@@ -1158,7 +1158,7 @@ pre .copy-to-clipboard:hover {
 
 #apiMenu {
     font-size: 12px;
-    
+
 }
 
 #apiMenu a{
