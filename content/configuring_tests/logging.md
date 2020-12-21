@@ -46,7 +46,7 @@ of the given log configuration. The standard console output instead shows an ove
 
 | Console output                                      | Logfile output                           | 
 | --------------------------------------------------- | ---------------------------------------- |
-| ![print_dialog](/images/console_default_output.png) | ![print_dialog](/images/logfile_cat.png) |
+| ![print_dialog](/docs/images/console_default_output.png) | ![print_dialog](/docs/images/logfile_cat.png) |
 
 ### Log mode 'ci'
 | sakuli.properties config | environment config | 
@@ -60,4 +60,4 @@ the standard output. This mode suppresses the standard overview display of the t
 
 | Console output                                 | Logfile output                              | 
 | ---------------------------------------------- | ------------------------------------------- |
-| ![print_dialog](/images/console_ci_output.png) | ![print_dialog](/images/logfile_ci_cat.png) |
+| ![print_dialog](/docs/images/console_ci_output.png) | ![print_dialog](/docs/images/logfile_ci_cat.png) |

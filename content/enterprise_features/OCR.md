@@ -101,7 +101,7 @@ In this sample, the search for the text "Continue" would be limited to the speci
 One common use case would be to extract text from a certain region of the screen e.g. from an offer or invoice for
 further validation.   
 
-![offer](/images/consol_offer.png)
+![offer](/docs/images/consol_offer.png)
 
 ```typescript {hl_lines=["5-6"]}
 (async () => {
