@@ -1089,7 +1089,7 @@
 <h1 id="optical-character-recognition-ocr">Optical character recognition (OCR)</h1>
 <p><strong>This feature is currently a tech preview!</strong></p>
 <p>With optical character recognition (OCR) it is possible to convert screen content into text. In combination with Sakuli,
-OCR it is also possible to automate software based on the text shown on screen.</p>
+it is also possible to automate software based on the text shown on screen.</p>
 <h2 id="ocr-in-enterprise-containers">OCR in enterprise containers</h2>
 <p>Sakuli enterprise containers ship with a complete setup to use the OCR features of Sakuli. OCR features can be used
 without any further set up. Please have a look at the
@@ -1130,7 +1130,7 @@ on the screen including line feeds.</p>
 </code></pre></div><h3 id="reading-text-from-a-specific-region">Reading text from a specific region</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">regionToRead</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">400</span>, <span style="color:#ae81ff">50</span>);
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">textOfRegion</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_getTextFromRegion</span>(<span style="color:#a6e22e">regionToRead</span>);
-</code></pre></div><p><code>new Region(100, 100, 400, 50);</code> creates a region with the following specification:</p>
+</code></pre></div><p><code>new Region(50, 100, 400, 50);</code> creates a region with the following specification:</p>
 <ul>
 <li>x = 50 px</li>
 <li>y = 100 px</li>
@@ -1146,7 +1146,7 @@ location of the text is determined, it is possible to e.g. move the mouse to the
 </code></pre></div><p>This sample would search the screen for the text &ldquo;Continue&rdquo; and subsequently click on it.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">searchRegion</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">400</span>, <span style="color:#ae81ff">50</span>);
 <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_getRegionByText</span>(<span style="color:#e6db74">&#34;Continue&#34;</span>, <span style="color:#a6e22e">searchRegion</span>).<span style="color:#a6e22e">click</span>();
-</code></pre></div><p><code>new Region(100, 100, 400, 50);</code> creates a region with the following specification:</p>
+</code></pre></div><p><code>new Region(50, 100, 400, 50);</code> creates a region with the following specification:</p>
 <ul>
 <li>x = 50 px</li>
 <li>y = 100 px</li>

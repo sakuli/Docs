@@ -354,7 +354,7 @@ The Sakuli dashboard is configurable via environmental variables containing JSON
       
       <guid>/docs/enterprise_features/ocr/</guid>
       <description>Optical character recognition (OCR) This feature is currently a tech preview!
-With optical character recognition (OCR) it is possible to convert screen content into text. In combination with Sakuli, OCR it is also possible to automate software based on the text shown on screen.
+With optical character recognition (OCR) it is possible to convert screen content into text. In combination with Sakuli, it is also possible to automate software based on the text shown on screen.
 OCR in enterprise containers Sakuli enterprise containers ship with a complete setup to use the OCR features of Sakuli. OCR features can be used without any further set up.</description>
     </item>
     
