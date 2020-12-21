@@ -5,7 +5,7 @@
     <link>/docs/</link>
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 30 Aug 2020 10:28:41 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 18 Dec 2020 13:55:46 +0100</lastBuildDate>
     
 	<atom:link href="/docs/index.xml" rel="self" type="application/rss+xml" />
     
@@ -345,6 +345,17 @@ Async / Await You might have wondered where the await keyword came from when you
       <description>Sakuli Dashboard Configuration This section contains information on how to configure the Sakuli dashboard.
 The Sakuli dashboard is configurable via environmental variables containing JSON documents. Check out the different sections to get example templates and detailed information about how to set up your Sakuli dashboard.
    Environment variable Description     DASHBOARD_CONFIG Configures the displays (ordering, url, action buttons, etc.) shown in the dashboard   ACTION_CONFIG (optional) Available actions to perform on the cluster and corresponding display updates   CLUSTER_CONFIG (optional) Configures the cluster access (cluster address, access token, etc.</description>
+    </item>
+    
+    <item>
+      <title>Optical character recognition (OCR)</title>
+      <link>/docs/enterprise_features/ocr/</link>
+      <pubDate>Fri, 18 Dec 2020 13:55:46 +0100</pubDate>
+      
+      <guid>/docs/enterprise_features/ocr/</guid>
+      <description>Optical character recognition (OCR) This feature is currently a tech preview!
+With optical character recognition (OCR) it is possible to convert screen content into text. In combination with Sakuli, OCR it is also possible to automate software based on the text shown on screen.
+OCR in enterprise containers Sakuli enterprise containers ship with a complete setup to use the OCR features of Sakuli. OCR features can be used without any further set up.</description>
     </item>
     
   </channel>

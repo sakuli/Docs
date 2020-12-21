@@ -101,5 +101,16 @@ The Sakuli dashboard is configurable via environmental variables containing JSON
    Environment variable Description     DASHBOARD_CONFIG Configures the displays (ordering, url, action buttons, etc.) shown in the dashboard   ACTION_CONFIG (optional) Available actions to perform on the cluster and corresponding display updates   CLUSTER_CONFIG (optional) Configures the cluster access (cluster address, access token, etc.</description>
     </item>
     
+    <item>
+      <title>Optical character recognition (OCR)</title>
+      <link>/docs/enterprise_features/ocr/</link>
+      <pubDate>Fri, 18 Dec 2020 13:55:46 +0100</pubDate>
+      
+      <guid>/docs/enterprise_features/ocr/</guid>
+      <description>Optical character recognition (OCR) This feature is currently a tech preview!
+With optical character recognition (OCR) it is possible to convert screen content into text. In combination with Sakuli, OCR it is also possible to automate software based on the text shown on screen.
+OCR in enterprise containers Sakuli enterprise containers ship with a complete setup to use the OCR features of Sakuli. OCR features can be used without any further set up.</description>
+    </item>
+    
   </channel>
 </rss>

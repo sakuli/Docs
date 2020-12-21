@@ -54,7 +54,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs/cli/">
+  <body class="" data-url="/docs/enterprise_features/ocr/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -465,7 +465,7 @@
   
     
     <li data-nav-id="/docs/enterprise_features/" title="Enterprise Features" class="dd-item
-        
+        parent
         
         
         ">
@@ -643,7 +643,7 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/ocr/" title="Optical character recognition (OCR)" class="dd-item ">
+      <li data-nav-id="/docs/enterprise_features/ocr/" title="Optical character recognition (OCR)" class="dd-item active">
         <a href="/docs/enterprise_features/ocr/">
         Optical character recognition (OCR)
         <i class="fas fa-check read-icon"></i>
@@ -670,8 +670,8 @@
   
     
     <li data-nav-id="/docs/cli/" title="CLI" class="dd-item
-        parent
-        active
+        
+        
         
         ">
       <a href="/docs/cli/">
@@ -1028,7 +1028,13 @@
             
           
           
-            <a href='/docs/'></a> > CLI
+            
+            
+          
+          
+            <a href='/docs/'></a> > <a href='/docs/enterprise_features/'>Enterprise Features</a> > Optical character recognition (OCR)
+          
+        
           
         
           
@@ -1041,12 +1047,23 @@
     <div class="wrapper">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#sakuli-create-project">sakuli create project</a></li>
-    <li><a href="#sakuli-create-masterkey">sakuli create masterkey</a></li>
-    <li><a href="#sakuli-enable-enterprise">sakuli enable-enterprise</a></li>
-    <li><a href="#sakuli-encrypt">sakuli encrypt</a></li>
-    <li><a href="#sakuli-migrate">sakuli migrate</a></li>
-    <li><a href="#sakuli-run">sakuli run</a></li>
+    <li><a href="#ocr-in-enterprise-containers">OCR in enterprise containers</a></li>
+    <li><a href="#installing-sakuli-ocr">Installing Sakuli OCR</a>
+      <ul>
+        <li><a href="#add-ocr-module-to-packagejson">Add OCR module to package.json</a></li>
+        <li><a href="#installing-tesseract">Installing Tesseract</a></li>
+      </ul>
+    </li>
+    <li><a href="#extracting-text-from-screen">Extracting text from screen</a>
+      <ul>
+        <li><a href="#reading-the-whole-screen">Reading the whole screen</a></li>
+        <li><a href="#reading-text-from-a-specific-region">Reading text from a specific region</a></li>
+      </ul>
+    </li>
+    <li><a href="#finding-a-screen-region-by-text">Finding a screen region by text</a></li>
+    <li><a href="#combining-ocr-features">Combining OCR features</a></li>
+    <li><a href="#troubleshooting">Troubleshooting</a></li>
+    <li><a href="#known-issues">Known issues</a></li>
   </ul>
 </nav>
     </div>
@@ -1069,90 +1086,132 @@
 
 
 
-
-	<h1 id="sakuli-cli-commands">Sakuli CLI commands</h1>
-<h2 id="sakuli-create-project">sakuli create project</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli create project <span style="color:#f92672">[</span> &lt;path&gt; <span style="color:#f92672">]</span> <span style="color:#f92672">[</span> &lt;suiteName&gt; <span style="color:#f92672">]</span> <span style="color:#f92672">[</span> --force | -f <span style="color:#f92672">]</span> <span style="color:#f92672">[</span> --package <span style="color:#f92672">]</span>
-
-
-Generates a default project structure
-
-
-Positionals:
-  path                  Path to create testsuite                                    <span style="color:#f92672">[</span>optional<span style="color:#f92672">][</span>default: $PWD<span style="color:#f92672">]</span>
-  suiteName             Name of testsuite                                           <span style="color:#f92672">[</span>optional<span style="color:#f92672">][</span>default: sakuli_test_suite<span style="color:#f92672">]</span>
-  
-Options:
-  --force <span style="color:#f92672">(</span>alias -f<span style="color:#f92672">)</span>    Forces sakuli to create testsuite
-  --package             Create additional package.json <span style="color:#66d9ef">for</span> testsuite</code></pre></div>
-<p>This creates a Sakuli testsuite folder with the <code>testsuite.suite</code> and <code>testsuite.properties</code> files and a <code>case1</code> folder
-containing an empty <code>check.js</code>. With the <code>--package</code> option, it is possible to create an additional <code>package.json</code>.
-Further information on how to set up a Sakuli project and the needed files can be found <a href="/docs/100_writing-tests#setup-and-configuration">here</a>.</p>
-<h2 id="sakuli-create-masterkey">sakuli create masterkey</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli create masterkey <span style="color:#f92672">[</span> --algorithm <span style="color:#f92672">]</span>
-
-
-Generates a new masterkey
-
-
-Positionals:
-  algorithm             The algorithm to create a key <span style="color:#66d9ef">for</span>                           <span style="color:#f92672">[</span>optional<span style="color:#f92672">][</span>default: <span style="color:#e6db74">&#34;aes-128-cbc&#34;</span><span style="color:#f92672">]</span></code></pre></div>
-<p>This command outputs a masterkey which can be used to encrypt a secret with the <a href="#sakuli-encrypt">sakuli encrypt</a>
-command or to decrypt a secret in a testcase with a Sakuli function like <code>Environment.decryptSecret()</code>.</p>
-<h2 id="sakuli-enable-enterprise">sakuli enable-enterprise</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli enable-enterprise
-
-
-Configures and enables enterprise features</code></pre></div>
-<p>This command starts an assistant which will guide you through the setup of enterprise features. More information on how
-to use the <code>enable-enterprise</code> command can be found <a href="/enterprise_features/#assisted-setup">here</a>.</p>
-<h2 id="sakuli-encrypt">sakuli encrypt</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli encrypt &lt;secret&gt; --masterkey
-
-
-Encrypts a secret via provided masterkey
-
-
-Positionals:
-  secret                The secret to encrypt                                       <span style="color:#f92672">[</span>required<span style="color:#f92672">]</span>
-  
-Options:
-  --masterkey           The masterkey used <span style="color:#66d9ef">for</span> encryption                           <span style="color:#f92672">[</span>required<span style="color:#f92672">]</span></code></pre></div>
-<p>To use this command it is necessary to create a masterkey with <a href="#sakuli-create-masterkey"><code>npx create masterkey</code></a> first.
-With <code>npx sakuli encrypt</code> you can now encrypt a secret or password which then can be decrypted in the Sakuli testcase
-with one of the decryption functions like <code>Environment.decryptSecret()</code>.</p>
-<h2 id="sakuli-migrate">sakuli migrate</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli migrate &lt;path&gt;
-
-
-Transforms all legacy testsuites into new syntax
-
-
-Positional
-  path                  path to a legacy suite                                      <span style="color:#f92672">[</span>required<span style="color:#f92672">]</span></code></pre></div>
-<p>Since Sakuli had some minor changes in the syntax with v2, old Sakuli v1 testcases need to be adapted to the new syntax.
-With this command Sakuli takes over this task.</p>
-<h2 id="sakuli-run">sakuli run</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli run &lt;path&gt; <span style="color:#f92672">[</span> options <span style="color:#f92672">]</span>
-
-
-Runs a Sakuli Suite
-
-
-Positionals:
-  path                  path to Sakuli suite                                        <span style="color:#f92672">[</span>required<span style="color:#f92672">]</span>
-Options:
-  browser<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>            Browser which is started by the WebDriver
-  ui-only<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>            Configures whether the testsuite runs in ui-only mode
-  reuseBrowser<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>       Configures whether the browser is reused after each testcase <span style="color:#f92672">(</span>Available as tech preview<span style="color:#f92672">)</span></code></pre></div>
-
-
-
+<h1 id="optical-character-recognition-ocr">Optical character recognition (OCR)</h1>
+<p><strong>This feature is currently a tech preview!</strong></p>
+<p>With optical character recognition (OCR) it is possible to convert screen content into text. In combination with Sakuli,
+OCR it is also possible to automate software based on the text shown on screen.</p>
+<h2 id="ocr-in-enterprise-containers">OCR in enterprise containers</h2>
+<p>Sakuli enterprise containers ship with a complete setup to use the OCR features of Sakuli. OCR features can be used
+without any further set up. Please have a look at the
+<a href="/docs/enterprise_features/container">enterprise containers documentation</a> for more information about container usage.</p>
+<h2 id="installing-sakuli-ocr">Installing Sakuli OCR</h2>
+<p>Installing the OCR module of Sakuli on a workstation or virtual machine is possible, but requires some additional steps
+and dependencies. We recommend, to use the ready-to-use enterprise container for most use cases. A native installation
+should only be considered, if the enterprise containers don&rsquo;t fit the requirements of your check.</p>
+<h3 id="add-ocr-module-to-packagejson">Add OCR module to package.json</h3>
+<p>To add the OCR module, please add <code>&quot;@sakuli/ocr&quot;: &quot;next&quot;</code> to your <code>package.json</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;sakuli-project&#34;</span>,
+  <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#e6db74">&#34;0.8.15&#34;</span>,
+  <span style="color:#f92672">&#34;scripts&#34;</span>: {
+    <span style="color:#f92672">&#34;test&#34;</span>: <span style="color:#e6db74">&#34;sakuli run test-suite&#34;</span>
+  },
+  <span style="color:#f92672">&#34;dependencies&#34;</span>: {
+    <span style="color:#f92672">&#34;@sakuli/cli&#34;</span>: <span style="color:#e6db74">&#34;next&#34;</span>,
+    <span style="color:#f92672">&#34;@sakuli/ocr&#34;</span>: <span style="color:#e6db74">&#34;next&#34;</span>
+  }
+}
+</code></pre></div><p>After altering your <code>package.json</code>, the module can be installed with <code>npm install</code> on command line.</p>
+<blockquote>
+<p>Please make sure that you have access to the enterprise npm package repository as well as a valid license of Level M
+or higher. For more information on how to set up your access to enterprise packages, please have a look at the
+<a href="/docs/enterprise_features">enterprise features documentation</a>.</p>
+</blockquote>
+<h3 id="installing-tesseract">Installing Tesseract</h3>
+<p>Sakuli OCR uses Tesseract to read text from the screen. For performance and quality reasons, a native installation of
+tesseract is required. Please ensure to install a Tesseract version &gt;= <strong>4.1.1</strong>. For more information on how to obtain
+and install Tesseract on your machine, please have a look at the
+<a href="https://github.com/tesseract-ocr/tessdoc/blob/master/Downloads.md">official Tesseract documentation</a>.</p>
+<h2 id="extracting-text-from-screen">Extracting text from screen</h2>
+<p>To read text from the screen, Sakuli OCR ships with the test step <code>_getTextFromRegion()</code>. The function returns all text
+on the screen including line feeds.</p>
+<h3 id="reading-the-whole-screen">Reading the whole screen</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">text</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_getTextFromRegion</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>());
+</code></pre></div><h3 id="reading-text-from-a-specific-region">Reading text from a specific region</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">regionToRead</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">400</span>, <span style="color:#ae81ff">50</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">textOfRegion</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_getTextFromRegion</span>(<span style="color:#a6e22e">regionToRead</span>);
+</code></pre></div><p><code>new Region(100, 100, 400, 50);</code> creates a region with the following specification:</p>
+<ul>
+<li>x = 50 px</li>
+<li>y = 100 px</li>
+<li>width: 400 px</li>
+<li>height: 50 px</li>
+</ul>
+<p>The constant <code>textOfRegion</code> will only contain the text from this specific region of the screen.</p>
+<h2 id="finding-a-screen-region-by-text">Finding a screen region by text</h2>
+<p>With Sakuli, it is also possible to automate software based on the text shown on the screen. <code>_getRegionByText()</code>
+provides the possibility to search for a specified text on the screen or in a specified region of the screen. Once the
+location of the text is determined, it is possible to e.g. move the mouse to the location and click on it.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_getRegionByText</span>(<span style="color:#e6db74">&#34;Continue&#34;</span>).<span style="color:#a6e22e">click</span>();
+</code></pre></div><p>This sample would search the screen for the text &ldquo;Continue&rdquo; and subsequently click on it.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">searchRegion</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">400</span>, <span style="color:#ae81ff">50</span>);
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_getRegionByText</span>(<span style="color:#e6db74">&#34;Continue&#34;</span>, <span style="color:#a6e22e">searchRegion</span>).<span style="color:#a6e22e">click</span>();
+</code></pre></div><p><code>new Region(100, 100, 400, 50);</code> creates a region with the following specification:</p>
+<ul>
+<li>x = 50 px</li>
+<li>y = 100 px</li>
+<li>width: 400 px</li>
+<li>height: 50 px</li>
+</ul>
+<p>In this sample, the search for the text &ldquo;Continue&rdquo; would be limited to the specified screen region.</p>
+<h2 id="combining-ocr-features">Combining OCR features</h2>
+<p>One common use case would be to extract text from a certain region of the screen e.g. from an offer or invoice for
+further validation.</p>
+<p><img src="/images/consol_offer.png" alt="offer"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript">(<span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">testCase</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TestCase</span>(<span style="color:#e6db74">&#34;Check offer&#34;</span>);
+  <span style="color:#66d9ef">try</span> {
+    <span style="color:#75715e">// ...
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">offerNumberRegion</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_getRegionByText</span>(<span style="color:#e6db74">&#34;offer number&#34;</span>).<span style="color:#a6e22e">grow</span>(<span style="color:#ae81ff">10</span>);
+</span><span style="display:block;width:100%;background-color:#3c3d38">    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">offerNumber</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_getTextFromRegion</span>(<span style="color:#a6e22e">offerNumberRegion</span>);
+</span>    
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">expectedOrderNumber</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/42-XBC-09453/</span>;
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_assert</span>(<span style="color:#a6e22e">Promise</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#f92672">!!</span><span style="color:#a6e22e">offerNumber</span>.<span style="color:#a6e22e">match</span>(<span style="color:#a6e22e">expectedOrderNumber</span>)),
+      <span style="color:#e6db74">`Found </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">offerNumber</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> instead of </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">expectedOrderNumber</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+    <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">e</span>) {
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">handleException</span>(<span style="color:#a6e22e">e</span>);
+  } <span style="color:#66d9ef">finally</span> {
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">saveResult</span>();
+  }
+})();
+</code></pre></div><p>This check would search for the &ldquo;offer number&rdquo; in the pdf, extract the whole offer number and compare it to an expected
+value.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>The quality of OCR results highly depends on the screen content. Here are some aspects to consider when OCR does not
+recognize the text you expect:</p>
+<ul>
+<li>A lower screen resolution might help due to bigger fonts</li>
+<li>Bigger fonts are better than smaller fonts</li>
+<li>High contrasts are helpful. Reading yellow text from white background might cause issues.</li>
+</ul>
+<p>In case you want to have some insights in what tesseract &ldquo;sees&rdquo; through a Sakuli automation, you can easily adapt log
+levels to show details of the OCR process.</p>
+<ul>
+<li>Debug Level
+<ul>
+<li>provides the tesseract cli call for reconstruction purposes</li>
+<li>provides the tesseract config on cli level</li>
+<li>provide details on post processing of the screen content</li>
+</ul>
+</li>
+<li>Trace Level
+<ul>
+<li>writes the received text from <code>_getTextFromRegion()</code> to the logs</li>
+<li>write the received alto xml from <code>_getRegionByText()</code> to the logs</li>
+</ul>
+</li>
+</ul>
+<h2 id="known-issues">Known issues</h2>
+<ul>
+<li>There is currently a bug in an upstream library causing <a href="https://github.com/nut-tree/nut.js/issues/194">issues with OCR on macOS</a>.</li>
+</ul>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -1460,6 +1519,7 @@ Options:
             
                 
                     
+                    
                 
                 
 
@@ -1472,6 +1532,9 @@ Options:
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1601,25 +1664,6 @@ Options:
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                     
                 
                 
@@ -1632,6 +1676,9 @@ Options:
             
         
                     
+            
+        
+                    
                         
             
             
@@ -1639,6 +1686,22 @@ Options:
                     
                         
                         
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
@@ -1836,10 +1899,10 @@ Options:
 	 
 	 
 		
-			<a class="nav nav-prev" href="/docs/enterprise_features/ocr/" title="Optical character recognition (OCR)"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/docs/enterprise_features/sakuli-dashboard-configuration/" title="Sakuli Dashboard Configuration"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/docs/cookbook/" title="Cookbook" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/docs/cli/" title="CLI" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1871,3 +1934,4 @@ Options:
 
   </body>
 </html>
+
