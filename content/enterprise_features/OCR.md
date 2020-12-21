@@ -33,7 +33,6 @@ To add the OCR module, please add `"@sakuli/ocr": "next"` to your `package.json`
   },
   "dependencies": {
     "@sakuli/cli": "next",
-    "@sakuli/legacy-types": "next",
     "@sakuli/ocr": "next"
   }
 }
