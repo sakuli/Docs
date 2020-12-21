@@ -142,8 +142,8 @@ levels to show details of the OCR process.
   - provides the tesseract config on cli level 
   - provide details on post processing of the screen content
 - Trace Level
-  - writes the received text from `_getTextFromRegion(region)` to the logs
-  - write the received alto xml from `_getRegionByText(text, searchRegion?)` to the logs
+  - writes the received text from `_getTextFromRegion()` to the logs
+  - write the received alto xml from `_getRegionByText()` to the logs
   
 ## Known issues
 - There is currently a bug in an upstream library causing [issues with OCR on macOS](https://github.com/nut-tree/nut.js/issues/194).
