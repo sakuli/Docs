@@ -9,7 +9,7 @@ weight : 10
 **This feature is currently a tech preview!**
 
 With optical character recognition (OCR) it is possible to convert screen content into text. In combination with Sakuli, 
-OCR it is also possible to automate software based on the text shown on screen.
+it is also possible to automate software based on the text shown on screen.
 
 ## OCR in enterprise containers
 Sakuli enterprise containers ship with a complete setup to use the OCR features of Sakuli. OCR features can be used
@@ -65,7 +65,7 @@ const regionToRead = new Region(50, 100, 400, 50);
 const textOfRegion = await _getTextFromRegion(regionToRead);
 ```
 
-`new Region(100, 100, 400, 50);` creates a region with the following specification:
+`new Region(50, 100, 400, 50);` creates a region with the following specification:
 - x = 50 px
 - y = 100 px
 - width: 400 px
@@ -89,7 +89,7 @@ const searchRegion = new Region(50, 100, 400, 50);
 await _getRegionByText("Continue", searchRegion).click();
 ```
 
-`new Region(100, 100, 400, 50);` creates a region with the following specification:
+`new Region(50, 100, 400, 50);` creates a region with the following specification:
 - x = 50 px
 - y = 100 px
 - width: 400 px
