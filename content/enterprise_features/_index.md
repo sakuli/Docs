@@ -97,6 +97,7 @@ Now you are ready to go for using Sakuli with its enterprise features like
 - [Icinga2](icinga)
 - [OMD](omd)
 - [Prometheus](prometheus)
+- [Optical character recognition (OCR)](ocr)
 
 ### Per-Project configuration of NPM-Token
 
