@@ -1153,8 +1153,9 @@ Here is a sample <code>DASHBOARD_CONFIG</code> for the Sakuli dashboard.</p>
          },
          <span style="color:#e6db74">&#34;url&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;https://sakuli.io/docs&#34;</span>
       }
-   ]
-}
+   ],
+   <span style="color:#a6e22e">defaultLayout</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;row&#34;</span>                                                           <span style="color:#75715e">//5
+</span><span style="color:#75715e"></span>}
 </code></pre></div>
 <ol>
 <li>The <code>index</code> defines the order for the displays on the Sakuli dashboard.</li>
@@ -1162,6 +1163,7 @@ Here is a sample <code>DASHBOARD_CONFIG</code> for the Sakuli dashboard.</p>
 property. The content can be displayed in German or English.</li>
 <li>The <code>url</code> property embeds the corresponding website in the iFrame of the display.</li>
 <li>The <code>actionIdentifier</code> property is optional and references to an action defined within the <a href="#action_config">ACTION_CONFIG</a>.</li>
+<li>The optional <code>defaultLayout</code> config specifies the initial layout the dashboard is shown in.</li>
 </ol>
 <h3 id="action_config">ACTION_CONFIG (optional)</h3>
 <p>The <code>ACTION_CONFIG</code> configures the actions triggered by users or cronjobs.</p>
