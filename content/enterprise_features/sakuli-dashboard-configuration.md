@@ -64,7 +64,8 @@ Here is a sample `DASHBOARD_CONFIG` for the Sakuli dashboard.
          },
          "url":"https://sakuli.io/docs"
       }
-   ]
+   ],
+   defaultLayout: "row"                                                           //5
 }
 {{</highlight>}}
 
@@ -74,6 +75,7 @@ Here is a sample `DASHBOARD_CONFIG` for the Sakuli dashboard.
 property. The content can be displayed in German or English.
 3. The `url` property embeds the corresponding website in the iFrame of the display. 
 4. The `actionIdentifier` property is optional and references to an action defined within the [ACTION_CONFIG](#action_config).
+5. The optional `defaultLayout` config specifies the initial layout the dashboard is shown in. 
 
 ### ACTION_CONFIG (optional) {#action_config}
 
