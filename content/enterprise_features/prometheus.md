@@ -14,7 +14,7 @@ Add the forwarder manually as follows:
 npm i @sakuli/forwarder-prometheus
 {{</highlight>}}
 
-Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the [enterprise section](/docs/enterprise#using-licences-information).
+Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the [enterprise section](/docs/enterprise_features/#using-the-license-key).
 
 
 ## Push gateway

@@ -12,7 +12,7 @@ Add the forwarder using the [assistant](/docs/enterprise_features/#assisted-setu
 npm i @sakuli/forwarder-gearman
 {{</highlight>}}
 
-Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the [enterprise section](/docs/enterprise#using-licences-information).
+Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the [enterprise section](/docs/enterprise_features/#using-the-license-key).
 
 
 ## Configure OMD
