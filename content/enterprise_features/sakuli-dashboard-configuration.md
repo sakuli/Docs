@@ -70,12 +70,12 @@ Here is a sample `DASHBOARD_CONFIG` for the Sakuli dashboard.
 {{</highlight>}}
 
 
-1. The `index` defines the order for the displays on the Sakuli dashboard. 
+1. The `index` defines the order for the displays on the Sakuli dashboard. (**mandatory field**)
 2. Separated by language, the optional `messages` property specifies the title of a display using the `description` property and tool tip using the `infoText`
-property. The content can be displayed in German or English.
-3. The `url` property embeds the corresponding website in the iFrame of the display. 
-4. The `actionIdentifier` property is optional and references to an action defined within the [ACTION_CONFIG](#action_config).
-5. The optional `defaultLayout` config specifies the initial layout the dashboard is shown in. 
+property. The content can be displayed in German or English. (optional field)
+3. The `url` property embeds the corresponding website in the iFrame of the display. (**mandatory field**)
+4. The `actionIdentifier` references to an action defined within the [ACTION_CONFIG](#action_config). (optional field)
+5. The optional `defaultLayout` config specifies the initial layout the dashboard is shown in. (optional field)
 
 ### ACTION_CONFIG (optional) {#action_config}
 
@@ -123,8 +123,8 @@ The `ACTION_CONFIG` configures the actions triggered by users or cronjobs.
 }
 {{</highlight>}}
 
-1. Action identifier that is referenced inside `DASHBOARD_CONFIG` or `CRONJOB_CONFIG`.
-2. Kubernetes/Openshift pod template to be applied on the cluster. Currently only Pod configurations are supported.
+1. Action identifier that is referenced inside `DASHBOARD_CONFIG` or `CRONJOB_CONFIG`. (**mandatory field**)
+2. Kubernetes/Openshift pod template to be applied on the cluster. Currently only Pod configurations are supported. (**mandatory field**)
 
 **Important information**: In order to apply actions to a cluster, a valid [CLUSTER_CONFIG](#cluster_config) must be provided.
 
@@ -139,18 +139,20 @@ The `CLUSTER_CONFIG` is required to connect to an existing cluster where you wan
       "server":"http://examplecluster.com:443"              //3
    },
    "user":{                                                 //4
-      "name":"developer",         
-      "token":"<login-token>"     
+      "name":"developer",                                   //5
+      "token":"<login-token>"                               //6
    },
-   "namespace":"sakuli"                                     //5
+   "namespace":"sakuli"                                     //7
 }
 {{</highlight>}}
 
-1. Cluster to execute actions on.
-2. Cluster name.
-3. Cluster address and port number.
-4. User to log onto cluster
-5. Namespace to execute actions in.
+1. Cluster to execute actions on. (**mandatory field**)
+2. Cluster name. (**mandatory field**)
+3. Cluster address and port number. (**mandatory field**)
+4. User to log onto the cluster (**mandatory field**)
+5. Username for the cluster (**mandatory field**)
+6. Token of the user (**mandatory field**)
+7. Namespace to execute actions in. (**mandatory field**)
 
 **Important information**: A valid [CLUSTER_CONFIG](#cluster_config) is required, as soon as you want to apply actions using 
 [ACTION_CONFIG](#action_config) and/or [CRONJOB_CONFIG](#cronjob_config) to a cluster.
@@ -158,15 +160,15 @@ The `CLUSTER_CONFIG` is required to connect to an existing cluster where you wan
 ### CRONJOB_CONFIG (optional) {#cronjob_config}
 {{<highlight javascript>}}
 {
-    "schedule": "*/20 * * * *",
-    "actionIdentifier": "your_action_id_123"
+    "schedule": "*/20 * * * *",                             //1
+    "actionIdentifier": "your_action_id_123"                //2
 }
 {{</highlight>}}
 
 Schedules one action specified in [ACTION_CONFIG](#action_config).
-The `actionIdentifier` has to be set accordingly.
-The scheduling determined by the `schedule` property
+1. The `actionIdentifier` has to be set accordingly. (**mandatory field**)
+2. The scheduling determined by the `schedule` property
 has to be specified according to the time format
-that is used by the [GNU crontab format](https://www.gnu.org/software/mcron/manual/html_node/Crontab-file.html) 
+that is used by the [GNU crontab format](https://www.gnu.org/software/mcron/manual/html_node/Crontab-file.html) (**mandatory field**) 
 
 **Important information**: In order to apply scheduled actions to a cluster, a valid [ACTION_CONFIG](#action_config) and [CLUSTER_CONFIG](#cluster_config) must be provided.
