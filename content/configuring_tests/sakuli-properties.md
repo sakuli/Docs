@@ -75,7 +75,9 @@ _logs
 | ------------------- | ----------------- | ------------------------------------------------------------ |
 | `selenium.firefox.profile` | String: / | Sets the profile to use. The profile may be specified as the path to an existing Firefox profile to use as a template |
 | `selenium.firefox.binary` | String: / | Sets the binary to use. The binary may be specified as the path to a Firefox executable \
-| `selenium.firefox.proxy` | String: / | Sets the proxy settings for the new session |
+| `selenium.firefox.proxy.proxyType` | String: / | Sets the proxy type for the new session. In a Sakuli context, use "manual" |
+| `selenium.firefox.proxy.httpProxy` | String: / | Sets the http proxy settings for the new session |
+| `selenium.firefox.proxy.sslProxy` | String: / | Sets the https proxy settings for the new session |
 | `selenium.firefox.useGeckoDriver` | Boolean: false | Boolean flag whether to use GeckoDriver or not |
 
 ## Edge properties
