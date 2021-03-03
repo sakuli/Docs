@@ -6,11 +6,11 @@ weight = 1
 
 # Sakuli Properties
 
-Sakuli evaluates properties in the following ascending priority:
-- Environment variables
-- `sakuli.properties` file
-- `testsuite.properties` file
+Sakuli evaluates properties in the following descending priority:
 - CLI parameter (if available)
+- `testsuite.properties` file
+- `sakuli.properties` file
+- Environment variables
 
 This means, e.g. that the property in the `testsuite.properties` file has priority over a configuration as
 environment variable.
