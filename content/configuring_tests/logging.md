@@ -33,7 +33,7 @@ There are currently five log levels implemented:
 | log.mode=ci      | Log messages are written to stdout and log file for downwards compatibility
 
 *In case you want to set the log mode via environment variables, please use `LOG_MODE` with the appropriate value.
-Log modes set via environment variables are overwriting log mode configurations from property files.*
+Log modes set via environment variables will be overwritten by log mode configurations from property files.*
 
 ### Log mode 'logFile'
 | sakuli.properties config | environment config | 

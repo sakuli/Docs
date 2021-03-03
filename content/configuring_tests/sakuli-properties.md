@@ -6,6 +6,23 @@ weight = 1
 
 # Sakuli Properties
 
+Sakuli evaluates properties in the following descending priority:
+- CLI parameter (if available)
+- `testsuite.properties` file
+- `sakuli.properties` file
+- Environment variables
+
+This means, e.g. that the property in the `testsuite.properties` file has priority over a configuration as
+environment variable.
+
+
+## Environment variables
+
+| Environment variable  | Type: Default    | Comment/Example                   |
+|-----------------------|------------------|-----------------------------------|
+| LOG_MODE              | String: logfile  | Changes the CLI log output        |
+| SAKULI_ENCRYPTION_KEY | String           | Master key for en- and decryption |
+
 ## Project properties
 
 | Property                                | Type: Default                                   | Comment / Example                                                                                                                                                     |
