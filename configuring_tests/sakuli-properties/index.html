@@ -1047,6 +1047,7 @@
     <div class="wrapper">
         <nav id="TableOfContents">
   <ul>
+    <li><a href="#environment-variables">Environment variables</a></li>
     <li><a href="#project-properties">Project properties</a>
       <ul>
         <li><a href="#sakuliscreenshotstorage">sakuli.screenshot.storage</a></li>
@@ -1080,6 +1081,37 @@
 
 
 <h1 id="sakuli-properties">Sakuli Properties</h1>
+<p>Sakuli evaluates properties in the following descending priority:</p>
+<ul>
+<li>CLI parameter (if available)</li>
+<li><code>testsuite.properties</code> file</li>
+<li><code>sakuli.properties</code> file</li>
+<li>Environment variables</li>
+</ul>
+<p>This means, e.g. that the property in the <code>testsuite.properties</code> file has priority over a configuration as
+environment variable.</p>
+<h2 id="environment-variables">Environment variables</h2>
+<table>
+<thead>
+<tr>
+<th>Environment variable</th>
+<th>Type: Default</th>
+<th>Comment/Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LOG_MODE</td>
+<td>String: logfile</td>
+<td>Changes the CLI log output</td>
+</tr>
+<tr>
+<td>SAKULI_ENCRYPTION_KEY</td>
+<td>String</td>
+<td>Master key for en- and decryption</td>
+</tr>
+</tbody>
+</table>
 <h2 id="project-properties">Project properties</h2>
 <table>
 <thead>
