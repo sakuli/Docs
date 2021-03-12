@@ -27,7 +27,7 @@ It is *highly* discouraged to run tech-previews in production as there is no gua
 
 > You will come across configurations such as the `DASHBOARD_CONFIG`, the `ACTION_CONFIG`, the `CLUSTER_CONFIG` and
 the `CRONJOB_CONFIG` which configure your Sakuli Dashboard. 
-For further information about how to properly configure the dashboard check out the [Sakuli Dashboard Configuration](/enterprise_features/sakuli-dashboard-configuration) documentation.
+For further information about how to properly configure the dashboard check out the [Sakuli Dashboard Configuration](/docs/enterprise_features/sakuli-dashboard-configuration) documentation.
 
 ### Sakuli Dashboard with Docker {#deployment-with-docker}
 
