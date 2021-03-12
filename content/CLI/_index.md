@@ -75,6 +75,23 @@ To use this command it is necessary to create a masterkey with [`npx create mast
 With `npx sakuli encrypt` you can now encrypt a secret or password which then can be decrypted in the Sakuli testcase
 with one of the decryption functions like `Environment.decryptSecret()`. 
 
+## sakuli decrypt
+{{<highlight bash>}}
+npx sakuli decrypt <secret> --masterkey
+
+
+Decrypts a secret via provided masterkey
+
+
+Positionals:
+secret                The secret to decrypt                                       [required]
+
+Options:
+--masterkey           The masterkey used for decryption                           [required]
+{{</highlight>}}
+
+With `npx sakuli decrypt` you can now decrypt a secret for e.g. debugging purposes.
+
 ## sakuli migrate
 {{<highlight bash>}}
 npx sakuli migrate <path>
