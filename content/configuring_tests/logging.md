@@ -25,7 +25,7 @@ There are currently five log levels implemented:
 | Error     | The test errored. Test execution will be terminated as soon as possible. User interaction is required.                                      |
 
 ## Log modes
-*Available as tech preview in the `@next` releases.*
+**(Available from v2.5.0)**
 
 | config | Description |
 | ------ | ----------- |

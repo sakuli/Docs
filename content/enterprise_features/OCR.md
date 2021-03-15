@@ -6,7 +6,7 @@ weight : 10
 
 # Optical character recognition (OCR)
 
-**This feature is currently a tech preview!**
+**(Available from v2.5.0)**
 
 With optical character recognition (OCR) it is possible to convert screen content into text. In combination with Sakuli, 
 it is also possible to automate software based on the text shown on screen.
