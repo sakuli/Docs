@@ -54,7 +54,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs/writing_tests/screenshot/">
+  <body class="" data-url="/docs/change_notes/2.5.0/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -226,7 +226,7 @@
   
     
     <li data-nav-id="/docs/writing_tests/" title="Writing Tests" class="dd-item
-        parent
+        
         
         
         ">
@@ -290,7 +290,7 @@
  
   
     
-      <li data-nav-id="/docs/writing_tests/screenshot/" title="Screenshot" class="dd-item active">
+      <li data-nav-id="/docs/writing_tests/screenshot/" title="Screenshot" class="dd-item ">
         <a href="/docs/writing_tests/screenshot/">
         Screenshot
         <i class="fas fa-check read-icon"></i>
@@ -880,7 +880,7 @@
   
     
     <li data-nav-id="/docs/change_notes/" title="Change notes" class="dd-item
-        
+        parent
         
         
         ">
@@ -944,7 +944,7 @@
  
   
     
-      <li data-nav-id="/docs/change_notes/2.5.0/" title="V2.5.0" class="dd-item ">
+      <li data-nav-id="/docs/change_notes/2.5.0/" title="V2.5.0" class="dd-item active">
         <a href="/docs/change_notes/2.5.0/">
         V2.5.0
         <i class="fas fa-check read-icon"></i>
@@ -1051,7 +1051,7 @@
             
           
           
-            <a href='/docs/'></a> > <a href='/docs/writing_tests/'>Writing Tests</a> > Screenshot
+            <a href='/docs/'></a> > <a href='/docs/change_notes/'>Change notes</a> > V2.5.0
           
         
           
@@ -1066,12 +1066,17 @@
     <div class="wrapper">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#how-to-control-the-mouse-in-a-sakuli-test">How to Control the Mouse in a Sakuli Test</a>
+    <li><a href="#sakuli-core">Sakuli Core</a>
       <ul>
-        <li><a href="#moving-the-mouse-to-a-screenshot">Moving the mouse to a screenshot</a></li>
-        <li><a href="#moving-the-mouse-relative-to-current-position">Moving the mouse relative to current position</a></li>
-        <li><a href="#moving-the-mouse-to-an-absolute-position">Moving the Mouse to an Absolute Position</a></li>
-        <li><a href="#drag-and-drop">Drag And Drop</a></li>
+        <li><a href="#ci-log-mode">CI log mode</a></li>
+        <li><a href="#decrypt-secrets-on-cli">Decrypt secrets on cli</a></li>
+        <li><a href="#testcasestartstep"><code>testCase.startStep()</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#enterprise-packages">Enterprise packages</a>
+      <ul>
+        <li><a href="#sakuli-ocr">Sakuli OCR</a></li>
+        <li><a href="#sakuli-container">Sakuli Container</a></li>
       </ul>
     </li>
   </ul>
@@ -1096,182 +1101,44 @@
 
 
 
-<h1 id="screenshot-based-testing">Screenshot based Testing</h1>
-<p>A lot of E2E scenarios exceed the capabilities of browsers and webdrivers. This might include common use-cases like a drag and drop from the host system to a webpage or exporting a report into a spreadsheet or PDF-format. In these cases, your web-based tests can be extended to also validate behavior and invoke interactions outside the browser, all within a single test.</p>
-<p>Of course, you can also use Sakulis native testing power on its own, e.g. rich-client testing of SAP, office or proprietary software systems. Sakuli accomplishes its native capabilities by scanning the whole screen (or a dedicated region) on a stand-alone computer or in headless container screens, searching for provided image patterns.</p>
-<p>Screenshot based actions are relying on an abstract <code>Region</code> class, which represents an abstract region on the desktop.
-When creating a new instance without parameters, a <code>Region</code> spans over the whole desktop.
-But, it is also possible to create new regions by specifying <code>left</code>, <code>top</code>, <code>width</code> and <code>height</code> parameters.</p>
-<p>The following example represents a test which drags a source element to a target region.
-In this demo scenario, both source and target are both located on screen via template image.
-To reproduce this scenario, you need to capture screenshots of the egg and the pan.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript">(<span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> {
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">testCase</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TestCase</span>(<span style="color:#e6db74">&#34;native_keyboard_demo&#34;</span>);
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://codepen.io/naturalhanglider/full/jQMWoq&#34;</span>;
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">env</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Environment</span>();
-    <span style="color:#66d9ef">try</span> {
-        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_navigateTo</span>(<span style="color:#a6e22e">url</span>);
-        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">setSimilarity</span>(<span style="color:#ae81ff">0.8</span>);
-        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>
-            .<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;source_egg.png&#34;</span>)
-            .<span style="color:#a6e22e">mouseMove</span>()
-            .<span style="color:#a6e22e">dragAndDropTo</span>(
-                <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;target_pan.png&#34;</span>)
-            );
-        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_wait</span>(<span style="color:#ae81ff">3000</span>);
-    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">e</span>) {
-        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">handleException</span>(<span style="color:#a6e22e">e</span>);
-    } <span style="color:#66d9ef">finally</span> {
-        <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">saveResult</span>();
-    }
-})();
-</code></pre></div>
-<!--self built wrapper with a frame and shaddow
-<div style="background-color: #fff; padding: 20px; margin-top:10px; margin-bottom:10px; box-shadow: 0px 0px 5px #383838;">
-</div>
--->
-
-<div style="background-color: #fff; padding: 20px; box-shadow: 0px 0px 10px #7C7C7B; margin-left: 0%; margin-right: 0%; margin-top: 50px; margin-bottom: 50px">
-    <video width="100%" style='margin: 0' controls >
-        <source src="/docs/videos/FryAnEgg.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    
-</div>
-
-
-<p>The <code>dragAndDropTo(...)</code> methods always move straight to the target region.
-In order to follow a more complex path, it is also possible to perform the drag gesture manually.
-Once the source image has been located on the screen, Sakuli moves the mouse to its location, presses and holds the left mouse button.
-Afterwards, it locates the target image, moves the mouse there while still holding the mouse button and releases it, once it reaches the target location.
-To reproduce this scenario, you need to capture screenshots of the egg and the pan.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript">(<span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> {
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">testCase</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TestCase</span>(<span style="color:#e6db74">&#34;native_demo&#34;</span>);
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://codepen.io/naturalhanglider/full/jQMWoq&#34;</span>;
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">env</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Environment</span>();
-    <span style="color:#66d9ef">try</span> {
-        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_navigateTo</span>(<span style="color:#a6e22e">url</span>);
-        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">setSimilarity</span>(<span style="color:#ae81ff">0.8</span>);
-        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>
-            .<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;source_egg.png&#34;</span>)
-            .<span style="color:#a6e22e">mouseMove</span>()
-            .<span style="color:#a6e22e">mouseDown</span>(<span style="color:#a6e22e">MouseButton</span>.<span style="color:#a6e22e">LEFT</span>)
-            .<span style="color:#a6e22e">setX</span>(<span style="color:#ae81ff">0</span>)
-            .<span style="color:#a6e22e">setY</span>(<span style="color:#ae81ff">0</span>)
-            .<span style="color:#a6e22e">mouseMove</span>()
-            .<span style="color:#a6e22e">move</span>(<span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">700</span>)
-            .<span style="color:#a6e22e">mouseMove</span>();
-        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;target_pan.png&#34;</span>)
-            .<span style="color:#a6e22e">mouseMove</span>()
-            .<span style="color:#a6e22e">mouseUp</span>(<span style="color:#a6e22e">MouseButton</span>.<span style="color:#a6e22e">LEFT</span>);
-        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_wait</span>(<span style="color:#ae81ff">3000</span>);
-    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">e</span>) {
-        <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">handleException</span>(<span style="color:#a6e22e">e</span>);
-    } <span style="color:#66d9ef">finally</span> {
-        <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">saveResult</span>();
-    }
-})();
-</code></pre></div>
-<h2 id="how-to-control-the-mouse-in-a-sakuli-test">How to Control the Mouse in a Sakuli Test</h2>
-<p>Sakuli provides two ways to steer mouse movement. Either via coordinates, or via screenshot data. In order to search for
-image data on your screen you have to instantiate a <code>Region</code> spanning the entire display to access it&rsquo;s image content.</p>
-<h3 id="moving-the-mouse-to-a-screenshot">Moving the mouse to a screenshot</h3>
-<p>To find a screenshot on the screen, you can use <code>find</code> or <code>waitForImage</code>. With <code>waitForImage</code> you can specify a timeout
-in which Sakuli continuously searches for the screenshot. This is useful, when e.g. starting a program like excel.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;search_this_screenshot.jpg&#34;</span>)
-    .<span style="color:#a6e22e">mouseMove</span>();
-    
-<span style="color:#75715e">//searches the screen for 5 seconds for the excel homescreen
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">waitForImage</span>(<span style="color:#e6db74">&#34;excel_homescreen.jpg&#34;</span>, <span style="color:#ae81ff">5000</span>)
-    .<span style="color:#a6e22e">mouseMove</span>();
-</code></pre></div>
-<p><code>find</code> and <code>waitForImage</code> will return a <code>Region</code> for matched screenshots, so chaining as follows might not work, if the
-second screenshot is not within the <code>Region</code> of the first one.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;google_search.png&#34;</span>)
-    .<span style="color:#a6e22e">mouseMove</span>()
-    .<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;browser_address_bar.jpg&#34;</span>)
-    .<span style="color:#a6e22e">mouseMove</span>();
-</code></pre></div></p>
-<p>To get around this problem, you can use <code>left(range)</code>, <code>right(range)</code>, <code>above(range)</code> or <code>below(range)</code>, which returns a
-new <code>Region</code>. <code>left(range)</code> return a <code>Region</code> that is left of the current region&rsquo;s border with a width of <em>range</em>, so it
-does not include the current Region. <code>right</code>, <code>below</code> and <code>above</code> behaves equivalently.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
-<span style="color:#a6e22e">await</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">500</span>, <span style="color:#ae81ff">500</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>).<span style="color:#a6e22e">left</span>(<span style="color:#ae81ff">200</span>)
-<span style="color:#75715e">//this returns a new region with (300/500/200/100)
-</span></code></pre></div>
-<p>You can also manipulate the current <code>Region</code> with <code>setX(number)</code>, <code>setY(number)</code>, <code>setH(number)</code>, <code>setW(number)</code> or
-<code>grow(range)</code>. With <code>grow</code> you can expand the current region with <em>range</em> px in all four directions.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
-<span style="color:#a6e22e">await</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">500</span>, <span style="color:#ae81ff">500</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>).<span style="color:#a6e22e">grow</span>(<span style="color:#ae81ff">100</span>);
-<span style="color:#75715e">//this returns a new region with (400, 400, 300,300)
-</span></code></pre></div></p>
-<h3 id="moving-the-mouse-relative-to-current-position">Moving the mouse relative to current position</h3>
-<p>One way to change a <code>Region</code>'s position is to use the <code>move(x, y)</code> method. This allows us to shift a region in <code>x</code> and / or <code>y</code> direction, e.g.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;login_mask.png&#34;</span>)
-    .<span style="color:#a6e22e">mouseMove</span>()
-    .<span style="color:#a6e22e">click</span>()
-    .<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;MyUsername&#34;</span>)
-    <span style="color:#75715e">//shifts the region 50px down to e.g. a password field
-</span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">move</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">50</span>)
-    <span style="color:#75715e">//moves the mouse according to the shifted region
-</span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">mouseMove</span>()
-    .<span style="color:#a6e22e">click</span>()
-    .<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;MyPassword&#34;</span>)
-    <span style="color:#75715e">//shifts the region 50px down and 50px to the right and moves the mouse to e.g. the login button
-</span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">move</span>(<span style="color:#ae81ff">50</span>,<span style="color:#ae81ff">50</span>)
-    .<span style="color:#a6e22e">mouseMove</span>()
-    .<span style="color:#a6e22e">click</span>();
-})();
-</code></pre></div></p>
-<h3 id="moving-the-mouse-to-an-absolute-position">Moving the Mouse to an Absolute Position</h3>
-<p>Due to the fact that <code>mouseMove()</code> always moves the mouse to the <strong>center</strong> of a <code>region</code>, we need to instantiate a
-<code>region</code> with a height and width of 1.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
-<span style="color:#a6e22e">await</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>).<span style="color:#a6e22e">mouseMove</span>();
-<span style="color:#75715e">//moves the mouse cursor to (100/200)
-</span></code></pre></div>
-<h3 id="drag-and-drop">Drag And Drop</h3>
-<p>There are two ways to use drag and drop. Firstly, you can use <code>dragAndDropTo()</code>, which drags from one point to another.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;drag_mouse_start.png&#34;</span>).<span style="color:#a6e22e">mouseMove</span>().<span style="color:#a6e22e">dragAndDropTo</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">200</span>,<span style="color:#ae81ff">200</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>));
-
-<span style="color:#a6e22e">await</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">300</span>,<span style="color:#ae81ff">300</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>).<span style="color:#a6e22e">mouseMove</span>().<span style="color:#a6e22e">dragAndDropTo</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">1000</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>));
-
-<span style="color:#a6e22e">await</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>).<span style="color:#a6e22e">mouseMove</span>().<span style="color:#a6e22e">dragAndDropTo</span>(<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;drag_mouse_end.png&#34;</span>));
-</code></pre></div></p>
-<p>Using <code>mouseDown</code>/<code>mouseUp</code> allows us to drag and drop over multiple locations.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;drag_mouse_start.png&#34;</span>)
-    .<span style="color:#a6e22e">mouseMove</span>()
-    .<span style="color:#a6e22e">mouseDown</span>(<span style="color:#a6e22e">MouseButton</span>.<span style="color:#a6e22e">LEFT</span>)
-    .<span style="color:#a6e22e">move</span>(<span style="color:#ae81ff">200</span>,<span style="color:#ae81ff">200</span>)
-    .<span style="color:#a6e22e">mouseMove</span>()
-    .<span style="color:#a6e22e">move</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">100</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">100</span>)
-    .<span style="color:#a6e22e">mouseMove</span>()
-    .<span style="color:#a6e22e">mouseUp</span>(<span style="color:#a6e22e">MouseButton</span>.<span style="color:#a6e22e">LEFT</span>);
-</code></pre></div></p>
-<p><code>mouseUp</code>/<code>mouseDown</code> can be used with either <code>MouseButton.LEFT</code>, <code>MouseButton.MIDDLE</code> or <code>MouseButton.RIGHT</code>.</p>
-<p><code>Region</code> also provides methods to use the keyboards, which also are implemented by <code>Environment</code>. This allows for easy
-chaining, like
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">screen</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>();
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">screen</span>.<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;google_search.png&#34;</span>)
-    .<span style="color:#a6e22e">mouseMove</span>()
-    .<span style="color:#a6e22e">click</span>()
-    .<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;sakuli.io&#34;</span>)
-    <span style="color:#75715e">//moves to the search button
-</span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">move</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">100</span>)
-    .<span style="color:#a6e22e">mouseMove</span>()
-    .<span style="color:#a6e22e">click</span>()
-    .<span style="color:#a6e22e">sleepMs</span>(<span style="color:#ae81ff">1000</span>)
-    <span style="color:#75715e">//moves to the first search result
-</span><span style="color:#75715e"></span>    .<span style="color:#a6e22e">move</span>(<span style="color:#f92672">-</span><span style="color:#ae81ff">400</span>,<span style="color:#ae81ff">100</span>)
-    .<span style="color:#a6e22e">click</span>();
-</code></pre></div></p>
+<h1 id="v250">V2.5.0</h1>
+<h2 id="sakuli-core">Sakuli Core</h2>
+<p>The new Sakuli Release 2.5.0 has many improvements in its luggage, which both users and developers have longed for.
+In addition, a completely new option for automation made it into the release! We are talking about the Sakuli OCR
+module. But everything in the right order! Let&rsquo;s get it started with the improvements on the Sakuli core! A detailed
+list of all applied enhancement and fixes can be found in the
+<a href="https://github.com/sakuli/sakuli/blob/develop/CHANGELOG.md">CHANGELOG.md</a>.</p>
+<h3 id="ci-log-mode">CI log mode</h3>
+<p>Since Sakuli is often used in combination with (test) automation tools, it was sometimes very difficult to get the
+information from the log files. That&rsquo;s why we introduced log modes. With the help of the &ldquo;CI&rdquo; log mode, the log messages
+are written directly to the console. That makes access in the context of automation significantly easier. For more
+information, please have a look at the <a href="https://sakuli.io/docs/configuring_tests/logging/#log-modes">log mode documentation</a></p>
+<h3 id="decrypt-secrets-on-cli">Decrypt secrets on cli</h3>
+<p>It is now possible to use the <a href="https://sakuli.io/docs/cli/#sakuli-decrypt">sakuli decrypt</a> cli command to decrypt secrets
+providing the master key used for encryption. This allows you to receive already encrypted secrets as human-readable text
+for e.g. debugging purposes.</p>
+<h3 id="testcasestartstep"><code>testCase.startStep()</code></h3>
+<p>As <code>testCase.endOfStep()</code> comes with some limitations in terms of monitoring integration, we introduced
+<code>testCase.startStep()</code>. This also deprecates <code>testCase.endOfStep()</code>. We highly encourage users to use <code>startStep()</code>
+instead. For more information, please have a look at the
+<a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/testcase.html#startstep">startStep API docs</a>.</p>
+<h2 id="enterprise-packages">Enterprise packages</h2>
+<h3 id="sakuli-ocr">Sakuli OCR</h3>
+<p>With this release, we added the Sakuli OCR (optical character recognition) module to the enterprise package portfolio.
+Leveraging the abilities of OCR, Sakuli is now able to interact with screen content based on the displayed text. For
+more information, please have a look at the <a href="https://sakuli.io/docs/enterprise_features/ocr/">Sakuli OCR documentation</a>.</p>
+<h3 id="sakuli-container">Sakuli Container</h3>
+<h4 id="redirect-logs-to-stdout">Redirect logs to stdout</h4>
+<p>The <code>LogMode=ci</code> introduced to Sakuli core with the new release is now the default log mode of the container. That being
+said, logs messages are represented on the console / stdout as well as in the log files. This makes it a lot easier to
+access and analyze log messages.</p>
+<h4 id="third-party-package-installation">Third party package installation</h4>
+<p>It is now possible to use third party packages mentioned in your <code>package.json</code> during containerized sakuli execution.
+By setting the environment variable <code>INSTALL_PACKAGES</code> to <code>true</code>, the container will perform an <code>npm install</code> command
+before executing checks. For more information, please have a look at the
+<a href="https://sakuli.io/docs/enterprise_features/container/#4211-additional-dependencies">documentation</a></p>
+<h4 id="ocr-module">OCR Module</h4>
+<p>The brand new OCR Module is also installed in the container and ready to use without an additional setup required.</p>
 
 
 <footer class=" footline" >
@@ -1409,7 +1276,6 @@ chaining, like
             
                 
                     
-                    
                 
                 
 
@@ -1423,8 +1289,21 @@ chaining, like
             
                 
                     
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
                         
-                        
+            
+            
+                
                     
                 
                 
@@ -1457,26 +1336,6 @@ chaining, like
             
             
                 
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
                     
                 
                 
@@ -1913,6 +1772,7 @@ chaining, like
             
                 
                     
+                    
                 
                 
 
@@ -1925,6 +1785,9 @@ chaining, like
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1957,6 +1820,7 @@ chaining, like
             
             
                 
+                    
                     
                 
                 
@@ -1981,10 +1845,10 @@ chaining, like
 	 
 	 
 		
-			<a class="nav nav-prev" href="/docs/writing_tests/interact/" title="Interact"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/docs/change_notes/2.4.0/" title="V2.4.0"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/docs/writing_tests/application/" title="Native applications" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/docs/change_notes/2.3.0/" title="V2.3.0" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

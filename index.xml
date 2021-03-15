@@ -5,20 +5,10 @@
     <link>/docs/</link>
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 18 Dec 2020 13:55:46 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 12 Mar 2021 13:52:41 +0200</lastBuildDate>
     
 	<atom:link href="/docs/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>V2.4.0</title>
-      <link>/docs/change_notes/2.4.0/</link>
-      <pubDate>Sun, 30 Aug 2020 10:28:41 +0100</pubDate>
-      
-      <guid>/docs/change_notes/2.4.0/</guid>
-      <description>V2.4.0 Sakuli V2.4.0 brings new features but also a lot of improvements and bug fixes for enhanced user experience. Let&amp;rsquo;s have a look at the major changes for this release.
-Sakuli Core Besides our brand-new preset autodiscovery a lot of improvements went into this release. Enhanced scroll behaviour, new config options and improvements for native interactions are just some of them. A detailed list of all applied enhancement and fixes can be found in the CHANGELOG.</description>
-    </item>
     
     <item>
       <title>Sakuli properties</title>
@@ -62,6 +52,16 @@ Create a Icinga2 service Create a check_command which will only be executed if I
       <description>What you need Sakuli only supports the active LTS release of Node. For information on what version this currently covers see the Node.js Release Schedule.
 In order to be able to run Sakuli on your system, we will assume that you have a working node installation.
 To install Node on your system, you can either go to the Node website or you can use tools like Node Version Manager utility to manage various Node versions on a per-user basis.</description>
+    </item>
+    
+    <item>
+      <title>V2.4.0</title>
+      <link>/docs/change_notes/2.4.0/</link>
+      <pubDate>Sun, 30 Aug 2020 10:28:41 +0100</pubDate>
+      
+      <guid>/docs/change_notes/2.4.0/</guid>
+      <description>V2.4.0 Sakuli V2.4.0 brings new features but also a lot of improvements and bug fixes for enhanced user experience. Let&amp;rsquo;s have a look at the major changes for this release.
+Sakuli Core Besides our brand-new preset autodiscovery a lot of improvements went into this release. Enhanced scroll behaviour, new config options and improvements for native interactions are just some of them. A detailed list of all applied enhancement and fixes can be found in the CHANGELOG.</description>
     </item>
     
     <item>
@@ -120,6 +120,15 @@ Spool folder Create a new folder spool in the installation path of the checkmk a
 For this guide, we will assume that our working directory is /tmp/sakuli_starter on a *nix system, or %Temp%\sakuli_starter on a Windows machine.
 To create a new, empty project, first run:
 npm init This interactive prompt will ask you for some metadata regarding your project.</description>
+    </item>
+    
+    <item>
+      <title>V2.5.0</title>
+      <link>/docs/change_notes/2.5.0/</link>
+      <pubDate>Fri, 12 Mar 2021 13:52:41 +0200</pubDate>
+      
+      <guid>/docs/change_notes/2.5.0/</guid>
+      <description>V2.5.0 Sakuli Core The new Sakuli Release 2.5.0 has many improvements in its luggage, which both users and developers have longed for. In addition, a completely new option for automation made it into the release! We are talking about the Sakuli OCR module. But everything in the right order! Let&amp;rsquo;s get it started with the improvements on the Sakuli core! A detailed list of all applied enhancement and fixes can be found in the CHANGELOG.</description>
     </item>
     
     <item>
@@ -355,9 +364,9 @@ The Sakuli dashboard is configurable via environmental variables containing JSON
       <pubDate>Fri, 18 Dec 2020 13:55:46 +0100</pubDate>
       
       <guid>/docs/enterprise_features/ocr/</guid>
-      <description>Optical character recognition (OCR) This feature is currently a tech preview!
+      <description>Optical character recognition (OCR) (Available from v2.5.0)
 With optical character recognition (OCR) it is possible to convert screen content into text. In combination with Sakuli, it is also possible to automate software based on the text shown on screen.
-OCR in enterprise containers Sakuli enterprise containers ship with a complete setup to use the OCR features of Sakuli. OCR features can be used without any further set up.</description>
+OCR in enterprise containers Sakuli enterprise containers ship with a complete setup to use the OCR features of Sakuli. OCR features can be used without any further set up. Please have a look at the enterprise containers documentation for more information about container usage.</description>
     </item>
     
   </channel>

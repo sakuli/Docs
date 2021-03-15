@@ -906,6 +906,25 @@
  
   
     
+      <li data-nav-id="/docs/change_notes/2.3.0/" title="V2.3.0" class="dd-item ">
+        <a href="/docs/change_notes/2.3.0/">
+        V2.3.0
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
       <li data-nav-id="/docs/change_notes/2.4.0/" title="V2.4.0" class="dd-item ">
         <a href="/docs/change_notes/2.4.0/">
         V2.4.0
@@ -925,9 +944,9 @@
  
   
     
-      <li data-nav-id="/docs/change_notes/2.3.0/" title="V2.3.0" class="dd-item ">
-        <a href="/docs/change_notes/2.3.0/">
-        V2.3.0
+      <li data-nav-id="/docs/change_notes/2.5.0/" title="V2.5.0" class="dd-item ">
+        <a href="/docs/change_notes/2.5.0/">
+        V2.5.0
         <i class="fas fa-check read-icon"></i>
         </a>
     </li>
@@ -1045,6 +1064,7 @@
     <li><a href="#sakuli-create-masterkey">sakuli create masterkey</a></li>
     <li><a href="#sakuli-enable-enterprise">sakuli enable-enterprise</a></li>
     <li><a href="#sakuli-encrypt">sakuli encrypt</a></li>
+    <li><a href="#sakuli-decrypt">sakuli decrypt</a></li>
     <li><a href="#sakuli-migrate">sakuli migrate</a></li>
     <li><a href="#sakuli-run">sakuli run</a></li>
   </ul>
@@ -1121,6 +1141,19 @@ Options:
 <p>To use this command it is necessary to create a masterkey with <a href="#sakuli-create-masterkey"><code>npx create masterkey</code></a> first.
 With <code>npx sakuli encrypt</code> you can now encrypt a secret or password which then can be decrypted in the Sakuli testcase
 with one of the decryption functions like <code>Environment.decryptSecret()</code>.</p>
+<h2 id="sakuli-decrypt">sakuli decrypt</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli decrypt &lt;secret&gt; --masterkey
+
+
+Decrypts a secret via provided masterkey
+
+
+Positionals:
+secret                The secret to decrypt                                       <span style="color:#f92672">[</span>required<span style="color:#f92672">]</span>
+
+Options:
+--masterkey           The masterkey used <span style="color:#66d9ef">for</span> decryption                           <span style="color:#f92672">[</span>required<span style="color:#f92672">]</span></code></pre></div>
+<p>With <code>npx sakuli decrypt</code> you can now decrypt a secret for e.g. debugging purposes.</p>
 <h2 id="sakuli-migrate">sakuli migrate</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli migrate &lt;path&gt;
 
@@ -1144,7 +1177,7 @@ Positionals:
 Options:
   browser<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>            Browser which is started by the WebDriver
   ui-only<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>            Configures whether the testsuite runs in ui-only mode
-  reuseBrowser<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>       Configures whether the browser is reused after each testcase <span style="color:#f92672">(</span>Available as tech preview<span style="color:#f92672">)</span></code></pre></div>
+  reuseBrowser<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&#39;</span>       Configures whether the browser is reused after each testcase</code></pre></div>
 
 
 
@@ -1791,6 +1824,22 @@ Options:
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
                     
                         
             

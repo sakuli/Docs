@@ -906,6 +906,25 @@
  
   
     
+      <li data-nav-id="/docs/change_notes/2.3.0/" title="V2.3.0" class="dd-item ">
+        <a href="/docs/change_notes/2.3.0/">
+        V2.3.0
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
       <li data-nav-id="/docs/change_notes/2.4.0/" title="V2.4.0" class="dd-item ">
         <a href="/docs/change_notes/2.4.0/">
         V2.4.0
@@ -925,9 +944,9 @@
  
   
     
-      <li data-nav-id="/docs/change_notes/2.3.0/" title="V2.3.0" class="dd-item ">
-        <a href="/docs/change_notes/2.3.0/">
-        V2.3.0
+      <li data-nav-id="/docs/change_notes/2.5.0/" title="V2.5.0" class="dd-item ">
+        <a href="/docs/change_notes/2.5.0/">
+        V2.5.0
         <i class="fas fa-check read-icon"></i>
         </a>
     </li>
@@ -1237,18 +1256,20 @@ decide to put multiple test suites into one project, we recommend putting a pack
 <h4 id="421-troubleshooting">4.2.1 Troubleshooting</h4>
 <p>This topic covers possible errors when running containerized Sakuli tests.</p>
 <h4 id="4211-additional-dependencies">4.2.1.1 Additional dependencies</h4>
-<p>In case your test project requires additional dependencies, it&rsquo;s possible to run <code>npm install</code> before executing the Sakuli test.</p>
+<p><strong>(Available from v2.5.0)</strong>
+In case your test project requires additional dependencies, it&rsquo;s possible to run <code>npm install</code> before executing the Sakuli test.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">...
 <span style="color:#e6db74">&#34;scripts&#34;</span><span style="color:#f92672">:</span> {
 <span style="color:#e6db74">&#34;test&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;npm i &amp;&amp; sakuli run /path/to/your/test/suite&#34;</span>
 },
 ...
 </code></pre></div>
-<p>On the <code>latest</code> tag (<strong>tech preview</strong>), the Container supports package installation, configurable via the environment variable
+<p>The Container supports package installation, configurable via the environment variable
 <code>INSTALL_PACKAGES=true</code>. This will install all packages defined in your <code>package.json</code> at container startup.</p>
 <blockquote>
 <p><strong>Note:</strong> Package versions installed inside the container will be overwritten by the version defined in the <code>package.json</code>.<br>
-This might cause unexpected behavior, if overwriting e.g. Sakuli itself <code>(@sakuli/cli)</code> or forwarders.</p>
+This might cause unexpected behavior, if overwriting e.g. Sakuli itself <code>(@sakuli/cli)</code> or forwarders.
+By installing third-party packages, the functionality of the packages and Sakuli itself can be impaired.</p>
 </blockquote>
 <h2 id="5-viewing--configuring-test-execution">5 Viewing / Configuring Test Execution</h2>
 <p>Sakuli test containers allow to configure specific details of their runtime environment.</p>
@@ -1457,7 +1478,7 @@ Selenium Server on the Windows host and configure Sakuli to connect the browser 
 <tr>
 <td>INSTALL_PACKAGES</td>
 <td>false</td>
-<td>Installs packages defined in the <code>package.json</code> at container startup (available on <code>latest</code> tag as tech preview)</td>
+<td>Installs packages defined in the <code>package.json</code> at container startup <strong>(Available from v2.5.0)</strong></td>
 </tr>
 </tbody>
 </table>
@@ -2109,6 +2130,22 @@ Selenium Server on the Windows host and configure Sakuli to connect the browser 
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
                     
                         
             
