@@ -120,5 +120,5 @@ Positionals:
 Options:
   browser=''            Browser which is started by the WebDriver
   ui-only=''            Configures whether the testsuite runs in ui-only mode
-  reuseBrowser=''       Configures whether the browser is reused after each testcase (Available as tech preview)
+  reuseBrowser=''       Configures whether the browser is reused after each testcase
 {{</highlight>}}

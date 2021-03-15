@@ -210,7 +210,7 @@ decide to put multiple test suites into one project, we recommend putting a pack
 This topic covers possible errors when running containerized Sakuli tests.
 
 #### 4.2.1.1 Additional dependencies
-
+**(Available from v2.5.0)**
 In case your test project requires additional dependencies, it's possible to run `npm install` before executing the Sakuli test.
 
 {{<highlight js>}}
@@ -221,11 +221,12 @@ In case your test project requires additional dependencies, it's possible to run
 ...
 {{</highlight>}}
 
-On the `latest` tag (**tech preview**), the Container supports package installation, configurable via the environment variable
+The Container supports package installation, configurable via the environment variable
 `INSTALL_PACKAGES=true`. This will install all packages defined in your `package.json` at container startup.
 
 > **Note:** Package versions installed inside the container will be overwritten by the version defined in the `package.json`.  
 > This might cause unexpected behavior, if overwriting e.g. Sakuli itself `(@sakuli/cli)` or forwarders.
+> By installing third-party packages, the functionality of the packages and Sakuli itself can be impaired. 
 
 ## 5 Viewing / Configuring Test Execution
 
@@ -422,4 +423,4 @@ Selenium Server on the Windows host and configure Sakuli to connect the browser 
 | GIT_URL                 |               | URL of git repository                                                                                            |
 | GIT_CONTEXT_DIR         |               | Path to Sakuli testsuite within the git repository                                                               |
 | DEBUG                   | false         | Enables debug mode for container startup                                                                         |
-| INSTALL_PACKAGES        | false         | Installs packages defined in the `package.json` at container startup (available on `latest` tag as tech preview) |
+| INSTALL_PACKAGES        | false         | Installs packages defined in the `package.json` at container startup **(Available from v2.5.0)**                 |
