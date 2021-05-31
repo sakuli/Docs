@@ -22,7 +22,10 @@ await _wait(3000, () => _isVisible(_div("MyDiv")));
 {{</highlight>}}
 
 ## Wait for any condition to be met
-It is possible to pass a boolean function (function returning `true` or `false`) as a second optional parameter of the `_wait()` action. Hence it is not only possible to wait until e.g. an item is visible on the website, but also for any boolean condition required in your use case. The [Sakuli fetch API](https://sakuli.io/apidoc/sakuli-legacy/interfaces/fetchapi.html) is a good point to start but you can also always define your own conditions in your test suite.  
+It is possible to pass a boolean function (function returning `true` or `false`) as a second optional parameter of the
+`_wait()` action. Hence it is not only possible to wait until e.g. an item is visible on the website, but also for any
+boolean condition required in your use case. The [Sakuli fetch API](https://sakuli.io/docs/writing_tests/webtests/#fetching-elements)
+is a good point to start but you can also always define your own conditions in your test suite.  
 
 {{<highlight javascript>}}
 // wait at most three seconds until the first list item contains an entry "Sakuli".
@@ -40,7 +43,7 @@ await _wait(3000, () => _count('_div', 'product') >= 10);
 {{</highlight>}}
 
 ## Wait until page stabilized
-A very popular use case of the `wait()` function is to check for a certain element to be visible. Mostly this checks tries to verify that a certain asynchronous change has been finished. In some cases it is hard to identify an element to reliably ensure that such an asynchronous task has been finished. Therefore the [Sakuli action API](https://sakuli.io/apidoc/sakuli-legacy/interfaces/actionapi.html) provides a `_pageIsStable()` action.  
+A very popular use case of the `wait()` function is to check for a certain element to be visible. Mostly this checks tries to verify that a certain asynchronous change has been finished. In some cases it is hard to identify an element to reliably ensure that such an asynchronous task has been finished. Therefore the [Sakuli action API](https://sakuli.io/docs/writing_tests/webtests/#actions) provides a `_pageIsStable()` action.  
 
 {{<highlight javascript>}}
 // wait at most two seconds until the dom stabilized and check it in 200ms intervals.
@@ -58,7 +61,7 @@ await _pageIsStable(5000, 500);
 {{</highlight>}}
 
 ## Abort if page does not stabilize
-In case the page is not able to stabilize in time, it might be required to abort the test case as e.g. a quality gate for loading the page has not been fulfilled. For such a use case, it is possible to wrap `_pageIsStable()` into assertions of the [Sakuli assertion API](https://sakuli.io/apidoc/sakuli-legacy/interfaces/assertionapi.html).
+In case the page is not able to stabilize in time, it might be required to abort the test case as e.g. a quality gate for loading the page has not been fulfilled. For such a use case, it is possible to wrap `_pageIsStable()` into assertions of the [Sakuli assertion API](https://sakuli.io/docs/writing_tests/webtests/#assertions).
 
 {{<highlight javascript>}}
 // Wait for a stable DOM, stop test execution if it does not stabilize within timeout
