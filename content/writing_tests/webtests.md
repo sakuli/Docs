@@ -18,7 +18,7 @@ On the other hand, element selectors remain synchronized functions but will not 
 While an expression like `var $e=_link('Sakuli')` did an actual DOM-access in Sakuli v1.x, it returns a kind of abstract
 query for an element now. So, action can fetch this element whenever it is required.
 
-A detailed list of all available functions can be found in the [Legacy API interface](/apidoc/sakuli-legacy/interfaces/legacyapi.html),
+A detailed list of all available functions can be found in the [Legacy API interface](https://sakuli.io/apidoc/sakuli-legacy),
 
 ## Accessors
 
@@ -183,7 +183,7 @@ This approach reduces the count of StaleElementReferenceErrors dramatically, esp
 
 ### _eval
 
-Beside the fact that actions work asynchronously now, they behave like in Sahi. One exception is the [`_eval`](/apidoc/sakuli-legacy/interfaces/legacyapi.html#_eval) method, which accepts a string now containing some JavaScript code, which is performed on the website by the webdriver implementation (see `executeAsyncScript` method of 
+Beside the fact that actions work asynchronously now, they behave like in Sahi. One exception is the [`_eval`](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_eval) method, which accepts a string now containing some JavaScript code, which is performed on the website by the webdriver implementation (see `executeAsyncScript` method of 
  <a href="https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index_exports_ThenableWebDriver.html" target="_blank">Seleniums Thenablewebdriver</a>).
 
 {{<highlight javascript>}}
@@ -267,19 +267,19 @@ List of relations:
 
 ## Assertions
 List of assertion functions:
-- [__assert](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assert)
-- [__assertTrue](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_asserttrue)
-- [__assertFalse](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertfalse)
-- [__assertNotTrue](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertnottrue)
-- [__assertContainsText](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertcontainstext)
-- [__assertNotContainsText](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertnotcontainstext)
-- [__assertEqual](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertequal)
-- [__assertNotEqual](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertnotequal)
-- [__assertEqualArrays](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertequalarrays)
-- [__assertExists](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertexists)
-- [__assertNotExists](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertnotexists)
-- [__assertNotNull](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertnotnull)
-- [__assertNull](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertnull)
+- [_assert](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assert)
+- [_assertTrue](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_asserttrue)
+- [_assertFalse](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertfalse)
+- [_assertNotTrue](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertnottrue)
+- [_assertContainsText](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertcontainstext)
+- [_assertNotContainsText](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertnotcontainstext)
+- [_assertEqual](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertequal)
+- [_assertNotEqual](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertnotequal)
+- [_assertEqualArrays](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertequalarrays)
+- [_assertExists](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertexists)
+- [_assertNotExists](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertnotexists)
+- [_assertNotNull](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertnotnull)
+- [_assertNull](https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertnull)
 
 
 ## Selenium Fallbacks
