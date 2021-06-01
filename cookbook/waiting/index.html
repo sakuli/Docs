@@ -1104,7 +1104,10 @@
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_wait</span>(<span style="color:#ae81ff">3000</span>, () =&gt; <span style="color:#a6e22e">_isVisible</span>(<span style="color:#a6e22e">_div</span>(<span style="color:#e6db74">&#34;MyDiv&#34;</span>)));
 </code></pre></div>
 <h2 id="wait-for-any-condition-to-be-met">Wait for any condition to be met</h2>
-<p>It is possible to pass a boolean function (function returning <code>true</code> or <code>false</code>) as a second optional parameter of the <code>_wait()</code> action. Hence it is not only possible to wait until e.g. an item is visible on the website, but also for any boolean condition required in your use case. The <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/fetchapi.html">Sakuli fetch API</a> is a good point to start but you can also always define your own conditions in your test suite.</p>
+<p>It is possible to pass a boolean function (function returning <code>true</code> or <code>false</code>) as a second optional parameter of the
+<code>_wait()</code> action. Hence it is not only possible to wait until e.g. an item is visible on the website, but also for any
+boolean condition required in your use case. The <a href="https://sakuli.io/docs/writing_tests/webtests/#fetching-elements">Sakuli fetch API</a>
+is a good point to start but you can also always define your own conditions in your test suite.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// wait at most three seconds until the first list item contains an entry &#34;Sakuli&#34;.
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_wait</span>(<span style="color:#ae81ff">3000</span>, () =&gt; <span style="color:#a6e22e">_areEqual</span>(<span style="color:#a6e22e">_listItem</span>(<span style="color:#ae81ff">0</span>), <span style="color:#a6e22e">_listItem</span>(<span style="color:#e6db74">&#34;Sakuli&#34;</span>)));
 </code></pre></div>
@@ -1115,7 +1118,7 @@
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_wait</span>(<span style="color:#ae81ff">3000</span>, () =&gt; <span style="color:#a6e22e">_count</span>(<span style="color:#e6db74">&#39;_div&#39;</span>, <span style="color:#e6db74">&#39;product&#39;</span>) <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">10</span>);
 </code></pre></div>
 <h2 id="wait-until-page-stabilized">Wait until page stabilized</h2>
-<p>A very popular use case of the <code>wait()</code> function is to check for a certain element to be visible. Mostly this checks tries to verify that a certain asynchronous change has been finished. In some cases it is hard to identify an element to reliably ensure that such an asynchronous task has been finished. Therefore the <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/actionapi.html">Sakuli action API</a> provides a <code>_pageIsStable()</code> action.</p>
+<p>A very popular use case of the <code>wait()</code> function is to check for a certain element to be visible. Mostly this checks tries to verify that a certain asynchronous change has been finished. In some cases it is hard to identify an element to reliably ensure that such an asynchronous task has been finished. Therefore the <a href="https://sakuli.io/docs/writing_tests/webtests/#actions">Sakuli action API</a> provides a <code>_pageIsStable()</code> action.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// wait at most two seconds until the dom stabilized and check it in 200ms intervals.
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_pageIsStable</span>();
 </code></pre></div>
@@ -1126,7 +1129,7 @@
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_pageIsStable</span>(<span style="color:#ae81ff">5000</span>, <span style="color:#ae81ff">500</span>);
 </code></pre></div>
 <h2 id="abort-if-page-does-not-stabilize">Abort if page does not stabilize</h2>
-<p>In case the page is not able to stabilize in time, it might be required to abort the test case as e.g. a quality gate for loading the page has not been fulfilled. For such a use case, it is possible to wrap <code>_pageIsStable()</code> into assertions of the <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/assertionapi.html">Sakuli assertion API</a>.</p>
+<p>In case the page is not able to stabilize in time, it might be required to abort the test case as e.g. a quality gate for loading the page has not been fulfilled. For such a use case, it is possible to wrap <code>_pageIsStable()</code> into assertions of the <a href="https://sakuli.io/docs/writing_tests/webtests/#assertions">Sakuli assertion API</a>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Wait for a stable DOM, stop test execution if it does not stabilize within timeout
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_assert</span>(<span style="color:#a6e22e">_pageIsStable</span>());
 </code></pre></div>

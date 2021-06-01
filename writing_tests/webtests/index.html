@@ -1066,7 +1066,7 @@
     <div class="wrapper">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#accessor-api">Accessor API</a>
+    <li><a href="#accessors">Accessors</a>
       <ul>
         <li><a href="#accessors-by-html-tag-or-attributes">Accessors by HTML-Tag or attributes</a></li>
       </ul>
@@ -1076,12 +1076,15 @@
         <li><a href="#identifier">Identifier</a></li>
       </ul>
     </li>
-    <li><a href="#action-api">Action API</a>
+    <li><a href="#actions">Actions</a>
       <ul>
         <li><a href="#_eval">_eval</a></li>
+        <li><a href="#list-of-available-actions">List of available actions</a></li>
       </ul>
     </li>
-    <li><a href="#fetch-api">Fetch API</a></li>
+    <li><a href="#fetching-elements">Fetching Elements</a></li>
+    <li><a href="#relations">Relations</a></li>
+    <li><a href="#assertions">Assertions</a></li>
     <li><a href="#selenium-fallbacks">Selenium Fallbacks</a>
       <ul>
         <li><a href="#webdriver-instance">WebDriver instance</a></li>
@@ -1111,19 +1114,29 @@
 
 
 <h1 id="web-tests">Web tests</h1>
-<p>For DOM based testing most of the functions from <a href="https://sahipro.com/docs/sahi-apis/" target="_blank">Sahi tests</a> can be used (please note that Sakuli only implements the open source APIs).</p>
-<p>The main difference between Sakuli v1 and Sakuli v2 is the usage of <a href="https://developers.google.com/web/fundamentals/primers/promises" target="_blank">Promises</a> in the action API, meaning that you have to <code>await</code> a click for example.</p>
-<p>On the other hand, element selectors remain synchronized functions but will not do the actual DOM fetching anymore. While an expression like <code>var $e=_link('Sakuli')</code> did an actual DOM-access in Sakuli v1.x, it returns a kind of abstract query for an element now. So, action can fetch this element whenever it is required.</p>
-<p>A detailed list of all available functions can be found in the <a href="/apidoc/sakuli-legacy/interfaces/sahiapi.html">Sahi API interface</a>,</p>
-<h2 id="accessor-api">Accessor API</h2>
-<p>The Accessor API is described in the <a href="/apidoc/sakuli-legacy/interfaces/accessorapi.html">Accessor API interface</a>.</p>
-<p>Sakuli uses the concept of reusable <a href="/apidoc/sakuli-legacy/interfaces/sahielementquery.html">Queries</a> rather than directly working on an element-object (like in Selenium). Sakuli offers an expressive set of <a href="/apidoc/sakuli-legacy/interfaces/accessorapi.html">Accessors</a> like <code>_div</code>, <code>_textbox</code> or <code>_table</code>. These accessors will not return an actual element or any reference to it. Rather it will create a <a href="/apidoc/sakuli-legacy/interfaces/sahielementquery.html">SahiElementQuery</a>. This query can then be used in various <a href="#action-api">Actions</a> like <code>_click</code>, <code>_highlight</code> or <code>_isVisible</code>. This concept could be compared with <a href="https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index_exports_By.html" target="_blank">Locators in Selenium</a>.</p>
+<p>For DOM based testing most of the functions from
+<a href="https://sahipro.com/docs/sahi-apis/" target="_blank">Sahi tests</a> can be used (please note that Sakuli only
+implements the open source APIs).</p>
+<p>The main difference between Sakuli v1 and Sakuli v2 is the usage of
+<a href="https://developers.google.com/web/fundamentals/primers/promises" target="_blank">Promises</a> in the action
+API, meaning that you have to <code>await</code> a click for example.</p>
+<p>On the other hand, element selectors remain synchronized functions but will not do the actual DOM fetching anymore.
+While an expression like <code>var $e=_link('Sakuli')</code> did an actual DOM-access in Sakuli v1.x, it returns a kind of abstract
+query for an element now. So, action can fetch this element whenever it is required.</p>
+<p>A detailed list of all available functions can be found in the <a href="https://sakuli.io/apidoc/sakuli-legacy">Legacy API interface</a>,</p>
+<h2 id="accessors">Accessors</h2>
+<p>Sakuli uses the concept of reusable queries rather than directly working on an element-object (like in Selenium).
+Sakuli offers an expressive set of accessors like <code>_div</code>, <code>_textbox</code> or <code>_table</code>. These accessors will not return an
+actual element or any reference to it. Rather it will create a query. This query can then be used in various
+<a href="#actions">Actions</a> like <code>_click</code>, <code>_highlight</code> or <code>_isVisible</code>. This concept could be compared with
+<a href="https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index_exports_By.html" target="_blank">Locators in Selenium</a>.</p>
 <p>This architecture gives us two nice benefits:</p>
 <ul>
 <li>Compatibility with <a href="https://sahipro.com/docs/sahi-apis/index.html" target="_blank">Sahi API</a></li>
 <li>Since Sakuli handles the actual fetching and validation of an element by performing retries, refreshes, implicit wait etc. which reduce annoying issues with Selenium a lot (e.g. <a href="https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/error_exports_StaleElementReferenceError.html" target="_blank">StaleElementReferenceError</a>)</li>
 </ul>
-<p>Most accessors are defined in the same way: They are functions that take an <a href="/apidoc/sakuli-legacy/globals.html#accessoridentifier">AccessorIdentifier</a> as a first parameter and a variadic list of <a href="/apidoc/sakuli-legacy/interfaces/relationapi.html">Relations</a>:</p>
+<p>Most accessors are defined in the same way: They are functions that take an<a href="#identifier">AccessorIdentifier</a> as a first
+parameter and a variadic list of <a href="#relations">Relations</a>:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">_NAME</span>(<span style="color:#a6e22e">identifier</span>, ...<span style="color:#a6e22e">relations</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">SahiElementQuery</span>
 </code></pre></div>
 <p>The accessor adds a static <a href="https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index_exports_By.html" target="_blank">Locator</a> to the returned query. Since</p>
@@ -1506,7 +1519,9 @@
 </tbody>
 </table>
 <h2 id="elementqueries">ElementQueries</h2>
-<p>Since Sakuli encapsulates the creation (through accessors) and the application (e.g. through actions) of a <a href="/apidoc/sakuli-legacy/interfaces/sahielementquery.html">SahiElementQuery</a>, a user will rarely get in touch with these objects directly. Nevertheless, it is good to understand how Sakuli works with queries. Let us consider this example:</p>
+<p>Since Sakuli encapsulates the creation (through accessors) and the application (e.g. through actions) of a query, a user
+will rarely get in touch with these objects directly. Nevertheless, it is good to understand how Sakuli works with
+queries. Let us consider this example:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_button</span>(<span style="color:#e6db74">&#39;Sign In&#39;</span>));
 </code></pre></div>
 <p>The following will happen under the hood:</p>
@@ -1515,7 +1530,7 @@
 <p><code>_button</code> creates a query with a locator to a button element and with <code>'Sign In'</code> as an identifier and an empty list of relations</p>
 </li>
 <li>
-<p>This query is passed to the <code>_click</code> action. This action uses the <a href="/apidoc/sakuli-legacy/classes/accessorutil.html">AccessorUtil</a> to fetch an element. It will:</p>
+<p>This query is passed to the <code>_click</code> action. This action does the following things:</p>
 <ol>
 <li>Fetch a list of all elements from the locator</li>
 <li>Reduce the list based on the relations (skipped when this list is empty)</li>
@@ -1546,25 +1561,42 @@
 <td><code>string</code></td>
 <td>The string is normalized and wrapped into a RegExp, therefore the same logic as for RegExp is applied</td>
 </tr>
-<tr>
-<td><a href="/apidoc/sakuli-legacy/globals.html#accessoridentifierattributes"><code>AccessorIdentifierAttributes</code></a></td>
-<td>This could be an object with the properties <code>sahiIndex</code> and/or <code>sahiIndex</code>, <code>sahiText</code>, <code>className</code>. The first two are handled like a number or a string identifer, respectively. The latter one works like a string identifier which only checks for the className property</td>
-</tr>
 </tbody>
 </table>
 <blockquote>
 <p>Since we mostly apply the logic of Sahi comparisons against the class attribute are pretty dumb. While the attribute value is semantically a space separated list of class names. It is just handled as a usual string in Sahi (and therefore also in Sakuli so far).</p>
 </blockquote>
-<h2 id="action-api">Action API</h2>
-<p>The Action API is described in the <a href="/apidoc/sakuli-legacy/interfaces/accessorapi.html">Action Api interface</a>.</p>
-<p>Actions usually invoke a <a href="https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/input_exports_Actions.html" target="_blank">Selenium action sequence</a> with an activated bridge mode to cover compatibility to most webdriver implementations. An action accepts a <a href="/apidoc/sakuli-legacy/globals.html#sahielementqueryorwebelement">SahiElementQuery or a WebElement</a> and tries to perform the action on this element several times. This approach reduces the count of StaleElementReferenceErrors dramatically, especially when a query is used.</p>
+<h2 id="actions">Actions</h2>
+<p>Actions usually invoke a <a href="https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/input_exports_Actions.html" target="_blank">Selenium action sequence</a>
+with an activated bridge mode to cover compatibility to most webdriver implementations. An action accepts a
+<a href="#ElementQueries">ElementQuery or a WebElement</a> and tries to perform the action on this element several times.
+This approach reduces the count of StaleElementReferenceErrors dramatically, especially when a query is used.</p>
 <h3 id="_eval">_eval</h3>
-<p>Beside the fact that actions work asynchronously now, they behave like in Sahi. One exception is the <a href="/apidoc/sakuli-legacy/interfaces/actionapi.html#_eval"><code>_eval</code></a> method, which accepts a string now containing some JavaScript code, which is performed on the website by the webdriver implementation (see <code>executeAsyncScript</code> method of
+<p>Beside the fact that actions work asynchronously now, they behave like in Sahi. One exception is the <a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_eval"><code>_eval</code></a> method, which accepts a string now containing some JavaScript code, which is performed on the website by the webdriver implementation (see <code>executeAsyncScript</code> method of
 <a href="https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index_exports_ThenableWebDriver.html" target="_blank">Seleniums Thenablewebdriver</a>).</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">windowOuterHeight</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_eval</span>(<span style="color:#e6db74">`return window.outerHeight`</span>)
 </code></pre></div>
-<h2 id="fetch-api">Fetch API</h2>
-<p>The Fetch API is described in the <a href="/apidoc/sakuli-legacy/interfaces/fetchapi.html">Fetch API interface</a>.</p>
+<h3 id="list-of-available-actions">List of available actions</h3>
+<ul>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_eval">_eval</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_highlight">_highlight</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_navigateto">_navigateTo</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_wait">_wait</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_pageisstable">_pageIsStable</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_blur">_blur</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_focus">_focus</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_click">_click</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_rightclick">_rightClick</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_mousedown">_mouseDown</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_mouseup">_mouseUp</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_mouseover">_mouseOver</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_check">_check</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_uncheck">_uncheck</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_setselected">_setSelected</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_dragdrop">_dragDrop</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_dragdropxy">_dragDropXY</a></li>
+</ul>
+<h2 id="fetching-elements">Fetching Elements</h2>
 <p>These methods are useful to get deeper access to elements and element-attributes:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">x</span>,<span style="color:#a6e22e">y</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_position</span>(<span style="color:#a6e22e">_image</span>(<span style="color:#e6db74">&#39;funny-cat-image.png&#39;</span>));
 </code></pre></div>
@@ -1573,19 +1605,82 @@
     <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_button</span>(<span style="color:#e6db74">&#39;I agree&#39;</span>))
 }
 </code></pre></div>
+<p>List of fetch functions:</p>
+<ul>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_collect">_collect</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_count">_count</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_fetch">_fetch</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_getvalue">_getValue</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_gettext">_getText</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_getoptions">_getOptions</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_getcelltext">_getCellText</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_getselectedtext">_getSelectedText</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_getattribute">_getAttribute</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_exists">_exists</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_areequal">_areEqual</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_isvisible">_isVisible</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_ischecked">_isChecked</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_isenabled">_isEnabled</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_containstext">_containsText</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_containshtml">_containsHTML</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_contains">_contains</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_title">_title</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_style">_style</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_position">_position</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_getselectiontext">_getSelectionText</a></li>
+</ul>
+<h2 id="relations">Relations</h2>
+<p>List of relations:</p>
+<ul>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_parentnode">_parentNode</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_parentcell">_parentCell</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_parentrow">_parentRow</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_parenttable">_parentTable</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_in">_in</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_near">_near</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_rightof">_rightOf</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_leftof">_leftOf</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_leftorrightof">_leftOrRightOf</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_under">_under</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_above">_above</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_underorabove">_underOrAbove</a></li>
+</ul>
+<h2 id="assertions">Assertions</h2>
+<p>List of assertion functions:</p>
+<ul>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assert">_assert</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_asserttrue">_assertTrue</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertfalse">_assertFalse</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertnottrue">_assertNotTrue</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertcontainstext">_assertContainsText</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertnotcontainstext">_assertNotContainsText</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertequal">_assertEqual</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertnotequal">_assertNotEqual</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertequalarrays">_assertEqualArrays</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertexists">_assertExists</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertnotexists">_assertNotExists</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertnotnull">_assertNotNull</a></li>
+<li><a href="https://sakuli.io/apidoc/sakuli-legacy/interfaces/legacyapi.html#_assertnull">_assertNull</a></li>
+</ul>
 <h2 id="selenium-fallbacks">Selenium Fallbacks</h2>
 <p>Since Sakuli uses <a href="https://www.npmjs.com/package/selenium-webdriver" target="_blank">Seleniums webdriver</a> it also provides various ways to access the functionality of this backend.</p>
 <blockquote>
-<p>It is recommended to use Sakulis built-in functionalities rather than work with the driver instances or any WebElement directly. At the moment, Sakuli is built upon Selenium. Nevertheless, a switch to other technologies in the future is possible. Downwards compatibility is only possible for Sakulis built-in functionalities. Direct use of webdriver instance methods is not supported.</p>
+<p>It is recommended to use Sakulis built-in functionalities rather than work with the driver instances or any WebElement directly.
+At the moment, Sakuli is built upon Selenium. Nevertheless, a switch to other technologies in the future is possible.
+Downwards compatibility is only possible for Sakulis built-in functionalities. Direct use of webdriver instance methods is not supported.</p>
 </blockquote>
 <h3 id="webdriver-instance">WebDriver instance</h3>
-<p>Sakuli test scripts provide a globally accessible object of the current <a href="https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index_exports_ThenableWebDriver.html" target="_blank">WebDriver instance</a> which can be used to invoke its native methods directly. This might be useful for switching between frames:</p>
+<p>Sakuli test scripts provide a globally accessible object of the current
+<a href="https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index_exports_ThenableWebDriver.html" target="_blank">WebDriver instance</a>
+which can be used to invoke its native methods directly. This might be useful for switching between frames:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">driver</span>.<span style="color:#a6e22e">switchTo</span>().<span style="color:#a6e22e">frame</span>(<span style="color:#ae81ff">1</span>);
 <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_click</span>(<span style="color:#a6e22e">_div</span>(<span style="color:#e6db74">&#39;element-in-frame-1&#39;</span>));
 <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">driver</span>.<span style="color:#a6e22e">switchTo</span>().<span style="color:#a6e22e">defaultContent</span>();
 </code></pre></div>
 <h3 id="webelement-instances">WebElement instances</h3>
-<p>The Fetch API provides the <code>_fetch</code> function which returns the native <a href="https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index_exports_WebElement.html" target="_blank">WebElement</a> instance from Seleniums webdriver for a query:</p>
+<p>The Fetch API provides the <code>_fetch</code> function which returns the native
+<a href="https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index_exports_WebElement.html" target="_blank">WebElement</a>
+instance from Seleniums webdriver for a query:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">webElement</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_fetch</span>(<span style="color:#a6e22e">_image</span>(<span style="color:#e6db74">&#39;funny-cat-image.png&#39;</span>)); 
 <span style="color:#66d9ef">const</span> {<span style="color:#a6e22e">width</span>, <span style="color:#a6e22e">height</span>} <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">webElement</span>.<span style="color:#a6e22e">getRect</span>();
 </code></pre></div>
