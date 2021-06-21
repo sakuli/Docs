@@ -65,7 +65,7 @@ Here is a sample `DASHBOARD_CONFIG` for the Sakuli dashboard.
          "url":"https://sakuli.io/docs"
       }
    ],
-   defaultLayout: "row"                                                           //5
+   "defaultLayout": "row"                                                           //5
 }
 {{</highlight>}}
 
