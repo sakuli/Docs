@@ -56,10 +56,12 @@ Here is a sample `DASHBOARD_CONFIG` for the Sakuli dashboard.
          "index":2,
          "messages": {
              "de": {
-                "description": "Dokumentation von Sakuli"
+                "description": "Dokumentation von Sakuli",
+                "infoText": "Lorem ipsum dolor sit amet"
              },
              "en": {
-                "description": "Documentation of Sakuli"
+                "description": "Documentation of Sakuli",
+                "infoText": "Lorem ipsum dolor sit amet"
              }
          },
          "url":"https://sakuli.io/docs"
