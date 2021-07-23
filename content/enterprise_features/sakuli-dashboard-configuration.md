@@ -54,7 +54,7 @@ Here is a sample `DASHBOARD_CONFIG` for the Sakuli dashboard.
       },
       {
          "index":2,
-         "type": "logs"                                                            //5
+         "type": "logs",                                                           //5
          "messages": {
              "de": {
                 "description": "Kubernetes Logs",
