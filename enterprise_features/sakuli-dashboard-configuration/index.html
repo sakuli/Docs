@@ -1162,20 +1162,21 @@ Here is a sample <code>DASHBOARD_CONFIG</code> for the Sakuli dashboard.</p>
 </span><span style="color:#75715e"></span>      },
       {
          <span style="color:#e6db74">&#34;index&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">2</span>,
-         <span style="color:#e6db74">&#34;messages&#34;</span><span style="color:#f92672">:</span> {
+         <span style="color:#e6db74">&#34;type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;logs&#34;</span>,                                                           <span style="color:#75715e">//5
+</span><span style="color:#75715e"></span>         <span style="color:#e6db74">&#34;messages&#34;</span><span style="color:#f92672">:</span> {
              <span style="color:#e6db74">&#34;de&#34;</span><span style="color:#f92672">:</span> {
-                <span style="color:#e6db74">&#34;description&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Dokumentation von Sakuli&#34;</span>,
+                <span style="color:#e6db74">&#34;description&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Kubernetes Logs&#34;</span>,
                 <span style="color:#e6db74">&#34;infoText&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
              },
              <span style="color:#e6db74">&#34;en&#34;</span><span style="color:#f92672">:</span> {
-                <span style="color:#e6db74">&#34;description&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Documentation of Sakuli&#34;</span>,
+                <span style="color:#e6db74">&#34;description&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Kubernetes Logs&#34;</span>,
                 <span style="color:#e6db74">&#34;infoText&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
              }
          },
-         <span style="color:#e6db74">&#34;url&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;https://sakuli.io/docs&#34;</span>
+         <span style="color:#e6db74">&#34;actionIdentifier&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;your_action_id_123&#34;</span>
       }
    ],
-   <span style="color:#e6db74">&#34;defaultLayout&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;row&#34;</span>                                                           <span style="color:#75715e">//5
+   <span style="color:#e6db74">&#34;defaultLayout&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;row&#34;</span>                                                           <span style="color:#75715e">//6
 </span><span style="color:#75715e"></span>}
 </code></pre></div>
 <ol>
@@ -1184,6 +1185,7 @@ Here is a sample <code>DASHBOARD_CONFIG</code> for the Sakuli dashboard.</p>
 property. The content can be displayed in German or English. (optional field)</li>
 <li>The <code>url</code> property embeds the corresponding website in the iFrame of the display. (<strong>mandatory field</strong>)</li>
 <li>The <code>actionIdentifier</code> references to an action defined within the <a href="#action_config">ACTION_CONFIG</a>. (optional field)</li>
+<li>The <code>type</code> defines the kind of information to be displayed. It can either be &ldquo;website&rdquo; or &ldquo;logs&rdquo; while &ldquo;website&rdquo; is default. Log displays require a references to an action defined within the <a href="#action_config">ACTION_CONFIG</a>. (optional field)</li>
 <li>The optional <code>defaultLayout</code> config specifies the initial layout the dashboard is shown in. (optional field)</li>
 </ol>
 <h3 id="action_config">ACTION_CONFIG (optional)</h3>
