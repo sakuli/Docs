@@ -78,7 +78,7 @@ Here is a sample `DASHBOARD_CONFIG` for the Sakuli dashboard.
 property. The content can be displayed in German or English. (optional field)
 3. The `url` property embeds the corresponding website in the iFrame of the display. (**mandatory field**)
 4. The `actionIdentifier` references to an action defined within the [ACTION_CONFIG](#action_config). (optional field)
-5. The `type` defines the kind of information to be displayed. It can either be "website" or "logs" while "website" is default. Log displays require a references to an action defined within the [ACTION_CONFIG](#action_config). (optional field)
+5. The `type` defines the kind of information to be displayed. It can either be "website" or "logs" while "website" is the default. Log displays require a reference to an action defined within the [ACTION_CONFIG](#action_config). (optional field)
 6. The optional `defaultLayout` config specifies the initial layout the dashboard is shown in. (optional field)
 
 ### ACTION_CONFIG (optional) {#action_config}
