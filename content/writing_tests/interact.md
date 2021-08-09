@@ -232,6 +232,10 @@ npx sakuli encrypt "super secret string"
 
 These encrypted secrets can now be stored safely inside your testfile. The `ThenableEnvironment` interface provides methods to decrypt these secrets during test execution.
 
+> **Warning**: There is currently a bug with `typeAndDecrypt` where special characters are **NOT** entered correctly by Sakuli.
+> 
+> Please use `pasteAndDecrypt` instead work around this issue.
+
 {{< highlight typescript >}}
 await env.typeAndDecrypt("$ENCRYPTED_SECRET");
 // alternatively, via clipboard
