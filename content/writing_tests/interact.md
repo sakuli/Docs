@@ -234,7 +234,7 @@ These encrypted secrets can now be stored safely inside your testfile. The `Then
 
 > **Warning**: There is currently a bug with `typeAndDecrypt` where special characters are **NOT** entered correctly by Sakuli.
 > 
-> Please use `pasteAndDecrypt` instead work around this issue.
+> Please use `pasteAndDecrypt` instead to work around this issue.
 
 {{< highlight typescript >}}
 await env.typeAndDecrypt("$ENCRYPTED_SECRET");
