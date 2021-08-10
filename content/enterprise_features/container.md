@@ -424,4 +424,4 @@ Selenium Server on the Windows host and configure Sakuli to connect the browser 
 | GIT_CONTEXT_DIR         |               | Path to Sakuli testsuite within the git repository                                                               |
 | DEBUG                   | false         | Enables debug mode for container startup                                                                         |
 | INSTALL_PACKAGES        | false         | Installs packages defined in the `package.json` at container startup **(Available from v2.5.0)**                 |
-| LANGUAGE                | en_US:en      | [System variable of Ubuntu](https://help.ubuntu.com/community/EnvironmentVariables#:~:text=The%20%22LANGUAGE%22%20environment%20variable,,LANG%22%20and%20%22LC_MESSAGES%22.) Available Languages: en_US, de_DE (available in tech preview)| 
+| LANGUAGE                | en_US:en      | Available Languages: en_US, de_DE <a href="https://help.ubuntu.com/community/EnvironmentVariables#The_LANGUAGE_priority_list" target="_blank">(System variable of Ubuntu to change locale of applications)</a> **(available in tech preview)** | 
