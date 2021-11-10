@@ -348,7 +348,7 @@ Sakuli check:
             .type(Key.TAB)
             .pasteAndDecrypt("<encryptedPassword>")
             .type(Key.TAB)
-            .paste("<Windows IP or Hostname>")
+            .paste("<Domain>")
             .type(Key.TAB)
             .type(Key.TAB)
             .type(Key.ENTER); //login to windows host
