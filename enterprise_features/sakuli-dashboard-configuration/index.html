@@ -1072,6 +1072,7 @@
         <li><a href="#action_config">ACTION_CONFIG (optional)</a></li>
         <li><a href="#cluster_config">CLUSTER_CONFIG (optional)</a></li>
         <li><a href="#cronjob_config">CRONJOB_CONFIG (optional)</a></li>
+        <li><a href="#authentication_config">AUTHENTICATION_CONFIG (optional)</a></li>
       </ul>
     </li>
   </ul>
@@ -1124,6 +1125,10 @@ Sakuli dashboard.</p>
 <tr>
 <td><a href="#cronjob_config">CRONJOB_CONFIG</a></td>
 <td>(optional) Configures a cronjob to schedule a specific action</td>
+</tr>
+<tr>
+<td><a href="#authentication_config">AUTHENTICATION_CONFIG</a></td>
+<td>(optional) Configures the user authentication</td>
 </tr>
 </tbody>
 </table>
@@ -1274,6 +1279,66 @@ has to be specified according to the time format
 that is used by the <a href="https://www.gnu.org/software/mcron/manual/html_node/Crontab-file.html">GNU crontab format</a> (<strong>mandatory field</strong>)</li>
 </ol>
 <p><strong>Important information</strong>: In order to apply scheduled actions to a cluster, a valid <a href="#action_config">ACTION_CONFIG</a> and <a href="#cluster_config">CLUSTER_CONFIG</a> must be provided.</p>
+<h3 id="authentication_config">AUTHENTICATION_CONFIG (optional)</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
+  <span style="color:#e6db74">&#34;users&#34;</span><span style="color:#f92672">:</span> {                                                                                        <span style="color:#75715e">//1
+</span><span style="color:#75715e"></span>    <span style="color:#e6db74">&#34;iron&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;$argon2i$v=19$m=4096,t=3,p=1$MVhBOXIxRndsb1Y4TmpwVg$4dfLPfU7jrOx2wo1Df+cyQ&#34;</span>,
+    <span style="color:#e6db74">&#34;amazing&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;$argon2i$v=19$m=4096,t=3,p=1$N2l1R2l6ZWduUUtqNFhTTA$w5ntmRlKsp9XyyAZTTUAkA&#34;</span>,
+    <span style="color:#e6db74">&#34;incredible&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;$argon2i$v=19$m=4096,t=3,p=1$UGRlaHFUekZNU05hR0Njaw$CGN3FSY84u6KUlOFZJn8jA&#34;</span>
+  },
+  <span style="color:#e6db74">&#34;jwtTokenSecret&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;54208a45-0a3c-4736-927e-6706c3c18b71&#34;</span>,                                         <span style="color:#75715e">//2
+</span><span style="color:#75715e"></span>  <span style="color:#e6db74">&#34;jwtRefreshTokenSecret&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;b78d6873-f16d-4a3d-ae11-77c1702d84f0&#34;</span>                                   <span style="color:#75715e">//3
+</span><span style="color:#75715e"></span>}
+</code></pre></div>
+<ol>
+<li>The <code>users</code> with access to the dashboard. Each entry consists of <code>&quot;&lt;username&gt;&quot;: &quot;&lt;argon2i hashed password&gt;&quot;</code>. In this case
+<ol>
+<li>iron: man</li>
+<li>amazing: spiderman</li>
+<li>incredible: hulk</li>
+</ol>
+</li>
+<li>The secret used to generate and validate jwt token.</li>
+<li>The secret used to generate and validate jwt refresh token.</li>
+</ol>
+<p><strong>Note: Please use the <code>AUTHENTICATION_CONFIG</code> above for testing purposes only.</strong></p>
+<p>If an <code>AUTHENTICATION_CONFIG</code> is specified, a user without a valid set of jwt tokens is redirected to a login page. After a
+successful login, the user is redirected to the actual dashboard view. The current set of jwt tokens is stored locally.
+As long as this set is valid, the user does not have to perform a login again.
+If no <code>AUTHENTICATION_CONFIG</code> is specified, the user is able to access the dashboard view directly.</p>
+<blockquote>
+<p>If you&rsquo;re going to use horizontal scaling, please ensure to use the same set of token secrets and users for your scaled
+deployment so that every user is able to connect and authenticate with every deployed instance smoothly.</p>
+</blockquote>
+<h4 id="generating-argon2i-password-hashes">Generating argon2i password hashes</h4>
+<p>To generate argon2i password hashes, you can use every argon2i hash generator you trust. The generation and validation of
+argon2 hashes can be modified by specifying various parameters. If you want to learn more about the parameter and how to
+choose them concerning your use case, please have a look at the article
+<a href="https://www.twelve21.io/how-to-choose-the-right-parameters-for-argon2" target="_blank">How to Choose the Right Parameters for Argon2</a>
+by <a href="https://www.twelve21.io/author/bryan-burman/" target="_blank">Bryan Burman</a>.</p>
+<p>Here are two possibilities to generate argon2i hashes.</p>
+<ol>
+<li>Use the npm library <code>argon2-cli</code>.</li>
+</ol>
+<pre><code>~&gt;$ echo -n &quot;$up3r$3cr37P4ssw0rd&quot; | npx argon2-cli
+Type: 		Argon2i
+Iterations: 	3
+Memory: 	4096 KiB
+Parallelism: 	1
+Encoded: 	$argon2i$v=19$m=4096,t=3,p=1$MxxqTJgaJ+LEEOjo4/wlFw$uka9IMGj54ooMvHjCQeRuig9yY/hcnCK6Kly5s2ohZI
+0.008 seconds
+Verification ok
+</code></pre><ol start="2">
+<li>Create your hashes on <a href="https://argon2.online/" target="_blank">argon2.online</a>. We recommend configuring the hash generator as follows:
+<ul>
+<li>Salt: random generated</li>
+<li>Parallelism Factor: 1</li>
+<li>Memory Cost: 4096 KiB</li>
+<li>Iterations: 3</li>
+<li>Hash Length: 32</li>
+</ul>
+</li>
+</ol>
 
 
 <footer class=" footline" >
