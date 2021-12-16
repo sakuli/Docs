@@ -312,7 +312,7 @@ Open an application To open an application, you enter the path to the applicatio
       
       <guid>/docs/enterprise_features/sakuli-dashboard-deployment/</guid>
       <description>Sakuli Dashboard The Sakuli Dashboard streamlines your e2e application monitoring with Sakuli. It helps you start your Sakuli test automatically with a cronjob to monitor your application continuously or trigger it manually with a button. While watching a live video feed of your Sakuli check, you can track the monitoring metrics of your application by embedding your monitoring graphs into the Sakuli Dashboard.
-How to get the Sakuli Dashboard Attention: Only Sakuli Enterprise users will be eligible to access the private Sakuli Dashboard Docker images.</description>
+How to get the Sakuli Dashboard Sakuli Dashboard releases are versioned following the semantic versioning scheme.</description>
     </item>
     
     <item>
