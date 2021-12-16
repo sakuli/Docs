@@ -179,7 +179,7 @@ that is used by the [GNU crontab format](https://www.gnu.org/software/mcron/manu
 **Important information**: In order to apply scheduled actions to a cluster, a valid [ACTION_CONFIG](#action_config) and [CLUSTER_CONFIG](#cluster_config) must be provided.
 
 ### AUTHENTICATION_CONFIG (optional) {#authentication_config} 
-**(Currently available as tech preview in the `taconsol/sakuli-dashboard:latest` container)**
+**(Since version 2.2.0)**
 {{<highlight javascript>}}
 {
   "users": {                                                                                        //1

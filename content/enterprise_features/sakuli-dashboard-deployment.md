@@ -13,12 +13,10 @@ embedding your monitoring graphs into the Sakuli Dashboard.
 
 ## How to get the Sakuli Dashboard
 
-**Attention:** Only Sakuli Enterprise users will be eligible to access the private Sakuli Dashboard Docker images. 
 Sakuli Dashboard releases are versioned following the [semantic versioning scheme](https://semver.org/).
 Images for stable releases are tagged accordingly.
 Tech-previews of upcoming stable releases are available via the `latest` tag.  
 It is *highly* discouraged to run tech-previews in production as there is no guarantee of stability.
-
 
 - Deploy the Sakuli Dashboard with [Docker](#deployment-with-docker)
 - Deploy the Sakuli Dashboard with [Docker-Compose](#deployment-with-docker-compose)
@@ -33,10 +31,7 @@ For further information about how to properly configure the dashboard check out 
 
 #### 1 Obtaining the image
 
-Sakuli Dashboard images are available to your licensed Docker user via Docker Hub. You need to login to your account before pulling the image.
 {{<highlight bash>}}
-docker login -u <docker-username>
-
 docker pull taconsol/sakuli-dashboard:<IMAGE_TAG>
 {{</highlight>}}
 
@@ -49,7 +44,6 @@ docker run --rm \
  -e ACTION_CONFIG="${ACTION_CONFIG}" \
  -e CLUSTER_CONFIG="${CLUSTER_CONFIG}" \
  -e CRONJOB_CONFIG="${CRONJOB_CONFIG}" \
- -e SAKULI_LICENSE_KEY="${SAKULI_LICENSE_KEY}" \
  taconsol/sakuli-dashboard:<IMAGE_TAG>
 {{</ highlight >}}
 
@@ -57,7 +51,7 @@ Parameters:
 
 - **\-\-rm**: The dashboard container will be removed after execution, not just stopped
 - **-p**: Port forwarding to access the dashboard container on port 8080
-- **-e**: Environment variable flags which are used to provide the `SAKULI_LICENSE_KEY` and configure the dashboard
+- **-e**: Environment variable flags which are used to configure the dashboard
 
 ### Sakuli Dashboard with Docker-Compose {#deployment-with-docker-compose}
 
@@ -76,7 +70,6 @@ services:
             - ACTION_CONFIG=${ACTION_CONFIG}
             - CLUSTER_CONFIG=${CLUSTER_CONFIG}
             - CRONJOB_CONFIG=${CRONJOB_CONFIG}
-            - SAKULI_LICENSE_KEY=${SAKULI_LICENSE_KEY}
 {{</ highlight >}}
 
 After creating the `<filename>.yml` configuration file, you can start the dashboard with:
@@ -85,19 +78,6 @@ docker-compose up -f /path/to/file/<filename>.yml
 {{</ highlight >}}
 
 ### Sakuli Dashboard on Kubernetes {#deployment-with-k8s}
-
-#### Prerequisites
-A Sakuli Dashboard setup on your Kubernetes cluster requires you to import the Sakuli Dashboard image from Docker Hub. In order to do so, please configure a secret storing your `<docker-username>` and `<docker-password>` and add it to your service account for authentication.
-
-{{<highlight bash>}}
-kubectl create secret docker-registry dockerhub-sakuli-secret \
- --docker-server=docker.io \
- --docker-username=<docker-username> \
- --docker-password=<docker-password> \
- --docker-email=unused
- 
-kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "dockerhub-sakuli-secret"}]}'
-{{</highlight>}}
 
 You can start your Sakuli Dashboard using two different approaches:
 - Set up the Sakuli Dashboard manually via [CLI](#k8s-cli).
@@ -115,27 +95,18 @@ kubectl expose deployment sakuli-dashboard --type=LoadBalancer --port=8080
 
 The `--type=LoadBalancer` flag is important to make your service available outside your cluster.
 
-Now add your Sakuli Dashboard configurations such as the dashboard, action, cluster and cronjob configs and your 
-Sakuli license key to the environment of your deployment.
+Now add your Sakuli Dashboard configurations such as the dashboard, action, cluster and cronjob configs to 
+the environment of your deployment.
 
 {{<highlight bash>}}
 kubectl set env deployment/sakuli-dashboard --overwrite \
  DASHBOARD_CONFIG="${DASHBOARD_CONFIG}" \
  ACTION_CONFIG="${ACTION_CONFIG}" \
  CLUSTER_CONFIG="${CLUSTER_CONFIG}" \
- CRONJOB_CONFIG="${CRONJOB_CONFIG}" \
- SAKULI_LICENSE_KEY="${SAKULI_LICENSE_KEY}"
+ CRONJOB_CONFIG="${CRONJOB_CONFIG}"
 {{</highlight>}}
 
 #### Set up Sakuli Dashboard using a Template {#k8s-dashboard-template}
-
-The Sakuli Dashboard Kubernetes template references the Sakuli license key via a secret.
-So before applying the template, please add your license key secret first.
- 
-{{<highlight bash>}}
-kubectl create secret generic sakuli-license-key \
- --from-literal="SAKULI_LICENSE_KEY=${SAKULI_LICENSE_KEY}"
-{{</highlight>}}
 
 The following ready-to-use template will configure a Sakuli Dashboard and deploy it to your cluster
 Just copy and save the dashboard template below as `dashboard-template.yml`. Furthermore, add your dashboard, action, 
@@ -184,11 +155,6 @@ spec:
                 configMapKeyRef:
                   name: sakuli-dashboard
                   key: CRONJOB_CONFIG
-            - name: SAKULI_LICENSE_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: sakuli-license-key
-                  key: SAKULI_LICENSE_KEY
 ---
 apiVersion: v1
 kind: Service
@@ -229,24 +195,6 @@ kubectl apply -f dashboard-template.yml
 #### Prerequisites
 
 A Sakuli Dashboard setup on your OpenShift cluster requires you to import the Sakuli Dashboard image from Docker Hub.
-In order to do so, please configure a secret storing your `<docker-username>` and `<docker-password>` and add it to your service account for authentication.
-
-{{<highlight bash>}}
-oc create secret docker-registry dockerhub-sakuli-secret \
- --docker-server=docker.io \
- --docker-username=<docker-username> \
- --docker-password=<docker-password> \
- --docker-email=unused
-{{</highlight>}}
-
-Enable access to the secret from the default service account:
-
-{{<highlight bash>}}
-oc secrets link default dockerhub-sakuli-secret --for=pull
-{{</highlight>}}
-
-
-Now you can import the image:
 
 {{<highlight bash>}}
 oc import-image sakuli-dashboard \
@@ -283,8 +231,7 @@ oc new-app sakuli-dashboard \
  -e DASHBOARD_CONFIG="${DASHBOARD_CONFIG}"  \
  -e ACTION_CONFIG="${ACTION_CONFIG}"  \
  -e CLUSTER_CONFIG="${CLUSTER_CONFIG}"  \
- -e CRONJOB_CONFIG="${CRONJOB_CONFIG}" \
- -e SAKULI_LICENSE_KEY="${SAKULI_LICENSE_KEY}"
+ -e CRONJOB_CONFIG="${CRONJOB_CONFIG}"
 {{</highlight>}}
 
 Once completed, the service has to be exposed to make available from outside the cluster.
@@ -295,15 +242,6 @@ oc expose svc/sakuli-dashboard
 
 
 #### Set up the Sakuli Dashboard using a ready to use template {#oc-dashboard-template}
-
-The Sakuli Dashboard OpenShift template references the Sakuli license key via a secret.
-So before applying the template, please add your license key secret first.
-
-{{<highlight bash>}}
-oc create secret generic sakuli-license-key \
- --from-literal="SAKULI_LICENSE_KEY=${SAKULI_LICENSE_KEY}"
-{{</highlight>}}
-
 
 The following ready-to-use template will configure a Sakuli Dashboard and deploy it to your cluster
 Just copy and save the dashboard template below as `dashboard-template.yml`. Furthermore, add your dashboard, action, 
@@ -359,11 +297,6 @@ objects:
                     configMapKeyRef:
                       name: ${SERVICE_NAME}
                       key: CRONJOB_CONFIG
-                - name: SAKULI_LICENSE_KEY
-                  valueFrom:
-                    secretKeyRef:
-                      name: sakuli-license-key
-                      key: SAKULI_LICENSE_KEY
       triggers:
         - type: ConfigChange
   - apiVersion: v1
