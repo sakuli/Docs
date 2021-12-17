@@ -54,7 +54,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs/enterprise_features/s2i/">
+  <body class="" data-url="/docs/modules/s2i/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -464,13 +464,13 @@
  
   
     
-    <li data-nav-id="/docs/enterprise_features/" title="Enterprise Features" class="dd-item
+    <li data-nav-id="/docs/modules/" title="Modules" class="dd-item
         parent
         
         
         ">
-      <a href="/docs/enterprise_features/">
-          <i class='fas fa-chevron-right'></i>  Enterprise Features
+      <a href="/docs/modules/">
+          <i class='fas fa-chevron-right'></i>  Modules
           
             <i class="fas fa-check read-icon"></i>
           
@@ -491,8 +491,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/icinga/" title="Icinga2 Forwarder" class="dd-item ">
-        <a href="/docs/enterprise_features/icinga/">
+      <li data-nav-id="/docs/modules/icinga/" title="Icinga2 Forwarder" class="dd-item ">
+        <a href="/docs/modules/icinga/">
         Icinga2 Forwarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -510,8 +510,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/prometheus/" title="Prometheus Fowarder" class="dd-item ">
-        <a href="/docs/enterprise_features/prometheus/">
+      <li data-nav-id="/docs/modules/prometheus/" title="Prometheus Fowarder" class="dd-item ">
+        <a href="/docs/modules/prometheus/">
         Prometheus Fowarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -529,8 +529,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/check/" title="checkmk Fowarder" class="dd-item ">
-        <a href="/docs/enterprise_features/check/">
+      <li data-nav-id="/docs/modules/check/" title="checkmk Fowarder" class="dd-item ">
+        <a href="/docs/modules/check/">
         checkmk Fowarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -548,8 +548,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/omd/" title="OMD Forwarder" class="dd-item ">
-        <a href="/docs/enterprise_features/omd/">
+      <li data-nav-id="/docs/modules/omd/" title="OMD Forwarder" class="dd-item ">
+        <a href="/docs/modules/omd/">
         OMD Forwarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -567,8 +567,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/container/" title="Container" class="dd-item ">
-        <a href="/docs/enterprise_features/container/">
+      <li data-nav-id="/docs/modules/container/" title="Container" class="dd-item ">
+        <a href="/docs/modules/container/">
         Container
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -586,8 +586,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/s2i/" title="S2I Image" class="dd-item active">
-        <a href="/docs/enterprise_features/s2i/">
+      <li data-nav-id="/docs/modules/s2i/" title="S2I Image" class="dd-item active">
+        <a href="/docs/modules/s2i/">
         S2I Image
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -605,8 +605,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/sakuli-dashboard-deployment/" title="Sakuli Dashboard" class="dd-item ">
-        <a href="/docs/enterprise_features/sakuli-dashboard-deployment/">
+      <li data-nav-id="/docs/modules/sakuli-dashboard-deployment/" title="Sakuli Dashboard" class="dd-item ">
+        <a href="/docs/modules/sakuli-dashboard-deployment/">
         Sakuli Dashboard
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -624,8 +624,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/sakuli-dashboard-configuration/" title="Sakuli Dashboard Configuration" class="dd-item ">
-        <a href="/docs/enterprise_features/sakuli-dashboard-configuration/">
+      <li data-nav-id="/docs/modules/sakuli-dashboard-configuration/" title="Sakuli Dashboard Configuration" class="dd-item ">
+        <a href="/docs/modules/sakuli-dashboard-configuration/">
         Sakuli Dashboard Configuration
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -643,8 +643,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/ocr/" title="Optical character recognition (OCR)" class="dd-item ">
-        <a href="/docs/enterprise_features/ocr/">
+      <li data-nav-id="/docs/modules/ocr/" title="Optical character recognition (OCR)" class="dd-item ">
+        <a href="/docs/modules/ocr/">
         Optical character recognition (OCR)
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -1051,7 +1051,7 @@
             
           
           
-            <a href='/docs/'></a> > <a href='/docs/enterprise_features/'>Enterprise Features</a> > S2I Image
+            <a href='/docs/'></a> > <a href='/docs/modules/'>Modules</a> > S2I Image
           
         
           
@@ -1114,22 +1114,12 @@
 
 
 <h1 id="s2i-image">S2I Image</h1>
-<p>Sakuli enterprise comes with ready-to-use <a href="https://github.com/openshift/source-to-image" target="_blank">source to image (S2I)</a>
+<p>Sakuli comes with ready-to-use <a href="https://github.com/openshift/source-to-image" target="_blank">source to image (S2I)</a>
 containers for RedHat OpenShift. Using this builder container, it is easily possible to create deployable Sakuli images
 shipped with a test suite straight from your code repository.</p>
 <h2 id="setup">Setup</h2>
 <p>To setup the source to image builds on your OpenShift cluster, it is required to import the images from
-<code>taconsol/sakuli-s2i</code>. To achieve this, you have to create a docker-registry secret with your <code>&lt;docker-username&gt;</code> and
-<code>&lt;docker-password&gt;</code> and link it to your <code>builder</code> service account to authenticate on docker.io during build.
-Once you obtained a Sakuli Enterprise license your Docker user will be granted access to the private Sakuli S2I images.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc create secret docker-registry dockerhub-sakuli-secret <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --docker-server<span style="color:#f92672">=</span>docker.io <span style="color:#ae81ff">\
-</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="color:#ae81ff"></span>    --docker-username<span style="color:#f92672">=</span>&lt;docker-username&gt; <span style="color:#ae81ff">\
-</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="color:#ae81ff"></span>    --docker-password<span style="color:#f92672">=</span>&lt;docker-password&gt; <span style="color:#ae81ff">\
-</span></span><span style="color:#ae81ff"></span>    --docker-email<span style="color:#f92672">=</span>unused
-
-oc secrets link builder dockerhub-sakuli-secret</code></pre></div>
-<p>After you&rsquo;ve created and linked the secret, you can import the images from the secured registry.</p>
+<code>taconsol/sakuli-s2i</code>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc import-image sakuli-s2i <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    --from<span style="color:#f92672">=</span>docker.io/taconsol/sakuli-s2i <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    --confirm <span style="color:#ae81ff">\
@@ -1214,8 +1204,7 @@ some additional information is required that are not part of the template. First
 repository to pull the test case from as <code>TESTSUITE_REPOSITORY_URL</code>. To install such a basic setup on your OpenShift
 cluster, just use the following command and replace the placeholder with actual values.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc process -f sakuli-s2i-build-template.yml <span style="color:#ae81ff">\
-</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="color:#ae81ff"></span>    SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;SAKULI_LICENSE_KEY&gt; <span style="color:#ae81ff">\
-</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="color:#ae81ff"></span>    TESTSUITE_REPOSITORY_URL<span style="color:#f92672">=</span>&lt;TESTSUITE_REPOSITORY_URL&gt; | oc apply -f -</span></code></pre></div>
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="color:#ae81ff"></span>    TESTSUITE_REPOSITORY_URL<span style="color:#f92672">=</span>&lt;TESTSUITE_REPOSITORY_URL&gt; | oc apply -f -</span></code></pre></div>
 <h3 id="advanced-s2i-build-configuration">Advanced S2I build configuration</h3>
 <p>The provided template comes with a lot of optional parameter to customize your build process. The following table
 contains all available parameters. Additional parameters are specified in the same way as seen in the
@@ -1303,10 +1292,6 @@ contains all available parameters. Additional parameters are specified in the sa
     <span style="color:#66d9ef">required</span>: <span style="color:#66d9ef">true</span>
     <span style="color:#66d9ef">value</span>: latest
 
-  - <span style="color:#66d9ef">description</span>: Sakuli2 License key.
-    <span style="color:#66d9ef">name</span>: SAKULI_LICENSE_KEY
-    <span style="color:#66d9ef">required</span>: <span style="color:#66d9ef">true</span>
-
   - <span style="color:#66d9ef">description</span>: Git source URL containing the test suite.
     <span style="color:#66d9ef">name</span>: TESTSUITE_REPOSITORY_URL
     <span style="color:#66d9ef">required</span>: <span style="color:#66d9ef">true</span>
@@ -1365,9 +1350,6 @@ contains all available parameters. Additional parameters are specified in the sa
           <span style="color:#66d9ef">from</span>:
             <span style="color:#66d9ef">kind</span>: ImageStreamTag
             <span style="color:#66d9ef">name</span>: ${BUILDER_IMAGE}:${BUILDER_IMAGE_TAG}
-          <span style="color:#66d9ef">env</span>:
-            - <span style="color:#66d9ef">name</span>: <span style="color:#e6db74">&#34;SAKULI_LICENSE_KEY&#34;</span>
-              <span style="color:#66d9ef">value</span>: ${SAKULI_LICENSE_KEY}
       <span style="color:#66d9ef">triggers</span>:
         - <span style="color:#66d9ef">imageChange</span>: {}
           <span style="color:#66d9ef">type</span>: ImageChange
@@ -1405,7 +1387,7 @@ websites or <code>invalid session id</code> errors due to crashed browsers. In o
 <a href="https://docs.okd.io/latest/dev_guide/shared_memory.html">OKD Documentation</a>.</p>
 <h2 id="creating-s2i-builds-with-remote-desktop-protocol-rdp-support">Creating S2I builds with remote desktop protocol (RDP) support</h2>
 <p>In case RDP support is required, please use <code>sakuli-s2i-remote-connection</code> as builder image. More information about RDP
-support in containers can be found in <a href="/docs/enterprise_features/container/#remote-connection-container">remote-connection-container</a>.</p>
+support in containers can be found in <a href="/docs/modules/container/#remote-connection-container">remote-connection-container</a>.</p>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="pulling-image-error--">pulling image error : &hellip;</h3>
 <p><strong>Affected OpenShift versions:</strong> 3.10, 3.11</p>
@@ -2131,10 +2113,10 @@ e.g. <code>sakuli run my-test-suite</code>.</p>
 	 
 	 
 		
-			<a class="nav nav-prev" href="/docs/enterprise_features/container/" title="Container"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/docs/modules/container/" title="Container"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/docs/enterprise_features/sakuli-dashboard-deployment/" title="Sakuli Dashboard" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/docs/modules/sakuli-dashboard-deployment/" title="Sakuli Dashboard" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

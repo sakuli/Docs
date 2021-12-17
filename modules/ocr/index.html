@@ -54,7 +54,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs/enterprise_features/sakuli-dashboard-deployment/">
+  <body class="" data-url="/docs/modules/ocr/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -464,13 +464,13 @@
  
   
     
-    <li data-nav-id="/docs/enterprise_features/" title="Enterprise Features" class="dd-item
+    <li data-nav-id="/docs/modules/" title="Modules" class="dd-item
         parent
         
         
         ">
-      <a href="/docs/enterprise_features/">
-          <i class='fas fa-chevron-right'></i>  Enterprise Features
+      <a href="/docs/modules/">
+          <i class='fas fa-chevron-right'></i>  Modules
           
             <i class="fas fa-check read-icon"></i>
           
@@ -491,8 +491,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/icinga/" title="Icinga2 Forwarder" class="dd-item ">
-        <a href="/docs/enterprise_features/icinga/">
+      <li data-nav-id="/docs/modules/icinga/" title="Icinga2 Forwarder" class="dd-item ">
+        <a href="/docs/modules/icinga/">
         Icinga2 Forwarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -510,8 +510,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/prometheus/" title="Prometheus Fowarder" class="dd-item ">
-        <a href="/docs/enterprise_features/prometheus/">
+      <li data-nav-id="/docs/modules/prometheus/" title="Prometheus Fowarder" class="dd-item ">
+        <a href="/docs/modules/prometheus/">
         Prometheus Fowarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -529,8 +529,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/check/" title="checkmk Fowarder" class="dd-item ">
-        <a href="/docs/enterprise_features/check/">
+      <li data-nav-id="/docs/modules/check/" title="checkmk Fowarder" class="dd-item ">
+        <a href="/docs/modules/check/">
         checkmk Fowarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -548,8 +548,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/omd/" title="OMD Forwarder" class="dd-item ">
-        <a href="/docs/enterprise_features/omd/">
+      <li data-nav-id="/docs/modules/omd/" title="OMD Forwarder" class="dd-item ">
+        <a href="/docs/modules/omd/">
         OMD Forwarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -567,8 +567,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/container/" title="Container" class="dd-item ">
-        <a href="/docs/enterprise_features/container/">
+      <li data-nav-id="/docs/modules/container/" title="Container" class="dd-item ">
+        <a href="/docs/modules/container/">
         Container
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -586,8 +586,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/s2i/" title="S2I Image" class="dd-item ">
-        <a href="/docs/enterprise_features/s2i/">
+      <li data-nav-id="/docs/modules/s2i/" title="S2I Image" class="dd-item ">
+        <a href="/docs/modules/s2i/">
         S2I Image
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -605,8 +605,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/sakuli-dashboard-deployment/" title="Sakuli Dashboard" class="dd-item active">
-        <a href="/docs/enterprise_features/sakuli-dashboard-deployment/">
+      <li data-nav-id="/docs/modules/sakuli-dashboard-deployment/" title="Sakuli Dashboard" class="dd-item ">
+        <a href="/docs/modules/sakuli-dashboard-deployment/">
         Sakuli Dashboard
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -624,8 +624,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/sakuli-dashboard-configuration/" title="Sakuli Dashboard Configuration" class="dd-item ">
-        <a href="/docs/enterprise_features/sakuli-dashboard-configuration/">
+      <li data-nav-id="/docs/modules/sakuli-dashboard-configuration/" title="Sakuli Dashboard Configuration" class="dd-item ">
+        <a href="/docs/modules/sakuli-dashboard-configuration/">
         Sakuli Dashboard Configuration
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -643,8 +643,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/ocr/" title="Optical character recognition (OCR)" class="dd-item ">
-        <a href="/docs/enterprise_features/ocr/">
+      <li data-nav-id="/docs/modules/ocr/" title="Optical character recognition (OCR)" class="dd-item active">
+        <a href="/docs/modules/ocr/">
         Optical character recognition (OCR)
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -1051,7 +1051,7 @@
             
           
           
-            <a href='/docs/'></a> > <a href='/docs/enterprise_features/'>Enterprise Features</a> > Sakuli Dashboard
+            <a href='/docs/'></a> > <a href='/docs/modules/'>Modules</a> > Optical character recognition (OCR)
           
         
           
@@ -1066,14 +1066,23 @@
     <div class="wrapper">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#how-to-get-the-sakuli-dashboard">How to get the Sakuli Dashboard</a>
+    <li><a href="#ocr-in-containers">OCR in containers</a></li>
+    <li><a href="#installing-sakuli-ocr">Installing Sakuli OCR</a>
       <ul>
-        <li><a href="#deployment-with-docker">Sakuli Dashboard with Docker</a></li>
-        <li><a href="#deployment-with-docker-compose">Sakuli Dashboard with Docker-Compose</a></li>
-        <li><a href="#deployment-with-k8s">Sakuli Dashboard on Kubernetes</a></li>
-        <li><a href="#deployment-with-openshift">Sakuli Dashboard on Openshift</a></li>
+        <li><a href="#add-ocr-module-to-packagejson">Add OCR module to package.json</a></li>
+        <li><a href="#installing-tesseract">Installing Tesseract</a></li>
       </ul>
     </li>
+    <li><a href="#extracting-text-from-screen">Extracting text from screen</a>
+      <ul>
+        <li><a href="#reading-the-whole-screen">Reading the whole screen</a></li>
+        <li><a href="#reading-text-from-a-specific-region">Reading text from a specific region</a></li>
+      </ul>
+    </li>
+    <li><a href="#finding-a-screen-region-by-text">Finding a screen region by text</a></li>
+    <li><a href="#combining-ocr-modules">Combining OCR modules</a></li>
+    <li><a href="#troubleshooting">Troubleshooting</a></li>
+    <li><a href="#known-issues">Known issues</a></li>
   </ul>
 </nav>
     </div>
@@ -1096,276 +1105,124 @@
 
 
 
-<h1 id="sakuli-dashboard">Sakuli Dashboard</h1>
-<p>The Sakuli Dashboard streamlines your e2e application monitoring with Sakuli. It helps you start your Sakuli test
-automatically with a cronjob to monitor your application continuously or trigger it manually with a button.
-While watching a live video feed of your Sakuli check, you can track the monitoring metrics of your application by
-embedding your monitoring graphs into the Sakuli Dashboard.</p>
-<h2 id="how-to-get-the-sakuli-dashboard">How to get the Sakuli Dashboard</h2>
-<p>Sakuli Dashboard releases are versioned following the <a href="https://semver.org/">semantic versioning scheme</a>.
-Images for stable releases are tagged accordingly.
-Tech-previews of upcoming stable releases are available via the <code>latest</code> tag.<br>
-It is <em>highly</em> discouraged to run tech-previews in production as there is no guarantee of stability.</p>
-<ul>
-<li>Deploy the Sakuli Dashboard with <a href="#deployment-with-docker">Docker</a></li>
-<li>Deploy the Sakuli Dashboard with <a href="#deployment-with-docker-compose">Docker-Compose</a></li>
-<li>Deploy the Sakuli Dashboard with <a href="#deployment-with-k8s">Kubernetes</a></li>
-<li>Deploy the Sakuli Dashboard with <a href="#deployment-with-openshift">Openshift</a></li>
-</ul>
+<h1 id="optical-character-recognition-ocr">Optical character recognition (OCR)</h1>
+<p><strong>(Available from v2.5.0)</strong></p>
+<p>With optical character recognition (OCR) it is possible to convert screen content into text. In combination with Sakuli,
+it is also possible to automate software based on the text shown on screen.</p>
+<h2 id="ocr-in-containers">OCR in containers</h2>
+<p>Sakuli containers ship with a complete setup to use the OCR module of Sakuli. OCR module can be used
+without any further set up.</p>
+<h2 id="installing-sakuli-ocr">Installing Sakuli OCR</h2>
+<p>Installing the OCR module of Sakuli on a workstation or virtual machine is possible, but requires some additional steps
+and dependencies. We recommend, to use the ready-to-use container for most use cases. A native installation
+should only be considered, if the containers don&rsquo;t fit the requirements of your check.</p>
+<h3 id="add-ocr-module-to-packagejson">Add OCR module to package.json</h3>
+<p>To add the OCR module, please add <code>&quot;@sakuli/ocr&quot;: &quot;next&quot;</code> to your <code>package.json</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;sakuli-project&#34;</span>,
+  <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#e6db74">&#34;0.8.15&#34;</span>,
+  <span style="color:#f92672">&#34;scripts&#34;</span>: {
+    <span style="color:#f92672">&#34;test&#34;</span>: <span style="color:#e6db74">&#34;sakuli run test-suite&#34;</span>
+  },
+  <span style="color:#f92672">&#34;dependencies&#34;</span>: {
+    <span style="color:#f92672">&#34;@sakuli/cli&#34;</span>: <span style="color:#e6db74">&#34;next&#34;</span>,
+    <span style="color:#f92672">&#34;@sakuli/ocr&#34;</span>: <span style="color:#e6db74">&#34;next&#34;</span>
+  }
+}
+</code></pre></div><p>After altering your <code>package.json</code>, the module can be installed with <code>npm install</code> on command line.</p>
 <blockquote>
-<p>You will come across configurations such as the <code>DASHBOARD_CONFIG</code>, the <code>ACTION_CONFIG</code>, the <code>CLUSTER_CONFIG</code> and
-the <code>CRONJOB_CONFIG</code> which configure your Sakuli Dashboard.
-For further information about how to properly configure the dashboard check out the <a href="/docs/enterprise_features/sakuli-dashboard-configuration">Sakuli Dashboard Configuration</a> documentation.</p>
+<p>For more information on how to set up your access the modules, please have a look at the
+<a href="/docs/modules">modules documentation</a>.</p>
 </blockquote>
-<h3 id="deployment-with-docker">Sakuli Dashboard with Docker</h3>
-<h4 id="1-obtaining-the-image">1 Obtaining the image</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull taconsol/sakuli-dashboard:&lt;IMAGE_TAG&gt;</code></pre></div>
-<h4 id="2-running-the-sakuli-dashboard">2 Running the Sakuli Dashboard</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> -p 8080:8080 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> -e DASHBOARD_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>DASHBOARD_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> -e ACTION_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>ACTION_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> -e CLUSTER_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>CLUSTER_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> -e CRONJOB_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>CRONJOB_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> taconsol/sakuli-dashboard:&lt;IMAGE_TAG&gt;</code></pre></div>
-<p>Parameters:</p>
+<h3 id="installing-tesseract">Installing Tesseract</h3>
+<p>Sakuli OCR uses Tesseract to read text from the screen. For performance and quality reasons, a native installation of
+tesseract is required. Please ensure to install a Tesseract version &gt;= <strong>4.1.1</strong>. For more information on how to obtain
+and install Tesseract on your machine, please have a look at the
+<a href="https://github.com/tesseract-ocr/tessdoc/blob/master/Downloads.md">official Tesseract documentation</a>.</p>
+<h2 id="extracting-text-from-screen">Extracting text from screen</h2>
+<p>To read text from the screen, Sakuli OCR ships with the test step <code>_getTextFromRegion()</code>. The function returns all text
+on the screen including line feeds.</p>
+<h3 id="reading-the-whole-screen">Reading the whole screen</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">text</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_getTextFromRegion</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>());
+</code></pre></div><h3 id="reading-text-from-a-specific-region">Reading text from a specific region</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">regionToRead</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">400</span>, <span style="color:#ae81ff">50</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">textOfRegion</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_getTextFromRegion</span>(<span style="color:#a6e22e">regionToRead</span>);
+</code></pre></div><p><code>new Region(50, 100, 400, 50);</code> creates a region with the following specification:</p>
 <ul>
-<li><strong>--rm</strong>: The dashboard container will be removed after execution, not just stopped</li>
-<li><strong>-p</strong>: Port forwarding to access the dashboard container on port 8080</li>
-<li><strong>-e</strong>: Environment variable flags which are used to configure the dashboard</li>
+<li>x = 50 px</li>
+<li>y = 100 px</li>
+<li>width: 400 px</li>
+<li>height: 50 px</li>
 </ul>
-<h3 id="deployment-with-docker-compose">Sakuli Dashboard with Docker-Compose</h3>
-<p>The following template allows you to run a dashboard using <code>docker-compose</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">version</span>: <span style="color:#e6db74">&#34;3&#34;</span>
-<span style="color:#66d9ef">services</span>:
-    <span style="color:#66d9ef">sakuli</span>:
-        <span style="color:#66d9ef">container_name</span>: sakuli-dashboard
-        <span style="color:#66d9ef">image</span>: taconsol/sakuli-dashboard:&lt;IMAGE_TAG<span style="color:#e6db74">&gt;
-</span><span style="color:#e6db74">        ports:</span>
-            - <span style="color:#ae81ff">8080</span>:<span style="color:#ae81ff">8080</span>
-        <span style="color:#66d9ef">environment</span>:
-            - DASHBOARD_CONFIG=${DASHBOARD_CONFIG}
-            - ACTION_CONFIG=${ACTION_CONFIG}
-            - CLUSTER_CONFIG=${CLUSTER_CONFIG}
-            - CRONJOB_CONFIG=${CRONJOB_CONFIG}</code></pre></div>
-<p>After creating the <code>&lt;filename&gt;.yml</code> configuration file, you can start the dashboard with:
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker-compose up -f /path/to/file/&lt;filename&gt;.yml</code></pre></div></p>
-<h3 id="deployment-with-k8s">Sakuli Dashboard on Kubernetes</h3>
-<p>You can start your Sakuli Dashboard using two different approaches:</p>
+<p>The constant <code>textOfRegion</code> will only contain the text from this specific region of the screen.</p>
+<h2 id="finding-a-screen-region-by-text">Finding a screen region by text</h2>
+<p>With Sakuli, it is also possible to automate software based on the text shown on the screen. <code>_getRegionByText()</code>
+provides the possibility to search for a specified text on the screen or in a specified region of the screen. Once the
+location of the text is determined, it is possible to e.g. move the mouse to the location and click on it.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_getRegionByText</span>(<span style="color:#e6db74">&#34;Continue&#34;</span>).<span style="color:#a6e22e">click</span>();
+</code></pre></div><p>This sample would search the screen for the text &ldquo;Continue&rdquo; and subsequently click on it.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">searchRegion</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">400</span>, <span style="color:#ae81ff">50</span>);
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_getRegionByText</span>(<span style="color:#e6db74">&#34;Continue&#34;</span>, <span style="color:#a6e22e">searchRegion</span>).<span style="color:#a6e22e">click</span>();
+</code></pre></div><p><code>new Region(50, 100, 400, 50);</code> creates a region with the following specification:</p>
 <ul>
-<li>Set up the Sakuli Dashboard manually via <a href="#k8s-cli">CLI</a>.</li>
-<li>Set up the Sakuli Dashboard using a ready to use <a href="#k8s-dashboard-template">template</a>.</li>
+<li>x = 50 px</li>
+<li>y = 100 px</li>
+<li>width: 400 px</li>
+<li>height: 50 px</li>
 </ul>
-<h4 id="k8s-cli">Set up the Sakuli Dashboard manually</h4>
-<p>As a first step, create a deployment based on the Sakuli Dashboard image and expose the service.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create deployment sakuli-dashbaord --image<span style="color:#f92672">=</span>taconsol/sakuli-dashboard:&lt;IMAGE_TAG&gt;
-
-kubectl expose deployment sakuli-dashboard --type<span style="color:#f92672">=</span>LoadBalancer --port<span style="color:#f92672">=</span><span style="color:#ae81ff">8080</span></code></pre></div>
-<p>The <code>--type=LoadBalancer</code> flag is important to make your service available outside your cluster.</p>
-<p>Now add your Sakuli Dashboard configurations such as the dashboard, action, cluster and cronjob configs to
-the environment of your deployment.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl set env deployment/sakuli-dashboard --overwrite <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> DASHBOARD_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>DASHBOARD_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> ACTION_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>ACTION_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> CLUSTER_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>CLUSTER_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> CRONJOB_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>CRONJOB_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span></code></pre></div>
-<h4 id="k8s-dashboard-template">Set up Sakuli Dashboard using a Template</h4>
-<p>The following ready-to-use template will configure a Sakuli Dashboard and deploy it to your cluster
-Just copy and save the dashboard template below as <code>dashboard-template.yml</code>. Furthermore, add your dashboard, action,
-cluster and cronjob configurations listed under ConfigMap as well as the image tag.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">apiVersion</span>: apps/v1
-<span style="color:#66d9ef">kind</span>: Deployment
-<span style="color:#66d9ef">metadata</span>:
-  <span style="color:#66d9ef">name</span>: sakuli-dashboard
-  <span style="color:#66d9ef">labels</span>:
-    <span style="color:#66d9ef">app</span>: sakuli-dashboard
-<span style="color:#66d9ef">spec</span>:
-  <span style="color:#66d9ef">replicas</span>: <span style="color:#ae81ff">1</span>
-  <span style="color:#66d9ef">selector</span>:
-    <span style="color:#66d9ef">matchLabels</span>:
-      <span style="color:#66d9ef">app</span>: sakuli-dashboard
-  <span style="color:#66d9ef">template</span>:
-    <span style="color:#66d9ef">metadata</span>:
-      <span style="color:#66d9ef">labels</span>:
-        <span style="color:#66d9ef">app</span>: sakuli-dashboard
-    <span style="color:#66d9ef">spec</span>:
-      <span style="color:#66d9ef">containers</span>:
-        - <span style="color:#66d9ef">name</span>: sakuli-dashboard
-          <span style="color:#75715e"># Specify the Sakuli Dashboard version you want to use</span>
-          <span style="color:#66d9ef">image</span>: taconsol/sakuli-dashboard:${IMAGE_TAG}
-          <span style="color:#66d9ef">imagePullPolicy</span>: Always
-          <span style="color:#66d9ef">env</span>:
-            - <span style="color:#66d9ef">name</span>: ACTION_CONFIG
-              <span style="color:#66d9ef">valueFrom</span>:
-                <span style="color:#66d9ef">configMapKeyRef</span>:
-                  <span style="color:#66d9ef">name</span>: sakuli-dashboard
-                  <span style="color:#66d9ef">key</span>: ACTION_CONFIG
-            - <span style="color:#66d9ef">name</span>: CLUSTER_CONFIG
-              <span style="color:#66d9ef">valueFrom</span>:
-                <span style="color:#66d9ef">configMapKeyRef</span>:
-                  <span style="color:#66d9ef">name</span>: sakuli-dashboard
-                  <span style="color:#66d9ef">key</span>: CLUSTER_CONFIG
-            - <span style="color:#66d9ef">name</span>: DASHBOARD_CONFIG
-              <span style="color:#66d9ef">valueFrom</span>:
-                <span style="color:#66d9ef">configMapKeyRef</span>:
-                  <span style="color:#66d9ef">name</span>: sakuli-dashboard
-                  <span style="color:#66d9ef">key</span>: DASHBOARD_CONFIG
-            - <span style="color:#66d9ef">name</span>: CRONJOB_CONFIG
-              <span style="color:#66d9ef">valueFrom</span>:
-                <span style="color:#66d9ef">configMapKeyRef</span>:
-                  <span style="color:#66d9ef">name</span>: sakuli-dashboard
-                  <span style="color:#66d9ef">key</span>: CRONJOB_CONFIG
----
-<span style="color:#66d9ef">apiVersion</span>: v1
-<span style="color:#66d9ef">kind</span>: Service
-<span style="color:#66d9ef">metadata</span>:
-  <span style="color:#66d9ef">name</span>: sakuli-dashboard
-<span style="color:#66d9ef">spec</span>:
-  <span style="color:#66d9ef">selector</span>:
-    <span style="color:#66d9ef">app</span>: sakuli-dashboard
-  <span style="color:#66d9ef">ports</span>:
-    - <span style="color:#66d9ef">protocol</span>: TCP
-      <span style="color:#66d9ef">port</span>: <span style="color:#ae81ff">8080</span>
-      <span style="color:#66d9ef">targetPort</span>: <span style="color:#ae81ff">8080</span>
-  <span style="color:#66d9ef">type</span>: LoadBalancer
----
-<span style="color:#66d9ef">apiVersion</span>: v1
-<span style="color:#66d9ef">kind</span>: ConfigMap
-<span style="color:#66d9ef">metadata</span>:
-  <span style="color:#66d9ef">name</span>: sakuli-dashboard
-<span style="color:#66d9ef">data</span>:
-  <span style="color:#66d9ef">DASHBOARD_CONFIG</span>: &gt;<span style="color:#e6db74">-
-</span><span style="color:#e6db74">    Dashboard configuration</span>
-  <span style="color:#66d9ef">ACTION_CONFIG</span>: &gt;<span style="color:#e6db74">-
-</span><span style="color:#e6db74">    Action configuration</span>
-  <span style="color:#66d9ef">CLUSTER_CONFIG</span>: &gt;<span style="color:#e6db74">-
-</span><span style="color:#e6db74">    Cluster configuration</span>
-  <span style="color:#66d9ef">CRONJOB_CONFIG</span>: &gt;<span style="color:#e6db74">-
-</span><span style="color:#e6db74">    Cronjob configuration</span></code></pre></div>
-<p>To create the deployment in your Kubernetes cluster, just use the following command.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl apply -f dashboard-template.yml</code></pre></div>
-<h3 id="deployment-with-openshift">Sakuli Dashboard on Openshift</h3>
-<h4 id="prerequisites">Prerequisites</h4>
-<p>A Sakuli Dashboard setup on your OpenShift cluster requires you to import the Sakuli Dashboard image from Docker Hub.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc import-image sakuli-dashboard <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> --from<span style="color:#f92672">=</span>docker.io/taconsol/sakuli-dashboard <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> --confirm <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> --scheduled<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> --all<span style="color:#f92672">=</span>true</code></pre></div>
-<p>When using OpenShift v3.10 or v3.11, add the <code>--reference-policy=local</code> flag:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc import-image sakuli-dashboard <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> --from<span style="color:#f92672">=</span>docker.io/taconsol/sakuli-dashboard <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> --confirm <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> --scheduled<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> --all <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> --reference-policy<span style="color:#f92672">=</span>local</code></pre></div>
-<p><em>Note: The <code>oc import-image</code> statement is configured to not only import all available sakuli-dashboard images but also to
-check for updates automatically.</em></p>
-<p>You can start your Sakuli Dashboard using two different approaches:</p>
+<p>In this sample, the search for the text &ldquo;Continue&rdquo; would be limited to the specified screen region.</p>
+<h2 id="combining-ocr-modules">Combining OCR modules</h2>
+<p>One common use case would be to extract text from a certain region of the screen e.g. from an offer or invoice for
+further validation.</p>
+<p><img src="/docs/images/consol_offer.png" alt="offer"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript">(<span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">testCase</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TestCase</span>(<span style="color:#e6db74">&#34;Check offer&#34;</span>);
+  <span style="color:#66d9ef">try</span> {
+    <span style="color:#75715e">// ...
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">offerNumberRegion</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_getRegionByText</span>(<span style="color:#e6db74">&#34;offer number&#34;</span>).<span style="color:#a6e22e">grow</span>(<span style="color:#ae81ff">10</span>);
+</span><span style="display:block;width:100%;background-color:#3c3d38">    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">offerNumber</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_getTextFromRegion</span>(<span style="color:#a6e22e">offerNumberRegion</span>);
+</span>    
+    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">expectedOrderNumber</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/42-XBC-09453/</span>;
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_assert</span>(<span style="color:#a6e22e">Promise</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#f92672">!!</span><span style="color:#a6e22e">offerNumber</span>.<span style="color:#a6e22e">match</span>(<span style="color:#a6e22e">expectedOrderNumber</span>)),
+      <span style="color:#e6db74">`Found </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">offerNumber</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> instead of </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">expectedOrderNumber</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+    <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">e</span>) {
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">handleException</span>(<span style="color:#a6e22e">e</span>);
+  } <span style="color:#66d9ef">finally</span> {
+    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">saveResult</span>();
+  }
+})();
+</code></pre></div><p>This check would search for the &ldquo;offer number&rdquo; in the pdf, extract the whole offer number and compare it to an expected
+value.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>The quality of OCR results highly depends on the screen content. Here are some aspects to consider when OCR does not
+recognize the text you expect:</p>
 <ul>
-<li>Set up the Sakuli Dashboard manually via <a href="#oc-cli">CLI</a>.</li>
-<li>Set up the Sakuli Dashboard using a ready to use <a href="#oc-dashboard-template">template</a>.</li>
+<li>A lower screen resolution might help due to bigger fonts</li>
+<li>Bigger fonts are better than smaller fonts</li>
+<li>High contrasts are helpful. Reading yellow text from white background might cause issues.</li>
 </ul>
-<h4 id="oc-cli">Set up the Sakuli Dashboard manually via CLI</h4>
-<p>An easy way to set up a Sakuli Dashboard is by using <code>oc new-app</code>. Required environment variables can be passed along via the <code>-e</code> parameter.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc new-app sakuli-dashboard <span style="color:#ae81ff">\ </span>
- -e DASHBOARD_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>DASHBOARD_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>  <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> -e ACTION_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>ACTION_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>  <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> -e CLUSTER_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>CLUSTER_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>  <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span> -e CRONJOB_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>CRONJOB_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span></code></pre></div>
-<p>Once completed, the service has to be exposed to make available from outside the cluster.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc expose svc/sakuli-dashboard</code></pre></div>
-<h4 id="oc-dashboard-template">Set up the Sakuli Dashboard using a ready to use template</h4>
-<p>The following ready-to-use template will configure a Sakuli Dashboard and deploy it to your cluster
-Just copy and save the dashboard template below as <code>dashboard-template.yml</code>. Furthermore, add your dashboard, action,
-cluster and cronjob configurations listed under ConfigMap as well as the containers image configuration.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">apiVersion</span>: v1
-<span style="color:#66d9ef">kind</span>: Template
-<span style="color:#66d9ef">metadata</span>:
-  <span style="color:#66d9ef">name</span>: ${SERVICE_NAME}
-<span style="color:#66d9ef">objects</span>:
-  - <span style="color:#66d9ef">apiVersion</span>: v1
-    <span style="color:#66d9ef">kind</span>: DeploymentConfig
-    <span style="color:#66d9ef">metadata</span>:
-      <span style="color:#66d9ef">name</span>: ${SERVICE_NAME}
-      <span style="color:#66d9ef">labels</span>:
-        <span style="color:#66d9ef">app</span>: ${SERVICE_NAME}
-    <span style="color:#66d9ef">spec</span>:
-      <span style="color:#66d9ef">replicas</span>: <span style="color:#ae81ff">1</span>
-      <span style="color:#66d9ef">selector</span>:
-        <span style="color:#66d9ef">app</span>: ${SERVICE_NAME}
-      <span style="color:#66d9ef">template</span>:
-        <span style="color:#66d9ef">metadata</span>:
-          <span style="color:#66d9ef">labels</span>:
-            <span style="color:#66d9ef">app</span>: ${SERVICE_NAME}
-        <span style="color:#66d9ef">spec</span>:
-          <span style="color:#66d9ef">containers</span>:
-            - <span style="color:#66d9ef">name</span>: ${SERVICE_NAME}
-              <span style="color:#75715e">#change the address to your openshift registry, your namespace and the image tag you want to use</span>
-              <span style="color:#66d9ef">image</span>: ${OPENSHIFT_REGISTRY_ADDRESS}/${NAMESPACE}/sakuli-dashboard:${IMAGE_TAG}
-              <span style="color:#66d9ef">imagePullPolicy</span>: Always
-              <span style="color:#66d9ef">ports</span>:
-                - <span style="color:#66d9ef">containerPort</span>: <span style="color:#ae81ff">8080</span>
-                  <span style="color:#66d9ef">protocol</span>: TCP
-              <span style="color:#66d9ef">env</span>:
-                - <span style="color:#66d9ef">name</span>: ACTION_CONFIG
-                  <span style="color:#66d9ef">valueFrom</span>:
-                    <span style="color:#66d9ef">configMapKeyRef</span>:
-                      <span style="color:#66d9ef">name</span>: ${SERVICE_NAME}
-                      <span style="color:#66d9ef">key</span>: ACTION_CONFIG
-                - <span style="color:#66d9ef">name</span>: DASHBOARD_CONFIG
-                  <span style="color:#66d9ef">valueFrom</span>:
-                    <span style="color:#66d9ef">configMapKeyRef</span>:
-                      <span style="color:#66d9ef">name</span>: ${SERVICE_NAME}
-                      <span style="color:#66d9ef">key</span>: DASHBOARD_CONFIG
-                - <span style="color:#66d9ef">name</span>: CLUSTER_CONFIG
-                  <span style="color:#66d9ef">valueFrom</span>:
-                    <span style="color:#66d9ef">configMapKeyRef</span>:
-                      <span style="color:#66d9ef">name</span>: ${SERVICE_NAME}
-                      <span style="color:#66d9ef">key</span>: CLUSTER_CONFIG
-                - <span style="color:#66d9ef">name</span>: CRONJOB_CONFIG
-                  <span style="color:#66d9ef">valueFrom</span>:
-                    <span style="color:#66d9ef">configMapKeyRef</span>:
-                      <span style="color:#66d9ef">name</span>: ${SERVICE_NAME}
-                      <span style="color:#66d9ef">key</span>: CRONJOB_CONFIG
-      <span style="color:#66d9ef">triggers</span>:
-        - <span style="color:#66d9ef">type</span>: ConfigChange
-  - <span style="color:#66d9ef">apiVersion</span>: v1
-    <span style="color:#66d9ef">kind</span>: Service
-    <span style="color:#66d9ef">metadata</span>:
-      <span style="color:#66d9ef">name</span>: ${SERVICE_NAME}
-      <span style="color:#66d9ef">labels</span>:
-        <span style="color:#66d9ef">app</span>: ${SERVICE_NAME}
-    <span style="color:#66d9ef">spec</span>:
-      <span style="color:#66d9ef">ports</span>:
-        - <span style="color:#66d9ef">name</span>: <span style="color:#ae81ff">8080</span>-tcp
-          <span style="color:#66d9ef">port</span>: <span style="color:#ae81ff">8080</span>
-          <span style="color:#66d9ef">protocol</span>: TCP
-          <span style="color:#66d9ef">targetPort</span>: <span style="color:#ae81ff">8080</span>
-      <span style="color:#66d9ef">selector</span>:
-        <span style="color:#66d9ef">app</span>: ${SERVICE_NAME}
-  - <span style="color:#66d9ef">apiVersion</span>: v1
-    <span style="color:#66d9ef">kind</span>: ConfigMap
-    <span style="color:#66d9ef">metadata</span>:
-      <span style="color:#66d9ef">name</span>: ${SERVICE_NAME}
-    <span style="color:#66d9ef">data</span>:
-      <span style="color:#66d9ef">ACTION_CONFIG</span>: &gt;<span style="color:#e6db74">-
-</span><span style="color:#e6db74">        &lt;action configuration&gt;</span>
-      <span style="color:#66d9ef">CLUSTER_CONFIG</span>: &gt;<span style="color:#e6db74">-
-</span><span style="color:#e6db74">        &lt;cluster Configuration&gt;</span>
-      <span style="color:#66d9ef">DASHBOARD_CONFIG</span>: &gt;<span style="color:#e6db74">-
-</span><span style="color:#e6db74">        &lt;dashboard configuration&gt;</span>
-      <span style="color:#66d9ef">CRONJOB_CONFIG</span>: &gt;<span style="color:#e6db74">-
-</span><span style="color:#e6db74">        &lt;cronjob configuration&gt;</span>
-<span style="color:#66d9ef">parameters</span>:
-  - <span style="color:#66d9ef">name</span>: SERVICE_NAME
-    <span style="color:#66d9ef">description</span>: Service name for dashboard
-    <span style="color:#66d9ef">value</span>: sakuli-dashboard</code></pre></div>
-<p>After configuring the template, run:</p>
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc process -f &lt;filename&gt; | oc create -f -</code></pre></div>
-Whereas <code>&lt;filename&gt;</code> is the name of a file containing the template above.</p>
-<p>Expose the service to make the dashboard available to clients outside of your cluster:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc expose svc/sakuli-dashboard</code></pre></div>
+<p>In case you want to have some insights in what tesseract &ldquo;sees&rdquo; through a Sakuli automation, you can easily adapt log
+levels to show details of the OCR process.</p>
+<ul>
+<li>Debug Level
+<ul>
+<li>provides the tesseract cli call for reconstruction purposes</li>
+<li>provides the tesseract config on cli level</li>
+<li>provide details on post processing of the screen content</li>
+</ul>
+</li>
+<li>Trace Level
+<ul>
+<li>writes the received text from <code>_getTextFromRegion()</code> to the logs</li>
+<li>write the received alto xml from <code>_getRegionByText()</code> to the logs</li>
+</ul>
+</li>
+</ul>
+<h2 id="known-issues">Known issues</h2>
+<ul>
+<li>There is currently a bug in an upstream library causing <a href="https://github.com/nut-tree/nut.js/issues/194">issues with OCR on macOS</a>.</li>
+</ul>
 
 
 <footer class=" footline" >
@@ -1792,26 +1649,6 @@ Whereas <code>&lt;filename&gt;</code> is the name of a file containing the templ
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
                 
                 
 
@@ -1839,6 +1676,23 @@ Whereas <code>&lt;filename&gt;</code> is the name of a file containing the templ
             
         
                     
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1846,6 +1700,9 @@ Whereas <code>&lt;filename&gt;</code> is the name of a file containing the templ
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -2075,10 +1932,10 @@ Whereas <code>&lt;filename&gt;</code> is the name of a file containing the templ
 	 
 	 
 		
-			<a class="nav nav-prev" href="/docs/enterprise_features/s2i/" title="S2I Image"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/docs/modules/sakuli-dashboard-configuration/" title="Sakuli Dashboard Configuration"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/docs/enterprise_features/sakuli-dashboard-configuration/" title="Sakuli Dashboard Configuration" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/docs/cli/" title="CLI" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

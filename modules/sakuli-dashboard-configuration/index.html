@@ -54,7 +54,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs/enterprise_features/prometheus/">
+  <body class="" data-url="/docs/modules/sakuli-dashboard-configuration/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -464,13 +464,13 @@
  
   
     
-    <li data-nav-id="/docs/enterprise_features/" title="Enterprise Features" class="dd-item
+    <li data-nav-id="/docs/modules/" title="Modules" class="dd-item
         parent
         
         
         ">
-      <a href="/docs/enterprise_features/">
-          <i class='fas fa-chevron-right'></i>  Enterprise Features
+      <a href="/docs/modules/">
+          <i class='fas fa-chevron-right'></i>  Modules
           
             <i class="fas fa-check read-icon"></i>
           
@@ -491,8 +491,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/icinga/" title="Icinga2 Forwarder" class="dd-item ">
-        <a href="/docs/enterprise_features/icinga/">
+      <li data-nav-id="/docs/modules/icinga/" title="Icinga2 Forwarder" class="dd-item ">
+        <a href="/docs/modules/icinga/">
         Icinga2 Forwarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -510,8 +510,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/prometheus/" title="Prometheus Fowarder" class="dd-item active">
-        <a href="/docs/enterprise_features/prometheus/">
+      <li data-nav-id="/docs/modules/prometheus/" title="Prometheus Fowarder" class="dd-item ">
+        <a href="/docs/modules/prometheus/">
         Prometheus Fowarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -529,8 +529,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/check/" title="checkmk Fowarder" class="dd-item ">
-        <a href="/docs/enterprise_features/check/">
+      <li data-nav-id="/docs/modules/check/" title="checkmk Fowarder" class="dd-item ">
+        <a href="/docs/modules/check/">
         checkmk Fowarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -548,8 +548,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/omd/" title="OMD Forwarder" class="dd-item ">
-        <a href="/docs/enterprise_features/omd/">
+      <li data-nav-id="/docs/modules/omd/" title="OMD Forwarder" class="dd-item ">
+        <a href="/docs/modules/omd/">
         OMD Forwarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -567,8 +567,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/container/" title="Container" class="dd-item ">
-        <a href="/docs/enterprise_features/container/">
+      <li data-nav-id="/docs/modules/container/" title="Container" class="dd-item ">
+        <a href="/docs/modules/container/">
         Container
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -586,8 +586,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/s2i/" title="S2I Image" class="dd-item ">
-        <a href="/docs/enterprise_features/s2i/">
+      <li data-nav-id="/docs/modules/s2i/" title="S2I Image" class="dd-item ">
+        <a href="/docs/modules/s2i/">
         S2I Image
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -605,8 +605,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/sakuli-dashboard-deployment/" title="Sakuli Dashboard" class="dd-item ">
-        <a href="/docs/enterprise_features/sakuli-dashboard-deployment/">
+      <li data-nav-id="/docs/modules/sakuli-dashboard-deployment/" title="Sakuli Dashboard" class="dd-item ">
+        <a href="/docs/modules/sakuli-dashboard-deployment/">
         Sakuli Dashboard
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -624,8 +624,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/sakuli-dashboard-configuration/" title="Sakuli Dashboard Configuration" class="dd-item ">
-        <a href="/docs/enterprise_features/sakuli-dashboard-configuration/">
+      <li data-nav-id="/docs/modules/sakuli-dashboard-configuration/" title="Sakuli Dashboard Configuration" class="dd-item active">
+        <a href="/docs/modules/sakuli-dashboard-configuration/">
         Sakuli Dashboard Configuration
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -643,8 +643,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/ocr/" title="Optical character recognition (OCR)" class="dd-item ">
-        <a href="/docs/enterprise_features/ocr/">
+      <li data-nav-id="/docs/modules/ocr/" title="Optical character recognition (OCR)" class="dd-item ">
+        <a href="/docs/modules/ocr/">
         Optical character recognition (OCR)
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -1051,7 +1051,7 @@
             
           
           
-            <a href='/docs/'></a> > <a href='/docs/enterprise_features/'>Enterprise Features</a> > Prometheus Fowarder
+            <a href='/docs/'></a> > <a href='/docs/modules/'>Modules</a> > Sakuli Dashboard Configuration
           
         
           
@@ -1066,10 +1066,13 @@
     <div class="wrapper">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#push-gateway">Push gateway</a></li>
-    <li><a href="#forwarder-configuration">Forwarder configuration</a>
+    <li>
       <ul>
-        <li><a href="#example-configuration">Example configuration</a></li>
+        <li><a href="#dashboard_config">DASHBOARD_CONFIG</a></li>
+        <li><a href="#action_config">ACTION_CONFIG (optional)</a></li>
+        <li><a href="#cluster_config">CLUSTER_CONFIG (optional)</a></li>
+        <li><a href="#cronjob_config">CRONJOB_CONFIG (optional)</a></li>
+        <li><a href="#authentication_config">AUTHENTICATION_CONFIG (optional)</a></li>
       </ul>
     </li>
   </ul>
@@ -1094,51 +1097,249 @@
 
 
 
-<h1 id="prometheus-forwarder">Prometheus Forwarder</h1>
-<p><strong>Available from version 2.3.0</strong></p>
-<p>Add the forwarder manually as follows:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm i @sakuli/forwarder-prometheus</code></pre></div>
-<p>Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the <a href="/docs/enterprise_features/#using-the-license-key">enterprise section</a>.</p>
-<h2 id="push-gateway">Push gateway</h2>
-<p>It is assumed that a push gateway is available in your monitoring setup. As Sakuli checks are not constantly available like e.g. a Webservice, it is required to use a Prometheus push gateway to provide a scraping endpoint for Prometheus to obtain measurements gathered by Sakuli.</p>
-<h2 id="forwarder-configuration">Forwarder configuration</h2>
-<p>Configuration is located in <code>sakuli.properties</code> within the root folder of your project or respectively in <code>testsuite.properties</code> in your testsuite folders for testsuite specific configuration:</p>
+<h1 id="sakuli-dashboard-configuration">Sakuli Dashboard Configuration</h1>
+<p>This section contains information on how to configure the Sakuli dashboard.</p>
+<p>The Sakuli dashboard is configurable via environmental variables containing JSON documents.
+Check out the different sections to get example templates and detailed information about how to set up your
+Sakuli dashboard.</p>
 <table>
 <thead>
 <tr>
-<th>Property</th>
-<th>Default</th>
-<th>Effect</th>
+<th>Environment variable</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>sakuli.forwarder.prometheus.enabled</code></td>
-<td><code>false</code></td>
-<td>Enables forwarding to prometheus push gateway</td>
+<td><a href="#dashboard_config">DASHBOARD_CONFIG</a></td>
+<td>Configures the displays (ordering, url, action buttons, etc.) shown in the dashboard</td>
 </tr>
 <tr>
-<td><code>sakuli.forwarder.prometheus.api.host</code></td>
-<td></td>
-<td>Hostname of the prometheus push gateway</td>
+<td><a href="#action_config">ACTION_CONFIG</a></td>
+<td>(optional) Available actions to perform on the cluster and corresponding display updates</td>
 </tr>
 <tr>
-<td><code>sakuli.forwarder.prometheus.api.port</code></td>
-<td><code>9091</code></td>
-<td>Port of the prometheus push gateway service</td>
+<td><a href="#cluster_config">CLUSTER_CONFIG</a></td>
+<td>(optional) Configures the cluster access (cluster address, access token, etc.)</td>
 </tr>
 <tr>
-<td><code>sakuli.forwarder.prometheus.api.job</code></td>
-<td></td>
-<td>Name of the job the metrics relate to. E.g. <code>e2e-monitoring-for-my-very-important-application</code></td>
+<td><a href="#cronjob_config">CRONJOB_CONFIG</a></td>
+<td>(optional) Configures a cronjob to schedule a specific action</td>
+</tr>
+<tr>
+<td><a href="#authentication_config">AUTHENTICATION_CONFIG</a></td>
+<td>(optional) Configures the user authentication</td>
 </tr>
 </tbody>
 </table>
-<h3 id="example-configuration">Example configuration</h3>
-<pre><code class="language-properties" data-lang="properties">sakuli.forwarder.prometheus.enabled=true
-sakuli.forwarder.prometheus.api.host=prom.push.gateway.mydomain.com
-sakuli.forwarder.prometheus.api.port=9091
-sakuli.forwarder.prometheus.api.job=my-app-e2e-monitoring</code></pre>
+<p>The following picture shows a Sakuli Dashboard with an exemplary configuration and information about the different sections below.</p>
+
+<div style="background-color: #fff; padding: 5px; box-shadow: 0px 0px 10px #7C7C7B; margin-left: 0%; margin-right: 0%; margin-top: 20px; margin-bottom: 20px">
+        <img src="/docs/images/sakuli-dashboard.png" alt="The Sakuli-Dashboard explained" >
+</div>
+
+
+<ol>
+<li>When hovering over the info button you can see the configurable tool tip.</li>
+<li>This section represents the dashboards title.</li>
+<li>You can display content in German or English.</li>
+<li>It is possible to choose between a row or column layout of the displays.</li>
+</ol>
+<h3 id="dashboard_config">DASHBOARD_CONFIG</h3>
+<p>The <code>DASHBOARD_CONFIG</code> defines the order and description of displays and the resources to embed within the iFrames.
+Here is a sample <code>DASHBOARD_CONFIG</code> for the Sakuli dashboard.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
+   <span style="color:#e6db74">&#34;displays&#34;</span><span style="color:#f92672">:</span>[                                                         
+      {
+         <span style="color:#e6db74">&#34;index&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">1</span>,                                                         <span style="color:#75715e">//1                           
+</span><span style="color:#75715e"></span>         <span style="color:#e6db74">&#34;messages&#34;</span><span style="color:#f92672">:</span> {                                                      <span style="color:#75715e">//2
+</span><span style="color:#75715e"></span>             <span style="color:#e6db74">&#34;de&#34;</span><span style="color:#f92672">:</span> {
+                <span style="color:#e6db74">&#34;description&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Ihr Kubernetes Service&#34;</span>,
+                <span style="color:#e6db74">&#34;infoText&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+             },
+             <span style="color:#e6db74">&#34;en&#34;</span><span style="color:#f92672">:</span> {
+                <span style="color:#e6db74">&#34;description&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Your Kubernetes service&#34;</span>,
+                <span style="color:#e6db74">&#34;infoText&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+             }
+         },
+         <span style="color:#e6db74">&#34;url&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;https://your-cluster.com&#34;</span>,                                         <span style="color:#75715e">//3
+</span><span style="color:#75715e"></span>         <span style="color:#e6db74">&#34;actionIdentifier&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;your_action_id_123&#34;</span>                                   <span style="color:#75715e">//4         
+</span><span style="color:#75715e"></span>      },
+      {
+         <span style="color:#e6db74">&#34;index&#34;</span><span style="color:#f92672">:</span><span style="color:#ae81ff">2</span>,
+         <span style="color:#e6db74">&#34;type&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;logs&#34;</span>,                                                           <span style="color:#75715e">//5
+</span><span style="color:#75715e"></span>         <span style="color:#e6db74">&#34;messages&#34;</span><span style="color:#f92672">:</span> {
+             <span style="color:#e6db74">&#34;de&#34;</span><span style="color:#f92672">:</span> {
+                <span style="color:#e6db74">&#34;description&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Kubernetes Logs&#34;</span>,
+                <span style="color:#e6db74">&#34;infoText&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+             },
+             <span style="color:#e6db74">&#34;en&#34;</span><span style="color:#f92672">:</span> {
+                <span style="color:#e6db74">&#34;description&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Kubernetes Logs&#34;</span>,
+                <span style="color:#e6db74">&#34;infoText&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Lorem ipsum dolor sit amet&#34;</span>
+             }
+         },
+         <span style="color:#e6db74">&#34;actionIdentifier&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;your_action_id_123&#34;</span>
+      }
+   ],
+   <span style="color:#e6db74">&#34;defaultLayout&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;row&#34;</span>                                                           <span style="color:#75715e">//6
+</span><span style="color:#75715e"></span>}
+</code></pre></div>
+<ol>
+<li>The <code>index</code> defines the order for the displays on the Sakuli dashboard. (<strong>mandatory field</strong>)</li>
+<li>Separated by language, the optional <code>messages</code> property specifies the title of a display using the <code>description</code> property and tool tip using the <code>infoText</code>
+property. The content can be displayed in German or English. (optional field)</li>
+<li>The <code>url</code> property embeds the corresponding website in the iFrame of the display. (<strong>mandatory field</strong>)</li>
+<li>The <code>actionIdentifier</code> references to an action defined within the <a href="#action_config">ACTION_CONFIG</a>. (optional field)</li>
+<li>The <code>type</code> defines the kind of information to be displayed. It can either be &ldquo;website&rdquo; or &ldquo;logs&rdquo; while &ldquo;website&rdquo; is the default. Log displays require a reference to an action defined within the <a href="#action_config">ACTION_CONFIG</a>. (optional field)</li>
+<li>The optional <code>defaultLayout</code> config specifies the initial layout the dashboard is shown in. (optional field)</li>
+</ol>
+<h3 id="action_config">ACTION_CONFIG (optional)</h3>
+<p>The <code>ACTION_CONFIG</code> configures the actions triggered by users or cronjobs.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
+   <span style="color:#e6db74">&#34;actions&#34;</span><span style="color:#f92672">:</span>[
+      {
+         <span style="color:#e6db74">&#34;actionIdentifier&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;your_action_id_123&#34;</span>,    <span style="color:#75715e">//1
+</span><span style="color:#75715e"></span>         <span style="color:#e6db74">&#34;action&#34;</span><span style="color:#f92672">:</span> {                                 <span style="color:#75715e">//2
+</span><span style="color:#75715e"></span>            <span style="color:#e6db74">&#34;metadata&#34;</span><span style="color:#f92672">:</span> {
+              <span style="color:#e6db74">&#34;labels&#34;</span><span style="color:#f92672">:</span> {
+                <span style="color:#e6db74">&#34;app&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;sakuli&#34;</span>
+              },
+              <span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;sakuli&#34;</span>
+            },
+            <span style="color:#e6db74">&#34;spec&#34;</span><span style="color:#f92672">:</span> {
+              <span style="color:#e6db74">&#34;containers&#34;</span><span style="color:#f92672">:</span> [
+                {
+                  <span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;sakuli&#34;</span>,
+                  <span style="color:#e6db74">&#34;image&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;taconsol/sakuli:latest&#34;</span>,
+                  <span style="color:#e6db74">&#34;env&#34;</span><span style="color:#f92672">:</span> [
+                    {
+                      <span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;VNC_VIEW_ONLY&#34;</span>,
+                      <span style="color:#e6db74">&#34;value&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;true&#34;</span>
+                    },
+                    {
+                      <span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;SAKULI_ENCRYPTION_KEY&#34;</span>,
+                      <span style="color:#e6db74">&#34;valueFrom&#34;</span><span style="color:#f92672">:</span> {
+                        <span style="color:#e6db74">&#34;secretKeyRef&#34;</span><span style="color:#f92672">:</span> {
+                          <span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;sakuli-encryption-key&#34;</span>,
+                          <span style="color:#e6db74">&#34;key&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;key&#34;</span>
+                        }
+                      }
+                    }
+                  ]
+                }
+              ],
+              <span style="color:#e6db74">&#34;restartPolicy&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Never&#34;</span>
+            }
+         }
+      }
+   ]
+}
+</code></pre></div>
+<ol>
+<li>Action identifier that is referenced inside <code>DASHBOARD_CONFIG</code> or <code>CRONJOB_CONFIG</code>. (<strong>mandatory field</strong>)</li>
+<li>Kubernetes/Openshift pod template to be applied on the cluster. Currently only Pod configurations are supported. (<strong>mandatory field</strong>)</li>
+</ol>
+<p><strong>Important information</strong>: In order to apply actions to a cluster, a valid <a href="#cluster_config">CLUSTER_CONFIG</a> must be provided.</p>
+<h3 id="cluster_config">CLUSTER_CONFIG (optional)</h3>
+<p>The <code>CLUSTER_CONFIG</code> is required to connect to an existing cluster where you want to execute your actions.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
+   <span style="color:#e6db74">&#34;cluster&#34;</span><span style="color:#f92672">:</span>{                                              <span style="color:#75715e">//1
+</span><span style="color:#75715e"></span>      <span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;sakuli/examplecluster-com:443/developer&#34;</span>,     <span style="color:#75715e">//2           
+</span><span style="color:#75715e"></span>      <span style="color:#e6db74">&#34;server&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;http://examplecluster.com:443&#34;</span>              <span style="color:#75715e">//3
+</span><span style="color:#75715e"></span>   },
+   <span style="color:#e6db74">&#34;user&#34;</span><span style="color:#f92672">:</span>{                                                 <span style="color:#75715e">//4
+</span><span style="color:#75715e"></span>      <span style="color:#e6db74">&#34;name&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;developer&#34;</span>,                                   <span style="color:#75715e">//5
+</span><span style="color:#75715e"></span>      <span style="color:#e6db74">&#34;token&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;&lt;login-token&gt;&#34;</span>                               <span style="color:#75715e">//6
+</span><span style="color:#75715e"></span>   },
+   <span style="color:#e6db74">&#34;namespace&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;sakuli&#34;</span>                                     <span style="color:#75715e">//7
+</span><span style="color:#75715e"></span>}
+</code></pre></div>
+<ol>
+<li>Cluster to execute actions on. (<strong>mandatory field</strong>)</li>
+<li>Cluster name. (<strong>mandatory field</strong>)</li>
+<li>Cluster address and port number. (<strong>mandatory field</strong>)</li>
+<li>User to log onto the cluster (<strong>mandatory field</strong>)</li>
+<li>Username for the cluster (<strong>mandatory field</strong>)</li>
+<li>Token of the user (<strong>mandatory field</strong>)</li>
+<li>Namespace to execute actions in. (<strong>mandatory field</strong>)</li>
+</ol>
+<p><strong>Important information</strong>: A valid <a href="#cluster_config">CLUSTER_CONFIG</a> is required, as soon as you want to apply actions using
+<a href="#action_config">ACTION_CONFIG</a> and/or <a href="#cronjob_config">CRONJOB_CONFIG</a> to a cluster.</p>
+<h3 id="cronjob_config">CRONJOB_CONFIG (optional)</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
+    <span style="color:#e6db74">&#34;schedule&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;*/20 * * * *&#34;</span>,                             <span style="color:#75715e">//1
+</span><span style="color:#75715e"></span>    <span style="color:#e6db74">&#34;actionIdentifier&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;your_action_id_123&#34;</span>                <span style="color:#75715e">//2
+</span><span style="color:#75715e"></span>}
+</code></pre></div>
+<p>Schedules one action specified in <a href="#action_config">ACTION_CONFIG</a>.</p>
+<ol>
+<li>The <code>actionIdentifier</code> has to be set accordingly. (<strong>mandatory field</strong>)</li>
+<li>The scheduling determined by the <code>schedule</code> property
+has to be specified according to the time format
+that is used by the <a href="https://www.gnu.org/software/mcron/manual/html_node/Crontab-file.html">GNU crontab format</a> (<strong>mandatory field</strong>)</li>
+</ol>
+<p><strong>Important information</strong>: In order to apply scheduled actions to a cluster, a valid <a href="#action_config">ACTION_CONFIG</a> and <a href="#cluster_config">CLUSTER_CONFIG</a> must be provided.</p>
+<h3 id="authentication_config">AUTHENTICATION_CONFIG (optional)</h3>
+<p><strong>(Since version 2.2.0)</strong>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{
+  <span style="color:#e6db74">&#34;users&#34;</span><span style="color:#f92672">:</span> {                                                                                        <span style="color:#75715e">//1
+</span><span style="color:#75715e"></span>    <span style="color:#e6db74">&#34;iron&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;$argon2i$v=19$m=4096,t=3,p=1$MVhBOXIxRndsb1Y4TmpwVg$4dfLPfU7jrOx2wo1Df+cyQ&#34;</span>,
+    <span style="color:#e6db74">&#34;amazing&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;$argon2i$v=19$m=4096,t=3,p=1$N2l1R2l6ZWduUUtqNFhTTA$w5ntmRlKsp9XyyAZTTUAkA&#34;</span>,
+    <span style="color:#e6db74">&#34;incredible&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;$argon2i$v=19$m=4096,t=3,p=1$UGRlaHFUekZNU05hR0Njaw$CGN3FSY84u6KUlOFZJn8jA&#34;</span>
+  },
+  <span style="color:#e6db74">&#34;jwtTokenSecret&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;54208a45-0a3c-4736-927e-6706c3c18b71&#34;</span>,                                         <span style="color:#75715e">//2
+</span><span style="color:#75715e"></span>  <span style="color:#e6db74">&#34;jwtRefreshTokenSecret&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;b78d6873-f16d-4a3d-ae11-77c1702d84f0&#34;</span>                                   <span style="color:#75715e">//3
+</span><span style="color:#75715e"></span>}
+</code></pre></div></p>
+<ol>
+<li>The <code>users</code> with access to the dashboard. Each entry consists of <code>&quot;&lt;username&gt;&quot;: &quot;&lt;argon2i hashed password&gt;&quot;</code>. In this case
+<ol>
+<li>iron: man</li>
+<li>amazing: spiderman</li>
+<li>incredible: hulk</li>
+</ol>
+</li>
+<li>The secret used to generate and validate jwt token.</li>
+<li>The secret used to generate and validate jwt refresh token.</li>
+</ol>
+<p><strong>Note: Please use the <code>AUTHENTICATION_CONFIG</code> above for testing purposes only.</strong></p>
+<p>If an <code>AUTHENTICATION_CONFIG</code> is specified, a user without a valid set of jwt tokens is redirected to a login page. After a
+successful login, the user is redirected to the actual dashboard view. The current set of jwt tokens is stored locally.
+As long as this set is valid, the user does not have to perform a login again.
+If no <code>AUTHENTICATION_CONFIG</code> is specified, the user is able to access the dashboard view directly.</p>
+<blockquote>
+<p>If you&rsquo;re going to use horizontal scaling, please ensure to use the same set of token secrets and users for your scaled
+deployment so that every user is able to connect and authenticate with every deployed instance smoothly.</p>
+</blockquote>
+<h4 id="generating-argon2i-password-hashes">Generating argon2i password hashes</h4>
+<p>To generate argon2i password hashes, you can use every argon2i hash generator you trust. The generation and validation of
+argon2 hashes can be modified by specifying various parameters. If you want to learn more about the parameter and how to
+choose them concerning your use case, please have a look at the article
+<a href="https://www.twelve21.io/how-to-choose-the-right-parameters-for-argon2" target="_blank">How to Choose the Right Parameters for Argon2</a>
+by <a href="https://www.twelve21.io/author/bryan-burman/" target="_blank">Bryan Burman</a>.</p>
+<p>Here are two possibilities to generate argon2i hashes.</p>
+<ol>
+<li>Use the npm library <code>argon2-cli</code>.</li>
+</ol>
+<pre><code>~&gt;$ echo -n &quot;$up3r$3cr37P4ssw0rd&quot; | npx argon2-cli
+Type: 		Argon2i
+Iterations: 	3
+Memory: 	4096 KiB
+Parallelism: 	1
+Encoded: 	$argon2i$v=19$m=4096,t=3,p=1$MxxqTJgaJ+LEEOjo4/wlFw$uka9IMGj54ooMvHjCQeRuig9yY/hcnCK6Kly5s2ohZI
+0.008 seconds
+Verification ok
+</code></pre><ol start="2">
+<li>Create your hashes on <a href="https://argon2.online/" target="_blank">argon2.online</a>. We recommend configuring the hash generator as follows:
+<ul>
+<li>Salt: random generated</li>
+<li>Parallelism Factor: 1</li>
+<li>Memory Cost: 4096 KiB</li>
+<li>Iterations: 3</li>
+<li>Hash Length: 32</li>
+</ul>
+</li>
+</ol>
 
 
 <footer class=" footline" >
@@ -1485,26 +1686,6 @@ sakuli.forwarder.prometheus.api.job=my-app-e2e-monitoring</code></pre>
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
                 
                 
 
@@ -1600,6 +1781,26 @@ sakuli.forwarder.prometheus.api.job=my-app-e2e-monitoring</code></pre>
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1848,10 +2049,10 @@ sakuli.forwarder.prometheus.api.job=my-app-e2e-monitoring</code></pre>
 	 
 	 
 		
-			<a class="nav nav-prev" href="/docs/enterprise_features/icinga/" title="Icinga2 Forwarder"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/docs/modules/sakuli-dashboard-deployment/" title="Sakuli Dashboard"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/docs/enterprise_features/check/" title="checkmk Fowarder" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/docs/modules/ocr/" title="Optical character recognition (OCR)" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

@@ -464,13 +464,13 @@
  
   
     
-    <li data-nav-id="/docs/enterprise_features/" title="Enterprise Features" class="dd-item
+    <li data-nav-id="/docs/modules/" title="Modules" class="dd-item
         
         
         
         ">
-      <a href="/docs/enterprise_features/">
-          <i class='fas fa-chevron-right'></i>  Enterprise Features
+      <a href="/docs/modules/">
+          <i class='fas fa-chevron-right'></i>  Modules
           
             <i class="fas fa-check read-icon"></i>
           
@@ -491,8 +491,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/icinga/" title="Icinga2 Forwarder" class="dd-item ">
-        <a href="/docs/enterprise_features/icinga/">
+      <li data-nav-id="/docs/modules/icinga/" title="Icinga2 Forwarder" class="dd-item ">
+        <a href="/docs/modules/icinga/">
         Icinga2 Forwarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -510,8 +510,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/prometheus/" title="Prometheus Fowarder" class="dd-item ">
-        <a href="/docs/enterprise_features/prometheus/">
+      <li data-nav-id="/docs/modules/prometheus/" title="Prometheus Fowarder" class="dd-item ">
+        <a href="/docs/modules/prometheus/">
         Prometheus Fowarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -529,8 +529,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/check/" title="checkmk Fowarder" class="dd-item ">
-        <a href="/docs/enterprise_features/check/">
+      <li data-nav-id="/docs/modules/check/" title="checkmk Fowarder" class="dd-item ">
+        <a href="/docs/modules/check/">
         checkmk Fowarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -548,8 +548,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/omd/" title="OMD Forwarder" class="dd-item ">
-        <a href="/docs/enterprise_features/omd/">
+      <li data-nav-id="/docs/modules/omd/" title="OMD Forwarder" class="dd-item ">
+        <a href="/docs/modules/omd/">
         OMD Forwarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -567,8 +567,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/container/" title="Container" class="dd-item ">
-        <a href="/docs/enterprise_features/container/">
+      <li data-nav-id="/docs/modules/container/" title="Container" class="dd-item ">
+        <a href="/docs/modules/container/">
         Container
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -586,8 +586,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/s2i/" title="S2I Image" class="dd-item ">
-        <a href="/docs/enterprise_features/s2i/">
+      <li data-nav-id="/docs/modules/s2i/" title="S2I Image" class="dd-item ">
+        <a href="/docs/modules/s2i/">
         S2I Image
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -605,8 +605,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/sakuli-dashboard-deployment/" title="Sakuli Dashboard" class="dd-item ">
-        <a href="/docs/enterprise_features/sakuli-dashboard-deployment/">
+      <li data-nav-id="/docs/modules/sakuli-dashboard-deployment/" title="Sakuli Dashboard" class="dd-item ">
+        <a href="/docs/modules/sakuli-dashboard-deployment/">
         Sakuli Dashboard
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -624,8 +624,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/sakuli-dashboard-configuration/" title="Sakuli Dashboard Configuration" class="dd-item ">
-        <a href="/docs/enterprise_features/sakuli-dashboard-configuration/">
+      <li data-nav-id="/docs/modules/sakuli-dashboard-configuration/" title="Sakuli Dashboard Configuration" class="dd-item ">
+        <a href="/docs/modules/sakuli-dashboard-configuration/">
         Sakuli Dashboard Configuration
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -643,8 +643,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/ocr/" title="Optical character recognition (OCR)" class="dd-item ">
-        <a href="/docs/enterprise_features/ocr/">
+      <li data-nav-id="/docs/modules/ocr/" title="Optical character recognition (OCR)" class="dd-item ">
+        <a href="/docs/modules/ocr/">
         Optical character recognition (OCR)
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -1062,7 +1062,7 @@
   <ul>
     <li><a href="#sakuli-create-project">sakuli create project</a></li>
     <li><a href="#sakuli-create-masterkey">sakuli create masterkey</a></li>
-    <li><a href="#sakuli-enable-enterprise">sakuli enable-enterprise</a></li>
+    <li><a href="#sakuli-enable-modules">sakuli enable-modules</a></li>
     <li><a href="#sakuli-encrypt">sakuli encrypt</a></li>
     <li><a href="#sakuli-decrypt">sakuli decrypt</a></li>
     <li><a href="#sakuli-migrate">sakuli migrate</a></li>
@@ -1119,13 +1119,13 @@ Positionals:
   algorithm             The algorithm to create a key <span style="color:#66d9ef">for</span>                           <span style="color:#f92672">[</span>optional<span style="color:#f92672">][</span>default: <span style="color:#e6db74">&#34;aes-128-cbc&#34;</span><span style="color:#f92672">]</span></code></pre></div>
 <p>This command outputs a masterkey which can be used to encrypt a secret with the <a href="#sakuli-encrypt">sakuli encrypt</a>
 command or to decrypt a secret in a testcase with a Sakuli function like <code>Environment.decryptSecret()</code>.</p>
-<h2 id="sakuli-enable-enterprise">sakuli enable-enterprise</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli enable-enterprise
+<h2 id="sakuli-enable-modules">sakuli enable-modules</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli enable-modules
 
 
-Configures and enables enterprise features</code></pre></div>
-<p>This command starts an assistant which will guide you through the setup of enterprise features. More information on how
-to use the <code>enable-enterprise</code> command can be found <a href="/enterprise_features/#assisted-setup">here</a>.</p>
+Configures and enables modules</code></pre></div>
+<p>This command starts an assistant which will guide you through the setup of modules. More information on how
+to use the <code>enable-modules</code> command can be found <a href="/modules/#assisted-setup">here</a>.</p>
 <h2 id="sakuli-encrypt">sakuli encrypt</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npx sakuli encrypt &lt;secret&gt; --masterkey
 
@@ -1885,7 +1885,7 @@ Options:
 	 
 	 
 		
-			<a class="nav nav-prev" href="/docs/enterprise_features/ocr/" title="Optical character recognition (OCR)"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/docs/modules/ocr/" title="Optical character recognition (OCR)"> <i class="fa fa-chevron-left"></i></a>
 		
 		
 			<a class="nav nav-next" href="/docs/cookbook/" title="Cookbook" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>

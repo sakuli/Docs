@@ -54,7 +54,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs/enterprise_features/container/">
+  <body class="" data-url="/docs/modules/container/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -464,13 +464,13 @@
  
   
     
-    <li data-nav-id="/docs/enterprise_features/" title="Enterprise Features" class="dd-item
+    <li data-nav-id="/docs/modules/" title="Modules" class="dd-item
         parent
         
         
         ">
-      <a href="/docs/enterprise_features/">
-          <i class='fas fa-chevron-right'></i>  Enterprise Features
+      <a href="/docs/modules/">
+          <i class='fas fa-chevron-right'></i>  Modules
           
             <i class="fas fa-check read-icon"></i>
           
@@ -491,8 +491,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/icinga/" title="Icinga2 Forwarder" class="dd-item ">
-        <a href="/docs/enterprise_features/icinga/">
+      <li data-nav-id="/docs/modules/icinga/" title="Icinga2 Forwarder" class="dd-item ">
+        <a href="/docs/modules/icinga/">
         Icinga2 Forwarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -510,8 +510,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/prometheus/" title="Prometheus Fowarder" class="dd-item ">
-        <a href="/docs/enterprise_features/prometheus/">
+      <li data-nav-id="/docs/modules/prometheus/" title="Prometheus Fowarder" class="dd-item ">
+        <a href="/docs/modules/prometheus/">
         Prometheus Fowarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -529,8 +529,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/check/" title="checkmk Fowarder" class="dd-item ">
-        <a href="/docs/enterprise_features/check/">
+      <li data-nav-id="/docs/modules/check/" title="checkmk Fowarder" class="dd-item ">
+        <a href="/docs/modules/check/">
         checkmk Fowarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -548,8 +548,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/omd/" title="OMD Forwarder" class="dd-item ">
-        <a href="/docs/enterprise_features/omd/">
+      <li data-nav-id="/docs/modules/omd/" title="OMD Forwarder" class="dd-item ">
+        <a href="/docs/modules/omd/">
         OMD Forwarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -567,8 +567,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/container/" title="Container" class="dd-item active">
-        <a href="/docs/enterprise_features/container/">
+      <li data-nav-id="/docs/modules/container/" title="Container" class="dd-item active">
+        <a href="/docs/modules/container/">
         Container
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -586,8 +586,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/s2i/" title="S2I Image" class="dd-item ">
-        <a href="/docs/enterprise_features/s2i/">
+      <li data-nav-id="/docs/modules/s2i/" title="S2I Image" class="dd-item ">
+        <a href="/docs/modules/s2i/">
         S2I Image
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -605,8 +605,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/sakuli-dashboard-deployment/" title="Sakuli Dashboard" class="dd-item ">
-        <a href="/docs/enterprise_features/sakuli-dashboard-deployment/">
+      <li data-nav-id="/docs/modules/sakuli-dashboard-deployment/" title="Sakuli Dashboard" class="dd-item ">
+        <a href="/docs/modules/sakuli-dashboard-deployment/">
         Sakuli Dashboard
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -624,8 +624,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/sakuli-dashboard-configuration/" title="Sakuli Dashboard Configuration" class="dd-item ">
-        <a href="/docs/enterprise_features/sakuli-dashboard-configuration/">
+      <li data-nav-id="/docs/modules/sakuli-dashboard-configuration/" title="Sakuli Dashboard Configuration" class="dd-item ">
+        <a href="/docs/modules/sakuli-dashboard-configuration/">
         Sakuli Dashboard Configuration
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -643,8 +643,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/ocr/" title="Optical character recognition (OCR)" class="dd-item ">
-        <a href="/docs/enterprise_features/ocr/">
+      <li data-nav-id="/docs/modules/ocr/" title="Optical character recognition (OCR)" class="dd-item ">
+        <a href="/docs/modules/ocr/">
         Optical character recognition (OCR)
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -1051,7 +1051,7 @@
             
           
           
-            <a href='/docs/'></a> > <a href='/docs/enterprise_features/'>Enterprise Features</a> > Container
+            <a href='/docs/'></a> > <a href='/docs/modules/'>Modules</a> > Container
           
         
           
@@ -1116,8 +1116,7 @@
 
 
 <h1 id="pre-configured-container">Pre-configured Container</h1>
-<p>Once you obtained a Sakuli Enterprise license your docker-user will be granted access to the private Sakuli test container image.
-This image is ready to go and ships with already installed:</p>
+<p>This image is ready to go and ships with already installed:</p>
 <ul>
 <li>Sakuli</li>
 <li>Icinga2 / checkmk / OMD / Prometheus Forwarder</li>
@@ -1125,7 +1124,6 @@ This image is ready to go and ships with already installed:</p>
 <li>Chrome / Firefox (incl. webdriver)</li>
 </ul>
 <h2 id="1-obtaining-the-image">1 Obtaining the Image</h2>
-<p>The registered docker-hub user will then be able to pull the private image:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull taconsol/sakuli:&lt;IMAGE_TAG&gt;</code></pre></div>
 <p>Tech previews of Sakuli containers are published as <code>latest</code>.
 We highly recommend specifying the exact version of Sakuli for productive tests/checks.</p>
@@ -1133,20 +1131,17 @@ We highly recommend specifying the exact version of Sakuli for productive tests/
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull taconsol/sakuli:2.1.2</code></pre></div>
 <p>You can find a list of available tags on <a href="https://cloud.docker.com/u/taconsol/repository/docker/taconsol/sakuli" target="_blank" rel="noopener">Dockerhub</a></p>
 <h2 id="running-sakuli-test-containers">2 Running Sakuli Test Containers</h2>
-<p>Containerized Sakuli tests require a valid Sakuli license token which has to be provided via the <code>SAKULI_LICENSE_KEY</code> <a href="/docs/enterprise_features/#using-the-license-key">environment variable</a>.</p>
-<p>Docker allows to pass environment variables along other parameters when starting a new container:</p>
+<p>Docker allows to pass parameters when starting a new container:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    --rm <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    -p 5901:5901 <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    -p 6901:6901 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;YOUR SAKULI LICENSE KEY&gt; <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    <span style="color:#f92672">[</span>--shm-size<span style="color:#f92672">=</span>2G<span style="color:#f92672">]</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    taconsol/sakuli:2.4.0-1</code></pre></div>
 <p>Parameters:</p>
 <ul>
 <li><strong>--rm</strong>: The test container will be removed after execution, not just stopped</li>
 <li><strong>-p</strong>: Port forwardings. VNC is available on port 5901, the HTML5 webVNC view is exposed on port 6901 on the Docker host</li>
-<li><strong>-e</strong>: Environment variable flag which is used to provide the <code>SAKULI_LICENSE_KEY</code> to the container</li>
 <li><strong>&ndash;shm-size</strong>: <em>(Optional Parameter)</em> Increases the size of the shared memory space of the container. The default value is 64MB. This might be required when testing larger websites. Indicators that a shared memory enlargement is required are container crashes, the erroneous loading of websites or <code>invalid session id</code> errors due to crashed browsers.</li>
 </ul>
 <blockquote>
@@ -1176,7 +1171,6 @@ so to run a custom test we have to:</p>
 This mechanism can be used to provide a Sakuli projects to a Sakuli container:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run <span style="color:#ae81ff">\ </span>
     -v /path/to/test/project/on/host:/sakuli_project <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;YOUR SAKULI LICENSE KEY&gt; <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    taconsol/sakuli:2.4.0-1 /bin/bash</code></pre></div>
 <p>By adding the <strong>-v</strong> parameter we&rsquo;re mounting the root folder of a Sakuli project at <code>/path/to/test/project/on/host</code> on our host machine to <code>/sakuli_project</code> inside the container.
 We are now able to execute a test suite inside the container via <code>sakuli run /sakuli_project/test_suite_folder</code>.</p>
@@ -1187,7 +1181,6 @@ To be able to do so, you have to specify the environment variable <code>SAKULI_T
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    -v /path/to/test/project/on/host:/sakuli_project <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    -e SAKULI_TEST_SUITE<span style="color:#f92672">=</span>/sakuli_project/test_suite_folder <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;YOUR SAKULI LICENSE KEY&gt; <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    taconsol/sakuli:2.4.0-1</code></pre></div>
 <h4 id="412-extending-a-base-image">4.1.2 Extending a Base Image</h4>
 <p>Once you have a test suite which should be put into work. Binding mounts might become cumbersome and makes it hard
@@ -1208,7 +1201,7 @@ ENV SAKULI_TEST_SUITE <span style="color:#ae81ff">\$</span>HOME/sakuli_project/t
 <p>Using this Dockerfile, we can now build our own test image by running the following command where the dockerfile is located:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker build -t name-of-my-image .</code></pre></div>
 <p>We can now run the newly built image via:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;YOUR SAKULI LICENSE KEY&gt; name-of-my-image</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run name-of-my-image</code></pre></div>
 <blockquote>
 <p>When working with added files and folders inside a container, one has to ensure correct file permissions for added files.</p>
 </blockquote>
@@ -1216,7 +1209,7 @@ ENV SAKULI_TEST_SUITE <span style="color:#ae81ff">\$</span>HOME/sakuli_project/t
 <p><strong>Available from v2.4.0</strong></p>
 <p>The Sakuli container provides a mechanism to clone a git repository containing a sakuli project at container start
 and subsequently executing a testsuite within it:
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -e GIT_URL<span style="color:#f92672">=</span>&lt;REPOSITORY URL&gt; -e GIT_CONTEXT_DIR<span style="color:#f92672">=</span>&lt;RELATIVE PATH TO TESTSUITE&gt; -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;YOUR SAKULI LICENSE KEY&gt; taconsol/sakuli:2.4.0-1</code></pre></div></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -e GIT_URL<span style="color:#f92672">=</span>&lt;REPOSITORY URL&gt; -e GIT_CONTEXT_DIR<span style="color:#f92672">=</span>&lt;RELATIVE PATH TO TESTSUITE&gt; taconsol/sakuli:2.4.0-1</code></pre></div></p>
 <p><code>GIT_URL</code> specifies the URL of the repository to be cloned. To access a private repository, please ensure, your git service provides the possibility to authenticate via URL parameters.
 This is possible with common git services like <a href="https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token">GitHub</a>, <a href="https://docs.gitlab.com/ee/user/project/deploy_tokens/#git-clone-a-repository">Gitlab</a> and <a href="https://confluence.atlassian.com/bitbucketserver/personal-access-tokens-939515499.html?_ga=2.213635799.231132925.1597055610-1046501904.1597055610">Bitbucket</a>.
 To authenticate with a token on GitHub, use: <code>https://&lt;token&gt;@github.com/&lt;username&gt;/&lt;repository.git&gt;</code>.</p>
@@ -1276,9 +1269,9 @@ By installing third-party packages, the functionality of the packages and Sakuli
 <h3 id="51-vnc-access">5.1 VNC Access</h3>
 <p>Sakuli containers provide access to running containers via VNC on ports 5901 and 6901.
 By specifying port forwarding (<strong>-p</strong>) it is possible to configure which ports will be used to connect to a running container on the host system.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm -p 5901:5901 -p 6901:6901 -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;YOUR SAKULI LICENSE KEY&gt; taconsol/sakuli:2.4.0-1</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm -p 5901:5901 -p 6901:6901 taconsol/sakuli:2.4.0-1</code></pre></div>
 <p>The example above forwards container ports 5901 and 6901 to the same ports on the host system.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm -p 5000:5901 -p 6000:6901 -e SAKULI_LICENSE_KEY<span style="color:#f92672">=</span>&lt;YOUR SAKULI LICENSE KEY&gt; taconsol/sakuli:2.4.0-1</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm -p 5000:5901 -p 6000:6901 taconsol/sakuli:2.4.0-1</code></pre></div>
 <p>In this example container port 5901 is forwarded to port 5000 on the host system, port 6901 is forwarded to port 6000 on the host system.
 <code>localhost:5000</code> would be used to connect to the container via VNC client, on <code>localhost:6000</code> a webVNC view is available in the browser.</p>
 <blockquote>
@@ -1426,11 +1419,6 @@ Selenium Server on the Windows host and configure Sakuli to connect the browser 
 <td>Path to Sakuli testsuite to be executed</td>
 </tr>
 <tr>
-<td>SAKULI_LICENSE_KEY</td>
-<td></td>
-<td>Sakuli license to use the container</td>
-</tr>
-<tr>
 <td>VNC_COL_DEPTH</td>
 <td>24</td>
 <td>Color depth of container monitor</td>
@@ -1449,11 +1437,6 @@ Selenium Server on the Windows host and configure Sakuli to connect the browser 
 <td>VNC_VIEW_ONLY</td>
 <td>false</td>
 <td>Enable/Disable view-only mode</td>
-</tr>
-<tr>
-<td>NPM_TOKEN</td>
-<td></td>
-<td>NPM token to access npmjs.com registry</td>
 </tr>
 <tr>
 <td>SAKULI_TRUSTED_CERT_DIR</td>
@@ -2201,10 +2184,10 @@ Selenium Server on the Windows host and configure Sakuli to connect the browser 
 	 
 	 
 		
-			<a class="nav nav-prev" href="/docs/enterprise_features/omd/" title="OMD Forwarder"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/docs/modules/omd/" title="OMD Forwarder"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/docs/enterprise_features/s2i/" title="S2I Image" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/docs/modules/s2i/" title="S2I Image" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

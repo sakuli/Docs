@@ -54,7 +54,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs/enterprise_features/ocr/">
+  <body class="" data-url="/docs/modules/check/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -464,13 +464,13 @@
  
   
     
-    <li data-nav-id="/docs/enterprise_features/" title="Enterprise Features" class="dd-item
+    <li data-nav-id="/docs/modules/" title="Modules" class="dd-item
         parent
         
         
         ">
-      <a href="/docs/enterprise_features/">
-          <i class='fas fa-chevron-right'></i>  Enterprise Features
+      <a href="/docs/modules/">
+          <i class='fas fa-chevron-right'></i>  Modules
           
             <i class="fas fa-check read-icon"></i>
           
@@ -491,8 +491,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/icinga/" title="Icinga2 Forwarder" class="dd-item ">
-        <a href="/docs/enterprise_features/icinga/">
+      <li data-nav-id="/docs/modules/icinga/" title="Icinga2 Forwarder" class="dd-item ">
+        <a href="/docs/modules/icinga/">
         Icinga2 Forwarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -510,8 +510,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/prometheus/" title="Prometheus Fowarder" class="dd-item ">
-        <a href="/docs/enterprise_features/prometheus/">
+      <li data-nav-id="/docs/modules/prometheus/" title="Prometheus Fowarder" class="dd-item ">
+        <a href="/docs/modules/prometheus/">
         Prometheus Fowarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -529,8 +529,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/check/" title="checkmk Fowarder" class="dd-item ">
-        <a href="/docs/enterprise_features/check/">
+      <li data-nav-id="/docs/modules/check/" title="checkmk Fowarder" class="dd-item active">
+        <a href="/docs/modules/check/">
         checkmk Fowarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -548,8 +548,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/omd/" title="OMD Forwarder" class="dd-item ">
-        <a href="/docs/enterprise_features/omd/">
+      <li data-nav-id="/docs/modules/omd/" title="OMD Forwarder" class="dd-item ">
+        <a href="/docs/modules/omd/">
         OMD Forwarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -567,8 +567,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/container/" title="Container" class="dd-item ">
-        <a href="/docs/enterprise_features/container/">
+      <li data-nav-id="/docs/modules/container/" title="Container" class="dd-item ">
+        <a href="/docs/modules/container/">
         Container
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -586,8 +586,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/s2i/" title="S2I Image" class="dd-item ">
-        <a href="/docs/enterprise_features/s2i/">
+      <li data-nav-id="/docs/modules/s2i/" title="S2I Image" class="dd-item ">
+        <a href="/docs/modules/s2i/">
         S2I Image
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -605,8 +605,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/sakuli-dashboard-deployment/" title="Sakuli Dashboard" class="dd-item ">
-        <a href="/docs/enterprise_features/sakuli-dashboard-deployment/">
+      <li data-nav-id="/docs/modules/sakuli-dashboard-deployment/" title="Sakuli Dashboard" class="dd-item ">
+        <a href="/docs/modules/sakuli-dashboard-deployment/">
         Sakuli Dashboard
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -624,8 +624,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/sakuli-dashboard-configuration/" title="Sakuli Dashboard Configuration" class="dd-item ">
-        <a href="/docs/enterprise_features/sakuli-dashboard-configuration/">
+      <li data-nav-id="/docs/modules/sakuli-dashboard-configuration/" title="Sakuli Dashboard Configuration" class="dd-item ">
+        <a href="/docs/modules/sakuli-dashboard-configuration/">
         Sakuli Dashboard Configuration
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -643,8 +643,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/ocr/" title="Optical character recognition (OCR)" class="dd-item active">
-        <a href="/docs/enterprise_features/ocr/">
+      <li data-nav-id="/docs/modules/ocr/" title="Optical character recognition (OCR)" class="dd-item ">
+        <a href="/docs/modules/ocr/">
         Optical character recognition (OCR)
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -1051,7 +1051,7 @@
             
           
           
-            <a href='/docs/'></a> > <a href='/docs/enterprise_features/'>Enterprise Features</a> > Optical character recognition (OCR)
+            <a href='/docs/'></a> > <a href='/docs/modules/'>Modules</a> > checkmk Fowarder
           
         
           
@@ -1066,23 +1066,12 @@
     <div class="wrapper">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#ocr-in-enterprise-containers">OCR in enterprise containers</a></li>
-    <li><a href="#installing-sakuli-ocr">Installing Sakuli OCR</a>
+    <li><a href="#sakuli-client-configuration">Sakuli Client Configuration</a>
       <ul>
-        <li><a href="#add-ocr-module-to-packagejson">Add OCR module to package.json</a></li>
-        <li><a href="#installing-tesseract">Installing Tesseract</a></li>
+        <li><a href="#spool-folder">Spool folder</a></li>
+        <li><a href="#forwarder-configuration">Forwarder configuration</a></li>
       </ul>
     </li>
-    <li><a href="#extracting-text-from-screen">Extracting text from screen</a>
-      <ul>
-        <li><a href="#reading-the-whole-screen">Reading the whole screen</a></li>
-        <li><a href="#reading-text-from-a-specific-region">Reading text from a specific region</a></li>
-      </ul>
-    </li>
-    <li><a href="#finding-a-screen-region-by-text">Finding a screen region by text</a></li>
-    <li><a href="#combining-ocr-features">Combining OCR features</a></li>
-    <li><a href="#troubleshooting">Troubleshooting</a></li>
-    <li><a href="#known-issues">Known issues</a></li>
   </ul>
 </nav>
     </div>
@@ -1105,126 +1094,78 @@
 
 
 
-<h1 id="optical-character-recognition-ocr">Optical character recognition (OCR)</h1>
-<p><strong>(Available from v2.5.0)</strong></p>
-<p>With optical character recognition (OCR) it is possible to convert screen content into text. In combination with Sakuli,
-it is also possible to automate software based on the text shown on screen.</p>
-<h2 id="ocr-in-enterprise-containers">OCR in enterprise containers</h2>
-<p>Sakuli enterprise containers ship with a complete setup to use the OCR features of Sakuli. OCR features can be used
-without any further set up. Please have a look at the
-<a href="/docs/enterprise_features/container">enterprise containers documentation</a> for more information about container usage.</p>
-<h2 id="installing-sakuli-ocr">Installing Sakuli OCR</h2>
-<p>Installing the OCR module of Sakuli on a workstation or virtual machine is possible, but requires some additional steps
-and dependencies. We recommend, to use the ready-to-use enterprise container for most use cases. A native installation
-should only be considered, if the enterprise containers don&rsquo;t fit the requirements of your check.</p>
-<h3 id="add-ocr-module-to-packagejson">Add OCR module to package.json</h3>
-<p>To add the OCR module, please add <code>&quot;@sakuli/ocr&quot;: &quot;next&quot;</code> to your <code>package.json</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-  <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;sakuli-project&#34;</span>,
-  <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#e6db74">&#34;0.8.15&#34;</span>,
-  <span style="color:#f92672">&#34;scripts&#34;</span>: {
-    <span style="color:#f92672">&#34;test&#34;</span>: <span style="color:#e6db74">&#34;sakuli run test-suite&#34;</span>
-  },
-  <span style="color:#f92672">&#34;dependencies&#34;</span>: {
-    <span style="color:#f92672">&#34;@sakuli/cli&#34;</span>: <span style="color:#e6db74">&#34;next&#34;</span>,
-    <span style="color:#f92672">&#34;@sakuli/ocr&#34;</span>: <span style="color:#e6db74">&#34;next&#34;</span>
-  }
-}
-</code></pre></div><p>After altering your <code>package.json</code>, the module can be installed with <code>npm install</code> on command line.</p>
-<blockquote>
-<p>Please make sure that you have access to the enterprise npm package repository as well as a valid license of Level M
-or higher. For more information on how to set up your access to enterprise packages, please have a look at the
-<a href="/docs/enterprise_features">enterprise features documentation</a>.</p>
-</blockquote>
-<h3 id="installing-tesseract">Installing Tesseract</h3>
-<p>Sakuli OCR uses Tesseract to read text from the screen. For performance and quality reasons, a native installation of
-tesseract is required. Please ensure to install a Tesseract version &gt;= <strong>4.1.1</strong>. For more information on how to obtain
-and install Tesseract on your machine, please have a look at the
-<a href="https://github.com/tesseract-ocr/tessdoc/blob/master/Downloads.md">official Tesseract documentation</a>.</p>
-<h2 id="extracting-text-from-screen">Extracting text from screen</h2>
-<p>To read text from the screen, Sakuli OCR ships with the test step <code>_getTextFromRegion()</code>. The function returns all text
-on the screen including line feeds.</p>
-<h3 id="reading-the-whole-screen">Reading the whole screen</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">text</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_getTextFromRegion</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>());
-</code></pre></div><h3 id="reading-text-from-a-specific-region">Reading text from a specific region</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">regionToRead</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">400</span>, <span style="color:#ae81ff">50</span>);
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">textOfRegion</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_getTextFromRegion</span>(<span style="color:#a6e22e">regionToRead</span>);
-</code></pre></div><p><code>new Region(50, 100, 400, 50);</code> creates a region with the following specification:</p>
-<ul>
-<li>x = 50 px</li>
-<li>y = 100 px</li>
-<li>width: 400 px</li>
-<li>height: 50 px</li>
-</ul>
-<p>The constant <code>textOfRegion</code> will only contain the text from this specific region of the screen.</p>
-<h2 id="finding-a-screen-region-by-text">Finding a screen region by text</h2>
-<p>With Sakuli, it is also possible to automate software based on the text shown on the screen. <code>_getRegionByText()</code>
-provides the possibility to search for a specified text on the screen or in a specified region of the screen. Once the
-location of the text is determined, it is possible to e.g. move the mouse to the location and click on it.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_getRegionByText</span>(<span style="color:#e6db74">&#34;Continue&#34;</span>).<span style="color:#a6e22e">click</span>();
-</code></pre></div><p>This sample would search the screen for the text &ldquo;Continue&rdquo; and subsequently click on it.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">searchRegion</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Region</span>(<span style="color:#ae81ff">50</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">400</span>, <span style="color:#ae81ff">50</span>);
-<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_getRegionByText</span>(<span style="color:#e6db74">&#34;Continue&#34;</span>, <span style="color:#a6e22e">searchRegion</span>).<span style="color:#a6e22e">click</span>();
-</code></pre></div><p><code>new Region(50, 100, 400, 50);</code> creates a region with the following specification:</p>
-<ul>
-<li>x = 50 px</li>
-<li>y = 100 px</li>
-<li>width: 400 px</li>
-<li>height: 50 px</li>
-</ul>
-<p>In this sample, the search for the text &ldquo;Continue&rdquo; would be limited to the specified screen region.</p>
-<h2 id="combining-ocr-features">Combining OCR features</h2>
-<p>One common use case would be to extract text from a certain region of the screen e.g. from an offer or invoice for
-further validation.</p>
-<p><img src="/docs/images/consol_offer.png" alt="offer"></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript">(<span style="color:#a6e22e">async</span> () <span style="color:#f92672">=&gt;</span> {
-  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">testCase</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">TestCase</span>(<span style="color:#e6db74">&#34;Check offer&#34;</span>);
-  <span style="color:#66d9ef">try</span> {
-    <span style="color:#75715e">// ...
-</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">offerNumberRegion</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_getRegionByText</span>(<span style="color:#e6db74">&#34;offer number&#34;</span>).<span style="color:#a6e22e">grow</span>(<span style="color:#ae81ff">10</span>);
-</span><span style="display:block;width:100%;background-color:#3c3d38">    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">offerNumber</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_getTextFromRegion</span>(<span style="color:#a6e22e">offerNumberRegion</span>);
-</span>    
-    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">expectedOrderNumber</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/42-XBC-09453/</span>;
-    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">_assert</span>(<span style="color:#a6e22e">Promise</span>.<span style="color:#a6e22e">resolve</span>(<span style="color:#f92672">!!</span><span style="color:#a6e22e">offerNumber</span>.<span style="color:#a6e22e">match</span>(<span style="color:#a6e22e">expectedOrderNumber</span>)),
-      <span style="color:#e6db74">`Found </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">offerNumber</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> instead of </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">expectedOrderNumber</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
-    <span style="color:#75715e">// ...
-</span><span style="color:#75715e"></span>  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">e</span>) {
-    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">handleException</span>(<span style="color:#a6e22e">e</span>);
-  } <span style="color:#66d9ef">finally</span> {
-    <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">testCase</span>.<span style="color:#a6e22e">saveResult</span>();
-  }
-})();
-</code></pre></div><p>This check would search for the &ldquo;offer number&rdquo; in the pdf, extract the whole offer number and compare it to an expected
-value.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<p>The quality of OCR results highly depends on the screen content. Here are some aspects to consider when OCR does not
-recognize the text you expect:</p>
-<ul>
-<li>A lower screen resolution might help due to bigger fonts</li>
-<li>Bigger fonts are better than smaller fonts</li>
-<li>High contrasts are helpful. Reading yellow text from white background might cause issues.</li>
-</ul>
-<p>In case you want to have some insights in what tesseract &ldquo;sees&rdquo; through a Sakuli automation, you can easily adapt log
-levels to show details of the OCR process.</p>
-<ul>
-<li>Debug Level
-<ul>
-<li>provides the tesseract cli call for reconstruction purposes</li>
-<li>provides the tesseract config on cli level</li>
-<li>provide details on post processing of the screen content</li>
-</ul>
-</li>
-<li>Trace Level
-<ul>
-<li>writes the received text from <code>_getTextFromRegion()</code> to the logs</li>
-<li>write the received alto xml from <code>_getRegionByText()</code> to the logs</li>
-</ul>
-</li>
-</ul>
-<h2 id="known-issues">Known issues</h2>
-<ul>
-<li>There is currently a bug in an upstream library causing <a href="https://github.com/nut-tree/nut.js/issues/194">issues with OCR on macOS</a>.</li>
-</ul>
+<h1 id="checkmk-forwarder">checkmk Forwarder</h1>
+<p>Add the forwarder to your project with:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm i @sakuli/forwarder-checkmk</code></pre></div>
+<h2 id="sakuli-client-configuration">Sakuli Client Configuration</h2>
+<p>It is assumed that the client is already monitored by checkmk and that an agent is installed and running on it.</p>
+<h3 id="spool-folder">Spool folder</h3>
+<p>Create a new folder <code>spool</code> in the installation path of the checkmk agent. This is the folder where the results will be written and stored into. Don&rsquo;t forget to grant writing permissions for the folder to the user running Sakuli checks.</p>
+<h3 id="forwarder-configuration">Forwarder configuration</h3>
+<p>Now you have to set up the properties for the checkmk receiver. In order to do this, edit the <code>sakuli.properties</code> in the folder containing the testsuites:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Default</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sakuli.forwarder.check_mk.enabled</code></td>
+<td><code>false</code></td>
+<td>Enables writing to the spool file</td>
+</tr>
+<tr>
+<td><code>sakuli.forwarder.check_mk.spooldir</code></td>
+<td><code>/var/lib/check_mk_agent/spool</code> (Linux)<br/><code>&lt;CMK_installation_path&gt;\\spool</code> (Windows)</td>
+<td>Path to the spool folder as defined above. On Windows, the backslashes have to be escaped with &lsquo;'. Check_MK is expecting the result files from Sakuli in here</td>
+</tr>
+<tr>
+<td><code>sakuli.forwarder.check_mk.freshness</code></td>
+<td><code>600</code></td>
+<td>Defines the maximal age in seconds for which the result is still valid. If the last modification of the result file is older than this property, the result file will be ignored. The Check_MK service will turn into UNKNOWN</td>
+</tr>
+<tr>
+<td><code>sakuli.forwarder.check_mk.spoolfile_prefix</code></td>
+<td><code>sakuli_suite_</code></td>
+<td>Defines the result file prefix. It can be used to change the default naming convention for the Check_MK output files</td>
+</tr>
+<tr>
+<td><code>sakuli.forwarder.check_mk.service_description</code></td>
+<td><code>${testsuite.id}</code></td>
+<td>Defines the service description which is used within the check result</td>
+</tr>
+<tr>
+<td><code>sakuli.forwarder.check_mk.piggyback_hostname</code></td>
+<td><code>local</code></td>
+<td>Defines Hostname for check results, configurable for piggyback results</td>
+</tr>
+<tr>
+<td><code>sakuli.forwarder.check_mk.output.details</code></td>
+<td><code>true</code></td>
+<td>Dis- / Enables detailed HTML output</td>
+</tr>
+<tr>
+<td><code>sakuli.forwarder.check_mk.section_name</code></td>
+<td><code>local</code></td>
+<td>Name of the reported section (&lt;&lt;&lt;YOUR_SECTION_NAME&gt;&gt;&gt;)</td>
+</tr>
+<tr>
+<td><code>sakuli.forwarder.check_mk.url</code></td>
+<td></td>
+<td>URL address to add to the spool file (Available from version 2.3.0)</td>
+</tr>
+</tbody>
+</table>
+<p>An example configuration could look like this:</p>
+<pre><code class="language-properties" data-lang="properties">sakuli.forwarder.check_mk.enabled=true
+sakuli.forwarder.check_mk.spooldir=/var/lib/check_mk_agent/spool
+sakuli.forwarder.check_mk.freshness=600
+sakuli.forwarder.check_mk.spoolfile_prefix=sakuli_suite_
+sakuli.forwarder.check_mk.service_description=My_Custom_Service
+sakuli.forwarder.check_mk.piggyback_hostname=MyHost</code></pre>
 
 
 <footer class=" footline" >
@@ -1587,6 +1528,26 @@ levels to show details of the OCR process.</p>
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
                 
                 
 
@@ -1678,23 +1639,6 @@ levels to show details of the OCR process.</p>
             
         
                     
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
             
         
                     
@@ -1702,9 +1646,6 @@ levels to show details of the OCR process.</p>
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -1934,10 +1875,10 @@ levels to show details of the OCR process.</p>
 	 
 	 
 		
-			<a class="nav nav-prev" href="/docs/enterprise_features/sakuli-dashboard-configuration/" title="Sakuli Dashboard Configuration"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/docs/modules/prometheus/" title="Prometheus Fowarder"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/docs/cli/" title="CLI" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/docs/modules/omd/" title="OMD Forwarder" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

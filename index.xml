@@ -33,14 +33,13 @@ Sakuli Core Besides node 12 support and adjustments in Sakuli click actions, we&
     
     <item>
       <title>Icinga2 Forwarder</title>
-      <link>/docs/enterprise_features/icinga/</link>
+      <link>/docs/modules/icinga/</link>
       <pubDate>Thu, 12 Sep 2019 14:15:55 +0200</pubDate>
       
-      <guid>/docs/enterprise_features/icinga/</guid>
-      <description>Icinga2 Forwarder Add the forwarder using the assistant or configure it manually:
-npm i @sakuli/forwarder-icinga2 Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the enterprise section.
-Enable the Icinga2 API All steps required to enable the Icinga2 API are described in the REST API documentation.
-Create a Icinga2 service Create a check_command which will only be executed if Icinga2 did not receive a Sakuli result within a certain time.</description>
+      <guid>/docs/modules/icinga/</guid>
+      <description>Icinga2 Forwarder npm i @sakuli/forwarder-icinga2 Enable the Icinga2 API All steps required to enable the Icinga2 API are described in the REST API documentation.
+Create a Icinga2 service Create a check_command which will only be executed if Icinga2 did not receive a Sakuli result within a certain time. This ensures that you get a notification even if no passive check result reaches Icinga2 at all:
+/etc/icinga2/conf.d/commands.conf object CheckCommand &amp;#34;check_dummy&amp;#34; { import &amp;#34;plugin-check-command&amp;#34; command = [ PluginDir + &amp;#34;/check_dummy&amp;#34;,&amp;#34;$dummy_state$&amp;#34;,&amp;#34;$dummy_text$&amp;#34; ] vars.</description>
     </item>
     
     <item>
@@ -77,27 +76,25 @@ There are currently five log levels implemented:
     
     <item>
       <title>Prometheus Fowarder</title>
-      <link>/docs/enterprise_features/prometheus/</link>
+      <link>/docs/modules/prometheus/</link>
       <pubDate>Tue, 10 Mar 2020 17:26:00 +0200</pubDate>
       
-      <guid>/docs/enterprise_features/prometheus/</guid>
+      <guid>/docs/modules/prometheus/</guid>
       <description>Prometheus Forwarder Available from version 2.3.0
 Add the forwarder manually as follows:
-npm i @sakuli/forwarder-prometheus Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the enterprise section.
-Push gateway It is assumed that a push gateway is available in your monitoring setup. As Sakuli checks are not constantly available like e.g. a Webservice, it is required to use a Prometheus push gateway to provide a scraping endpoint for Prometheus to obtain measurements gathered by Sakuli.</description>
+npm i @sakuli/forwarder-prometheus Push gateway It is assumed that a push gateway is available in your monitoring setup. As Sakuli checks are not constantly available like e.g. a Webservice, it is required to use a Prometheus push gateway to provide a scraping endpoint for Prometheus to obtain measurements gathered by Sakuli.
+Forwarder configuration Configuration is located in sakuli.properties within the root folder of your project or respectively in testsuite.</description>
     </item>
     
     <item>
       <title>checkmk Fowarder</title>
-      <link>/docs/enterprise_features/check/</link>
+      <link>/docs/modules/check/</link>
       <pubDate>Thu, 12 Sep 2019 14:16:04 +0200</pubDate>
       
-      <guid>/docs/enterprise_features/check/</guid>
-      <description>checkmk Forwarder Add the forwarder using the assistant or configure it manually:
-Add the forwarder to your project with:
-npm i @sakuli/forwarder-checkmk Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the enterprise section.
-Sakuli Client Configuration It is assumed that the client is already monitored by checkmk and that an agent is installed and running on it.
-Spool folder Create a new folder spool in the installation path of the checkmk agent.</description>
+      <guid>/docs/modules/check/</guid>
+      <description>checkmk Forwarder Add the forwarder to your project with:
+npm i @sakuli/forwarder-checkmk Sakuli Client Configuration It is assumed that the client is already monitored by checkmk and that an agent is installed and running on it.
+Spool folder Create a new folder spool in the installation path of the checkmk agent. This is the folder where the results will be written and stored into. Don&amp;rsquo;t forget to grant writing permissions for the folder to the user running Sakuli checks.</description>
     </item>
     
     <item>
@@ -133,14 +130,14 @@ npm init This interactive prompt will ask you for some metadata regarding your p
     
     <item>
       <title>OMD Forwarder</title>
-      <link>/docs/enterprise_features/omd/</link>
+      <link>/docs/modules/omd/</link>
       <pubDate>Thu, 12 Sep 2019 14:16:13 +0200</pubDate>
       
-      <guid>/docs/enterprise_features/omd/</guid>
-      <description>OMD / Gearman Forwarder Add the forwarder using the assistant or configure it manually:
-npm i @sakuli/forwarder-gearman Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the enterprise section.
-Configure OMD Sakuli transmits performance data to a Gearman result queue rather than to OMD directly. For that we require a gearman-enabled monitoring system in an OMD environment.
-It takes a few steps to set up the monitoring system in order to process Sakuli&amp;rsquo;s performance data correctly.</description>
+      <guid>/docs/modules/omd/</guid>
+      <description>OMD / Gearman Forwarder npm i @sakuli/forwarder-gearman Configure OMD Sakuli transmits performance data to a Gearman result queue rather than to OMD directly. For that we require a gearman-enabled monitoring system in an OMD environment.
+It takes a few steps to set up the monitoring system in order to process Sakuli&amp;rsquo;s performance data correctly.
+Enable and configure mod-gearman Use the Makefile located in OMD_ROOT/share/sakuli/omd/ to configure mod-gearman:
+ Enable all services for mod-gearman Set the bind IP and port (default: 0.</description>
     </item>
     
     <item>
@@ -165,13 +162,13 @@ WebDriver Installation Sakuli utilizes the WebDriver protocol to remote control 
     
     <item>
       <title>Container</title>
-      <link>/docs/enterprise_features/container/</link>
+      <link>/docs/modules/container/</link>
       <pubDate>Thu, 12 Sep 2019 14:16:13 +0200</pubDate>
       
-      <guid>/docs/enterprise_features/container/</guid>
-      <description>Pre-configured Container Once you obtained a Sakuli Enterprise license your docker-user will be granted access to the private Sakuli test container image. This image is ready to go and ships with already installed:
- Sakuli Icinga2 / checkmk / OMD / Prometheus Forwarder VNC / noVNC Chrome / Firefox (incl. webdriver)  1 Obtaining the Image The registered docker-hub user will then be able to pull the private image:
-docker pull taconsol/sakuli:&amp;lt;IMAGE_TAG&amp;gt; Tech previews of Sakuli containers are published as latest.</description>
+      <guid>/docs/modules/container/</guid>
+      <description>Pre-configured Container This image is ready to go and ships with already installed:
+ Sakuli Icinga2 / checkmk / OMD / Prometheus Forwarder VNC / noVNC Chrome / Firefox (incl. webdriver)  1 Obtaining the Image docker pull taconsol/sakuli:&amp;lt;IMAGE_TAG&amp;gt; Tech previews of Sakuli containers are published as latest. We highly recommend specifying the exact version of Sakuli for productive tests/checks.
+Containers are tagged according to Sakuli versions, so in order to use Sakuli v2.</description>
     </item>
     
     <item>
@@ -261,8 +258,8 @@ Static wait // wait for three seconds await _wait(3000);  Wait for an element to
       
       <guid>/docs/cookbook/container/</guid>
       <description>How to run a Container with Sakuli Tests  Sakuli Container are only available with an active Sakuli subscription.
- The following how-to aims to help unexperienced users getting started with Sakuli Containers. A Sakuli Container ships with pre-installed Sakuli, Monitoring forwarder and other additional features, it is not necessary to install anything on your docker-host, except for docker.
-Download the image With your logged-in docker-user (which is authorized to access the repository with an active subscription), you first need to download the Sakuli image: docker pull taconsol/sakuli:2.</description>
+ The following how-to aims to help unexperienced users getting started with Sakuli Containers. A Sakuli Container ships with pre-installed Sakuli, Monitoring forwarder and other additional modules, it is not necessary to install anything on your docker-host, except for docker.
+Download the image You first need to download the Sakuli image: docker pull taconsol/sakuli:2.</description>
     </item>
     
     <item>
@@ -287,12 +284,13 @@ const myIframe = await _fetch(_iframe(&amp;#39;frameName&amp;#39;)); await drive
     
     <item>
       <title>S2I Image</title>
-      <link>/docs/enterprise_features/s2i/</link>
+      <link>/docs/modules/s2i/</link>
       <pubDate>Thu, 12 Sep 2019 14:16:13 +0200</pubDate>
       
-      <guid>/docs/enterprise_features/s2i/</guid>
-      <description>S2I Image Sakuli enterprise comes with ready-to-use source to image (S2I) containers for RedHat OpenShift. Using this builder container, it is easily possible to create deployable Sakuli images shipped with a test suite straight from your code repository.
-Setup To setup the source to image builds on your OpenShift cluster, it is required to import the images from taconsol/sakuli-s2i. To achieve this, you have to create a docker-registry secret with your &amp;lt;docker-username&amp;gt; and &amp;lt;docker-password&amp;gt; and link it to your builder service account to authenticate on docker.</description>
+      <guid>/docs/modules/s2i/</guid>
+      <description>S2I Image Sakuli comes with ready-to-use source to image (S2I) containers for RedHat OpenShift. Using this builder container, it is easily possible to create deployable Sakuli images shipped with a test suite straight from your code repository.
+Setup To setup the source to image builds on your OpenShift cluster, it is required to import the images from taconsol/sakuli-s2i.
+oc import-image sakuli-s2i \  --from=docker.io/taconsol/sakuli-s2i \  --confirm \  --scheduled=true \  --all=true  Note: The oc import-image statement is configured to not only import all available Sakuli S2I images but also to check for updates automatically.</description>
     </item>
     
     <item>
@@ -307,10 +305,10 @@ Open an application To open an application, you enter the path to the applicatio
     
     <item>
       <title>Sakuli Dashboard</title>
-      <link>/docs/enterprise_features/sakuli-dashboard-deployment/</link>
+      <link>/docs/modules/sakuli-dashboard-deployment/</link>
       <pubDate>Thu, 12 Sep 2019 14:16:46 +0200</pubDate>
       
-      <guid>/docs/enterprise_features/sakuli-dashboard-deployment/</guid>
+      <guid>/docs/modules/sakuli-dashboard-deployment/</guid>
       <description>Sakuli Dashboard The Sakuli Dashboard streamlines your e2e application monitoring with Sakuli. It helps you start your Sakuli test automatically with a cronjob to monitor your application continuously or trigger it manually with a button. While watching a live video feed of your Sakuli check, you can track the monitoring metrics of your application by embedding your monitoring graphs into the Sakuli Dashboard.
 How to get the Sakuli Dashboard Sakuli Dashboard releases are versioned following the semantic versioning scheme.</description>
     </item>
@@ -349,10 +347,10 @@ Async / Await You might have wondered where the await keyword came from when you
     
     <item>
       <title>Sakuli Dashboard Configuration</title>
-      <link>/docs/enterprise_features/sakuli-dashboard-configuration/</link>
+      <link>/docs/modules/sakuli-dashboard-configuration/</link>
       <pubDate>Thu, 12 Sep 2019 14:16:46 +0200</pubDate>
       
-      <guid>/docs/enterprise_features/sakuli-dashboard-configuration/</guid>
+      <guid>/docs/modules/sakuli-dashboard-configuration/</guid>
       <description>Sakuli Dashboard Configuration This section contains information on how to configure the Sakuli dashboard.
 The Sakuli dashboard is configurable via environmental variables containing JSON documents. Check out the different sections to get example templates and detailed information about how to set up your Sakuli dashboard.
    Environment variable Description     DASHBOARD_CONFIG Configures the displays (ordering, url, action buttons, etc.) shown in the dashboard   ACTION_CONFIG (optional) Available actions to perform on the cluster and corresponding display updates   CLUSTER_CONFIG (optional) Configures the cluster access (cluster address, access token, etc.</description>
@@ -360,13 +358,14 @@ The Sakuli dashboard is configurable via environmental variables containing JSON
     
     <item>
       <title>Optical character recognition (OCR)</title>
-      <link>/docs/enterprise_features/ocr/</link>
+      <link>/docs/modules/ocr/</link>
       <pubDate>Fri, 18 Dec 2020 13:55:46 +0100</pubDate>
       
-      <guid>/docs/enterprise_features/ocr/</guid>
+      <guid>/docs/modules/ocr/</guid>
       <description>Optical character recognition (OCR) (Available from v2.5.0)
 With optical character recognition (OCR) it is possible to convert screen content into text. In combination with Sakuli, it is also possible to automate software based on the text shown on screen.
-OCR in enterprise containers Sakuli enterprise containers ship with a complete setup to use the OCR features of Sakuli. OCR features can be used without any further set up. Please have a look at the enterprise containers documentation for more information about container usage.</description>
+OCR in containers Sakuli containers ship with a complete setup to use the OCR module of Sakuli. OCR module can be used without any further set up.
+Installing Sakuli OCR Installing the OCR module of Sakuli on a workstation or virtual machine is possible, but requires some additional steps and dependencies.</description>
     </item>
     
   </channel>

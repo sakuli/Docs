@@ -54,7 +54,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/docs/enterprise_features/omd/">
+  <body class="" data-url="/docs/modules/sakuli-dashboard-deployment/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -464,13 +464,13 @@
  
   
     
-    <li data-nav-id="/docs/enterprise_features/" title="Enterprise Features" class="dd-item
+    <li data-nav-id="/docs/modules/" title="Modules" class="dd-item
         parent
         
         
         ">
-      <a href="/docs/enterprise_features/">
-          <i class='fas fa-chevron-right'></i>  Enterprise Features
+      <a href="/docs/modules/">
+          <i class='fas fa-chevron-right'></i>  Modules
           
             <i class="fas fa-check read-icon"></i>
           
@@ -491,8 +491,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/icinga/" title="Icinga2 Forwarder" class="dd-item ">
-        <a href="/docs/enterprise_features/icinga/">
+      <li data-nav-id="/docs/modules/icinga/" title="Icinga2 Forwarder" class="dd-item ">
+        <a href="/docs/modules/icinga/">
         Icinga2 Forwarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -510,8 +510,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/prometheus/" title="Prometheus Fowarder" class="dd-item ">
-        <a href="/docs/enterprise_features/prometheus/">
+      <li data-nav-id="/docs/modules/prometheus/" title="Prometheus Fowarder" class="dd-item ">
+        <a href="/docs/modules/prometheus/">
         Prometheus Fowarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -529,8 +529,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/check/" title="checkmk Fowarder" class="dd-item ">
-        <a href="/docs/enterprise_features/check/">
+      <li data-nav-id="/docs/modules/check/" title="checkmk Fowarder" class="dd-item ">
+        <a href="/docs/modules/check/">
         checkmk Fowarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -548,8 +548,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/omd/" title="OMD Forwarder" class="dd-item active">
-        <a href="/docs/enterprise_features/omd/">
+      <li data-nav-id="/docs/modules/omd/" title="OMD Forwarder" class="dd-item ">
+        <a href="/docs/modules/omd/">
         OMD Forwarder
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -567,8 +567,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/container/" title="Container" class="dd-item ">
-        <a href="/docs/enterprise_features/container/">
+      <li data-nav-id="/docs/modules/container/" title="Container" class="dd-item ">
+        <a href="/docs/modules/container/">
         Container
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -586,8 +586,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/s2i/" title="S2I Image" class="dd-item ">
-        <a href="/docs/enterprise_features/s2i/">
+      <li data-nav-id="/docs/modules/s2i/" title="S2I Image" class="dd-item ">
+        <a href="/docs/modules/s2i/">
         S2I Image
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -605,8 +605,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/sakuli-dashboard-deployment/" title="Sakuli Dashboard" class="dd-item ">
-        <a href="/docs/enterprise_features/sakuli-dashboard-deployment/">
+      <li data-nav-id="/docs/modules/sakuli-dashboard-deployment/" title="Sakuli Dashboard" class="dd-item active">
+        <a href="/docs/modules/sakuli-dashboard-deployment/">
         Sakuli Dashboard
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -624,8 +624,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/sakuli-dashboard-configuration/" title="Sakuli Dashboard Configuration" class="dd-item ">
-        <a href="/docs/enterprise_features/sakuli-dashboard-configuration/">
+      <li data-nav-id="/docs/modules/sakuli-dashboard-configuration/" title="Sakuli Dashboard Configuration" class="dd-item ">
+        <a href="/docs/modules/sakuli-dashboard-configuration/">
         Sakuli Dashboard Configuration
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -643,8 +643,8 @@
  
   
     
-      <li data-nav-id="/docs/enterprise_features/ocr/" title="Optical character recognition (OCR)" class="dd-item ">
-        <a href="/docs/enterprise_features/ocr/">
+      <li data-nav-id="/docs/modules/ocr/" title="Optical character recognition (OCR)" class="dd-item ">
+        <a href="/docs/modules/ocr/">
         Optical character recognition (OCR)
         <i class="fas fa-check read-icon"></i>
         </a>
@@ -1051,7 +1051,7 @@
             
           
           
-            <a href='/docs/'></a> > <a href='/docs/enterprise_features/'>Enterprise Features</a> > OMD Forwarder
+            <a href='/docs/'></a> > <a href='/docs/modules/'>Modules</a> > Sakuli Dashboard
           
         
           
@@ -1066,14 +1066,14 @@
     <div class="wrapper">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#configure-omd">Configure OMD</a>
+    <li><a href="#how-to-get-the-sakuli-dashboard">How to get the Sakuli Dashboard</a>
       <ul>
-        <li><a href="#enable-and-configure-mod-gearman">Enable and configure mod-gearman</a></li>
-        <li><a href="#gearman-proxy-optional">Gearman proxy (optional)</a></li>
-        <li><a href="#create-a-nagios-service">Create a Nagios service</a></li>
+        <li><a href="#deployment-with-docker">Sakuli Dashboard with Docker</a></li>
+        <li><a href="#deployment-with-docker-compose">Sakuli Dashboard with Docker-Compose</a></li>
+        <li><a href="#deployment-with-k8s">Sakuli Dashboard on Kubernetes</a></li>
+        <li><a href="#deployment-with-openshift">Sakuli Dashboard on Openshift</a></li>
       </ul>
     </li>
-    <li><a href="#sakuli-configuration">Sakuli Configuration</a></li>
   </ul>
 </nav>
     </div>
@@ -1096,144 +1096,276 @@
 
 
 
-<h1 id="omd--gearman-forwarder">OMD / Gearman Forwarder</h1>
-<p>Add the forwarder using the <a href="/docs/enterprise_features/#assisted-setup">assistant</a> or configure it manually:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm i @sakuli/forwarder-gearman</code></pre></div>
-<p>Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the <a href="/docs/enterprise_features/#using-the-license-key">enterprise section</a>.</p>
-<h2 id="configure-omd">Configure OMD</h2>
-<p>Sakuli transmits performance data to a Gearman result queue rather than to OMD directly. For that we require a gearman-enabled monitoring system in an OMD environment.</p>
-<p>It takes a few steps to set up the monitoring system in order to process Sakuli&rsquo;s performance data correctly.</p>
-<h3 id="enable-and-configure-mod-gearman">Enable and configure mod-gearman</h3>
-<p>Use the Makefile located in <code>OMD_ROOT/share/sakuli/omd/</code> to configure mod-gearman:</p>
+<h1 id="sakuli-dashboard">Sakuli Dashboard</h1>
+<p>The Sakuli Dashboard streamlines your e2e application monitoring with Sakuli. It helps you start your Sakuli test
+automatically with a cronjob to monitor your application continuously or trigger it manually with a button.
+While watching a live video feed of your Sakuli check, you can track the monitoring metrics of your application by
+embedding your monitoring graphs into the Sakuli Dashboard.</p>
+<h2 id="how-to-get-the-sakuli-dashboard">How to get the Sakuli Dashboard</h2>
+<p>Sakuli Dashboard releases are versioned following the <a href="https://semver.org/">semantic versioning scheme</a>.
+Images for stable releases are tagged accordingly.
+Tech-previews of upcoming stable releases are available via the <code>latest</code> tag.<br>
+It is <em>highly</em> discouraged to run tech-previews in production as there is no guarantee of stability.</p>
 <ul>
-<li>Enable all services for mod-gearman</li>
-<li>Set the bind IP and port (default: <code>0.0.0.0:4730</code>; overwrite with e.g. <code>export GEARMAN_PORT=192.168.130.10:4731</code>)</li>
-<li>Set the encryption key (default: <code>sakuli_secret</code>; overwrite with e.g. <code>export GEARMAN_SECRET=mykey</code>)</li>
+<li>Deploy the Sakuli Dashboard with <a href="#deployment-with-docker">Docker</a></li>
+<li>Deploy the Sakuli Dashboard with <a href="#deployment-with-docker-compose">Docker-Compose</a></li>
+<li>Deploy the Sakuli Dashboard with <a href="#deployment-with-k8s">Kubernetes</a></li>
+<li>Deploy the Sakuli Dashboard with <a href="#deployment-with-openshift">Openshift</a></li>
 </ul>
-<p>Then run:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">su - &lt;SITE_USER&gt;
-cd ~/share/sakuli/setup/omd
-make gearman</code></pre></div>
-<p>Due to security reasons, the Makefile will only configure mod-gearman if it is not enabled yet. If it is already enabled inspect the Makefile, read the instruction carefully and execute the steps by hand.</p>
-<p>For <strong>PRODUCTION</strong> usage please use individual encryption keys!</p>
-<p>If you do not want to use encryption at all, enable <code>accept_clear_results</code> and disable <code>sakuli.forwarder.gearman.encryption</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim ~/etc/mod-gearman/server.cfg
-...
-accept_clear_results<span style="color:#f92672">=</span>yes</code></pre></div>
-<p><code>testsuite.properties</code>
-<pre><code class="language-properties" data-lang="properties">sakuli.forwarder.gearman.encryption=false</code></pre></p>
-<h3 id="gearman-proxy-optional">Gearman proxy (optional)</h3>
-<p>Use the Sakuli gearman proxy script if you want to intervene between the communication of Sakuli and Naemon/Nagios.</p>
-<p>Possible use cases:</p>
-<ul>
-<li>Changes parts of the messages Sakuli sends to the monitoring system ⇒ there are some examples contained already</li>
-<li>Getting notified when Sakuli sends results to services that do not exist</li>
-<li>Auto-create services for incoming results (not yet implemented)</li>
-</ul>
-<p>Use the Makefile located in <code>$OMD_ROOT/share/sakuli/</code> to enable the feature:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">su - &lt;SITE_USER&gt;
-cd n/share/sakuli/setup/omd
-make gearman_proxy</code></pre></div>
-<p>Edit <code>etc/mod-gearman/sakuli_gearman_proxy.cfg</code> :</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cfg" data-lang="cfg"><span style="color:#a6e22e">$remoteHost</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;172.17.0.2&#34;; #1</span>
-<span style="color:#a6e22e">$remotePort</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;4730&#34;; #1</span>
-<span style="color:#a6e22e">$localHost</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;172.17.0.2&#34;; #2</span>
-<span style="color:#a6e22e">$localPort</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;4730&#34;; #2</span>
-<span style="color:#a6e22e">$queues</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">{
-</span><span style="color:#e6db74">    &#34;$remoteHost:$remotePort/check_results_sakuli&#34;  =&gt; &#34;$localHost:$localPort/check_results&#34;,</span>
-<span style="color:#a6e22e">}; #3 + 4</span>
-
-<span style="color:#a6e22e">$err_h</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;error_host&#39;; #5</span>
-<span style="color:#a6e22e">$err_s</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;eror_svc&#39;;</span>
-<span style="color:#a6e22e">$err_r</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;2&#39;; #6</span></code></pre></div>
-<ol>
-<li>Gearman IP/Port listening for Sakuli results. Set this to the same values as &lt;2&gt; unless <code>gearman_proxy.pl</code> is running on another system</li>
-<li>Gearman IP/Port for the monitoring system</li>
-<li><code>check_results_sakuli</code> ⇒ queue name to receive Sakuli results. Make sure this queue name is defined in property <code>sakuli.forwarder.gearman.server.queue</code> on all Sakuli clients (see Sakuli Client Configuration)</li>
-<li><code>check_results</code> ⇒ default queue of mod-gearman where gearman workers write back their results (no need to change that)</li>
-<li>The proxy does a live status query for each incoming package to ensure that the receiving host/service exists. It provides a special &ldquo;error host/service&rdquo; pair where the proxy can send a message in case of results coming back for non-existent services</li>
-<li>Status of the messages for non-existent services (2 = CRITICAL)</li>
-</ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">su - &lt;SITE_USER&gt;
-omd start sakuli_gearman_proxy
-<span style="color:#75715e"># Starting sakuli_gearman_proxy...OK</span></code></pre></div>
-<p>Check that the queue <code>check_results_sakuli</code> is running in addition to the default queue <code>check_results</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">OMD<span style="color:#f92672">[</span>demo<span style="color:#f92672">]</span>:~$ gearman_top
-2017-06-09 13:37:28  -  localhost:4730  -  v0.33
-
- Queue Name           | Worker Available | Jobs Waiting | Jobs Running
------------------------------------------------------------------------
- check_results        |               <span style="color:#ae81ff">1</span>  |           <span style="color:#ae81ff">0</span>  |           <span style="color:#ae81ff">0</span>
- check_results_sakuli |               <span style="color:#ae81ff">1</span>  |           <span style="color:#ae81ff">0</span>  |           <span style="color:#ae81ff">0</span>
------------------------------------------------------------------------</code></pre></div>
-<p>This change does affect other monitoring checks executed with mod-gearman, because only Sakuli will send results into the queue <code>check_results_sakuli</code>.</p>
-<h3 id="create-a-nagios-service">Create a Nagios service</h3>
-<p>Create a service which should receive Sakuli test results. Host/service names derive from the following properties:</p>
-<ul>
-<li><strong>Host</strong>: <code>sakuli.forwarder.gearman.nagios.hostname</code> (defined globally or via suite)</li>
-<li><strong>Service</strong>: <code>testsuite.id</code> (defined in <code>testsuite.properties</code>)</li>
-</ul>
-<p>OMD configuration:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cfg" data-lang="cfg"><span style="color:#a6e22e">define host {</span>
-  <span style="color:#a6e22e">host_name                      sakuli_client</span>
-  <span style="color:#a6e22e">alias                          sakuli_client</span>
-  <span style="color:#a6e22e">address                        __SAKULI_CLIENT_IP__</span>
-  <span style="color:#a6e22e">use                            generic-host</span>
-<span style="color:#a6e22e">}</span>
-
-<span style="color:#a6e22e">define service {</span>
-  <span style="color:#a6e22e">service_description            example_xfce</span>
-  <span style="color:#a6e22e">host_name                      sakuli_client</span>
-  <span style="color:#a6e22e">use                            tpl_s_sakuli_gearman</span>
-  <span style="color:#a6e22e">freshness_threshold            180</span>
-<span style="color:#a6e22e">}</span></code></pre></div>
 <blockquote>
-<p>The  <code>freshness_threshold</code> should be slightly higher than the interval during which Sakuli tests are executed.</p>
+<p>You will come across configurations such as the <code>DASHBOARD_CONFIG</code>, the <code>ACTION_CONFIG</code>, the <code>CLUSTER_CONFIG</code> and
+the <code>CRONJOB_CONFIG</code> which configure your Sakuli Dashboard.
+For further information about how to properly configure the dashboard check out the <a href="/docs/modules/sakuli-dashboard-configuration">Sakuli Dashboard Configuration</a> documentation.</p>
 </blockquote>
-<p>The check is waiting now for check results from a Sakuli client.</p>
-<h2 id="sakuli-configuration">Sakuli Configuration</h2>
-<p>You must set the global properties for the gearman receiver on the Sakuli client. For doing this, edit <code>sakuli.properties</code> in the folder containing the testsuites:</p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Default</th>
-<th>Effect</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>sakuli.forwarder.gearman.enabled</code></td>
-<td><code>false</code></td>
-<td>Enable forwarding to OMD</td>
-</tr>
-<tr>
-<td><code>sakuli.forwarder.gearman.encryption</code></td>
-<td><code>true</code></td>
-<td>Enable encryption and set the key only if you did not activate <code>accept_clear_results</code> in mod-gearman. Otherwise, set encryption to false</td>
-</tr>
-<tr>
-<td><code>sakuli.forwarder.gearman.secret.key</code></td>
-<td><code>secret-password</code></td>
-<td>The password configured in <a href="#enable-and-configure-mod-gearman">enable and configure mod-gearman</a></td>
-</tr>
-<tr>
-<td><code>sakuli.forwarder.gearman.server.host</code></td>
-<td></td>
-<td>The host where OMD is running</td>
-</tr>
-<tr>
-<td><code>sakuli.forwarder.gearman.server.port</code></td>
-<td><code>4730</code></td>
-<td>The port where gearman is listing (configured in <a href="#enable-and-configure-mod-gearman">enable and configure mod-gearman</a>)</td>
-</tr>
-<tr>
-<td><code>sakuli.forwarder.gearman.server.queue</code></td>
-<td><code>check_results</code></td>
-<td>The default queue for Sakuli</td>
-</tr>
-</tbody>
-</table>
+<h3 id="deployment-with-docker">Sakuli Dashboard with Docker</h3>
+<h4 id="1-obtaining-the-image">1 Obtaining the image</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull taconsol/sakuli-dashboard:&lt;IMAGE_TAG&gt;</code></pre></div>
+<h4 id="2-running-the-sakuli-dashboard">2 Running the Sakuli Dashboard</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run --rm <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> -p 8080:8080 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> -e DASHBOARD_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>DASHBOARD_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> -e ACTION_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>ACTION_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> -e CLUSTER_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>CLUSTER_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> -e CRONJOB_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>CRONJOB_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> taconsol/sakuli-dashboard:&lt;IMAGE_TAG&gt;</code></pre></div>
+<p>Parameters:</p>
+<ul>
+<li><strong>--rm</strong>: The dashboard container will be removed after execution, not just stopped</li>
+<li><strong>-p</strong>: Port forwarding to access the dashboard container on port 8080</li>
+<li><strong>-e</strong>: Environment variable flags which are used to configure the dashboard</li>
+</ul>
+<h3 id="deployment-with-docker-compose">Sakuli Dashboard with Docker-Compose</h3>
+<p>The following template allows you to run a dashboard using <code>docker-compose</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">version</span>: <span style="color:#e6db74">&#34;3&#34;</span>
+<span style="color:#66d9ef">services</span>:
+    <span style="color:#66d9ef">sakuli</span>:
+        <span style="color:#66d9ef">container_name</span>: sakuli-dashboard
+        <span style="color:#66d9ef">image</span>: taconsol/sakuli-dashboard:&lt;IMAGE_TAG<span style="color:#e6db74">&gt;
+</span><span style="color:#e6db74">        ports:</span>
+            - <span style="color:#ae81ff">8080</span>:<span style="color:#ae81ff">8080</span>
+        <span style="color:#66d9ef">environment</span>:
+            - DASHBOARD_CONFIG=${DASHBOARD_CONFIG}
+            - ACTION_CONFIG=${ACTION_CONFIG}
+            - CLUSTER_CONFIG=${CLUSTER_CONFIG}
+            - CRONJOB_CONFIG=${CRONJOB_CONFIG}</code></pre></div>
+<p>After creating the <code>&lt;filename&gt;.yml</code> configuration file, you can start the dashboard with:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker-compose up -f /path/to/file/&lt;filename&gt;.yml</code></pre></div></p>
+<h3 id="deployment-with-k8s">Sakuli Dashboard on Kubernetes</h3>
+<p>You can start your Sakuli Dashboard using two different approaches:</p>
+<ul>
+<li>Set up the Sakuli Dashboard manually via <a href="#k8s-cli">CLI</a>.</li>
+<li>Set up the Sakuli Dashboard using a ready to use <a href="#k8s-dashboard-template">template</a>.</li>
+</ul>
+<h4 id="k8s-cli">Set up the Sakuli Dashboard manually</h4>
+<p>As a first step, create a deployment based on the Sakuli Dashboard image and expose the service.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create deployment sakuli-dashbaord --image<span style="color:#f92672">=</span>taconsol/sakuli-dashboard:&lt;IMAGE_TAG&gt;
+
+kubectl expose deployment sakuli-dashboard --type<span style="color:#f92672">=</span>LoadBalancer --port<span style="color:#f92672">=</span><span style="color:#ae81ff">8080</span></code></pre></div>
+<p>The <code>--type=LoadBalancer</code> flag is important to make your service available outside your cluster.</p>
+<p>Now add your Sakuli Dashboard configurations such as the dashboard, action, cluster and cronjob configs to
+the environment of your deployment.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl set env deployment/sakuli-dashboard --overwrite <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> DASHBOARD_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>DASHBOARD_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> ACTION_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>ACTION_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> CLUSTER_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>CLUSTER_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> CRONJOB_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>CRONJOB_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span></code></pre></div>
+<h4 id="k8s-dashboard-template">Set up Sakuli Dashboard using a Template</h4>
+<p>The following ready-to-use template will configure a Sakuli Dashboard and deploy it to your cluster
+Just copy and save the dashboard template below as <code>dashboard-template.yml</code>. Furthermore, add your dashboard, action,
+cluster and cronjob configurations listed under ConfigMap as well as the image tag.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">apiVersion</span>: apps/v1
+<span style="color:#66d9ef">kind</span>: Deployment
+<span style="color:#66d9ef">metadata</span>:
+  <span style="color:#66d9ef">name</span>: sakuli-dashboard
+  <span style="color:#66d9ef">labels</span>:
+    <span style="color:#66d9ef">app</span>: sakuli-dashboard
+<span style="color:#66d9ef">spec</span>:
+  <span style="color:#66d9ef">replicas</span>: <span style="color:#ae81ff">1</span>
+  <span style="color:#66d9ef">selector</span>:
+    <span style="color:#66d9ef">matchLabels</span>:
+      <span style="color:#66d9ef">app</span>: sakuli-dashboard
+  <span style="color:#66d9ef">template</span>:
+    <span style="color:#66d9ef">metadata</span>:
+      <span style="color:#66d9ef">labels</span>:
+        <span style="color:#66d9ef">app</span>: sakuli-dashboard
+    <span style="color:#66d9ef">spec</span>:
+      <span style="color:#66d9ef">containers</span>:
+        - <span style="color:#66d9ef">name</span>: sakuli-dashboard
+          <span style="color:#75715e"># Specify the Sakuli Dashboard version you want to use</span>
+          <span style="color:#66d9ef">image</span>: taconsol/sakuli-dashboard:${IMAGE_TAG}
+          <span style="color:#66d9ef">imagePullPolicy</span>: Always
+          <span style="color:#66d9ef">env</span>:
+            - <span style="color:#66d9ef">name</span>: ACTION_CONFIG
+              <span style="color:#66d9ef">valueFrom</span>:
+                <span style="color:#66d9ef">configMapKeyRef</span>:
+                  <span style="color:#66d9ef">name</span>: sakuli-dashboard
+                  <span style="color:#66d9ef">key</span>: ACTION_CONFIG
+            - <span style="color:#66d9ef">name</span>: CLUSTER_CONFIG
+              <span style="color:#66d9ef">valueFrom</span>:
+                <span style="color:#66d9ef">configMapKeyRef</span>:
+                  <span style="color:#66d9ef">name</span>: sakuli-dashboard
+                  <span style="color:#66d9ef">key</span>: CLUSTER_CONFIG
+            - <span style="color:#66d9ef">name</span>: DASHBOARD_CONFIG
+              <span style="color:#66d9ef">valueFrom</span>:
+                <span style="color:#66d9ef">configMapKeyRef</span>:
+                  <span style="color:#66d9ef">name</span>: sakuli-dashboard
+                  <span style="color:#66d9ef">key</span>: DASHBOARD_CONFIG
+            - <span style="color:#66d9ef">name</span>: CRONJOB_CONFIG
+              <span style="color:#66d9ef">valueFrom</span>:
+                <span style="color:#66d9ef">configMapKeyRef</span>:
+                  <span style="color:#66d9ef">name</span>: sakuli-dashboard
+                  <span style="color:#66d9ef">key</span>: CRONJOB_CONFIG
+---
+<span style="color:#66d9ef">apiVersion</span>: v1
+<span style="color:#66d9ef">kind</span>: Service
+<span style="color:#66d9ef">metadata</span>:
+  <span style="color:#66d9ef">name</span>: sakuli-dashboard
+<span style="color:#66d9ef">spec</span>:
+  <span style="color:#66d9ef">selector</span>:
+    <span style="color:#66d9ef">app</span>: sakuli-dashboard
+  <span style="color:#66d9ef">ports</span>:
+    - <span style="color:#66d9ef">protocol</span>: TCP
+      <span style="color:#66d9ef">port</span>: <span style="color:#ae81ff">8080</span>
+      <span style="color:#66d9ef">targetPort</span>: <span style="color:#ae81ff">8080</span>
+  <span style="color:#66d9ef">type</span>: LoadBalancer
+---
+<span style="color:#66d9ef">apiVersion</span>: v1
+<span style="color:#66d9ef">kind</span>: ConfigMap
+<span style="color:#66d9ef">metadata</span>:
+  <span style="color:#66d9ef">name</span>: sakuli-dashboard
+<span style="color:#66d9ef">data</span>:
+  <span style="color:#66d9ef">DASHBOARD_CONFIG</span>: &gt;<span style="color:#e6db74">-
+</span><span style="color:#e6db74">    Dashboard configuration</span>
+  <span style="color:#66d9ef">ACTION_CONFIG</span>: &gt;<span style="color:#e6db74">-
+</span><span style="color:#e6db74">    Action configuration</span>
+  <span style="color:#66d9ef">CLUSTER_CONFIG</span>: &gt;<span style="color:#e6db74">-
+</span><span style="color:#e6db74">    Cluster configuration</span>
+  <span style="color:#66d9ef">CRONJOB_CONFIG</span>: &gt;<span style="color:#e6db74">-
+</span><span style="color:#e6db74">    Cronjob configuration</span></code></pre></div>
+<p>To create the deployment in your Kubernetes cluster, just use the following command.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl apply -f dashboard-template.yml</code></pre></div>
+<h3 id="deployment-with-openshift">Sakuli Dashboard on Openshift</h3>
+<h4 id="prerequisites">Prerequisites</h4>
+<p>A Sakuli Dashboard setup on your OpenShift cluster requires you to import the Sakuli Dashboard image from Docker Hub.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc import-image sakuli-dashboard <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> --from<span style="color:#f92672">=</span>docker.io/taconsol/sakuli-dashboard <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> --confirm <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> --scheduled<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> --all<span style="color:#f92672">=</span>true</code></pre></div>
+<p>When using OpenShift v3.10 or v3.11, add the <code>--reference-policy=local</code> flag:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc import-image sakuli-dashboard <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> --from<span style="color:#f92672">=</span>docker.io/taconsol/sakuli-dashboard <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> --confirm <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> --scheduled<span style="color:#f92672">=</span>true <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> --all <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> --reference-policy<span style="color:#f92672">=</span>local</code></pre></div>
+<p><em>Note: The <code>oc import-image</code> statement is configured to not only import all available sakuli-dashboard images but also to
+check for updates automatically.</em></p>
+<p>You can start your Sakuli Dashboard using two different approaches:</p>
+<ul>
+<li>Set up the Sakuli Dashboard manually via <a href="#oc-cli">CLI</a>.</li>
+<li>Set up the Sakuli Dashboard using a ready to use <a href="#oc-dashboard-template">template</a>.</li>
+</ul>
+<h4 id="oc-cli">Set up the Sakuli Dashboard manually via CLI</h4>
+<p>An easy way to set up a Sakuli Dashboard is by using <code>oc new-app</code>. Required environment variables can be passed along via the <code>-e</code> parameter.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc new-app sakuli-dashboard <span style="color:#ae81ff">\ </span>
+ -e DASHBOARD_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>DASHBOARD_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>  <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> -e ACTION_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>ACTION_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>  <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> -e CLUSTER_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>CLUSTER_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>  <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span> -e CRONJOB_CONFIG<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>CRONJOB_CONFIG<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span></code></pre></div>
+<p>Once completed, the service has to be exposed to make available from outside the cluster.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc expose svc/sakuli-dashboard</code></pre></div>
+<h4 id="oc-dashboard-template">Set up the Sakuli Dashboard using a ready to use template</h4>
+<p>The following ready-to-use template will configure a Sakuli Dashboard and deploy it to your cluster
+Just copy and save the dashboard template below as <code>dashboard-template.yml</code>. Furthermore, add your dashboard, action,
+cluster and cronjob configurations listed under ConfigMap as well as the containers image configuration.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">apiVersion</span>: v1
+<span style="color:#66d9ef">kind</span>: Template
+<span style="color:#66d9ef">metadata</span>:
+  <span style="color:#66d9ef">name</span>: ${SERVICE_NAME}
+<span style="color:#66d9ef">objects</span>:
+  - <span style="color:#66d9ef">apiVersion</span>: v1
+    <span style="color:#66d9ef">kind</span>: DeploymentConfig
+    <span style="color:#66d9ef">metadata</span>:
+      <span style="color:#66d9ef">name</span>: ${SERVICE_NAME}
+      <span style="color:#66d9ef">labels</span>:
+        <span style="color:#66d9ef">app</span>: ${SERVICE_NAME}
+    <span style="color:#66d9ef">spec</span>:
+      <span style="color:#66d9ef">replicas</span>: <span style="color:#ae81ff">1</span>
+      <span style="color:#66d9ef">selector</span>:
+        <span style="color:#66d9ef">app</span>: ${SERVICE_NAME}
+      <span style="color:#66d9ef">template</span>:
+        <span style="color:#66d9ef">metadata</span>:
+          <span style="color:#66d9ef">labels</span>:
+            <span style="color:#66d9ef">app</span>: ${SERVICE_NAME}
+        <span style="color:#66d9ef">spec</span>:
+          <span style="color:#66d9ef">containers</span>:
+            - <span style="color:#66d9ef">name</span>: ${SERVICE_NAME}
+              <span style="color:#75715e">#change the address to your openshift registry, your namespace and the image tag you want to use</span>
+              <span style="color:#66d9ef">image</span>: ${OPENSHIFT_REGISTRY_ADDRESS}/${NAMESPACE}/sakuli-dashboard:${IMAGE_TAG}
+              <span style="color:#66d9ef">imagePullPolicy</span>: Always
+              <span style="color:#66d9ef">ports</span>:
+                - <span style="color:#66d9ef">containerPort</span>: <span style="color:#ae81ff">8080</span>
+                  <span style="color:#66d9ef">protocol</span>: TCP
+              <span style="color:#66d9ef">env</span>:
+                - <span style="color:#66d9ef">name</span>: ACTION_CONFIG
+                  <span style="color:#66d9ef">valueFrom</span>:
+                    <span style="color:#66d9ef">configMapKeyRef</span>:
+                      <span style="color:#66d9ef">name</span>: ${SERVICE_NAME}
+                      <span style="color:#66d9ef">key</span>: ACTION_CONFIG
+                - <span style="color:#66d9ef">name</span>: DASHBOARD_CONFIG
+                  <span style="color:#66d9ef">valueFrom</span>:
+                    <span style="color:#66d9ef">configMapKeyRef</span>:
+                      <span style="color:#66d9ef">name</span>: ${SERVICE_NAME}
+                      <span style="color:#66d9ef">key</span>: DASHBOARD_CONFIG
+                - <span style="color:#66d9ef">name</span>: CLUSTER_CONFIG
+                  <span style="color:#66d9ef">valueFrom</span>:
+                    <span style="color:#66d9ef">configMapKeyRef</span>:
+                      <span style="color:#66d9ef">name</span>: ${SERVICE_NAME}
+                      <span style="color:#66d9ef">key</span>: CLUSTER_CONFIG
+                - <span style="color:#66d9ef">name</span>: CRONJOB_CONFIG
+                  <span style="color:#66d9ef">valueFrom</span>:
+                    <span style="color:#66d9ef">configMapKeyRef</span>:
+                      <span style="color:#66d9ef">name</span>: ${SERVICE_NAME}
+                      <span style="color:#66d9ef">key</span>: CRONJOB_CONFIG
+      <span style="color:#66d9ef">triggers</span>:
+        - <span style="color:#66d9ef">type</span>: ConfigChange
+  - <span style="color:#66d9ef">apiVersion</span>: v1
+    <span style="color:#66d9ef">kind</span>: Service
+    <span style="color:#66d9ef">metadata</span>:
+      <span style="color:#66d9ef">name</span>: ${SERVICE_NAME}
+      <span style="color:#66d9ef">labels</span>:
+        <span style="color:#66d9ef">app</span>: ${SERVICE_NAME}
+    <span style="color:#66d9ef">spec</span>:
+      <span style="color:#66d9ef">ports</span>:
+        - <span style="color:#66d9ef">name</span>: <span style="color:#ae81ff">8080</span>-tcp
+          <span style="color:#66d9ef">port</span>: <span style="color:#ae81ff">8080</span>
+          <span style="color:#66d9ef">protocol</span>: TCP
+          <span style="color:#66d9ef">targetPort</span>: <span style="color:#ae81ff">8080</span>
+      <span style="color:#66d9ef">selector</span>:
+        <span style="color:#66d9ef">app</span>: ${SERVICE_NAME}
+  - <span style="color:#66d9ef">apiVersion</span>: v1
+    <span style="color:#66d9ef">kind</span>: ConfigMap
+    <span style="color:#66d9ef">metadata</span>:
+      <span style="color:#66d9ef">name</span>: ${SERVICE_NAME}
+    <span style="color:#66d9ef">data</span>:
+      <span style="color:#66d9ef">ACTION_CONFIG</span>: &gt;<span style="color:#e6db74">-
+</span><span style="color:#e6db74">        &lt;action configuration&gt;</span>
+      <span style="color:#66d9ef">CLUSTER_CONFIG</span>: &gt;<span style="color:#e6db74">-
+</span><span style="color:#e6db74">        &lt;cluster Configuration&gt;</span>
+      <span style="color:#66d9ef">DASHBOARD_CONFIG</span>: &gt;<span style="color:#e6db74">-
+</span><span style="color:#e6db74">        &lt;dashboard configuration&gt;</span>
+      <span style="color:#66d9ef">CRONJOB_CONFIG</span>: &gt;<span style="color:#e6db74">-
+</span><span style="color:#e6db74">        &lt;cronjob configuration&gt;</span>
+<span style="color:#66d9ef">parameters</span>:
+  - <span style="color:#66d9ef">name</span>: SERVICE_NAME
+    <span style="color:#66d9ef">description</span>: Service name for dashboard
+    <span style="color:#66d9ef">value</span>: sakuli-dashboard</code></pre></div>
+<p>After configuring the template, run:</p>
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc process -f &lt;filename&gt; | oc create -f -</code></pre></div>
+Whereas <code>&lt;filename&gt;</code> is the name of a file containing the template above.</p>
+<p>Expose the service to make the dashboard available to clients outside of your cluster:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc expose svc/sakuli-dashboard</code></pre></div>
 
 
 <footer class=" footline" >
@@ -1612,26 +1744,6 @@ omd start sakuli_gearman_proxy
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
                 
                 
 
@@ -1679,6 +1791,26 @@ omd start sakuli_gearman_proxy
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1943,10 +2075,10 @@ omd start sakuli_gearman_proxy
 	 
 	 
 		
-			<a class="nav nav-prev" href="/docs/enterprise_features/check/" title="checkmk Fowarder"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/docs/modules/s2i/" title="S2I Image"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/docs/enterprise_features/container/" title="Container" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/docs/modules/sakuli-dashboard-configuration/" title="Sakuli Dashboard Configuration" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
