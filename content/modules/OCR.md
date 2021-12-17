@@ -11,7 +11,7 @@ weight : 10
 With optical character recognition (OCR) it is possible to convert screen content into text. In combination with Sakuli, 
 it is also possible to automate software based on the text shown on screen.
 
-## OCR in  containers
+## OCR in containers
 Sakuli containers ship with a complete setup to use the OCR module of Sakuli. OCR module can be used
 without any further set up.
 
