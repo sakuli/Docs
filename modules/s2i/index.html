@@ -1199,8 +1199,7 @@ of the generated profiles in <code>/headless/.mozilla/firefox/long_random_id.def
 <h2 id="create-s2i-build">Creating an S2I build</h2>
 <p>The following build-config template is ready to use to create Sakuli S2I builds for various repositories and test suites.
 Just copy and save the <a href="#s2i-template">S2I build template</a> as <code>sakuli-s2i-build-template.yml</code>. To process the template
-some additional information is required that are not part of the template. First of all, you have to provide a
-<code>SAKULI_LICENSE_KEY</code> to be able to execute the images resulting from the build process and you have to specify the
+some additional information is required that are not part of the template. First of all, you have to specify the
 repository to pull the test case from as <code>TESTSUITE_REPOSITORY_URL</code>. To install such a basic setup on your OpenShift
 cluster, just use the following command and replace the placeholder with actual values.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc process -f sakuli-s2i-build-template.yml <span style="color:#ae81ff">\
@@ -1215,12 +1214,6 @@ contains all available parameters. Additional parameters are specified in the sa
         <th>Optional</th>
         <th>Description</th>
         <th>Default value</th>
-    </tr>
-    <tr>
-        <td>SAKULI_LICENSE_KEY</td>
-        <td>NO</td>
-        <td>Sakuli2 License key.</td>
-        <td></td>
     </tr>
     <tr>
         <td>TESTSUITE_REPOSITORY_URL</td>
