@@ -14,8 +14,6 @@ Add the forwarder manually as follows:
 npm i @sakuli/forwarder-prometheus
 {{</highlight>}}
 
-Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the [enterprise section](/docs/enterprise_features/#using-the-license-key).
-
 
 ## Push gateway
 It is assumed that a push gateway is available in your monitoring setup. As Sakuli checks are not constantly available like e.g. a Webservice, it is required to use a Prometheus push gateway to provide a scraping endpoint for Prometheus to obtain measurements gathered by Sakuli.
