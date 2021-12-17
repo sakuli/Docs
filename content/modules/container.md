@@ -14,6 +14,10 @@ This image is ready to go and ships with already installed:
 
 ## 1 Obtaining the Image
 
+{{<highlight bash>}}
+docker pull taconsol/sakuli:<IMAGE_TAG>
+{{</highlight>}}
+
 Tech previews of Sakuli containers are published as `latest`.
 We highly recommend specifying the exact version of Sakuli for productive tests/checks.
 

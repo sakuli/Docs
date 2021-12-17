@@ -45,7 +45,7 @@ This command outputs a masterkey which can be used to encrypt a secret with the 
 command or to decrypt a secret in a testcase with a Sakuli function like `Environment.decryptSecret()`.
 
   
-## sakuli enable-module
+## sakuli enable-modules
 {{<highlight bash>}}
 npx sakuli enable-modules
 

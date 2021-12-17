@@ -95,7 +95,7 @@ await _getRegionByText("Continue", searchRegion).click();
 
 In this sample, the search for the text "Continue" would be limited to the specified screen region.
 
-## Combining OCR module
+## Combining OCR modules
 One common use case would be to extract text from a certain region of the screen e.g. from an offer or invoice for
 further validation.   
 

@@ -11,7 +11,7 @@ The following how-to aims to help unexperienced users getting started with Sakul
 A Sakuli Container ships with pre-installed Sakuli, Monitoring forwarder and other additional modules, it is not necessary to install anything on your docker-host, except for docker.
 
 ## Download the image
-With your logged-in docker-user , you first need to download the Sakuli image:
+You first need to download the Sakuli image:
 {{<highlight bash>}}
 docker pull taconsol/sakuli:2.2.0
 {{</highlight >}}
