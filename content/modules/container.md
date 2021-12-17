@@ -5,7 +5,6 @@ weight : 4
 ---
 # Pre-configured Container
 
-Once you obtained a Sakuli Enterprise license your docker-user will be granted access to the private Sakuli test container image.
 This image is ready to go and ships with already installed:
 
 - Sakuli
@@ -14,12 +13,6 @@ This image is ready to go and ships with already installed:
 - Chrome / Firefox (incl. webdriver)
 
 ## 1 Obtaining the Image
-
-The registered docker-hub user will then be able to pull the private image:
-
-{{<highlight bash>}}
-docker pull taconsol/sakuli:<IMAGE_TAG>
-{{</highlight>}}
 
 Tech previews of Sakuli containers are published as `latest`.
 We highly recommend specifying the exact version of Sakuli for productive tests/checks.
@@ -34,16 +27,13 @@ You can find a list of available tags on <a href="https://cloud.docker.com/u/tac
 
 ## 2 Running Sakuli Test Containers {#running-sakuli-test-containers}
 
-Containerized Sakuli tests require a valid Sakuli license token which has to be provided via the `SAKULI_LICENSE_KEY` [environment variable](/docs/enterprise_features/#using-the-license-key).
-
-Docker allows to pass environment variables along other parameters when starting a new container:
+Docker allows to pass parameters when starting a new container:
 
 {{<highlight bash>}}
 docker run \
     --rm \
     -p 5901:5901 \
     -p 6901:6901 \
-    -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> \
     [--shm-size=2G] \
     taconsol/sakuli:2.4.0-1
 {{</highlight>}}
@@ -52,7 +42,6 @@ Parameters:
 
 - **\-\-rm**: The test container will be removed after execution, not just stopped
 - **-p**: Port forwardings. VNC is available on port 5901, the HTML5 webVNC view is exposed on port 6901 on the Docker host
-- **-e**: Environment variable flag which is used to provide the `SAKULI_LICENSE_KEY` to the container
 - **--shm-size**: *(Optional Parameter)* Increases the size of the shared memory space of the container. The default value is 64MB. This might be required when testing larger websites. Indicators that a shared memory enlargement is required are container crashes, the erroneous loading of websites or `invalid session id` errors due to crashed browsers.  
 
 > Sakuli Test Containers run as non-root user, the default UID is 1000.
@@ -88,7 +77,6 @@ This mechanism can be used to provide a Sakuli projects to a Sakuli container:
 {{<highlight bash>}}
 docker run \ 
     -v /path/to/test/project/on/host:/sakuli_project \
-    -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> \
     taconsol/sakuli:2.4.0-1 /bin/bash
 {{</highlight>}}
 
@@ -106,7 +94,6 @@ To be able to do so, you have to specify the environment variable `SAKULI_TEST_S
 docker run \
     -v /path/to/test/project/on/host:/sakuli_project \
     -e SAKULI_TEST_SUITE=/sakuli_project/test_suite_folder \
-    -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> \
     taconsol/sakuli:2.4.0-1
 {{</highlight>}}
 
@@ -141,7 +128,7 @@ docker build -t name-of-my-image .
 We can now run the newly built image via:
 
 {{<highlight bash>}}
-docker run -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> name-of-my-image
+docker run name-of-my-image
 {{</highlight>}}
 
 > When working with added files and folders inside a container, one has to ensure correct file permissions for added files.
@@ -153,7 +140,7 @@ docker run -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> name-of-my-image
 The Sakuli container provides a mechanism to clone a git repository containing a sakuli project at container start
 and subsequently executing a testsuite within it:
 {{<highlight bash>}}
-docker run -e GIT_URL=<REPOSITORY URL> -e GIT_CONTEXT_DIR=<RELATIVE PATH TO TESTSUITE> -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> taconsol/sakuli:2.4.0-1
+docker run -e GIT_URL=<REPOSITORY URL> -e GIT_CONTEXT_DIR=<RELATIVE PATH TO TESTSUITE> taconsol/sakuli:2.4.0-1
 {{</highlight>}}
 
 `GIT_URL` specifies the URL of the repository to be cloned. To access a private repository, please ensure, your git service provides the possibility to authenticate via URL parameters. 
@@ -238,13 +225,13 @@ Sakuli containers provide access to running containers via VNC on ports 5901 and
 By specifying port forwarding (**-p**) it is possible to configure which ports will be used to connect to a running container on the host system.
 
 {{<highlight bash>}}
-docker run --rm -p 5901:5901 -p 6901:6901 -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> taconsol/sakuli:2.4.0-1
+docker run --rm -p 5901:5901 -p 6901:6901 taconsol/sakuli:2.4.0-1
 {{</highlight>}}
 
 The example above forwards container ports 5901 and 6901 to the same ports on the host system.
 
 {{<highlight bash>}}
-docker run --rm -p 5000:5901 -p 6000:6901 -e SAKULI_LICENSE_KEY=<YOUR SAKULI LICENSE KEY> taconsol/sakuli:2.4.0-1
+docker run --rm -p 5000:5901 -p 6000:6901 taconsol/sakuli:2.4.0-1
 {{</highlight>}}
 
 In this example container port 5901 is forwarded to port 5000 on the host system, port 6901 is forwarded to port 6000 on the host system.
@@ -413,12 +400,10 @@ Selenium Server on the Windows host and configure Sakuli to connect the browser 
 | Environment Variable    | Default Value | Description                                                                                                      |
 | ----------------------- | --------------| ---------------------------------------------------------------------------------------------------------------- |
 | SAKULI_TEST_SUITE       |               | Path to Sakuli testsuite to be executed                                                                          |
-| SAKULI_LICENSE_KEY      |               | Sakuli license to use the container                                                                              |
 | VNC_COL_DEPTH           | 24            | Color depth of container monitor                                                                                 |
 | VNC_RESOLUTION          | 1280x1024     | Screen resolution of container                                                                                   |
 | VNC_PW                  | vncpassword   | Password to access NoVNC/VNC connection                                                                          |
 | VNC_VIEW_ONLY           | false         | Enable/Disable view-only mode                                                                                    |
-| NPM_TOKEN               |               | NPM token to access npmjs.com registry                                                                           |
 | SAKULI_TRUSTED_CERT_DIR |               | Directory containing custom certificates for import                                                              |
 | GIT_URL                 |               | URL of git repository                                                                                            |
 | GIT_CONTEXT_DIR         |               | Path to Sakuli testsuite within the git repository                                                               |

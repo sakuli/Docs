@@ -6,13 +6,9 @@ weight : 3
 
 # OMD / Gearman Forwarder
 
-Add the forwarder using the [assistant](/docs/enterprise_features/#assisted-setup) or configure it manually:
-
 {{<highlight bash>}}
 npm i @sakuli/forwarder-gearman
 {{</highlight>}}
-
-Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the [enterprise section](/docs/enterprise_features/#using-the-license-key).
 
 
 ## Configure OMD

@@ -6,13 +6,9 @@ weight : 1
 
 # Icinga2 Forwarder
 
-Add the forwarder using the [assistant](/docs/enterprise_features/#assisted-setup) or configure it manually:
-
 {{<highlight bash>}}
 npm i @sakuli/forwarder-icinga2
 {{</highlight>}}
-
-Installation of any enterprise feature requires a proper setup of your license information. You can find further information in the [enterprise section](/docs/enterprise_features/#using-the-license-key).
 
 
 ## Enable the Icinga2 API

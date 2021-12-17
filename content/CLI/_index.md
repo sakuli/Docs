@@ -45,16 +45,16 @@ This command outputs a masterkey which can be used to encrypt a secret with the 
 command or to decrypt a secret in a testcase with a Sakuli function like `Environment.decryptSecret()`.
 
   
-## sakuli enable-enterprise
+## sakuli enable-module
 {{<highlight bash>}}
-npx sakuli enable-enterprise
+npx sakuli enable-modules
 
 
-Configures and enables enterprise features
+Configures and enables modules
 {{</highlight>}}
 
-This command starts an assistant which will guide you through the setup of enterprise features. More information on how
-to use the `enable-enterprise` command can be found [here](/enterprise_features/#assisted-setup).
+This command starts an assistant which will guide you through the setup of modules. More information on how
+to use the `enable-modules` command can be found [here](/modules/#assisted-setup).
 
 ## sakuli encrypt
 {{<highlight bash>}}
