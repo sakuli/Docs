@@ -5,27 +5,13 @@ weight : 5
 ---
 # S2I Image
 
-Sakuli enterprise comes with ready-to-use <a href="https://github.com/openshift/source-to-image" target="_blank">source to image (S2I)</a>
+Sakuli comes with ready-to-use <a href="https://github.com/openshift/source-to-image" target="_blank">source to image (S2I)</a>
 containers for RedHat OpenShift. Using this builder container, it is easily possible to create deployable Sakuli images
 shipped with a test suite straight from your code repository.
 
 ## Setup
 To setup the source to image builds on your OpenShift cluster, it is required to import the images from 
-`taconsol/sakuli-s2i`. To achieve this, you have to create a docker-registry secret with your `<docker-username>` and
-`<docker-password>` and link it to your `builder` service account to authenticate on docker.io during build.
-Once you obtained a Sakuli Enterprise license your Docker user will be granted access to the private Sakuli S2I images.
-
-{{<highlight bash "hl_lines=3 4">}}
-oc create secret docker-registry dockerhub-sakuli-secret \
-    --docker-server=docker.io \
-    --docker-username=<docker-username> \
-    --docker-password=<docker-password> \
-    --docker-email=unused
-
-oc secrets link builder dockerhub-sakuli-secret
-{{</highlight>}}
-
-After you've created and linked the secret, you can import the images from the secured registry.
+`taconsol/sakuli-s2i`.
 
 {{<highlight bash>}}
 oc import-image sakuli-s2i \
@@ -130,14 +116,12 @@ of the generated profiles in `/headless/.mozilla/firefox/long_random_id.default`
 ## Creating an S2I build {#create-s2i-build}
 The following build-config template is ready to use to create Sakuli S2I builds for various repositories and test suites.
 Just copy and save the [S2I build template](#s2i-template) as `sakuli-s2i-build-template.yml`. To process the template
-some additional information is required that are not part of the template. First of all, you have to provide a
-`SAKULI_LICENSE_KEY` to be able to execute the images resulting from the build process and you have to specify the
+some additional information is required that are not part of the template. First of all, you have to specify the
 repository to pull the test case from as `TESTSUITE_REPOSITORY_URL`. To install such a basic setup on your OpenShift
 cluster, just use the following command and replace the placeholder with actual values.
 
 {{<highlight bash "hl_lines=2 3">}}
 oc process -f sakuli-s2i-build-template.yml \
-    SAKULI_LICENSE_KEY=<SAKULI_LICENSE_KEY> \
     TESTSUITE_REPOSITORY_URL=<TESTSUITE_REPOSITORY_URL> | oc apply -f -
 {{</highlight>}}
 
@@ -152,12 +136,6 @@ contains all available parameters. Additional parameters are specified in the sa
         <th>Optional</th>
         <th>Description</th>
         <th>Default value</th>
-    </tr>
-    <tr>
-        <td>SAKULI_LICENSE_KEY</td>
-        <td>NO</td>
-        <td>Sakuli2 License key.</td>
-        <td></td>
     </tr>
     <tr>
         <td>TESTSUITE_REPOSITORY_URL</td>
@@ -231,10 +209,6 @@ parameters:
     required: true
     value: latest
 
-  - description: Sakuli2 License key.
-    name: SAKULI_LICENSE_KEY
-    required: true
-
   - description: Git source URL containing the test suite.
     name: TESTSUITE_REPOSITORY_URL
     required: true
@@ -293,9 +267,6 @@ objects:
           from:
             kind: ImageStreamTag
             name: ${BUILDER_IMAGE}:${BUILDER_IMAGE_TAG}
-          env:
-            - name: "SAKULI_LICENSE_KEY"
-              value: ${SAKULI_LICENSE_KEY}
       triggers:
         - imageChange: {}
           type: ImageChange

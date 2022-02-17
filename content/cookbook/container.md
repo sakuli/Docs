@@ -8,10 +8,10 @@ weight = 5
 > Sakuli Container are only available with an active Sakuli subscription.
 
 The following how-to aims to help unexperienced users getting started with Sakuli Containers. 
-A Sakuli Container ships with pre-installed Sakuli, Monitoring forwarder and other additional features, it is not necessary to install anything on your docker-host, except for docker.
+A Sakuli Container ships with pre-installed Sakuli, Monitoring forwarder and other additional modules, it is not necessary to install anything on your docker-host, except for docker.
 
 ## Download the image
-With your logged-in docker-user (which is authorized to access the repository with an active subscription), you first need to download the Sakuli image:
+You first need to download the Sakuli image:
 {{<highlight bash>}}
 docker pull taconsol/sakuli:2.2.0
 {{</highlight >}}
@@ -35,9 +35,9 @@ After cloning the repo / unzipping the file, you will have a folder structure li
 
 ## Run
 Open a terminal and navigate to the folder "sakuli-container_bootstrap*".
-Within this folder, run the following docker command (you will have to insert your active Sakuli License Key):
+Within this folder, run the following docker command:
 {{<highlight bash>}}
-docker run --rm -v $(pwd):/suite -p 5901:5901 -p 6901:6901 -e SAKULI_TEST_SUITE=/suite -e SAKULI_LICENSE_KEY=YourLicenseKey taconsol/sakuli:2.2.0
+docker run --rm -v $(pwd):/suite -p 5901:5901 -p 6901:6901 -e SAKULI_TEST_SUITE=/suite taconsol/sakuli:2.2.0
 {{</highlight >}}
 
 ## Watch the magic
@@ -45,4 +45,4 @@ You can use the noVNC feature to have a live-view of what is happening within th
 http://localhost:6901/?password=vncpassword
 
 ## What´s more?
-Have a look at our Enterprise documentation about Container, Forwarder etc. to get a more in-depth knowledge on what is happening and on how to customize the execution of Sakuli tests.
+Have a look at our documentation about Container, Forwarder etc. to get a more in-depth knowledge on what is happening and on how to customize the execution of Sakuli tests.
