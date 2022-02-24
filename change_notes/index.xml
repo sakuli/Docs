@@ -39,5 +39,15 @@ Sakuli Core Besides our brand-new preset autodiscovery a lot of improvements wen
       <description>V2.5.0 Sakuli Core The new Sakuli Release 2.5.0 has many improvements in its luggage, which both users and developers have longed for. In addition, a completely new option for automation made it into the release! We are talking about the Sakuli OCR module. But everything in the right order! Let&amp;rsquo;s get it started with the improvements on the Sakuli core! A detailed list of all applied enhancement and fixes can be found in the CHANGELOG.</description>
     </item>
     
+    <item>
+      <title>V3.0.0</title>
+      <link>/docs/change_notes/3.0.0/</link>
+      <pubDate>Thu, 24 Feb 2022 09:38:17 +0100</pubDate>
+      
+      <guid>/docs/change_notes/3.0.0/</guid>
+      <description>V3.0.0 Sakuli - Open Source All Enterprise Features are now open-source and can be used free of charge.
+ Sakuli Forwarder Sakuli OCR Sakuli Docker Sakuli Docker Remote Connection Sakuli S2I Sakuli Dashboard  Node From now on, Sakuli also supports the latest LTS version of Node (v16.x, codename lts/gallium), so feel free to update your systems to the latest LTS version. We have updated our containers accordingly to run on lts/gallium as of 3.</description>
+    </item>
+    
   </channel>
 </rss>

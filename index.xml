@@ -5,7 +5,7 @@
     <link>/docs/</link>
     <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 12 Mar 2021 13:52:41 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 24 Feb 2022 09:38:17 +0100</lastBuildDate>
     
 	<atom:link href="/docs/index.xml" rel="self" type="application/rss+xml" />
     
@@ -190,6 +190,16 @@ Of course, you can also use Sakulis native testing power on its own, e.</descrip
       <description>Setup Setup Your First Test Since v2.2.0 Sakuli provides an easy to use mechanism to initialize testcases and testsuites.
 npx sakuli create project . my-sut This will create all necessary files and folders to start writing your first Sakuli test right away. With this, you can skip the next section and directly start to write your first test
 Setup the Project Manually Since we wanted to keep Sakuli mostly compatible to v1, the file layout looks basically the same for testsuites.</description>
+    </item>
+    
+    <item>
+      <title>V3.0.0</title>
+      <link>/docs/change_notes/3.0.0/</link>
+      <pubDate>Thu, 24 Feb 2022 09:38:17 +0100</pubDate>
+      
+      <guid>/docs/change_notes/3.0.0/</guid>
+      <description>V3.0.0 Sakuli - Open Source All Enterprise Features are now open-source and can be used free of charge.
+ Sakuli Forwarder Sakuli OCR Sakuli Docker Sakuli Docker Remote Connection Sakuli S2I Sakuli Dashboard  Node From now on, Sakuli also supports the latest LTS version of Node (v16.x, codename lts/gallium), so feel free to update your systems to the latest LTS version. We have updated our containers accordingly to run on lts/gallium as of 3.</description>
     </item>
     
     <item>
